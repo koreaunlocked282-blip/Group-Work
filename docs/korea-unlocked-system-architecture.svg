@@ -1,0 +1,589 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1270" viewBox="0 0 1800 1270" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpiZWE3MjQxMy1iY2JmLTQxZTgtOTE0MS1hODhhYjlmY2M5ODAAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaCBkZ8AgYY60LaTxWeSiUWkAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDoxN2JhNTU5NS05NzQwLTQ1NjgtYTlhYi01MjgxMzNiOGEyMTNscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNosdkSdhEzeluQNe2zfA9FuAAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggMpUQTm5V6U6hKr+SKmqS37ZsylV3MVLIaInMOKec0/WkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaKfgjie+ZJW9OEen6MEGo44AAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBtE1TAA641sVrTQNkmkkda3p495HEbTRgwjh67iRlGWGRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBiaZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmJlYTcyNDEzLWJjYmYtNDFlOC05MTQxLWE4OGFiOWZjYzk4MC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmIzOTllNWQ0LWQxZGEtNGNlYy1iY2MxLWMwZTliYTE0OGZlMHJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCAylRBOblXpTqEqv5IqapLftmzKVXcxUshoicw4p5zT9aJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggUoiaz4hAhQeiBRzvpjB+ohlAAASOjr22NFObUPYdH4+iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg2lePxGbWItBsqRgocDZCgi4pZ+XwGApZap6gmhwa9nl0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQEET0ATA7LR7zO7vLQ3hCsnsfPyS5lwtT8XpOpu+aSjeFtQpgHFrN+4Gec23ocx49ACaWWxMWQswg6L1v2X1ulI=</c2pa:manifest></metadata><rect width="100%" height="100%" fill="#FFFFFF"/><g transform="translate(690.0,34.0) scale(2.4167)" fill="none" stroke="#1C2A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+  <path d="M11 11a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+  <path d="M12 12l0 2.5" />
+</g><text x="962" y="78" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="44" font-weight="700" fill="#1C2A3A" text-anchor="middle">Korea Unlocked</text><text x="962" y="108" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="400" fill="#556476" text-anchor="middle">System Design Architecture</text><rect x="30" y="140" width="250" height="240" rx="12" fill="#F3F6F9" stroke="#3E5C76" stroke-width="1.6"/><rect x="30" y="140" width="250" height="40" rx="12" fill="#3E5C76" fill-opacity="0.10"/><rect x="30" y="168" width="250" height="12" fill="#F3F6F9"/><rect x="30" y="168" width="250" height="12" fill="#3E5C76" fill-opacity="0.10"/><g transform="translate(44.0,149.0) scale(0.9167)" fill="none" stroke="#3E5C76" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+</g><text x="74" y="166" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Users</text><text x="74" y="176" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="1" font-weight="400" fill="#1C2A3A" text-anchor="start"></text><text x="46" y="202" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="#556476" text-anchor="start">International students</text><g transform="translate(48.0,223.0) scale(0.8333)" fill="none" stroke="#3E5C76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12" />
+  <path d="M12 8v3" />
+  <path d="M12 14v.01" />
+</g><text x="78" y="238" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Report an incident</text><g transform="translate(48.0,251.0) scale(0.8333)" fill="none" stroke="#3E5C76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+  <path d="M12 11v6" />
+  <path d="M9.5 13.5l2.5 -2.5l2.5 2.5" />
+</g><text x="78" y="266" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Upload evidence</text><g transform="translate(48.0,279.0) scale(0.8333)" fill="none" stroke="#3E5C76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" />
+</g><text x="78" y="294" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Get support (peer / AI)</text><g transform="translate(48.0,307.0) scale(0.8333)" fill="none" stroke="#3E5C76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+  <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0" />
+</g><text x="78" y="322" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">View anonymized patterns</text><g transform="translate(48.0,335.0) scale(0.8333)" fill="none" stroke="#3E5C76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M13 12v.01" />
+  <path d="M3 21h18" />
+  <path d="M5 21v-16a2 2 0 0 1 2 -2h7.5m2.5 10.5v7.5" />
+  <path d="M14 7h7m-3 -3l3 3l-3 3" />
+</g><text x="78" y="350" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Quick exit button</text><rect x="30" y="400" width="250" height="240" rx="12" fill="#F1F8F3" stroke="#3C8D5A" stroke-width="1.6"/><rect x="30" y="400" width="250" height="40" rx="12" fill="#3C8D5A" fill-opacity="0.10"/><rect x="30" y="428" width="250" height="12" fill="#F1F8F3"/><rect x="30" y="428" width="250" height="12" fill="#3C8D5A" fill-opacity="0.10"/><g transform="translate(44.0,409.0) scale(0.9167)" fill="none" stroke="#3C8D5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h2" />
+  <path d="M22 16c0 4 -2.5 6 -3.5 6s-3.5 -2 -3.5 -6c1 0 2.5 -.5 3.5 -1.5c1 1 2.5 1.5 3.5 1.5" />
+  <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+</g><text x="74" y="426" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Admin / Moderator</text><g transform="translate(48.0,449.0) scale(0.8333)" fill="none" stroke="#3C8D5A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M12 21h-5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v4.5" />
+  <path d="M14 17.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0" />
+  <path d="M18.5 19.5l2.5 2.5" />
+</g><text x="78" y="464" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Review reports</text><g transform="translate(48.0,479.0) scale(0.8333)" fill="none" stroke="#3C8D5A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+  <path d="M9 12l2 2l4 -4" />
+</g><text x="78" y="494" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Verify &amp; corroborate</text><g transform="translate(48.0,509.0) scale(0.8333)" fill="none" stroke="#3C8D5A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" />
+  <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M17 10h2a2 2 0 0 1 2 2v1" />
+  <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
+</g><text x="78" y="524" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Manage community</text><g transform="translate(48.0,539.0) scale(0.8333)" fill="none" stroke="#3C8D5A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 9v4" />
+  <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0" />
+  <path d="M12 16h.01" />
+</g><text x="78" y="554" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Handle escalations</text><g transform="translate(48.0,569.0) scale(0.8333)" fill="none" stroke="#3C8D5A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M18.9 7a8 8 0 0 1 1.1 5v1a6 6 0 0 0 .8 3" />
+  <path d="M8 11a4 4 0 0 1 8 0v1a10 10 0 0 0 2 6" />
+  <path d="M12 11v2a14 14 0 0 0 2.5 8" />
+  <path d="M8 15a18 18 0 0 0 1.8 6" />
+  <path d="M4.9 19a22 22 0 0 1 -.9 -7v-1a8 8 0 0 1 12 -6.95" />
+</g><text x="78" y="584" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">2FA + audited access</text><rect x="30" y="660" width="250" height="140" rx="12" fill="#F3F6F9" stroke="#3E5C76" stroke-width="1.6"/><rect x="30" y="660" width="250" height="40" rx="12" fill="#3E5C76" fill-opacity="0.10"/><rect x="30" y="688" width="250" height="12" fill="#F3F6F9"/><rect x="30" y="688" width="250" height="12" fill="#3E5C76" fill-opacity="0.10"/><g transform="translate(44.0,669.0) scale(0.9167)" fill="none" stroke="#3E5C76" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" />
+  <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" />
+</g><text x="74" y="686" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Partner University</text><g transform="translate(48.0,707.0) scale(0.8333)" fill="none" stroke="#3E5C76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -6" />
+  <path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -10" />
+  <path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -14" />
+  <path d="M4 20h14" />
+</g><text x="78" y="722" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Aggregate dashboard</text><g transform="translate(48.0,737.0) scale(0.8333)" fill="none" stroke="#3E5C76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 21l18 0" />
+  <path d="M9 8l1 0" />
+  <path d="M9 12l1 0" />
+  <path d="M9 16l1 0" />
+  <path d="M14 8l1 0" />
+  <path d="M14 12l1 0" />
+  <path d="M14 16l1 0" />
+  <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" />
+</g><text x="78" y="752" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Policy response</text><rect x="30" y="820" width="250" height="120" rx="12" fill="#F3F6F9" stroke="#3E5C76" stroke-width="1.6"/><rect x="30" y="820" width="250" height="40" rx="12" fill="#3E5C76" fill-opacity="0.10"/><rect x="30" y="848" width="250" height="12" fill="#F3F6F9"/><rect x="30" y="848" width="250" height="12" fill="#3E5C76" fill-opacity="0.10"/><g transform="translate(44.0,829.0) scale(0.9167)" fill="none" stroke="#3E5C76" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 20l10 0" />
+  <path d="M6 6l6 -1l6 1" />
+  <path d="M12 3l0 17" />
+  <path d="M9 12l-3 -6l-3 6a3 3 0 0 0 6 0" />
+  <path d="M21 12l-3 -6l-3 6a3 3 0 0 0 6 0" />
+</g><text x="74" y="846" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Named Party</text><g transform="translate(48.0,867.0) scale(0.8333)" fill="none" stroke="#3E5C76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M8 9h8" />
+  <path d="M8 13h6" />
+  <path d="M9 18h-3a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-3l-3 3l-3 -3" />
+</g><text x="78" y="882" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Right-of-response portal</text><rect x="30" y="960" width="250" height="190" rx="12" fill="#F6F7F8" stroke="#5A6472" stroke-width="1.6"/><rect x="30" y="960" width="250" height="40" rx="12" fill="#5A6472" fill-opacity="0.10"/><rect x="30" y="988" width="250" height="12" fill="#F6F7F8"/><rect x="30" y="988" width="250" height="12" fill="#5A6472" fill-opacity="0.10"/><g transform="translate(44.0,969.0) scale(0.9167)" fill="none" stroke="#5A6472" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-2" />
+  <path d="M12 20h-6a3 3 0 0 1 -3 -3v-2a3 3 0 0 1 3 -3h10.5" />
+  <path d="M16 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+  <path d="M18 14.5v1.5" />
+  <path d="M18 20v1.5" />
+  <path d="M21.032 16.25l-1.299 .75" />
+  <path d="M16.27 19l-1.3 .75" />
+  <path d="M14.97 16.25l1.3 .75" />
+  <path d="M19.733 19l1.3 .75" />
+  <path d="M7 8v.01" />
+  <path d="M7 16v.01" />
+</g><text x="74" y="986" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Infrastructure &amp; DevOps</text><g transform="translate(48.0,1007.0) scale(0.8333)" fill="none" stroke="#5A6472" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M22 12.54c-1.804 -.345 -2.701 -1.08 -3.523 -2.94c-.487 .696 -1.102 1.568 -.92 2.4c.028 .238 -.32 1 -.557 1h-14c0 5.208 3.164 7 6.196 7c4.124 .022 7.828 -1.376 9.854 -5c1.146 -.101 2.296 -1.505 2.95 -2.46" />
+  <path d="M5 10h3v3h-3l0 -3" />
+  <path d="M8 10h3v3h-3l0 -3" />
+  <path d="M11 10h3v3h-3l0 -3" />
+  <path d="M8 7h3v3h-3l0 -3" />
+  <path d="M11 7h3v3h-3l0 -3" />
+  <path d="M11 4h3v3h-3l0 -3" />
+  <path d="M4.571 18c1.5 0 2.047 -.074 2.958 -.78" />
+  <path d="M10 16l0 .01" />
+</g><text x="78" y="1022" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Docker containers</text><g transform="translate(48.0,1037.0) scale(0.8333)" fill="none" stroke="#5A6472" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M5 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+  <path d="M5 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+  <path d="M15 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+  <path d="M7 8l0 8" />
+  <path d="M9 18h6a2 2 0 0 0 2 -2v-5" />
+  <path d="M14 14l3 -3l3 3" />
+</g><text x="78" y="1052" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">CI/CD (GitHub Actions)</text><g transform="translate(48.0,1067.0) scale(0.8333)" fill="none" stroke="#5A6472" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 12h4l3 8l4 -16l3 8h4" />
+</g><text x="78" y="1082" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Monitoring &amp; alerts</text><g transform="translate(48.0,1097.0) scale(0.8333)" fill="none" stroke="#5A6472" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3" />
+  <path d="M4 6v6c0 1.657 3.582 3 8 3c1.118 0 2.183 -.086 3.15 -.241" />
+  <path d="M20 12v-6" />
+  <path d="M4 12v6c0 1.657 3.582 3 8 3c.157 0 .312 -.002 .466 -.005" />
+  <path d="M16 19h6" />
+  <path d="M19 16l3 3l-3 3" />
+</g><text x="78" y="1112" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Encrypted backups</text><rect x="310" y="140" width="1170" height="135" rx="12" fill="#EEF8F9" stroke="#1F8A96" stroke-width="1.6"/><rect x="310" y="140" width="1170" height="40" rx="12" fill="#1F8A96" fill-opacity="0.10"/><rect x="310" y="168" width="1170" height="12" fill="#EEF8F9"/><rect x="310" y="168" width="1170" height="12" fill="#1F8A96" fill-opacity="0.10"/><g transform="translate(324.0,149.0) scale(0.9167)" fill="none" stroke="#1F8A96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14" />
+  <path d="M11 4h2" />
+  <path d="M12 17v.01" />
+</g><text x="354" y="166" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Frontend (Web / Mobile PWA)</text><text x="1466" y="166" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#556476" text-anchor="end">Next.js, English / Korean / multilingual</text><g transform="translate(379.6,192.0) scale(1.1667)" fill="none" stroke="#1F8A96" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3a3 3 0 0 0 -3 3v12a3 3 0 0 0 3 3" />
+  <path d="M6 3a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3" />
+  <path d="M13 7h7a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-7" />
+  <path d="M5 7h-1a1 1 0 0 0 -1 1v8a1 1 0 0 0 1 1h1" />
+  <path d="M17 12h.01" />
+  <path d="M13 12h.01" />
+</g><text x="393.57142857142856" y="240" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Report Form</text><line x1="477.1" y1="194" x2="477.1" y2="263" stroke="#1F8A96" stroke-opacity="0.25"/><g transform="translate(546.7,192.0) scale(1.1667)" fill="none" stroke="#1F8A96" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M15 8h.01" />
+  <path d="M6 13l2.644 -2.644a1.21 1.21 0 0 1 1.712 0l3.644 3.644" />
+  <path d="M13 13l1.644 -1.644a1.21 1.21 0 0 1 1.712 0l1.644 1.644" />
+  <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
+  <path d="M3 17v2a2 2 0 0 0 2 2h2" />
+  <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+  <path d="M17 21h2a2 2 0 0 0 2 -2v-2" />
+</g><text x="560.7142857142857" y="240" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Evidence Upload</text><text x="560.7142857142857" y="256" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">&amp; redaction preview</text><line x1="644.3" y1="194" x2="644.3" y2="263" stroke="#1F8A96" stroke-opacity="0.25"/><g transform="translate(713.9,192.0) scale(1.1667)" fill="none" stroke="#1F8A96" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</g><text x="727.8571428571428" y="240" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Community Forum</text><line x1="811.4" y1="194" x2="811.4" y2="263" stroke="#1F8A96" stroke-opacity="0.25"/><g transform="translate(881.0,192.0) scale(1.1667)" fill="none" stroke="#1F8A96" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4" />
+  <path d="M12 2v2" />
+  <path d="M9 12v9" />
+  <path d="M15 12v9" />
+  <path d="M5 16l4 -2" />
+  <path d="M15 14l4 2" />
+  <path d="M9 18h6" />
+  <path d="M10 8v.01" />
+  <path d="M14 8v.01" />
+</g><text x="895.0" y="240" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">AI Chatbot</text><line x1="978.6" y1="194" x2="978.6" y2="263" stroke="#1F8A96" stroke-opacity="0.25"/><g transform="translate(1048.1,192.0) scale(1.1667)" fill="none" stroke="#1F8A96" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 18.5l-3 -1.5l-6 3v-13l6 -3l6 3l6 -3v7.5" />
+  <path d="M9 4v13" />
+  <path d="M15 7v5.5" />
+  <path d="M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879" />
+  <path d="M19 18v.01" />
+</g><text x="1062.142857142857" y="240" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Pattern Map</text><line x1="1145.7" y1="194" x2="1145.7" y2="263" stroke="#1F8A96" stroke-opacity="0.25"/><g transform="translate(1215.3,192.0) scale(1.1667)" fill="none" stroke="#1F8A96" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+  <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+  <path d="M3 6l0 13" />
+  <path d="M12 6l0 13" />
+  <path d="M21 6l0 13" />
+</g><text x="1229.2857142857144" y="240" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Rights Directory</text><line x1="1312.9" y1="194" x2="1312.9" y2="263" stroke="#1F8A96" stroke-opacity="0.25"/><g transform="translate(1382.4,192.0) scale(1.1667)" fill="none" stroke="#1F8A96" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+  <path d="M9 10a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+</g><text x="1396.4285714285716" y="240" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">My Dashboard</text><text x="1396.4285714285716" y="256" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">case tracking</text><line x1="895" y1="275" x2="895" y2="295" stroke="#3B4656" stroke-width="1.8"/><polygon points="895.0,295.0 900.0,286.0 890.0,286.0" fill="#3B4656"/><rect x="310" y="297" width="1170" height="100" rx="12" fill="#F1F1FB" stroke="#4B4FA6" stroke-width="1.6"/><rect x="310" y="297" width="1170" height="40" rx="12" fill="#4B4FA6" fill-opacity="0.10"/><rect x="310" y="325" width="1170" height="12" fill="#F1F1FB"/><rect x="310" y="325" width="1170" height="12" fill="#4B4FA6" fill-opacity="0.10"/><g transform="translate(324.0,306.0) scale(0.9167)" fill="none" stroke="#4B4FA6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06" />
+  <path d="M15 19l2 2l4 -4" />
+</g><text x="354" y="323" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Security &amp; API Gateway</text><text x="1466" y="323" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#556476" text-anchor="end">Cloudflare, Nginx</text><g transform="translate(332.0,356.0) scale(0.9167)" fill="none" stroke="#4B4FA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M19 18a3.5 3.5 0 0 0 0 -7h-1c.397 -1.768 -.285 -3.593 -1.788 -4.787c-1.503 -1.193 -3.6 -1.575 -5.5 -1s-3.315 2.019 -3.712 3.787c-2.199 -.088 -4.155 1.326 -4.666 3.373c-.512 2.047 .564 4.154 2.566 5.027" />
+  <path d="M8 16a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1l0 -3" />
+  <path d="M10 15v-2a2 2 0 1 1 4 0v2" />
+</g><text x="364.0" y="372" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="start">CDN + WAF</text><line x1="544.0" y1="350" x2="544.0" y2="385" stroke="#4B4FA6" stroke-opacity="0.25"/><g transform="translate(566.0,356.0) scale(0.9167)" fill="none" stroke="#4B4FA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />
+  <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
+  <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
+</g><text x="598.0" y="372" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="start">TLS 1.3</text><line x1="778.0" y1="350" x2="778.0" y2="385" stroke="#4B4FA6" stroke-opacity="0.25"/><g transform="translate(800.0,356.0) scale(0.9167)" fill="none" stroke="#4B4FA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M16.555 3.843l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.643 2.643a2.877 2.877 0 0 1 -4.069 0l-.301 -.301l-6.558 6.558a2 2 0 0 1 -1.239 .578l-.175 .008h-1.172a1 1 0 0 1 -.993 -.883l-.007 -.117v-1.172a2 2 0 0 1 .467 -1.284l.119 -.13l.414 -.414h2v-2h2v-2l2.144 -2.144l-.301 -.301a2.877 2.877 0 0 1 0 -4.069l2.643 -2.643a2.877 2.877 0 0 1 4.069 0" />
+  <path d="M15 9h.01" />
+</g><text x="832.0" y="372" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="start">Auth &amp; RBAC (JWT, 2FA)</text><line x1="1012.0" y1="350" x2="1012.0" y2="385" stroke="#4B4FA6" stroke-opacity="0.25"/><g transform="translate(1034.0,356.0) scale(0.9167)" fill="none" stroke="#4B4FA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+  <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+  <path d="M13.41 10.59l2.59 -2.59" />
+  <path d="M7 12a5 5 0 0 1 5 -5" />
+</g><text x="1066.0" y="372" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="start">Rate limit + CAPTCHA</text><line x1="1246.0" y1="350" x2="1246.0" y2="385" stroke="#4B4FA6" stroke-opacity="0.25"/><g transform="translate(1268.0,356.0) scale(0.9167)" fill="none" stroke="#4B4FA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3.5 5.5l1.5 1.5l2.5 -2.5" />
+  <path d="M3.5 11.5l1.5 1.5l2.5 -2.5" />
+  <path d="M3.5 17.5l1.5 1.5l2.5 -2.5" />
+  <path d="M11 6l9 0" />
+  <path d="M11 12l9 0" />
+  <path d="M11 18l9 0" />
+</g><text x="1300.0" y="372" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="start">Audit logging</text><line x1="895" y1="397" x2="895" y2="417" stroke="#3B4656" stroke-width="1.8"/><polygon points="895.0,417.0 900.0,408.0 890.0,408.0" fill="#3B4656"/><rect x="310" y="419" width="1170" height="130" rx="12" fill="#EEF4FB" stroke="#2F6DA8" stroke-width="1.6"/><rect x="310" y="419" width="1170" height="40" rx="12" fill="#2F6DA8" fill-opacity="0.10"/><rect x="310" y="447" width="1170" height="12" fill="#EEF4FB"/><rect x="310" y="447" width="1170" height="12" fill="#2F6DA8" fill-opacity="0.10"/><g transform="translate(324.0,428.0) scale(0.9167)" fill="none" stroke="#2F6DA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-2" />
+  <path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" />
+  <path d="M7 8l0 .01" />
+  <path d="M7 16l0 .01" />
+</g><text x="354" y="445" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Backend / API Server</text><text x="1466" y="445" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#556476" text-anchor="end">Python FastAPI</text><g transform="translate(379.6,467.0) scale(1.1667)" fill="none" stroke="#2F6DA8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+  <path d="M9 9l1 0" />
+  <path d="M9 13l6 0" />
+  <path d="M9 17l6 0" />
+</g><text x="393.57142857142856" y="515" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Report</text><text x="393.57142857142856" y="531" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Management</text><line x1="477.1" y1="469" x2="477.1" y2="537" stroke="#2F6DA8" stroke-opacity="0.25"/><g transform="translate(546.7,467.0) scale(1.1667)" fill="none" stroke="#2F6DA8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M15 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2" />
+  <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
+</g><text x="560.7142857142857" y="515" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Evidence</text><text x="560.7142857142857" y="531" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Management</text><line x1="644.3" y1="469" x2="644.3" y2="537" stroke="#2F6DA8" stroke-opacity="0.25"/><g transform="translate(713.9,467.0) scale(1.1667)" fill="none" stroke="#2F6DA8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8" />
+  <path d="M14 19l2 2l4 -4" />
+  <path d="M9 8h4" />
+  <path d="M9 12h2" />
+</g><text x="727.8571428571428" y="515" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Verification</text><text x="727.8571428571428" y="531" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Engine</text><line x1="811.4" y1="469" x2="811.4" y2="537" stroke="#2F6DA8" stroke-opacity="0.25"/><g transform="translate(881.0,467.0) scale(1.1667)" fill="none" stroke="#2F6DA8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" />
+  <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M17 10h2a2 2 0 0 1 2 2v1" />
+  <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
+</g><text x="895.0" y="515" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Community</text><text x="895.0" y="531" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Management</text><line x1="978.6" y1="469" x2="978.6" y2="537" stroke="#2F6DA8" stroke-opacity="0.25"/><g transform="translate(1048.1,467.0) scale(1.1667)" fill="none" stroke="#2F6DA8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+  <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+</g><text x="1062.142857142857" y="515" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Notification</text><text x="1062.142857142857" y="531" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Service</text><line x1="1145.7" y1="469" x2="1145.7" y2="537" stroke="#2F6DA8" stroke-opacity="0.25"/><g transform="translate(1215.3,467.0) scale(1.1667)" fill="none" stroke="#2F6DA8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3" />
+</g><text x="1229.2857142857144" y="515" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Evidence Packet</text><text x="1229.2857142857144" y="531" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Export</text><line x1="1312.9" y1="469" x2="1312.9" y2="537" stroke="#2F6DA8" stroke-opacity="0.25"/><g transform="translate(1382.4,467.0) scale(1.1667)" fill="none" stroke="#2F6DA8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065" />
+  <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+</g><text x="1396.4285714285716" y="515" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Business</text><text x="1396.4285714285716" y="531" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Logic</text><line x1="445" y1="549" x2="445" y2="578" stroke="#3B4656" stroke-width="1.8"/><polygon points="445.0,578.0 450.0,569.0 440.0,569.0" fill="#3B4656"/><line x1="745" y1="549" x2="745" y2="578" stroke="#3B4656" stroke-width="1.8"/><polygon points="745.0,578.0 750.0,569.0 740.0,569.0" fill="#3B4656"/><line x1="1045" y1="549" x2="1045" y2="578" stroke="#3B4656" stroke-width="1.8"/><polygon points="1045.0,578.0 1050.0,569.0 1040.0,569.0" fill="#3B4656"/><line x1="1345" y1="549" x2="1345" y2="578" stroke="#3B4656" stroke-width="1.8"/><polygon points="1345.0,578.0 1350.0,569.0 1340.0,569.0" fill="#3B4656"/><rect x="310" y="580" width="270" height="240" rx="12" fill="#FDF1EE" stroke="#D0503F" stroke-width="1.6"/><rect x="310" y="580" width="270" height="40" rx="12" fill="#D0503F" fill-opacity="0.10"/><rect x="310" y="608" width="270" height="12" fill="#FDF1EE"/><rect x="310" y="608" width="270" height="12" fill="#D0503F" fill-opacity="0.10"/><g transform="translate(324.0,589.0) scale(0.9167)" fill="none" stroke="#D0503F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+  <path d="M12 17l.01 0" />
+  <path d="M12 11l0 3" />
+</g><text x="354" y="606" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#D0503F" text-anchor="start">1. Incident Reporting</text><circle cx="330" cy="644" r="2.6" fill="#D0503F"/><text x="340" y="648" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Categories: workplace, housing,</text><text x="340" y="664" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">university, public space, online</text><circle cx="330" cy="686" r="2.6" fill="#D0503F"/><text x="340" y="690" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Private by default</text><circle cx="330" cy="712" r="2.6" fill="#D0503F"/><text x="340" y="716" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Anonymous case ID</text><circle cx="330" cy="738" r="2.6" fill="#D0503F"/><text x="340" y="742" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Optional contribution to</text><text x="340" y="758" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">anonymized patterns</text><rect x="610" y="580" width="270" height="240" rx="12" fill="#F4F0FC" stroke="#6A4FB3" stroke-width="1.6"/><rect x="610" y="580" width="270" height="40" rx="12" fill="#6A4FB3" fill-opacity="0.10"/><rect x="610" y="608" width="270" height="12" fill="#F4F0FC"/><rect x="610" y="608" width="270" height="12" fill="#6A4FB3" fill-opacity="0.10"/><g transform="translate(624.0,589.0) scale(0.9167)" fill="none" stroke="#6A4FB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+  <path d="M12 3v18" />
+</g><text x="654" y="606" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#6A4FB3" text-anchor="start">2. Evidence Protection (AI)</text><g transform="translate(624.0,636.0) scale(0.8333)" fill="none" stroke="#6A4FB3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M15 8h.01" />
+  <path d="M7 3h11a3 3 0 0 1 3 3v11m-.856 3.099a2.991 2.991 0 0 1 -2.144 .901h-12a3 3 0 0 1 -3 -3v-12c0 -.845 .349 -1.608 .91 -2.153" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
+  <path d="M16.33 12.338c.574 -.054 1.155 .166 1.67 .662l3 3" />
+  <path d="M3 3l18 18" />
+</g><text x="652" y="651" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="#1C2A3A" text-anchor="start">EXIF / metadata strip</text><line x1="634" y1="658" x2="634" y2="670" stroke="#6A4FB3" stroke-width="1.2"/><polygon points="634.0,670.0 639.0,661.0 629.0,661.0" fill="#6A4FB3"/><g transform="translate(624.0,672.0) scale(0.8333)" fill="none" stroke="#6A4FB3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M5 12h14" />
+  <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
+  <path d="M3 17v2a2 2 0 0 0 2 2h2" />
+  <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+  <path d="M17 21h2a2 2 0 0 0 2 -2v-2" />
+</g><text x="652" y="687" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="#1C2A3A" text-anchor="start">YOLO: ID, passport, face</text><line x1="634" y1="694" x2="634" y2="706" stroke="#6A4FB3" stroke-width="1.2"/><polygon points="634.0,706.0 639.0,697.0 629.0,697.0" fill="#6A4FB3"/><g transform="translate(624.0,708.0) scale(0.8333)" fill="none" stroke="#6A4FB3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
+  <path d="M4 16v2a2 2 0 0 0 2 2h2" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v2" />
+  <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
+  <path d="M12 16v-7" />
+  <path d="M9 9h6" />
+</g><text x="652" y="723" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="#1C2A3A" text-anchor="start">OCR (Korean + English)</text><line x1="634" y1="730" x2="634" y2="742" stroke="#6A4FB3" stroke-width="1.2"/><polygon points="634.0,742.0 639.0,733.0 629.0,733.0" fill="#6A4FB3"/><g transform="translate(624.0,744.0) scale(0.8333)" fill="none" stroke="#6A4FB3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v10a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -10" />
+  <path d="M7 10a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+  <path d="M15 8l2 0" />
+  <path d="M15 12l2 0" />
+  <path d="M7 16l10 0" />
+</g><text x="652" y="759" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="#1C2A3A" text-anchor="start">PII detection (regex+NER)</text><line x1="634" y1="766" x2="634" y2="778" stroke="#6A4FB3" stroke-width="1.2"/><polygon points="634.0,778.0 639.0,769.0 629.0,769.0" fill="#6A4FB3"/><g transform="translate(624.0,780.0) scale(0.8333)" fill="none" stroke="#6A4FB3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10.585 10.587a2 2 0 0 0 2.829 2.828" />
+  <path d="M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87" />
+  <path d="M3 3l18 18" />
+</g><text x="652" y="795" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="#1C2A3A" text-anchor="start">Redaction / blurring</text><rect x="806" y="640" width="62" height="40" rx="4" fill="#FFFFFF" stroke="#8B7FC4"/><circle cx="821" cy="655" r="6" fill="#9AA3B2"/><path d="M812 673 q9 -12 18 0 z" fill="#9AA3B2"/><rect x="836" y="649" width="24" height="4" rx="1" fill="#C3C8D2"/><rect x="836" y="658" width="20" height="4" rx="1" fill="#C3C8D2"/><rect x="836" y="667" width="16" height="4" rx="1" fill="#C3C8D2"/><text x="837" y="696" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#556476" text-anchor="middle">Original</text><line x1="837" y1="702" x2="837" y2="718" stroke="#6A4FB3" stroke-width="1.2"/><polygon points="837.0,718.0 842.0,709.0 832.0,709.0" fill="#6A4FB3"/><rect x="806" y="722" width="62" height="40" rx="4" fill="#FFFFFF" stroke="#8B7FC4"/><circle cx="821" cy="737" r="6" fill="#9AA3B2"/><path d="M812 755 q9 -12 18 0 z" fill="#9AA3B2"/><rect x="836" y="731" width="24" height="4" rx="1" fill="#C3C8D2"/><rect x="836" y="740" width="20" height="4" rx="1" fill="#C3C8D2"/><rect x="836" y="749" width="16" height="4" rx="1" fill="#C3C8D2"/><rect x="810" y="727" width="23" height="31" rx="2" fill="#2B2F3A"/><rect x="835" y="747" width="27" height="8" rx="1" fill="#2B2F3A"/><text x="837" y="778" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#6A4FB3" text-anchor="middle">Redacted</text><rect x="910" y="580" width="270" height="240" rx="12" fill="#EDF4FC" stroke="#2466AE" stroke-width="1.6"/><rect x="910" y="580" width="270" height="40" rx="12" fill="#2466AE" fill-opacity="0.10"/><rect x="910" y="608" width="270" height="12" fill="#EDF4FC"/><rect x="910" y="608" width="270" height="12" fill="#2466AE" fill-opacity="0.10"/><g transform="translate(924.0,589.0) scale(0.9167)" fill="none" stroke="#2466AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06" />
+  <path d="M15 19l2 2l4 -4" />
+</g><text x="954" y="606" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#2466AE" text-anchor="start">3. Verification &amp; Moderation</text><circle cx="930" cy="644" r="2.6" fill="#2466AE"/><text x="940" y="648" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">AI pre-check + human review</text><circle cx="930" cy="669" r="2.6" fill="#2466AE"/><text x="940" y="673" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Duplicate / abuse detection</text><circle cx="930" cy="694" r="2.6" fill="#2466AE"/><text x="940" y="698" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Cross-report corroboration</text><circle cx="930" cy="719" r="2.6" fill="#2466AE"/><text x="940" y="723" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Threshold before public</text><text x="940" y="739" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">visibility (k ≥ 5)</text><circle cx="930" cy="760" r="2.6" fill="#2466AE"/><text x="940" y="764" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Right of response for</text><text x="940" y="780" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">named parties</text><rect x="1210" y="580" width="270" height="240" rx="12" fill="#EDF7F1" stroke="#2E8B57" stroke-width="1.6"/><rect x="1210" y="580" width="270" height="40" rx="12" fill="#2E8B57" fill-opacity="0.10"/><rect x="1210" y="608" width="270" height="12" fill="#EDF7F1"/><rect x="1210" y="608" width="270" height="12" fill="#2E8B57" fill-opacity="0.10"/><g transform="translate(1224.0,589.0) scale(0.9167)" fill="none" stroke="#2E8B57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 7a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+  <path d="M14 15a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+  <path d="M15 6a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M3 18a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M9 17l5 -1.5" />
+  <path d="M6.5 8.5l7.81 5.37" />
+  <path d="M7 7l8 -1" />
+</g><text x="1254" y="606" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#2E8B57" text-anchor="start">4. Data Aggregation</text><circle cx="1230" cy="644" r="2.6" fill="#2E8B57"/><text x="1240" y="648" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Anonymized data storage</text><circle cx="1230" cy="669" r="2.6" fill="#2E8B57"/><text x="1240" y="673" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">District-level geo-tagging</text><text x="1240" y="689" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">(no exact locations)</text><circle cx="1230" cy="710" r="2.6" fill="#2E8B57"/><text x="1240" y="714" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Pattern analysis: location,</text><text x="1240" y="730" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">category, time</text><circle cx="1230" cy="751" r="2.6" fill="#2E8B57"/><text x="1240" y="755" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Small-cell suppression</text><circle cx="1230" cy="776" r="2.6" fill="#2E8B57"/><text x="1240" y="780" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Trend reports and</text><text x="1240" y="796" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">visualizations</text><line x1="582" y1="710" x2="607" y2="710" stroke="#3B4656" stroke-width="1.8"/><polygon points="607.0,710.0 598.0,705.0 598.0,715.0" fill="#3B4656"/><line x1="882" y1="710" x2="907" y2="710" stroke="#3B4656" stroke-width="1.8"/><polygon points="907.0,710.0 898.0,705.0 898.0,715.0" fill="#3B4656"/><line x1="1182" y1="710" x2="1207" y2="710" stroke="#3B4656" stroke-width="1.8"/><polygon points="1207.0,710.0 1198.0,705.0 1198.0,715.0" fill="#3B4656"/><line x1="310" y1="842" x2="1480" y2="842" stroke="#B0364F" stroke-width="2" stroke-dasharray="9 6"/><rect x="605" y="829" width="580" height="26" rx="13" fill="#FFFFFF" stroke="#B0364F" stroke-width="1.4"/><g transform="translate(615.0,833.0) scale(0.7500)" fill="none" stroke="#B0364F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />
+  <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
+  <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
+</g><text x="905" y="847" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#B0364F" text-anchor="middle">Trust boundary: raw evidence is processed in memory only, never stored</text><line x1="1345" y1="820" x2="1345" y2="866" stroke="#3B4656" stroke-width="1.8"/><polygon points="1345.0,866.0 1350.0,857.0 1340.0,857.0" fill="#3B4656"/><rect x="310" y="868" width="1170" height="125" rx="12" fill="#EEF6F7" stroke="#2E7D86" stroke-width="1.6"/><rect x="310" y="868" width="1170" height="40" rx="12" fill="#2E7D86" fill-opacity="0.10"/><rect x="310" y="896" width="1170" height="12" fill="#EEF6F7"/><rect x="310" y="896" width="1170" height="12" fill="#2E7D86" fill-opacity="0.10"/><g transform="translate(324.0,877.0) scale(0.9167)" fill="none" stroke="#2E7D86" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" />
+  <path d="M4 6v6a8 3 0 0 0 16 0v-6" />
+  <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
+</g><text x="354" y="894" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Data Layer</text><text x="1466" y="894" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#556476" text-anchor="end">PostgreSQL, S3-compatible storage, Redis</text><g transform="translate(393.5,914.0) scale(1.1667)" fill="none" stroke="#2E7D86" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" />
+  <path d="M4 6v6a8 3 0 0 0 16 0v-6" />
+  <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
+</g><text x="407.5" y="962" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">PostgreSQL + PostGIS</text><text x="407.5" y="978" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">users, reports, districts</text><line x1="505.0" y1="916" x2="505.0" y2="981" stroke="#2E7D86" stroke-opacity="0.25"/><g transform="translate(588.5,914.0) scale(1.1667)" fill="none" stroke="#2E7D86" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3c7.2 0 9 1.8 9 9c0 7.2 -1.8 9 -9 9c-7.2 0 -9 -1.8 -9 -9c0 -7.2 1.8 -9 9 -9" />
+  <path d="M8 12a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1l0 -3" />
+  <path d="M10 11v-2a2 2 0 1 1 4 0v2" />
+</g><text x="602.5" y="962" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Object Storage</text><text x="602.5" y="978" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">redacted files, AES-256</text><line x1="700.0" y1="916" x2="700.0" y2="981" stroke="#2E7D86" stroke-opacity="0.25"/><g transform="translate(783.5,914.0) scale(1.1667)" fill="none" stroke="#2E7D86" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 4a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -2" />
+  <path d="M17 4a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -2" />
+  <path d="M17 18a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -2" />
+  <path d="M3 18a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -2" />
+  <path d="M5 7l0 10" />
+  <path d="M19 7l0 10" />
+  <path d="M7 5l10 0" />
+  <path d="M7 19l10 0" />
+</g><text x="797.5" y="962" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Vector Database</text><text x="797.5" y="978" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">pgvector, verified only</text><line x1="895.0" y1="916" x2="895.0" y2="981" stroke="#2E7D86" stroke-opacity="0.25"/><g transform="translate(978.5,914.0) scale(1.1667)" fill="none" stroke="#2E7D86" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 4l-8 4l8 4l8 -4l-8 -4" />
+  <path d="M4 12l8 4l8 -4" />
+  <path d="M4 16l8 4l8 -4" />
+</g><text x="992.5" y="962" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Redis</text><text x="992.5" y="978" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">job queue, cache</text><line x1="1090.0" y1="916" x2="1090.0" y2="981" stroke="#2E7D86" stroke-opacity="0.25"/><g transform="translate(1173.5,914.0) scale(1.1667)" fill="none" stroke="#2E7D86" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M13 5h8" />
+  <path d="M13 9h5" />
+  <path d="M13 15h8" />
+  <path d="M13 19h5" />
+  <path d="M3 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" />
+  <path d="M3 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" />
+</g><text x="1187.5" y="962" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Audit Log</text><text x="1187.5" y="978" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">append-only, hashed</text><line x1="1285.0" y1="916" x2="1285.0" y2="981" stroke="#2E7D86" stroke-opacity="0.25"/><g transform="translate(1368.5,914.0) scale(1.1667)" fill="none" stroke="#2E7D86" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4 19l16 0" />
+  <path d="M4 15l4 -6l4 2l4 -5l4 4l0 5l-16 0" />
+</g><text x="1382.5" y="962" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Pattern Data</text><text x="1382.5" y="978" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">aggregated, anonymized</text><line x1="620" y1="993" x2="620" y2="1013" stroke="#3B4656" stroke-width="1.8"/><polygon points="620.0,1013.0 625.0,1004.0 615.0,1004.0" fill="#3B4656"/><line x1="1217" y1="993" x2="1217" y2="1013" stroke="#3B4656" stroke-width="1.8"/><polygon points="1217.0,1013.0 1222.0,1004.0 1212.0,1004.0" fill="#3B4656"/><rect x="310" y="1015" width="620" height="135" rx="12" fill="#F3F2FB" stroke="#645CB3" stroke-width="1.6"/><rect x="310" y="1015" width="620" height="40" rx="12" fill="#645CB3" fill-opacity="0.10"/><rect x="310" y="1043" width="620" height="12" fill="#F3F2FB"/><rect x="310" y="1043" width="620" height="12" fill="#645CB3" fill-opacity="0.10"/><g transform="translate(324.0,1024.0) scale(0.9167)" fill="none" stroke="#645CB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12" />
+  <path d="M9.5 9h.01" />
+  <path d="M14.5 9h.01" />
+  <path d="M9.5 13a3.5 3.5 0 0 0 5 0" />
+</g><text x="354" y="1041" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">RAG AI Chatbot</text><rect x="324" y="1060" width="112" height="78" rx="8" fill="#FFFFFF" stroke="#645CB3" stroke-opacity="0.45"/><g transform="translate(369.0,1068.0) scale(0.9167)" fill="none" stroke="#645CB3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M8 9h8" />
+  <path d="M8 13h6" />
+  <path d="M14 18h-1l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v4.5" />
+  <path d="M19 22v.01" />
+  <path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
+</g><text x="380.0" y="1108" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#1C2A3A" text-anchor="middle">User</text><text x="380.0" y="1124" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Question</text><line x1="437" y1="1099" x2="443" y2="1099" stroke="#645CB3" stroke-width="1.2"/><polygon points="443.0,1099.0 434.0,1094.0 434.0,1104.0" fill="#645CB3"/><rect x="444" y="1060" width="112" height="78" rx="8" fill="#FFFFFF" stroke="#645CB3" stroke-opacity="0.45"/><g transform="translate(489.0,1068.0) scale(0.9167)" fill="none" stroke="#645CB3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M19 7a2 2 0 1 0 0 -4a2 2 0 0 0 0 4" />
+  <path d="M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5" />
+</g><text x="500.0" y="1108" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#1C2A3A" text-anchor="middle">Safety</text><text x="500.0" y="1124" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Router</text><line x1="557" y1="1099" x2="563" y2="1099" stroke="#645CB3" stroke-width="1.2"/><polygon points="563.0,1099.0 554.0,1094.0 554.0,1104.0" fill="#645CB3"/><rect x="564" y="1060" width="112" height="78" rx="8" fill="#FFFFFF" stroke="#645CB3" stroke-opacity="0.45"/><g transform="translate(609.0,1068.0) scale(0.9167)" fill="none" stroke="#645CB3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3" />
+  <path d="M4 6v6c0 1.657 3.582 3 8 3m8 -3.5v-5.5" />
+  <path d="M4 12v6c0 1.657 3.582 3 8 3" />
+  <path d="M15 18a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M20.2 20.2l1.8 1.8" />
+</g><text x="620.0" y="1108" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#1C2A3A" text-anchor="middle">Retrieval</text><text x="620.0" y="1124" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">(vector DB)</text><line x1="677" y1="1099" x2="683" y2="1099" stroke="#645CB3" stroke-width="1.2"/><polygon points="683.0,1099.0 674.0,1094.0 674.0,1104.0" fill="#645CB3"/><rect x="684" y="1060" width="112" height="78" rx="8" fill="#FFFFFF" stroke="#645CB3" stroke-opacity="0.45"/><g transform="translate(729.0,1068.0) scale(0.9167)" fill="none" stroke="#645CB3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" />
+  <path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" />
+  <path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" />
+  <path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" />
+  <path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" />
+  <path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" />
+</g><text x="740.0" y="1108" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#1C2A3A" text-anchor="middle">Context</text><text x="740.0" y="1124" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">+ LLM</text><line x1="797" y1="1099" x2="803" y2="1099" stroke="#645CB3" stroke-width="1.2"/><polygon points="803.0,1099.0 794.0,1094.0 794.0,1104.0" fill="#645CB3"/><rect x="804" y="1060" width="112" height="78" rx="8" fill="#FFFFFF" stroke="#645CB3" stroke-opacity="0.45"/><g transform="translate(849.0,1068.0) scale(0.9167)" fill="none" stroke="#645CB3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M8 9h8" />
+  <path d="M8 13h6" />
+  <path d="M10.99 19.206l-2.99 1.794v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6" />
+  <path d="M15 19l2 2l4 -4" />
+</g><text x="860.0" y="1108" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#1C2A3A" text-anchor="middle">Trusted Answer</text><text x="860.0" y="1124" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">(with sources)</text><line x1="932" y1="1082" x2="953" y2="1082" stroke="#3B4656" stroke-width="1.8"/><polygon points="953.0,1082.0 944.0,1077.0 944.0,1087.0" fill="#3B4656"/><polygon points="932.0,1082.0 941.0,1087.0 941.0,1077.0" fill="#3B4656"/><rect x="955" y="1015" width="525" height="135" rx="12" fill="#FEF7E8" stroke="#C4841A" stroke-width="1.6"/><rect x="955" y="1015" width="525" height="40" rx="12" fill="#C4841A" fill-opacity="0.10"/><rect x="955" y="1043" width="525" height="12" fill="#FEF7E8"/><rect x="955" y="1043" width="525" height="12" fill="#C4841A" fill-opacity="0.10"/><g transform="translate(969.0,1024.0) scale(0.9167)" fill="none" stroke="#C4841A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 7l6 -3l6 3l6 -3v13l-6 3l-6 -3l-6 3v-13" />
+  <path d="M9 4v13" />
+  <path d="M15 7v13" />
+</g><text x="999" y="1041" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Pattern Mapping &amp; Analytics</text><g transform="translate(1006.6,1061.0) scale(1.1667)" fill="none" stroke="#C4841A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 18.5l-3 -1.5l-6 3v-13l6 -3l6 3l6 -3v7" />
+  <path d="M9 4v13" />
+  <path d="M15 7v5" />
+  <path d="M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879" />
+  <path d="M19 18v.01" />
+</g><text x="1020.625" y="1109" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Heatmap</text><text x="1020.625" y="1125" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">(anonymous)</text><line x1="1086.2" y1="1063" x2="1086.2" y2="1138" stroke="#C4841A" stroke-opacity="0.25"/><g transform="translate(1137.9,1061.0) scale(1.1667)" fill="none" stroke="#C4841A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 3.2a9 9 0 1 0 10.8 10.8a1 1 0 0 0 -1 -1h-6.8a2 2 0 0 1 -2 -2v-7a.9 .9 0 0 0 -1 -.8" />
+  <path d="M15 3.5a9 9 0 0 1 5.5 5.5h-4.5a1 1 0 0 1 -1 -1v-4.5" />
+</g><text x="1151.875" y="1109" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Category</text><text x="1151.875" y="1125" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Analysis</text><line x1="1217.5" y1="1063" x2="1217.5" y2="1138" stroke="#C4841A" stroke-opacity="0.25"/><g transform="translate(1269.1,1061.0) scale(1.1667)" fill="none" stroke="#C4841A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+  <path d="M12 7v5l3 3" />
+</g><text x="1283.125" y="1109" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Time</text><text x="1283.125" y="1125" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Trends</text><line x1="1348.8" y1="1063" x2="1348.8" y2="1138" stroke="#C4841A" stroke-opacity="0.25"/><g transform="translate(1400.4,1061.0) scale(1.1667)" fill="none" stroke="#C4841A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -6" />
+  <path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -10" />
+  <path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -14" />
+  <path d="M4 20h14" />
+</g><text x="1414.375" y="1109" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1C2A3A" text-anchor="middle">Interactive</text><text x="1414.375" y="1125" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="400" fill="#556476" text-anchor="middle">Dashboard</text><rect x="1510" y="140" width="260" height="300" rx="12" fill="#F5F6F7" stroke="#37474F" stroke-width="1.6"/><rect x="1510" y="140" width="260" height="40" rx="12" fill="#37474F" fill-opacity="0.10"/><rect x="1510" y="168" width="260" height="12" fill="#F5F6F7"/><rect x="1510" y="168" width="260" height="12" fill="#37474F" fill-opacity="0.10"/><g transform="translate(1524.0,149.0) scale(0.9167)" fill="none" stroke="#37474F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+  <path d="M3.6 9h16.8" />
+  <path d="M3.6 15h16.8" />
+  <path d="M11.5 3a17 17 0 0 0 0 18" />
+  <path d="M12.5 3a17 17 0 0 1 0 18" />
+</g><text x="1554" y="166" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">External Resources</text><g transform="translate(1528.0,189.0) scale(0.8333)" fill="none" stroke="#37474F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 21l18 0" />
+  <path d="M3 10l18 0" />
+  <path d="M5 6l7 -3l7 3" />
+  <path d="M4 10l0 11" />
+  <path d="M20 10l0 11" />
+  <path d="M8 14l0 3" />
+  <path d="M12 14l0 3" />
+  <path d="M16 14l0 3" />
+</g><text x="1558" y="204" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">University support offices</text><g transform="translate(1528.0,226.0) scale(0.8333)" fill="none" stroke="#37474F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 20l10 0" />
+  <path d="M6 6l6 -1l6 1" />
+  <path d="M12 3l0 17" />
+  <path d="M9 12l-3 -6l-3 6a3 3 0 0 0 6 0" />
+  <path d="M21 12l-3 -6l-3 6a3 3 0 0 0 6 0" />
+</g><text x="1558" y="241" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Human Rights Commission</text><g transform="translate(1528.0,263.0) scale(0.8333)" fill="none" stroke="#37474F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" />
+  <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" />
+  <path d="M12 12l0 .01" />
+  <path d="M3 13a20 20 0 0 0 18 0" />
+</g><text x="1558" y="278" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Labor &amp; employment centers</text><g transform="translate(1528.0,300.0) scale(0.8333)" fill="none" stroke="#37474F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+</g><text x="1558" y="315" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Immigration contact (1345)</text><g transform="translate(1528.0,337.0) scale(0.8333)" fill="none" stroke="#37474F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M13 10l7.383 7.418c.823 .82 .823 2.148 0 2.967a2.11 2.11 0 0 1 -2.976 0l-7.407 -7.385" />
+  <path d="M6 9l4 4" />
+  <path d="M13 10l-4 -4" />
+  <path d="M3 21h7" />
+  <path d="M6.793 15.793l-3.586 -3.586a1 1 0 0 1 0 -1.414l2.293 -2.293l.5 .5l3 -3l-.5 -.5l2.293 -2.293a1 1 0 0 1 1.414 0l3.586 3.586a1 1 0 0 1 0 1.414l-2.293 2.293l-.5 -.5l-3 3l.5 .5l-2.293 2.293a1 1 0 0 1 -1.414 0" />
+</g><text x="1558" y="352" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Legal / counseling services</text><g transform="translate(1528.0,374.0) scale(0.8333)" fill="none" stroke="#37474F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M8 16v-4a4 4 0 0 1 8 0v4" />
+  <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" />
+  <path d="M6 17a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1l0 -2" />
+</g><text x="1558" y="389" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Emergency (112 / 119)</text><rect x="1510" y="460" width="260" height="420" rx="12" fill="#FDF1F3" stroke="#B0364F" stroke-width="1.6"/><rect x="1510" y="460" width="260" height="40" rx="12" fill="#B0364F" fill-opacity="0.10"/><rect x="1510" y="488" width="260" height="12" fill="#FDF1F3"/><rect x="1510" y="488" width="260" height="12" fill="#B0364F" fill-opacity="0.10"/><g transform="translate(1524.0,469.0) scale(0.9167)" fill="none" stroke="#B0364F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+  <path d="M11 11a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+  <path d="M12 12l0 2.5" />
+</g><text x="1554" y="486" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Security &amp; Privacy</text><text x="1526" y="518" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="#556476" text-anchor="start">Applies across all layers</text><g transform="translate(1528.0,541.0) scale(0.8333)" fill="none" stroke="#B0364F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />
+  <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
+  <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
+</g><text x="1558" y="556" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">TLS 1.3 in transit</text><g transform="translate(1528.0,575.0) scale(0.8333)" fill="none" stroke="#B0364F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M8 12a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1l0 -3" />
+  <path d="M10 11v-2a2 2 0 1 1 4 0v2" />
+  <path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" />
+</g><text x="1558" y="590" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">AES-256 at rest</text><g transform="translate(1528.0,609.0) scale(0.8333)" fill="none" stroke="#B0364F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" />
+</g><text x="1558" y="624" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Pseudonymous case IDs</text><g transform="translate(1528.0,643.0) scale(0.8333)" fill="none" stroke="#B0364F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M5 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+  <path d="M3 21v-2a4 4 0 0 1 4 -4h4c.948 0 1.818 .33 2.504 .88" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  <path d="M16 19h6" />
+</g><text x="1558" y="658" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">k-anonymity (k ≥ 5)</text><g transform="translate(1528.0,677.0) scale(0.8333)" fill="none" stroke="#B0364F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h2" />
+  <path d="M22 16c0 4 -2.5 6 -3.5 6s-3.5 -2 -3.5 -6c1 0 2.5 -.5 3.5 -1.5c1 1 2.5 1.5 3.5 1.5" />
+  <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+</g><text x="1558" y="692" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Least-privilege RBAC</text><g transform="translate(1528.0,711.0) scale(0.8333)" fill="none" stroke="#B0364F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M5 9l14 0" />
+  <path d="M5 15l14 0" />
+  <path d="M11 4l-4 16" />
+  <path d="M17 4l-4 16" />
+</g><text x="1558" y="726" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Hash-chained audit trail</text><g transform="translate(1528.0,745.0) scale(0.8333)" fill="none" stroke="#B0364F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4 7l16 0" />
+  <path d="M10 11l0 6" />
+  <path d="M14 11l0 6" />
+  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+</g><text x="1558" y="760" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Retention &amp; delete-my-data</text><g transform="translate(1528.0,779.0) scale(0.8333)" fill="none" stroke="#B0364F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" />
+  <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73" />
+  <path d="M6 9l12 0" />
+  <path d="M6 12l3 0" />
+  <path d="M6 15l2 0" />
+</g><text x="1558" y="794" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">PIPA compliance (Korea)</text><g transform="translate(1528.0,813.0) scale(0.8333)" fill="none" stroke="#B0364F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M9 9v-1a3 3 0 0 1 6 0v1" />
+  <path d="M8 9h8a6 6 0 0 1 1 3v3a5 5 0 0 1 -10 0v-3a6 6 0 0 1 1 -3" />
+  <path d="M3 13l4 0" />
+  <path d="M17 13l4 0" />
+  <path d="M12 20l0 -6" />
+  <path d="M4 19l3.35 -2" />
+  <path d="M20 19l-3.35 -2" />
+  <path d="M4 7l3.75 2.4" />
+  <path d="M20 7l-3.75 2.4" />
+</g><text x="1558" y="828" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1C2A3A" text-anchor="start">Malware scan on upload</text><rect x="1510" y="900" width="260" height="250" rx="12" fill="#EFF8F2" stroke="#2E8B57" stroke-width="1.6"/><rect x="1510" y="900" width="260" height="40" rx="12" fill="#2E8B57" fill-opacity="0.10"/><rect x="1510" y="928" width="260" height="12" fill="#EFF8F2"/><rect x="1510" y="928" width="260" height="12" fill="#2E8B57" fill-opacity="0.10"/><g transform="translate(1524.0,909.0) scale(0.9167)" fill="none" stroke="#2E8B57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4 14v-3a8 8 0 1 1 16 0v3" />
+  <path d="M18 19c0 1.657 -2.686 3 -6 3" />
+  <path d="M4 14a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2v-3" />
+  <path d="M15 14a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2v-3" />
+</g><text x="1554" y="926" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#1C2A3A" text-anchor="start">Support &amp; Escalation</text><g transform="translate(1528.0,949.0) scale(0.8333)" fill="none" stroke="#2E8B57" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+  <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+  <path d="M3 6l0 13" />
+  <path d="M12 6l0 13" />
+  <path d="M21 6l0 13" />
+</g><text x="1558" y="964" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Guidance &amp; resources</text><g transform="translate(1528.0,983.0) scale(0.8333)" fill="none" stroke="#2E8B57" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M9 15l6 -6" />
+  <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
+  <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
+</g><text x="1558" y="998" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Connect to support offices</text><g transform="translate(1528.0,1017.0) scale(0.8333)" fill="none" stroke="#2E8B57" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M5 8v-3a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5" />
+  <path d="M3 14a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M4.5 17l-1.5 5l3 -1.5l3 1.5l-1.5 -5" />
+</g><text x="1558" y="1032" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Signed evidence packet</text><g transform="translate(1528.0,1051.0) scale(0.8333)" fill="none" stroke="#2E8B57" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+  <path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" />
+  <path d="M9 14l2 2l4 -4" />
+</g><text x="1558" y="1066" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Follow-up &amp; case tracking</text><g transform="translate(1528.0,1085.0) scale(0.8333)" fill="none" stroke="#2E8B57" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+  <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+  <path d="M21 6.727a11.05 11.05 0 0 0 -2.794 -3.727" />
+  <path d="M3 6.727a11.05 11.05 0 0 1 2.792 -3.727" />
+</g><text x="1558" y="1100" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="#1C2A3A" text-anchor="start">Private status alerts</text><line x1="282" y1="215" x2="308" y2="215" stroke="#3B4656" stroke-width="1.8"/><polygon points="308.0,215.0 299.0,210.0 299.0,220.0" fill="#3B4656"/><line x1="1482" y1="207" x2="1508" y2="207" stroke="#3B4656" stroke-width="1.8"/><polygon points="1508.0,207.0 1499.0,202.0 1499.0,212.0" fill="#3B4656"/><line x1="1508" y1="470" x2="1482" y2="470" stroke="#3B4656" stroke-width="1.8" stroke-dasharray="6 5"/><polygon points="1482.0,470.0 1491.0,475.0 1491.0,465.0" fill="#3B4656"/><line x1="282" y1="610" x2="308" y2="610" stroke="#3B4656" stroke-width="1.8"/><polygon points="308.0,610.0 299.0,605.0 299.0,615.0" fill="#3B4656"/><polygon points="282.0,610.0 291.0,615.0 291.0,605.0" fill="#3B4656"/><line x1="1482" y1="1082" x2="1508" y2="1082" stroke="#3B4656" stroke-width="1.8"/><polygon points="1508.0,1082.0 1499.0,1077.0 1499.0,1087.0" fill="#3B4656"/><polygon points="505.0,1172 641.0,1172 655.0,1189 641.0,1206 505.0,1206" fill="#D0503F" fill-opacity="0.16" stroke="#D0503F" stroke-width="1.2"/><text x="580.0" y="1194" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#D0503F" text-anchor="middle">Report</text><polygon points="665.0,1172 801.0,1172 815.0,1189 801.0,1206 665.0,1206 679.0,1189" fill="#6A4FB3" fill-opacity="0.16" stroke="#6A4FB3" stroke-width="1.2"/><text x="744.0" y="1194" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#6A4FB3" text-anchor="middle">Protect</text><polygon points="825.0,1172 961.0,1172 975.0,1189 961.0,1206 825.0,1206 839.0,1189" fill="#2466AE" fill-opacity="0.16" stroke="#2466AE" stroke-width="1.2"/><text x="904.0" y="1194" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#2466AE" text-anchor="middle">Verify</text><polygon points="985.0,1172 1121.0,1172 1135.0,1189 1121.0,1206 985.0,1206 999.0,1189" fill="#C4841A" fill-opacity="0.16" stroke="#C4841A" stroke-width="1.2"/><text x="1064.0" y="1194" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#C4841A" text-anchor="middle">Analyze</text><polygon points="1145.0,1172 1281.0,1172 1295.0,1189 1281.0,1206 1145.0,1206 1159.0,1189" fill="#2E8B57" fill-opacity="0.16" stroke="#2E8B57" stroke-width="1.2"/><text x="1224.0" y="1194" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#2E8B57" text-anchor="middle">Support</text><text x="900" y="1238" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="#1C2A3A" text-anchor="middle">Figure 1. System Design Architecture of Korea Unlocked</text><text x="900" y="1238" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#1C2A3A" text-anchor="middle" opacity="0"> </text></svg>
