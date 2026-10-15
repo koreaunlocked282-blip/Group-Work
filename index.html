@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Korea Unlocked</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090C;--bg2:#0B0F14;--bg3:#10151C;--ink:#EEF0F2;--mut:#8C97A6;--line:#222B37;--rep:#FF6B57;--pro:#9B7BFF;--ver:#4C9BFF;--ana:#FFB03A;--sup:#3DDC97;--warn:#E5484D;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "Familjen Grotesk","Noto Sans KR",sans-serif;overflow-x:hidden}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--ver);outline-offset:3px}
+header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;display:flex;align-items:center;gap:8px;padding:14px clamp(14px,3vw,36px);background:linear-gradient(var(--bg),transparent)}
+.logo{font-weight:700;letter-spacing:.02em;margin-right:auto;background:none;border:0;padding:0}
+.nb{background:none;border:1px solid transparent;padding:8px 12px;border-radius:99px}
+.nb:hover{border-color:var(--line)}
+.pill{border:1px solid var(--ink);border-radius:99px;padding:8px 16px;background:none}
+.pill.fill{background:var(--ink);color:var(--bg)}
+.hide-s{display:inline}
+@media(max-width:720px){.hide-s{display:none}}
+#exit{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--bg3);border:1px solid var(--warn);color:var(--ink);border-radius:99px;padding:10px 16px;font-weight:600}
+#exit:hover{background:var(--warn)}
+section{padding:clamp(64px,10vw,130px) clamp(16px,5vw,72px);max-width:1400px;margin:auto}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-top:110px}
+#sig{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
+h1{font-size:clamp(3.4rem,15vw,12rem);line-height:.86;margin:0;font-weight:700;letter-spacing:-.045em;position:relative}
+h1 span{display:block;overflow:hidden}
+h1 i{display:inline-block;font-style:normal;animation:rise .9s cubic-bezier(.2,.8,.2,1) both;filter:blur(0)}
+@keyframes rise{from{transform:translateY(105%);filter:blur(10px);opacity:0}to{transform:none;filter:none;opacity:1}}
+.sub{max-width:34ch;font-size:clamp(1.1rem,2.2vw,1.5rem);color:var(--mut);margin:28px 0;position:relative}
+h2{font-size:clamp(2rem,5vw,3.8rem);letter-spacing:-.03em;line-height:1;margin:0 0 16px;max-width:16ch}
+p.lead{color:var(--mut);max-width:60ch;margin:0 0 32px}
+.flow{display:flex;gap:0;flex-wrap:wrap;position:relative}
+.node{flex:1 1 150px;text-align:left;background:none;border:0;border-top:3px solid var(--c);padding:16px 12px 16px 0;opacity:.55;transition:opacity .3s}
+.node b{display:block;font-size:1.4rem;color:var(--c)}.node[aria-pressed=true],.node:hover{opacity:1}
+.node:after{content:"";display:block;height:2px;width:0;background:var(--c);margin-top:10px;transition:width .6s}
+.node[aria-pressed=true]:after{width:100%}
+.detail{border:1px solid var(--line);background:var(--bg2);border-radius:14px;padding:22px;margin-top:20px;min-height:120px;border-left:4px solid var(--c,var(--rep))}
+.detail ul{margin:8px 0 0;padding-left:18px;color:var(--mut)}
+.mapwrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:start}
+@media(max-width:860px){.mapwrap{grid-template-columns:1fr}}
+#map{width:100%;height:auto;max-height:78vh;background:var(--bg2);border:1px solid var(--line);border-radius:18px}
+.cell{transition:fill .5s,opacity .5s,transform .3s;cursor:pointer;transform-box:fill-box;transform-origin:center}
+.cell:hover,.cell:focus{transform:scale(1.25);outline:none;stroke:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.chip{border:1px solid var(--line);background:var(--bg3);border-radius:99px;padding:7px 14px}
+.chip[aria-pressed=true]{background:var(--ana);color:#111;border-color:var(--ana)}
+.legend{display:flex;gap:0;margin:16px 0 6px}.legend span{flex:1;height:10px}
+.lg{display:flex;justify-content:space-between;color:var(--mut);font-size:.85rem}
+.note{border-left:3px solid var(--ana);padding:8px 14px;margin:18px 0;color:var(--mut);font-size:.92rem}
+.read{background:var(--bg3);border-radius:12px;padding:16px;min-height:88px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+.res{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--bg2)}
+.res big{display:block;font-size:2.4rem;font-weight:700;letter-spacing:-.03em;color:var(--sup)}
+.res small{color:var(--mut)}
+.trust{border:1px dashed var(--pro);border-radius:14px;padding:18px;background:var(--bg2)}
+.tag{display:inline-block;font-size:.8rem;border:1px solid var(--warn);color:#ff8a8e;border-radius:6px;padding:1px 8px}
+/* overlays */
+.ov{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(7,9,12,.94);overflow:auto}
+.ov.on{display:flex}
+.ov .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.5;animation:pan 8s linear infinite}
+@keyframes pan{to{background-position:44px 44px}}
+.scan{position:absolute;left:0;right:0;height:2px;background:var(--ver);box-shadow:0 0 24px var(--ver);animation:scan 1.1s ease-out forwards}
+@keyframes scan{from{top:0}to{top:100%;opacity:0}}
+.card{position:relative;width:min(100%,460px);background:var(--bg3);border:1px solid var(--line);border-radius:20px;padding:28px;animation:open .7s .25s cubic-bezier(.2,.8,.2,1) both}
+.card.wide{width:min(100%,640px)}
+@keyframes open{from{clip-path:inset(0 0 100% 0);opacity:0;transform:translateY(20px)}to{clip-path:inset(0);opacity:1;transform:none}}
+label{display:block;margin:14px 0 4px;color:var(--mut);font-size:.9rem}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px;font:inherit}
+.x{position:absolute;top:12px;right:14px;background:none;border:0;font-size:1.6rem}
+.btn{margin-top:20px;background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:13px 20px;font-weight:700;width:100%}
+.ghost{background:none;color:var(--ink);border:1px solid var(--line);margin-top:10px}
+.steps{display:flex;gap:4px;margin-bottom:8px}.steps i{flex:1;height:4px;border-radius:2px;background:var(--line);transition:background .4s}
+.pane{animation:pin .4s both}@keyframes pin{from{opacity:0;transform:translateX(18px)}}
+.opt{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:12px;margin:8px 0;cursor:pointer}
+.opt input{width:auto}
+.tri{display:flex;gap:8px;align-items:stretch}.tri div{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:.85rem;text-align:center}
+.menu a{display:block;font-size:clamp(2.4rem,9vw,5.5rem);font-weight:700;letter-spacing:-.04em;text-decoration:none;line-height:1.1;transition:transform .3s,color .3s}
+.menu a:hover{transform:translateX(16px);color:var(--c)}
+.menu sup{font-size:.9rem;color:var(--mut);margin-right:10px;font-weight:400}
+#cur{position:fixed;width:10px;height:10px;border-radius:50%;background:#fff;pointer-events:none;z-index:99;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:width .2s,height .2s;display:none}
+@media(hover:hover) and (pointer:fine){#cur{display:block}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+.tl{cursor:pointer}.tl rect{transition:fill .5s;stroke:var(--bg);stroke-width:2}.tl:hover rect,.tl:focus rect{stroke:#fff}.tl:focus{outline:none}.tl text{font:600 10px "Familjen Grotesk",sans-serif;pointer-events:none}
+.bc{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}.bc button{background:none;border:0;padding:4px 0;text-decoration:underline}
+.fl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:10px;margin-bottom:12px}.fl label{margin:0 0 3px}
+.zl{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 0;font-size:.85rem;color:var(--mut)}.zl i,.zd{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+#pn{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:14px}#pn .bar{height:8px;border-radius:4px;background:var(--ver);margin:3px 0 10px}#pc{display:none}
+@media(max-width:860px){#pn{position:fixed;left:0;right:0;bottom:0;z-index:40;margin:0;border-radius:18px 18px 0 0;max-height:60svh;overflow:auto;transform:translateY(110%);transition:transform .35s;padding-bottom:calc(60px + env(safe-area-inset-bottom,0px))}#pn.open{transform:none}#pc{display:block;float:right}}
+.dir{max-height:420px;overflow:auto;border:1px solid var(--line);border-radius:14px}.dr{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:12px 14px}.dr:hover{background:var(--bg3)}
+.cc{border:1px solid var(--line);background:var(--bg2);border-radius:14px;padding:18px;text-align:left;border-top:3px solid var(--c)}.cc b{display:block;font-size:1.2rem}.cc small{color:var(--mut)}
+.menu a{font-size:clamp(2rem,7vw,4rem)!important}
+.ov .grid-bg{pointer-events:none}
+</style></head><body>
+<div id="cur" aria-hidden="true"></div>
+<header>
+<button class="logo" onclick="scrollTo({top:0})">Korea Unlocked</button>
+<button class="nb" onclick="ov('menu')" aria-haspopup="dialog" data-i="menu">Menu</button>
+<a class="nb hide-s" href="#map-s" data-i="map">Map</a>
+<button class="nb hide-s" onclick="ov('report')" data-i="report">Report</button>
+<a class="nb hide-s" href="#pat-s" data-i="pat">Patterns</a>
+<button class="nb" id="lang" aria-label="Switch language">한국어</button>
+<button class="pill hide-s" onclick="ov('login')" data-i="login">Log in</button>
+<button class="pill fill" onclick="ov('signup')" data-i="signup">Create account</button>
+</header>
+<button id="exit" aria-label="Quick exit: leave this site immediately (or press Escape twice)" data-i="exit">Quick exit</button>
+
+<main>
+<section class="hero" aria-labelledby="t">
+<svg id="sig" aria-hidden="true"></svg>
+<h1 id="t"><span><i>Korea</i></span><span><i style="animation-delay:.15s">Unlocked</i></span></h1>
+<p class="sub" data-i="sub">Korea has a pattern you cannot see from one story.</p><p class="sub" style="margin-top:-12px;font-size:1rem" data-i="sub2">Report discrimination. Protect your evidence. Understand patterns. Find support.</p>
+<div><button class="pill fill" onclick="ov('report')" data-i="start">Report an experience</button> <a class="pill" style="text-decoration:none;display:inline-block" href="#map-s" data-i="explore">Explore Korea map</a></div>
+</section>
+
+<section id="cat-s" aria-labelledby="ch"><h2 id="ch" data-i="ch">What are students reporting?</h2><p class="lead">Choose a category to filter the map. Counts appear only as aggregates.</p><div class="grid" id="cc"></div></section>
+<section id="flow-s" aria-labelledby="fh">
+<h2 id="fh" data-i="fh">Your report moves through five protected stages.</h2>
+<p class="lead" data-i="fp">Select a stage to see what happens and what is still waiting on a live service.</p>
+<div class="flow" id="flow"></div><div class="detail" id="det" aria-live="polite"></div><p class="lead" style="margin-top:22px">Report status you will see: Received, Privacy protected, Under review, Needs more information, Corroborated, Included in pattern, Not published, Support referred. Passing moderation never means an allegation is proven. Individual reports are called reported experiences; only aggregates form a pattern.</p>
+</section>
+
+<section id="map-s" aria-labelledby="mh">
+<h2 id="mh" data-i="mh">Explore the pattern</h2>
+<div class="fl"><div><label for="fc">Incident</label><select id="fc"></select></div><div><label for="ft">Time</label><select id="ft"></select></div><div><label for="fv">Verification</label><select id="fv"></select></div><div><label for="fs">Search province, district or university</label><input id="fs" list="sl" autocomplete="off"><datalist id="sl"></datalist></div></div>
+<div class="mapwrap"><div><div class="bc" id="bc"></div>
+<svg id="map" viewBox="0 0 380 450" role="group" aria-label="Aggregated pattern map of South Korea. Demo data."></svg></div>
+<div><div class="zl" aria-label="Legend"><span><i style="background:#3a4656"></i>Insufficient data</span><span><i style="background:#3DDC97"></i>Low</span><span><i style="background:#F5D442"></i>Moderate</span><span><i style="background:#FF9A3D"></i>Elevated</span><span><i style="background:#FF5A4F"></i>High</span></div>
+<p class="note"><b>This map shows aggregated reported patterns, not a definitive safety rating.</b> Fewer than 5 reports shows as grey. <span class="tag">Demo data</span> Generated for this prototype; not real reports or statistics. Tiles are a stylised layout, not real boundaries. Real boundary polygons (MapLibre + GeoJSON from PostGIS) are the next step.</p>
+<div class="read" id="rd" aria-live="polite">Hover or focus an area.</div><div id="pn" aria-live="polite"></div></div></div></section>
+<section id="pat-s" aria-labelledby="ph"><h2 id="ph">Pattern directory</h2><p class="lead">Aggregates only, listed alphabetically and never ranked. Uses the filters above.</p>
+<label for="dq">Search</label><input id="dq" placeholder="Seoul, Haeundae-gu, Yonsei University"><div class="dir" id="dl2" style="margin-top:12px"></div></section>
+
+<section id="report-s" aria-labelledby="rh">
+<h2 id="rh" data-i="rh">Protect the evidence before anyone sees it.</h2>
+<p class="lead">Raw evidence is processed in memory only, never stored, and never shown publicly. The design detects passport, ARC/ID, faces, phone numbers, addresses, account numbers, emails and document numbers with YOLO and OCR (Korean + English), then redacts them before a moderator sees the safe version.</p>
+<div class="trust"><div class="tri"><div>Original<br><small>in memory only</small></div><div>Protection service<br><small>EXIF · face/ID · OCR · PII</small></div><div>Redacted<br><small>only this is stored</small></div></div>
+<p><span class="tag">Processing service unavailable</span> The FastAPI evidence service is not connected in this prototype, so nothing is uploaded or processed and no progress is shown. <b>TODO: USER CONFIGURATION REQUIRED</b></p></div>
+</section>
+
+<section id="res-s" aria-labelledby="sh">
+<h2 id="sh" data-i="sh">Help that exists today.</h2>
+<p class="lead">Only numbers confirmed in your architecture are listed. The assistant routes legal, emergency and immigration questions to official resources; it does not give legal advice.</p>
+<div class="grid">
+<div class="res"><big>112</big>Police emergency<br><small>Korea, emergency</small></div>
+<div class="res"><big>119</big>Fire and medical emergency<br><small>Korea, emergency</small></div>
+<div class="res"><big>1345</big>Immigration contact<br><small>Immigration</small></div>
+<div class="res"><big style="font-size:1.4rem;color:var(--ana)">Not yet added</big>University support, Human Rights Commission, labor centers, legal and counseling<br><small>Needs verified contact data</small></div>
+</div></section>
+
+<section id="sec-s" aria-labelledby="xh">
+<h2 id="xh">Privacy and security architecture</h2>
+<p class="lead">This is the design, not a claim of compliance. PIPA and legal review are required before launch.</p>
+<div class="grid">
+<div class="res">Pseudonymous case IDs<br><small>Design</small></div><div class="res">k ≥ 5 before anything is public<br><small>Design</small></div>
+<div class="res">TLS 1.3, AES-256 at rest<br><small>Needs deployment</small></div><div class="res">Hash-chained audit trail, least-privilege RBAC<br><small>Needs backend</small></div>
+<div class="res">Retention and delete-my-data<br><small>Needs backend</small></div><div class="res">Malware scan on upload<br><small>Needs backend</small></div>
+</div></section>
+</main>
+
+<div class="ov" id="o-menu" role="dialog" aria-modal="true" aria-label="Menu"><div class="grid-bg"></div><button class="x" onclick="ov()" aria-label="Close">×</button>
+<nav class="menu" onclick="ov()"><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();scrollTo({top:0})">Home</a><a href="#" style="--c:var(--rep)" onclick="event.preventDefault();setTimeout(()=>ov('report'),50)">Report</a><a href="#map-s" style="--c:var(--ana)">Map</a><a href="#pat-s" style="--c:var(--ver)">Patterns</a><a href="#res-s" style="--c:var(--sup)">Support</a><a href="#" style="--c:var(--ver)" onclick="event.preventDefault();setTimeout(()=>ov('chat'),50)">AI assistant</a><a href="#sec-s" style="--c:var(--pro)">About</a><a href="#" id="mauth" data-i="login" style="--c:var(--rep)">Log in</a></nav></div>
+
+<div class="ov" id="o-login" role="dialog" aria-modal="true" aria-label="Log in"><div class="grid-bg"></div><div class="scan"></div>
+<div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">Access</h2>
+<label for="le">Email</label><input id="le" type="email" autocomplete="email"><label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password">
+<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="width:auto">Remember me</label>
+<button class="btn" onclick="doLogin(this)">Log in</button><p id="a1" class="note" hidden></p>
+<button class="btn ghost" onclick="need('a1')">Continue with Google</button><button class="btn ghost" onclick="need('a1')">Continue with GitHub</button>
+<p><a href="#" onclick="event.preventDefault();need('a1')">Forgot password</a></p></div></div>
+
+<div class="ov" id="o-signup" role="dialog" aria-modal="true" aria-label="Create account"><div class="grid-bg"></div><div class="scan"></div>
+<div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><div class="steps" id="sg"></div><div id="sp"></div></div></div>
+
+<div class="ov" id="o-report" role="dialog" aria-modal="true" aria-label="Report"><div class="grid-bg"></div>
+<div class="card wide"><button class="x" onclick="ov()" aria-label="Close">×</button><div class="steps" id="rg"></div><div id="rp"></div></div></div>
+
+<div class="ov" id="o-chat" role="dialog" aria-modal="true" aria-label="AI support"><div class="grid-bg"></div>
+<div class="card wide"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">Support intelligence</h2>
+<p class="note"><span class="tag">Integration required</span> The retrieval index and LLM are not connected. Answers appear only with real sources; nothing is invented. <b>TODO: USER CONFIGURATION REQUIRED</b></p>
+<p style="color:var(--mut)">Emergency now? Call <b style="color:var(--ink)">112</b> or <b style="color:var(--ink)">119</b>.</p>
+<p style="color:var(--mut)">Answers will draw only on corroborated patterns, rights information and the verified support directory. Legal, emergency and immigration questions go to official resources.</p><div class="chips"><button class="chip" onclick="$('#q').value=this.textContent">Have other students reported something like this in Mapo-gu?</button><button class="chip" onclick="$('#q').value=this.textContent">My landlord will not return my deposit. What can I do?</button></div><label for="q">Your question</label><textarea id="q" rows="3"></textarea><button class="btn" onclick="need('a2')">Ask</button><p id="a2" class="note" hidden></p></div></div>
+
+<script>
+const $=s=>document.querySelector(s),D={en:{menu:"Menu",map:"Map",report:"Report",pat:"Patterns",login:"Log in",logout:"Log out",signup:"Create account",exit:"Quick exit",sub:"Korea has a pattern you cannot see from one story.",sub2:"Report discrimination. Protect your evidence. Understand patterns. Find support.",start:"Report an experience",explore:"Explore Korea map",ch:"What are students reporting?",fh:"Your report moves through five protected stages.",fp:"Select a stage to see what happens and what is still waiting on a live service.",mh:"Explore the pattern",rh:"Protect the evidence before anyone sees it.",sh:"Help that exists today."},
+ko:{menu:"메뉴",map:"지도",report:"신고",pat:"패턴",login:"로그인",logout:"로그아웃",signup:"계정 만들기",exit:"빠른 종료",sub:"한 사람의 이야기로는 보이지 않는 패턴이 있습니다.",sub2:"차별을 신고하고, 증거를 보호하고, 패턴을 이해하고, 도움을 찾으세요.",start:"경험 신고하기",explore:"한국 지도 보기",ch:"유학생들은 무엇을 신고하고 있나요?",fh:"신고는 다섯 단계의 보호 과정을 거칩니다.",fp:"단계를 선택하면 어떤 일이 일어나고 무엇이 아직 연결 전인지 볼 수 있습니다.",mh:"패턴 살펴보기",rh:"누구도 보기 전에 증거를 보호합니다.",sh:"지금 이용 가능한 도움."}};
+let L="en";const tr=()=>{document.documentElement.lang=L;document.querySelectorAll("[data-i]").forEach(e=>e.textContent=D[L][e.dataset.i]);$("#lang").textContent=L=="en"?"한국어":"English"};
+$("#lang").onclick=()=>{L=L=="en"?"ko":"en";tr();if(typeof refresh=="function")refresh()};
+/* overlays */
+function ov(n){document.querySelectorAll(".ov").forEach(o=>{o.classList.remove("on");const s=o.querySelector(".scan");if(s){s.style.animation="none";s.offsetWidth;s.style.animation=""}});if(!n)SD={};if(n){$("#o-"+n).classList.add("on");if(n=="signup")su(0);if(n=="report")rp(0)}}
+function need(id){const e=$("#"+id);e.hidden=false;e.innerHTML='<span class="tag">Integration required</span> Supabase Auth and the API are not connected, so nothing was sent. TODO: USER CONFIGURATION REQUIRED (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY).'}
+/* quick exit */
+let esc=0;const qx=()=>{document.querySelectorAll("input,textarea").forEach(e=>e.value="");["localStorage","sessionStorage"].forEach(k=>Object.keys(window[k]).filter(x=>x.startsWith("sb-")).forEach(x=>window[k].removeItem(x)));RD={};SD={};document.body.innerHTML="";location.replace("https://www.google.com")};
+$("#exit").onclick=qx;addEventListener("keydown",e=>{if(e.key=="Escape"){ov();esc++;setTimeout(()=>esc=0,700);if(esc>=2)qx()}});
+/* stages */
+const S=[["Report","--rep","Private by default. Categories: workplace, housing, university, public space, online. Optional contribution to anonymized patterns.","Needs: report API + database"],["Protect","--pro","Strip metadata, detect ID/passport/faces, OCR Korean and English, find PII, redact. Raw evidence stays in memory.","Needs: evidence protection service"],["Verify","--ver","AI pre-check, human review, duplicate and abuse detection, cross-report corroboration. Named parties get a right of response.","Needs: verification engine + moderators"],["Map","--ana","Only aggregates reach the map: province and district, broad category, count and trend. Nothing public below k ≥ 5, and never a single complaint as a marker.","Needs: PostGIS aggregation"],["Support","--sup","Guidance, connection to support offices, signed evidence packet, private status alerts.","Needs: partner offices + notifications"]];
+S.forEach((s,i)=>{const b=document.createElement("button");b.className="node";b.style.setProperty("--c","var("+s[1]+")");b.innerHTML="<b>"+s[0]+"</b>";b.setAttribute("aria-pressed",i==0);b.onclick=()=>pick(i);$("#flow").append(b)});
+function pick(i){document.querySelectorAll(".node").forEach((n,j)=>n.setAttribute("aria-pressed",i==j));const d=$("#det");d.style.setProperty("--c","var("+S[i][1]+")");d.innerHTML="<b>"+S[i][0]+"</b><p>"+S[i][2]+"</p><span class='tag'>"+S[i][3]+"</span>"}pick(0);
+/* map: illustrative hex cells clipped to a rough peninsula polygon; sample values */
+const poly=[[120,20],[250,15],[300,70],[290,150],[330,230],[340,330],[300,420],[240,490],[150,480],[110,410],[90,330],[70,240],[95,150],[80,80]];
+const inP=(x,y)=>{let c=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const[a,b]=poly[i],[p,q]=poly[j];if((b>y)!=(q>y)&&x<(p-a)*(y-b)/(q-b)+a)c=!c}return c};
+const cells=[];let n=0;for(let r=0;r<26;r++)for(let c=0;c<16;c++){const x=40+c*22+(r%2)*11,y=22+r*19;if(inP(x,y))cells.push({x,y,id:n++,s:(Math.sin(n*12.9898)*43758.5453)%1})}
+const NS="http://www.w3.org/2000/svg",CFG={k:5,d:[45,75,110]};
+const P=[["Seoul","Seoul","서울",1,1,["Mapo-gu","Seongbuk-gu","Seodaemun-gu","Seongdong-gu","Gwanak-gu","Gangnam-gu","Jongno-gu"]],["Busan","Busan","부산",4,4,["Haeundae-gu","Geumjeong-gu","Busanjin-gu","Nam-gu"]],["Incheon","Incheon","인천",0,1,["Yeonsu-gu","Michuhol-gu","Namdong-gu"]],["Daegu","Daegu","대구",3,2,["Buk-gu","Suseong-gu","Jung-gu"]],["Daejeon","Daejeon","대전",2,3,["Yuseong-gu","Seo-gu","Dong-gu"]],["Gwangju","Gwangju","광주",1,4,["Buk-gu","Dong-gu","Gwangsan-gu"]],["Ulsan","Ulsan","울산",4,3,["Nam-gu","Buk-gu"]],["Sejong","Sejong","세종",2,2,["Sejong (single unit)"]],["Gyeonggi-do","Gyeonggi","경기",1,0,["Suwon","Yongin","Seongnam","Goyang"]],["Gangwon-do","Gangwon","강원",2,0,["Chuncheon","Wonju","Gangneung"]],["Chungcheongbuk-do","N.Chungcheong","충북",2,1,["Cheongju","Chungju"]],["Chungcheongnam-do","S.Chungcheong","충남",1,2,["Cheonan","Asan"]],["Jeollabuk-do","N.Jeolla","전북",1,3,["Jeonju","Iksan"]],["Jeollanam-do","S.Jeolla","전남",2,4,["Suncheon","Mokpo","Yeosu"]],["Gyeongsangbuk-do","N.Gyeongsang","경북",3,1,["Pohang","Gyeongsan","Gumi"]],["Gyeongsangnam-do","S.Gyeongsang","경남",3,3,["Changwon","Jinju","Gimhae"]],["Jeju","Jeju","제주",1,5,["Jeju-si","Seogwipo"]]];
+const U={"Korea University":["Seoul","Seongbuk-gu"],"Yonsei University":["Seoul","Seodaemun-gu"],"Hanyang University":["Seoul","Seongdong-gu"],"Pusan National University":["Busan","Geumjeong-gu"],"Kyungpook National University":["Daegu","Buk-gu"]};
+const CATS=["Racism","Workplace","Housing","University","Public service","Harassment","Language","Online","Other"],TL=["Last 7 days","Last 30 days","Last 3 months","Last 6 months","Last year","All time"],TF=[.06,.2,.45,.7,1,1.25],VL=["All eligible patterns","Corroborated patterns","Verified/assessed patterns"],VF=[1,.35,.6];
+const ZC=["#3a4656","#3DDC97","#F5D442","#FF9A3D","#FF5A4F"],ZN=["Insufficient data","Low","Moderate","Elevated","High"],st={c:-1,t:4,v:0,p:null,sel:null};
+const f=x=>Math.abs(Math.sin(x*12.9898)*43758.5453)%1,hs=q=>[...q].reduce((a,c)=>a*31+c.charCodeAt(0),7)%9973;
+const sh=q=>{const w=CATS.map((_,i)=>.05+f(q+i*7)*.25),z=w.reduce((a,b)=>a+b);return w.map(x=>x/z)};
+const cnt=(d,ci)=>{const q=hs(d),b=(30+f(q)*110)*TF[st.t]*VF[st.v];return Math.round(ci<0?b:b*sh(q)[ci])};
+const sum=(ds,ci)=>ds.reduce((a,d)=>a+cnt(d,ci),0);
+const lvl=(n,dc)=>{if(n<CFG.k)return 0;const a=n/dc,m=st.c<0?1:.3,T=CFG.d.map(x=>x*m);return 1+(a>=T[0])+(a>=T[1])+(a>=T[2])};
+const trend=ds=>{const v=[0,1,2,3,4,5].map(i=>ds.reduce((a,d)=>a+(30+f(hs(d))*110)/12*(.6+f(hs(d)+i*3)*.8+i*.06),0));return{v,t:v[5]>v[0]*1.1?"Increasing":v[5]<v[0]*.9?"Decreasing":"Steady"}};
+function tile(m,x,y,w,h,txt,z,aria,click,over){const g=document.createElementNS(NS,"g");g.setAttribute("class","tl");g.setAttribute("tabindex",0);g.setAttribute("role","button");g.setAttribute("aria-label",aria);g.innerHTML='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="10" fill="'+ZC[z]+'"/><text x="'+(x+w/2)+'" y="'+(y+h/2+3)+'" text-anchor="middle" fill="'+(z?"#10151C":"#dfe6ee")+'">'+txt+'</text>';g.onclick=click;g.onkeydown=e=>{if(e.key=="Enter"||e.key==" "){e.preventDefault();click()}};g.onmouseenter=g.onfocus=over;m.append(g)}
+function draw(){const m=$("#map");m.innerHTML="";const pr=st.p==null?null:P[st.p];
+$("#bc").innerHTML='<button onclick="st.p=null;st.sel=null;$(\'#pn\').classList.remove(\'open\');$(\'#pn\').innerHTML=\'\';refresh()">South Korea</button>'+(pr?" › <b>"+pr[0]+"</b>":"");
+if(!pr)P.forEach((p,i)=>{const n=sum(p[5],st.c),z=lvl(n,p[5].length),nm=L=="ko"?p[2]:p[1];tile(m,p[3]*74+6,p[4]*74+6,68,68,nm,z,p[0]+": "+ZN[z]+" concentration. Select to see districts.",()=>{st.p=i;st.sel=[i,null];refresh();panel(i,null,null,true)},()=>$("#rd").textContent=p[0]+": "+ZN[z]+" reported pattern concentration")});
+else{const D=pr[5],cols=Math.min(3,D.length),x0=(380-cols*120+10)/2;D.forEach((d,j)=>{const z=lvl(cnt(d,st.c),1);tile(m,x0+(j%cols)*120,20+Math.floor(j/cols)*90,110,80,d,z,pr[0]+" "+d+": "+ZN[z]+" concentration",()=>{st.sel=[st.p,j];panel(st.p,j,null,true)},()=>$("#rd").textContent=pr[0]+" "+d+": "+ZN[z]+" reported pattern concentration")})}}
+function panel(pi,di,uni,open){st.sel=[pi,di,uni];const p=P[pi],D=p[5],all=di==null?D:[D[di]],n=sum(all,st.c),z=lvl(n,all.length),el=$("#pn"),t=p[0]+(di==null?"":" — "+D[di]);
+let h='<button id="pc" class="pill" onclick="$(\'#pn\').classList.remove(\'open\')">Close</button><h3 style="margin:0 0 4px;font-size:1.5rem">'+t+'</h3>'+(uni?"<small>Area of "+uni+"</small>":"")+'<p><span class="zd" style="background:'+ZC[z]+'"></span>'+ZN[z]+' reported pattern concentration</p>';
+if(!z)h+='<p class="note">Fewer than '+CFG.k+' eligible reports. Details are hidden to protect privacy.</p>';
+else{const cor=Math.round(n*(.15+f(hs(t)+99)*.3)),tr=trend(all),tot=sum(all,-1),rows=CATS.map((c,i)=>[c,Math.round(sum(all,i)/tot*100)]).sort((a,b)=>b[1]-a[1]).slice(0,4),us=Object.keys(U).filter(u=>U[u][0]==p[0]&&(di==null||U[u][1]==D[di])),mx=Math.max(...tr.v),pts=tr.v.map((v,i)=>(i*44)+","+(38-v/mx*34)).join(" ");
+h+='<p><b>'+n+'</b> eligible reports · <b>'+cor+'</b> corroborated ('+(cor>=10?"10+":cor>=5?"5+":"1+")+' similar experiences)</p><b>Most reported categories</b>'+rows.map(r=>'<div>'+r[0]+' — '+r[1]+'%</div><div class="bar" style="width:'+r[1]*2+'%"></div>').join("")+'<b>Trend, last 6 months: '+tr.t+'</b><svg viewBox="0 0 220 42" width="220" height="42" role="img" aria-label="Trend '+tr.t+'"><polyline points="'+pts+'" fill="none" stroke="#FFB03A" stroke-width="2"/></svg><p>Universities in or near the area: '+(us.join(", ")||"none listed in demo data")+'</p>'}
+h+='<p><small>Support: university international office (verified contact needed) · Immigration 1345 · Emergency 112 / 119</small></p><button class="btn ghost" onclick="this.nextElementSibling.hidden=false">I experienced something similar</button><p class="note" hidden>Demo only, nothing recorded. Live, this raises internal corroboration confidence. It is not a public vote or like.</p><p><small><span class="tag">Demo data</span> Not real reports.</small></p>';
+el.innerHTML=h;if(open)el.classList.add("open")}
+function renderDir(){const q=$("#dq").value.toLowerCase(),o=[];P.forEach((p,i)=>p[5].forEach((d,j)=>{const us=Object.keys(U).filter(u=>U[u][1]==d&&U[u][0]==p[0]).join(" ");if((p[0]+" "+d+" "+us).toLowerCase().includes(q))o.push([p[0],d,i,j])}));
+$("#dl2").innerHTML=o.sort((a,b)=>(a[0]+a[1]).localeCompare(b[0]+b[1])).map(r=>{const n=cnt(r[1],st.c),z=lvl(n,1),cor=Math.round(n*(.15+f(hs(r[0]+" — "+r[1])+99)*.3));return'<button class="dr" data-i="'+r[2]+'" data-j="'+r[3]+'"><span class="zd" style="background:'+ZC[z]+'"></span><b>'+r[0]+" › "+r[1]+"</b><span>"+(z?n+" eligible · "+cor+" corroborated · "+trend([r[1]]).t:"Insufficient data")+"</span></button>"}).join("")||'<p style="padding:14px">No matching areas.</p>'}
+function refresh(){draw();renderDir();if(st.sel)panel(st.sel[0],st.sel[1],st.sel[2],false)}
+function jump(i,j,uni){st.p=i;refresh();panel(i,j,uni,true);$("#map-s").scrollIntoView({behavior:"smooth"})}
+$("#dl2").onclick=e=>{const b=e.target.closest(".dr");if(b)jump(+b.dataset.i,+b.dataset.j)};$("#dq").oninput=renderDir;
+$("#fc").innerHTML='<option value="-1">All categories</option>'+CATS.map((c,i)=>'<option value="'+i+'">'+c+'</option>').join("");$("#ft").innerHTML=TL.map((c,i)=>'<option value="'+i+'">'+c+'</option>').join("");$("#ft").value=4;$("#fv").innerHTML=VL.map((c,i)=>'<option value="'+i+'">'+c+'</option>').join("");
+$("#fc").onchange=e=>{st.c=+e.target.value;refresh()};$("#ft").onchange=e=>{st.t=+e.target.value;refresh()};$("#fv").onchange=e=>{st.v=+e.target.value;refresh()};
+$("#sl").innerHTML=[...P.map(p=>p[0]),...P.flatMap(p=>p[5]),...Object.keys(U)].map(x=>'<option value="'+x+'">').join("");
+$("#fs").onchange=e=>{const q=e.target.value.trim().toLowerCase();let i=P.findIndex(p=>p[0].toLowerCase()==q);if(i>=0)return jump(i,null);for(const u in U)if(u.toLowerCase()==q){i=P.findIndex(p=>p[0]==U[u][0]);return jump(i,P[i][5].indexOf(U[u][1]),u)}
+P.some((p,a)=>{const j=p[5].findIndex(d=>d.toLowerCase()==q);if(j>=0){jump(a,j);return true}})};
+const CC=[["Racism",0,"--rep"],["Workplace",1,"--ana"],["Housing",2,"--ver"],["University",3,"--pro"],["Public service",4,"--sup"],["Harassment",5,"--rep"]];
+CC.forEach(c=>{const b=document.createElement("button");b.className="cc";b.style.setProperty("--c","var("+c[2]+")");b.innerHTML="<b>"+c[0]+"</b><small>See where this pattern appears</small>";b.onclick=()=>{st.c=c[1];$("#fc").value=c[1];refresh();$("#map-s").scrollIntoView({behavior:"smooth"})};$("#cc").append(b)});
+$("#pn").innerHTML='<p style="margin:0">Select a province, then a district.</p>';refresh();
+/* hero signal */
+(()=>{const s=$("#sig");s.setAttribute("viewBox","0 0 400 520");s.setAttribute("preserveAspectRatio","xMaxYMid slice");const pts=cells.filter((c,i)=>i%5==0);let h="";pts.forEach((c,i)=>{const k=S[i%5][1];h+='<circle cx="'+c.x+'" cy="'+c.y+'" r="2" fill="var('+k+')"><animate attributeName="opacity" values=".2;1;.2" dur="'+(2+i%4)+'s" repeatCount="indefinite"/></circle>'});s.innerHTML=h;
+addEventListener("pointermove",e=>{s.style.transform="translate("+(e.clientX/innerWidth-.5)*-20+"px,"+(e.clientY/innerHeight-.5)*-20+"px)";const c=$("#cur");c.style.left=e.clientX+"px";c.style.top=e.clientY+"px";const t=e.target.closest("button,a,.tl");c.style.width=c.style.height=t?"34px":"10px"})})();
+/* signup */
+/* ===== report flow (real backend) ===== */
+const ST={received:"Received",privacy_protected:"Privacy protected",under_review:"Under review",needs_more_info:"Needs more information",corroborated:"Corroborated",included_in_pattern:"Included in pattern",not_published:"Not published",support_referred:"Support referred"};
+const ER={invalid_request:"Some details are missing or invalid. Please check and try again.",captcha_failed:"Verification failed. Please try again.",rate_limited:"Too many attempts. Please wait a while and try again.",unauthorized:"Your session has expired. Please log in again.",not_found:"No case matches that code and secret.",server_error:"Something went wrong. Please try again."};
+const OPT={
+ cat:[["University / Classroom","university_classroom"],["Workplace / Part-time job","workplace_parttime"],["Housing / Landlord","housing_landlord"],["Public service / Business","public_service_business"],["Racism / Racial discrimination","racism"],["Language discrimination","language_discrimination"],["Harassment / Verbal abuse","harassment_verbal"],["Online harassment","online_harassment"],["Immigration / Administrative difficulty","immigration_admin"],["Public transport / Public space","public_transport_space"],["Healthcare / Service access","healthcare_service"],["Other","other"]],
+ tr:[["Discrimination","discrimination"],["Harassment","harassment"],["Refusal of service","refusal_of_service"],["Unfair treatment","unfair_treatment"],["Threat","threat"],["Other","other"]],
+ wk:[["Not applicable",""],["Part-time job","part_time_job"],["Restaurant","restaurant"],["Factory","factory"],["Delivery","delivery"],["Retail","retail"],["Other workplace","other_workplace"]],
+ hs:[["Not applicable",""],["Landlord","landlord"],["Real estate agency","real_estate_agency"],["Dormitory","dormitory"],["Shared housing","shared_housing"],["Rental contract","rental_contract"],["Other housing","other_housing"]],
+ pd:[["In the last 7 days",7],["In the last 30 days",30],["In the last 3 months",91],["In the last year",365],["More than one year ago",-1]],
+ rs:[["No","unresolved"],["Yes","resolved"],["Partly","partly_resolved"],["Still happening","ongoing"]],
+ hp:[["No","none"],["University office","university_office"],["Employer","employer"],["Police","police"],["Labor or human rights office","labor_or_human_rights_office"],["Other","other"]],
+ vis:[["Private: moderators only","private"],["Contribute to aggregate patterns after review","pattern_after_review"]]};
+let RD={},REF=null,tsw=null;
+const he=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const eo=(a,v)=>a.map(x=>'<option value="'+x[1]+'"'+(String(x[1])===String(v??"")?" selected":"")+">"+he(x[0])+"</option>").join("");
+const fd=(id,lb,a)=>'<label for="'+id+'">'+lb+'</label><select id="'+id+'" data-f="'+id+'">'+eo(a,RD[id])+"</select>";
+const dOpts=()=>eo([["Select a district",""],...(REF?REF.d.filter(d=>d.province_code===(RD.pv||REF.p[0].code)).map(d=>[d.name_en,d.code]):[])],RD.dc);
+const put=(e,t)=>{e.hidden=false;e.replaceChildren(...t.flatMap((x,j)=>j?[document.createElement("br"),document.createTextNode(x)]:[document.createTextNode(x)]))};
+const ecode=async e=>{try{return (await e.context.json()).error.code}catch{return "server_error"}};
+async function loadRef(){if(REF)return;if(!KU.supabaseConfigured)throw 0;const s=KU.supabase,[p,d,u]=await Promise.all([s.from("provinces").select("code,name_en").order("sort_order"),s.from("districts").select("code,name_en,province_code").order("name_en"),s.from("universities").select("id,name_en").order("name_en")]);if(p.error||d.error||u.error)throw 0;REF={p:p.data,d:d.data,u:u.data}}
+const keep=()=>document.querySelectorAll("#rp [data-f]").forEach(e=>RD[e.dataset.f]=e.type=="checkbox"?e.checked:e.value);
+const RSF=[
+ ()=>["What happened?",'<p class="lead" style="margin:0 0 8px">Your identity is not the story. The pattern is. No account is needed to report.</p>'+fd("rc","Incident category",OPT.cat)+fd("rt","What kind of treatment?",OPT.tr)+'<label for="w">What happened?</label><textarea id="w" data-f="w" rows="4">'+he(RD.w||"")+'</textarea><p class="note">Leave out names, phone numbers and exact addresses.</p>'],
+ ()=>["Where?",REF?fd("pv","Province / metropolitan city",REF.p.map(p=>[p.name_en,p.code]))+'<label for="dc">District / Gu</label><select id="dc" data-f="dc">'+dOpts()+"</select>"+fd("un","University (optional)",[["None",""],...REF.u.map(u=>[u.name_en,u.id])])+fd("wk","Workplace category (optional)",OPT.wk)+fd("hs2","Housing category (optional)",OPT.hs):'<p class="note"><span class="tag">Processing service unavailable</span> Location data could not be loaded.</p>'],
+ ()=>["When and outcome",fd("pd","When",OPT.pd)+'<p class="note">This is a time range, not an exact date. Only the range is stored.</p>'+fd("rs","Was it resolved?",OPT.rs)+fd("hp","Did you seek help?",OPT.hp)],
+ ()=>["Evidence",'<p class="note"><span class="tag">Processing service unavailable</span> Optional uploads are off until the evidence protection service is connected. Nothing is stored.</p>'],
+ ()=>["Privacy",fd("vis","Visibility",OPT.vis)+'<label class="opt"><input type="checkbox" id="cn" data-f="cn"'+(RD.cn?" checked":"")+'>I consent to anonymized pattern analysis (optional)</label>'],
+ ()=>["Review",'<p>Check your answers, then submit.</p><div id="ts"></div><p id="a4" class="note" hidden></p>']];
+const chk=i=>i==0&&(RD.w||"").trim().length<10?"Please describe what happened (at least 10 characters).":i==1&&!RD.dc?"Please choose a district.":"";
+async function rp(i){keep();if(i==1&&!REF){try{await loadRef()}catch{}}
+ $("#rg").innerHTML=S.map((s,j)=>'<i style="background:'+(j<=Math.min(i,4)?"var("+S[j][1]+")":"")+'"></i>').join("");const last=i==5,st=RSF[i]();
+ $("#rp").innerHTML='<div class="pane"><h2 style="font-size:1.8rem">'+st[0]+"</h2>"+st[1]+'<p id="re" class="note" hidden></p><button class="btn" id="rn">'+(last?"Submit report":"Continue")+"</button>"+(i?'<button class="btn ghost" id="rb">Back</button>':'<button class="btn ghost" id="tk">Track an existing case</button>')+"</div>";
+ if($("#pv"))$("#pv").onchange=e=>{RD.pv=e.target.value;RD.dc="";$("#dc").innerHTML=dOpts()};
+ if($("#cn")){$("#cn").onchange=e=>{if(e.target.checked)$("#vis").value="pattern_after_review"};$("#vis").onchange=e=>{if(e.target.value=="private")$("#cn").checked=false}}
+ $("#rn").onclick=()=>{keep();const m=chk(i);if(m)return put($("#re"),[m]);last?sendReport():rp(i+1)};
+ if(i)$("#rb").onclick=()=>rp(i-1);else $("#tk").onclick=trk}
+function ts(){return new Promise((ok,no)=>{const k=KU.turnstileSiteKey;if(!k)return no("server_error");
+ const run=()=>{if(tsw!==null)window.turnstile.remove(tsw);tsw=window.turnstile.render("#ts",{sitekey:k,appearance:"interaction-only",callback:ok,"error-callback":()=>no("captcha_failed"),"expired-callback":()=>no("captcha_failed")})};
+ if(window.turnstile)return run();const s=document.createElement("script");s.src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";s.async=true;s.onload=run;s.onerror=()=>no("captcha_failed");document.head.append(s)})}
+async function sendReport(){const m=$("#a4"),b=$("#rn");b.disabled=true;
+ try{if(!KU.supabaseConfigured)throw "server_error";const tok=await ts(),n=new Date(),iso=x=>x.toISOString().slice(0,10),days=+RD.pd;
+  const df=days>0?iso(new Date(n-days*864e5)):"2000-01-01",dt=days>0?iso(n):iso(new Date(n-366*864e5));
+  const {data,error}=await KU.supabase.functions.invoke("submit-report",{body:{category:RD.rc,treatment:RD.rt,description:RD.w,district_code:RD.dc,university_id:RD.un||null,workplace_category:RD.wk||null,housing_category:RD.hs2||null,date_from:df,date_to:dt,resolution:RD.rs,help_sought:RD.hp,visibility:RD.vis,pattern_consent:!!RD.cn,language:L,turnstile_token:tok}});
+  if(error)throw await ecode(error);
+  put(m,["Report received.","Case code: "+data.case_code,...(data.tracking_secret?["Tracking secret (shown once): "+data.tracking_secret,"Save both now. The secret cannot be recovered."]:["Find it under your signed-in cases."])]);RD={};b.hidden=true;$("#rb").hidden=true}
+ catch(c){put(m,[ER[c]||ER.server_error]);b.disabled=false}}
+function trk(){$("#rg").innerHTML="";$("#rp").innerHTML='<div class="pane"><h2 style="font-size:1.8rem">Track a case</h2><label for="tc">Case code</label><input id="tc" autocomplete="off"><label for="ts2">Tracking secret</label><input id="ts2" type="password" autocomplete="off"><p id="tm" class="note" hidden></p><button class="btn" id="tg">Check status</button><button class="btn ghost" id="tb">Back</button></div>';
+ $("#tb").onclick=()=>rp(0);$("#tg").onclick=async()=>{const m=$("#tm");$("#tg").disabled=true;
+  try{if(!KU.supabaseConfigured)throw "server_error";const {data,error}=await KU.supabase.functions.invoke("track-case",{body:{case_code:$("#tc").value,tracking_secret:$("#ts2").value}});if(error)throw await ecode(error);
+   put(m,["Status: "+(ST[data.status]||"Received"),"Last updated: "+new Date(data.updated_at).toLocaleDateString(),...data.history.map(h=>(ST[h.status]||"")+", "+new Date(h.at).toLocaleDateString()+(h.note?": "+h.note:""))])}
+  catch(c){put(m,[ER[c]||ER.server_error])}$("#ts2").value="";$("#tg").disabled=false}}
+
+/* ===== Supabase Auth: email/password only. Google, GitHub and Forgot password stay stubs ===== */
+function setAuthUi(on){const b=document.querySelector("header .pill:not(.fill)"),m=$("#mauth");
+ [b,m].forEach(x=>{if(x)x.dataset.i=on?"logout":"login"});
+ if(b)b.onclick=on?doLogout:()=>ov("login");
+ if(m)m.onclick=e=>{e.preventDefault();on?doLogout():setTimeout(()=>ov("login"),50)};   // menu closes via the nav's own onclick
+ tr()}
+async function doLogin(b){const m=$("#a1");if(!KU.supabaseConfigured)return need("a1");
+ const email=$("#le").value.trim(),pw=$("#lp").value;if(!email||!pw)return put(m,["Enter your email and password."]);
+ localStorage.setItem("ku_remember",$("#o-login input[type=checkbox]").checked?"1":"0");b.disabled=true;
+ const {error}=await KU.supabase.auth.signInWithPassword({email,password:pw});b.disabled=false;$("#lp").value="";
+ if(error)return put(m,[error.code==="email_not_confirmed"?"Please confirm your email first. Check your inbox.":error.status===429?"Too many attempts. Please wait a while.":"Email or password is incorrect."]);
+ put(m,["Signed in."]);setTimeout(()=>ov(),500)}
+async function doLogout(){await KU.supabase.auth.signOut();RD={}}
+async function syncProfile(u){const m=u.user_metadata||{};if(!m.university_id&&!m.district_code)return;   // one-time apply of optional signup choices (own row, RLS)
+ const {data}=await KU.supabase.from("profiles").select("university_id,district_code").eq("id",u.id).single();
+ if(data&&!data.university_id&&!data.district_code)await KU.supabase.from("profiles").update({university_id:m.university_id||null,district_code:m.district_code||null}).eq("id",u.id)}
+setAuthUi(false);
+document.addEventListener("DOMContentLoaded",()=>{if(!KU.supabaseConfigured)return;   // KU is set by the module script, which runs before DOMContentLoaded
+ KU.supabase.auth.getSession().then(({data})=>setAuthUi(!!data.session));
+ KU.supabase.auth.onAuthStateChange((ev,s)=>{setAuthUi(!!s);if(ev==="SIGNED_IN"&&s)setTimeout(()=>syncProfile(s.user),0)})});   // no awaited supabase calls inside the callback
+
+const SU=[["Identity"],["Profile"],["Privacy"],["Ready"]];let SD={};
+const sk=()=>document.querySelectorAll("#sp [data-s]").forEach(e=>SD[e.dataset.s]=e.value);
+const pn=c=>REF?.p.find(p=>p.code===c)?.name_en||"";
+async function su(i){sk();if(i==1&&!REF){try{await loadRef()}catch{}}
+ const B=['<label for="e">Email</label><input id="e" data-s="e" type="email" autocomplete="email"><label for="p">Password</label><input id="p" data-s="p" type="password" autocomplete="new-password"><p class="note">At least 8 characters.</p>',
+  '<label for="xl">Preferred language</label><select id="xl" data-s="lang"><option value="en">English</option><option value="ko">한국어</option></select><label for="xs">Student status</label><select id="xs" data-s="stat"><option value="current">Current student</option><option value="incoming">Incoming student</option><option value="recent_graduate">Recent graduate</option></select>'+(REF?'<label for="xu">University (optional)</label><select id="xu" data-s="uni"><option value="">None</option>'+REF.u.map(u=>'<option value="'+u.id+'">'+he(u.name_en)+"</option>").join("")+'</select><label for="xd">District (optional)</label><select id="xd" data-s="dist"><option value="">None</option>'+REF.d.map(d=>'<option value="'+d.code+'">'+he(pn(d.province_code)+" — "+d.name_en)+"</option>").join("")+"</select>":""),
+  "<p>Reports get a pseudonymous case ID. Only aggregated, district-level patterns can ever be shown, and only at k ≥ 5. You will be able to delete your data.</p><p class='note'>These are design goals. They take effect once the backend is connected.</p>",
+  "<p>Create your account. We will email you a link to confirm it before you can log in.</p>"];
+ $("#sg").innerHTML=S.map((s,j)=>'<i style="background:'+(j<=i?"var("+s[1]+")":"")+'"></i>').join("");const last=i==3;
+ $("#sp").innerHTML='<div class="pane"><h2 style="font-size:1.8rem">'+SU[i][0]+"</h2>"+B[i]+'<p id="se" class="note" hidden></p><button class="btn" id="nx">'+(last?"Create account":"Continue")+"</button>"+(i?'<button class="btn ghost" id="bk">Back</button>':"")+"</div>";
+ document.querySelectorAll("#sp [data-s]").forEach(e=>{if(SD[e.dataset.s]!=null)e.value=SD[e.dataset.s]});
+ $("#nx").onclick=()=>{sk();if(i==0&&!(/^\S+@\S+\.\S+$/.test((SD.e||"").trim())&&(SD.p||"").length>=8))return put($("#se"),["Enter a valid email and a password of at least 8 characters."]);last?doSignup():su(i+1)};
+ if(i)$("#bk").onclick=()=>su(i-1)}
+async function doSignup(){const m=$("#se"),{e,p,lang,stat,uni,dist}=SD;if(!KU.supabaseConfigured)return put(m,["Integration required: Supabase is not configured."]);
+ $("#nx").disabled=true;
+ const {data,error}=await KU.supabase.auth.signUp({email:e.trim(),password:p,options:{emailRedirectTo:location.origin,data:{display_language:lang||"en",student_status:stat||"current",university_id:uni||null,district_code:dist||null}}});
+ SD.p="";
+ if(error){put(m,[error.code==="weak_password"?"That password is too weak. Try a longer, less common one.":error.status===429?"Too many attempts. Please wait a while and try again.":"We could not create the account. Please try again."]);$("#nx").disabled=false;return}
+ $("#sp").innerHTML='<div class="pane"><h2 style="font-size:1.8rem">'+(data.session?"Account created":"Check your email")+'</h2><p id="sm"></p><button class="btn" id="go">'+(data.session?"Close":"Go to log in")+"</button></div>";
+ $("#sm").textContent=data.session?"You are signed in.":"If this address can be registered, we sent a confirmation link to "+e.trim()+". Your account is ready once you confirm it. Then log in.";
+ $("#go").onclick=()=>data.session?ov():ov("login");SD={}}
+
+tr();
+</script><script type="module" src="/src/main.js"></script>
+</body></html>
