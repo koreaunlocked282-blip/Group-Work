@@ -49,3 +49,23 @@ Edge Function secrets are stored only in Supabase: `TURNSTILE_SECRET_KEY`, `RATE
 ## Documentation
 - [docs/security-gates.md](docs/security-gates.md): verification status.
 - [docs/korea-unlocked-system-architecture.svg](docs/korea-unlocked-system-architecture.svg): architecture diagram.
+
+## Stage 3 additions (branch `stage3-completion`)
+- `supabase/migrations/`: schema, security policies, functions, triggers, grants and reference data, exported read-only from the live project. **Not yet applied or tested on a fresh project.** Apply the two files in order to an empty Supabase project.
+- `supabase/functions/`: `submit-report`, `track-case` (unchanged logic; shared code moved to `_shared/common.ts`) and `ai-assistant` (new, **not deployed**).
+- Frontend: Pattern Directory blank-on-load bug fixed, demo data labelled, placeholder messages reworded, footer with privacy notice, terms, FAQ and contact, a signed-in "My reports" dashboard, and the AI assistant wiring.
+
+### Moving to a new Supabase project (checklist)
+1. Create the project. Apply the two migration files with the SQL editor or `supabase db push`.
+2. Auth settings: Site URL and redirect URLs for your origins; email confirmation on; a custom SMTP provider before real users sign up.
+3. Edge Function secrets (set in the dashboard, never in the repo or `VITE_*`): `TURNSTILE_SECRET_KEY`, `RATE_LIMIT_SALT` (32+ characters), `ALLOWED_ORIGINS` (exact origins, comma-separated), `APP_ENV=production` for production, and `ANTHROPIC_API_KEY` only if you deploy `ai-assistant`.
+4. Deploy the functions (`supabase functions deploy submit-report track-case`, plus `ai-assistant` if wanted). Keep `verify_jwt=false` for the first two, as before.
+5. Update `.env.local` / Vercel variables: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (publishable key), `VITE_TURNSTILE_SITE_KEY`. Add the new site hostname to the Turnstile widget.
+6. Run the controlled report test with the `[SYSTEM TEST - NOT A REAL REPORT]` dummy data, then remove the test rows.
+
+### Known gaps
+- Successful report submission and case tracking are still unverified end to end.
+- Map and directory numbers are demonstration data; no database aggregate exists yet.
+- New pages (privacy, terms, FAQ, contact) are English only and drafts without legal review; Korean coverage of the site remains low.
+- No admin account or moderation interface; no evidence upload; account deletion is not available.
+- `npm run build` was not run in the workspace that made these changes.
