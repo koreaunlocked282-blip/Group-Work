@@ -153,6 +153,7 @@ const X = {
   'Is this legal advice?':'이것은 법률 자문인가요?','No. For legal or immigration questions use official services.':'아니요. 법률 또는 출입국 관련 질문은 공식 서비스를 이용하세요.',
   'This is the design, not a claim of compliance. PIPA and legal review are required before launch.':'이것은 설계이며 법 준수를 주장하는 것이 아닙니다. 출시 전에 개인정보 보호법(PIPA) 및 법률 검토가 필요합니다.',
   'How a report is protected':'신고가 보호되는 방식','Experimental ':'실험적 기능',
+  'Ask anything':'무엇이든 물어보세요','Send':'보내기','New chat':'새 대화','Thinking...':'생각하는 중...',
   'Support intelligence':'지원 정보','Loading...':'불러오는 중...','Account created':'계정이 만들어졌습니다','Account':'계정','Check your email':'이메일을 확인하세요','Go to log in':'로그인으로 이동',
   'Overview':'개요','Your reports':'내 신고 목록','Korean':'한국어','Signed in.':'로그인되었습니다.','You are signed in.':'로그인되어 있습니다.',
   'Email or password is incorrect.':'이메일 또는 비밀번호가 올바르지 않습니다.','Please confirm your email first. Check your inbox.':'먼저 이메일을 인증하세요. 받은편지함을 확인하세요.',
@@ -223,8 +224,9 @@ function doAttrs(el){
 }
 function walk(root){
   if(root.nodeType === 3){ doText(root); return; }
-  if(root.nodeType !== 1 || SKIP.has(root.tagName)) return;
+  if(root.nodeType !== 1) return;
   doAttrs(root);
+  if(SKIP.has(root.tagName)) return;
   for(const c of root.childNodes) walk(c);
 }
 function restore(root){

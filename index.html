@@ -57,6 +57,25 @@ p.lead{color:var(--mut);max-width:60ch;margin:0 0 32px}
 /* overlays */
 .ov{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(7,9,12,.94);overflow:auto}
 .ov.on{display:flex}
+.ov.chatpage{display:none;flex-direction:column;align-items:stretch;justify-content:flex-start;padding:0;background:var(--bg);overflow:hidden}
+.ov.chatpage.on{display:flex}
+.ch-top{display:flex;align-items:center;gap:10px;padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top,0px));border-bottom:1px solid var(--line);background:var(--bg2);flex:none}
+.ch-title{flex:1;font-weight:600;text-align:center}.ch-ic{background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;width:40px;height:40px;font-size:1.3rem}
+.ch-scroll{flex:1;overflow:auto;padding:20px 14px}.ch-col{width:min(100%,760px);margin:0 auto}
+.ch-welcome{text-align:center;padding:8vh 0 0}.ch-welcome h2{font-size:1.8rem;margin:14px auto 6px;text-align:center;max-width:none}.ch-welcome p{color:var(--mut);max-width:52ch;margin:0 auto 24px}
+.ch-logo,.ch-av{display:grid;place-items:center;background:var(--ink);color:var(--bg);font-weight:700;border-radius:50%}.ch-logo{width:56px;height:56px;margin:0 auto}.ch-av{width:30px;height:30px;font-size:.7rem;flex:none}
+.ch-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.ch-card{text-align:left;background:var(--bg3);border:1px solid var(--line);color:var(--ink);border-radius:14px;padding:14px;font:inherit}.ch-card:hover{border-color:var(--mut)}
+.ch-m{display:flex;gap:12px;margin:0 0 22px}.ch-m.me{justify-content:flex-end}
+.ch-b{white-space:pre-wrap;word-wrap:break-word;overflow-wrap:anywhere;line-height:1.65}.ch-m.me .ch-b{background:var(--bg3);border:1px solid var(--line);border-radius:18px 18px 4px 18px;padding:10px 16px;max-width:85%}
+.ch-b.wait{color:var(--mut);animation:pulse 1.2s ease-in-out infinite}@keyframes pulse{50%{opacity:.4}}
+.ch-bar{flex:none;padding:8px 14px calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,var(--bg) 30%)}
+.ch-box{display:flex;align-items:flex-end;gap:8px;background:var(--bg3);border:1px solid var(--line);border-radius:24px;padding:8px 8px 8px 16px}
+.ch-box textarea{border:0;background:none;resize:none;max-height:200px;padding:8px 0;outline:none}
+.ch-send{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);font-size:1.2rem;font-weight:700}.ch-send:disabled{opacity:.4}
+body:has(#o-chat.on) #exit{bottom:auto;top:calc(14px + env(safe-area-inset-top,0px));right:64px;padding:8px 12px;font-size:.85rem}
+@media(max-width:520px){.ch-title .tag{display:none}}
+.ch-foot{color:var(--mut);font-size:.78rem;text-align:center;margin:8px 0 0}.ch-foot b{color:var(--ink)}
 .foot{padding:32px clamp(16px,5vw,72px) 96px;max-width:1400px;margin:auto;border-top:1px solid var(--line);color:var(--mut);display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 .foot button{background:none;border:0;padding:8px 0;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .foot p{margin:0;flex-basis:100%;font-size:.9rem;max-width:70ch}
@@ -191,11 +210,16 @@ html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
 <div class="ov" id="o-dash" role="dialog" aria-modal="true" aria-label="My reports"><div class="grid-bg"></div>
 <div class="card wide info"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">My reports</h2><div id="dash-body" aria-live="polite"></div></div></div>
 
-<div class="ov" id="o-chat" role="dialog" aria-modal="true" aria-label="AI support"><div class="grid-bg"></div>
-<div class="card wide"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">Support intelligence</h2>
-<p class="note"><span class="tag">Experimental</span> General information only, not legal advice. For signed-in users. The assistant never sees your reports and answers may be wrong, so check anything important with an official service.</p>
-<p style="color:var(--mut)">Emergency now? Call <b style="color:var(--ink)">112</b> or <b style="color:var(--ink)">119</b>.</p>
-<p style="color:var(--mut)">Please do not type names, phone numbers or other personal details. Legal, emergency and immigration questions are best answered by official resources.</p><div class="chips"><button class="chip" onclick="$('#q').value=this.textContent">What counts as discrimination at a part-time job in Korea?</button><button class="chip" onclick="$('#q').value=this.textContent">My landlord will not return my deposit. What can I do?</button></div><label for="q">Your question</label><textarea id="q" rows="3"></textarea><button class="btn" id="qa" onclick="askAI(this)">Ask</button><p id="a2" class="note" hidden></p></div></div>
+<div class="ov chatpage" id="o-chat" role="dialog" aria-modal="true" aria-label="AI support">
+<div class="ch-top"><button class="ch-ic" onclick="ov()" aria-label="Close">←</button><div class="ch-title">Support intelligence <span class="tag">Experimental</span></div><button class="ch-ic ch-new" id="ch-new" onclick="chatNew()" aria-label="New chat">+</button></div>
+<div class="ch-scroll" id="ch-scroll"><div class="ch-col" id="ch-msgs">
+<div class="ch-welcome" id="ch-welcome"><div class="ch-logo">KU</div><h2>Support intelligence</h2>
+<p>General information only, not legal advice. For signed-in users. The assistant never sees your reports and answers may be wrong, so check anything important with an official service.</p>
+<div class="ch-cards"><button class="ch-card" onclick="chatPick(this)">What counts as discrimination at a part-time job in Korea?</button><button class="ch-card" onclick="chatPick(this)">My landlord will not return my deposit. What can I do?</button></div></div>
+</div></div>
+<div class="ch-bar"><div class="ch-col"><div class="ch-box"><textarea id="q" rows="1" placeholder="Ask anything" aria-label="Your question" maxlength="1000"></textarea><button class="ch-send" id="qa" onclick="askAI(this)" aria-label="Send">↑</button></div>
+<p class="ch-foot"><span>Emergency now? Call</span> <b>112</b> <span>or</span> <b>119</b><span>.</span> <span>Please do not type names, phone numbers or other personal details. Legal, emergency and immigration questions are best answered by official resources.</span></p></div></div>
+</div>
 
 <script>
 const $=s=>document.querySelector(s),D={en:{menu:"Menu",map:"Map",report:"Report",pat:"Patterns",login:"Log in",logout:"Log out",signup:"Create account",exit:"Quick exit",sub:"Korea has a pattern you cannot see from one story.",sub2:"Report discrimination. Protect your evidence. Understand patterns. Find support.",start:"Report an experience",explore:"Explore Korea map",ch:"What are students reporting?",fh:"Your report moves through five protected stages.",fp:"Select a stage to see what happens and what is still waiting on a live service.",mh:"Explore the pattern",rh:"Protect the evidence before anyone sees it.",sh:"Help that exists today."},
@@ -217,12 +241,19 @@ function info(k){$("#info-body").innerHTML=INFO[k];ov("info")}
 /* ===== Personal dashboard: reads only the signed-in user's own rows (enforced by RLS, not by this code) ===== */
 const human=v=>String(v||"").replace(/_/g," ").replace(/^./,c=>c.toUpperCase());
 function dEl(t,txt,cls){const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(cls)e.className=cls;return e}
-async function askAI(b){const m=$("#a2"),q=$("#q").value.trim();if(q.length<3)return soon("a2","Type your question first.");
- try{if(!KU.supabaseConfigured)throw 0;const {data:{session}}=await KU.supabase.auth.getSession();if(!session)return soon("a2","Please log in to use the assistant.");
-  b.disabled=true;soon("a2","Thinking...");const {data,error}=await KU.supabase.functions.invoke("ai-assistant",{body:{question:q}});
-  if(error){const c=await ecode(error);return soon("a2",c==="rate_limited"?ER.rate_limited:c==="unauthorized"?ER.unauthorized:"The assistant is not available right now. Please try again later.")}
-  soon("a2",data&&data.answer?data.answer:"The assistant is not available right now.")}
- catch(e){soon("a2","The assistant is not available right now. Please try again later.")}finally{b.disabled=false}}
+function chatMsg(role,text){$("#ch-welcome").hidden=true;const w=document.createElement("div");w.className="ch-m "+role;const b=document.createElement("div");b.className="ch-b";b.textContent=text;if(role=="ai"){const a=document.createElement("div");a.className="ch-av";a.textContent="KU";w.append(a)}w.append(b);$("#ch-msgs").append(w);const s=$("#ch-scroll");s.scrollTop=s.scrollHeight;return b}
+function chatNew(){document.querySelectorAll("#ch-msgs .ch-m").forEach(e=>e.remove());$("#ch-welcome").hidden=false;$("#q").value="";$("#q").style.height=""}
+function chatPick(b){$("#q").value=b.textContent;$("#q").focus()}
+async function askAI(b){const t=$("#q"),q=t.value.trim();if(q.length<3)return t.focus();
+ chatMsg("me",q);t.value="";t.style.height="";const out=chatMsg("ai","Thinking...");out.classList.add("wait");
+ const done=x=>{out.classList.remove("wait");out.textContent=x};
+ try{if(!KU.supabaseConfigured)throw 0;const {data:{session}}=await KU.supabase.auth.getSession();if(!session)return done("Please log in to use the assistant.");
+  b.disabled=true;const {data,error}=await KU.supabase.functions.invoke("ai-assistant",{body:{question:q}});
+  if(error){const c=await ecode(error);return done(c==="rate_limited"?ER.rate_limited:c==="unauthorized"?ER.unauthorized:"The assistant is not available right now. Please try again later.")}
+  done(data&&data.answer?data.answer:"The assistant is not available right now.")}
+ catch(e){done("The assistant is not available right now. Please try again later.")}finally{b.disabled=false}}
+document.addEventListener("input",e=>{if(e.target.id=="q"){e.target.style.height="auto";e.target.style.height=Math.min(e.target.scrollHeight,200)+"px"}});
+document.addEventListener("keydown",e=>{if(e.target.id=="q"&&e.key=="Enter"&&!e.shiftKey&&!e.isComposing){e.preventDefault();$("#qa").click()}});
 async function openDash(){ov("dash");const box=$("#dash-body");box.replaceChildren(dEl("p","Loading..."));
  try{if(!KU.supabaseConfigured)throw 0;const {data:{session}}=await KU.supabase.auth.getSession();if(!session){box.replaceChildren(dEl("p","Please log in to see your reports."));return}
   const [pr,rp]=await Promise.all([KU.supabase.from("profiles").select("display_language,student_status").eq("id",session.user.id).single(),
