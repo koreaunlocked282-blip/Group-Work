@@ -242,15 +242,15 @@ function info(k){$("#info-body").innerHTML=INFO[k];ov("info")}
 const human=v=>String(v||"").replace(/_/g," ").replace(/^./,c=>c.toUpperCase());
 function dEl(t,txt,cls){const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(cls)e.className=cls;return e}
 function chatMsg(role,text){$("#ch-welcome").hidden=true;const w=document.createElement("div");w.className="ch-m "+role;const b=document.createElement("div");b.className="ch-b";b.textContent=text;if(role=="ai"){const a=document.createElement("div");a.className="ch-av";a.textContent="KU";w.append(a)}w.append(b);$("#ch-msgs").append(w);const s=$("#ch-scroll");s.scrollTop=s.scrollHeight;return b}
-function chatNew(){document.querySelectorAll("#ch-msgs .ch-m").forEach(e=>e.remove());$("#ch-welcome").hidden=false;$("#q").value="";$("#q").style.height=""}
+var chatHist=[];function chatNew(){chatHist=[];document.querySelectorAll("#ch-msgs .ch-m").forEach(e=>e.remove());$("#ch-welcome").hidden=false;$("#q").value="";$("#q").style.height=""}
 function chatPick(b){$("#q").value=b.textContent;$("#q").focus()}
 async function askAI(b){const t=$("#q"),q=t.value.trim();if(q.length<3)return t.focus();
  chatMsg("me",q);t.value="";t.style.height="";const out=chatMsg("ai","Thinking...");out.classList.add("wait");
  const done=x=>{out.classList.remove("wait");out.textContent=x};
  try{if(!KU.supabaseConfigured)throw 0;const {data:{session}}=await KU.supabase.auth.getSession();if(!session)return done("Please log in to use the assistant.");
-  b.disabled=true;const {data,error}=await KU.supabase.functions.invoke("ai-assistant",{body:{question:q}});
+  b.disabled=true;const {data,error}=await KU.supabase.functions.invoke("ai-assistant",{body:{question:q,history:chatHist.slice(-6)}});
   if(error){const c=await ecode(error);return done(c==="rate_limited"?ER.rate_limited:c==="unauthorized"?ER.unauthorized:"The assistant is not available right now. Please try again later.")}
-  done(data&&data.answer?data.answer:"The assistant is not available right now.")}
+  if(data&&data.answer){chatHist.push({role:"user",content:q},{role:"assistant",content:data.answer.slice(0,1500)});chatHist=chatHist.slice(-6)}done(data&&data.answer?data.answer:"The assistant is not available right now.")}
  catch(e){done("The assistant is not available right now. Please try again later.")}finally{b.disabled=false}}
 document.addEventListener("input",e=>{if(e.target.id=="q"){e.target.style.height="auto";e.target.style.height=Math.min(e.target.scrollHeight,200)+"px"}});
 document.addEventListener("keydown",e=>{if(e.target.id=="q"&&e.key=="Enter"&&!e.shiftKey&&!e.isComposing){e.preventDefault();$("#qa").click()}});

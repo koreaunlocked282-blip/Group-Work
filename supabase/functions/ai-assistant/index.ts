@@ -8,6 +8,8 @@ import { admin, allow, corsHeaders, fail, ipBucket, limitKey, respond, trustedCl
 
 const MODEL = Deno.env.get('AI_MODEL') ?? 'claude-haiku-5-5'
 const MAX_Q = 600
+const MAX_HISTORY = 6 // earlier messages kept for context; limits cost and what is sent to the API
+const MAX_MSG = 1500
 
 const SYSTEM = `You are the support assistant of Korea Unlocked, a free student project that helps international students in South Korea understand discrimination, their rights and where to find help.
 Rules:
@@ -25,7 +27,7 @@ Deno.serve(async (req) => {
   if (req.method !== 'POST') return fail(405, 'invalid_request', h)
   try {
     const raw = await req.text()
-    if (raw.length > 4000) return fail(413, 'invalid_request', h)
+    if (raw.length > 16000) return fail(413, 'invalid_request', h)
     let body; try { body = JSON.parse(raw) } catch { return fail(400, 'invalid_request', h) }
 
     const ip = trustedClientIp(req)
@@ -45,12 +47,24 @@ Deno.serve(async (req) => {
     const q = typeof body.question === 'string' ? body.question.trim() : ''
     if (q.length < 3 || q.length > MAX_Q) return fail(400, 'invalid_request', h)
 
+    // Short conversation memory: the browser sends the last few messages; nothing is stored here.
+    const hist: { role: 'user' | 'assistant'; content: string }[] = []
+    if (body.history !== undefined) {
+      if (!Array.isArray(body.history) || body.history.length > MAX_HISTORY) return fail(400, 'invalid_request', h)
+      for (const m of body.history) {
+        if (!m || (m.role !== 'user' && m.role !== 'assistant') || typeof m.content !== 'string' || !m.content.trim() || m.content.length > MAX_MSG) return fail(400, 'invalid_request', h)
+        hist.push({ role: m.role, content: m.content.trim() })
+      }
+      // must start with a user turn and alternate, then the new question continues it
+      if (hist.length && (hist[0].role !== 'user' || hist[hist.length - 1].role !== 'assistant' || hist.some((m, i) => i > 0 && m.role === hist[i - 1].role))) return fail(400, 'invalid_request', h)
+    }
+
     const key = Deno.env.get('ANTHROPIC_API_KEY')
     if (!key) throw new Error('config')
     const r = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-      body: JSON.stringify({ model: MODEL, max_tokens: 500, system: SYSTEM, messages: [{ role: 'user', content: q }] }),
+      body: JSON.stringify({ model: MODEL, max_tokens: 500, system: SYSTEM, messages: [...hist, { role: 'user', content: q }] }),
       signal: AbortSignal.timeout(20000),
     })
     if (!r.ok) { console.error('anthropic_status', r.status); return fail(502, 'server_error', h) }
