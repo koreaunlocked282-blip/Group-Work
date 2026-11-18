@@ -1,5 +1,6 @@
 import { supabase, supabaseConfigured } from './lib/supabase.js'
 import './pw-toggle.js'
+import './i18n-ko.js'
 
 // Read by the prototype's inline script. Only public values: URL/anon key live inside the client; the
 // Turnstile SITE key is public by design. No secret of any kind is exposed here.
