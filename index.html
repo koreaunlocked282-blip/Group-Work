@@ -70,6 +70,9 @@ p.lead{color:var(--mut);max-width:60ch;margin:0 0 32px}
 @keyframes open{from{clip-path:inset(0 0 100% 0);opacity:0;transform:translateY(20px)}to{clip-path:inset(0);opacity:1;transform:none}}
 label{display:block;margin:14px 0 4px;color:var(--mut);font-size:.9rem}
 input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px;font:inherit}
+.pw{position:relative}.pw input{padding-right:46px}
+.pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:36px;height:36px;display:grid;place-items:center;padding:0;background:none;border:0;border-radius:8px;color:var(--mut)}
+.pw-eye:hover{color:var(--ink)}.pw-eye:focus-visible{outline:2px solid var(--ink);outline-offset:1px}.pw-eye svg{width:20px;height:20px}
 .x{position:absolute;top:12px;right:14px;background:none;border:0;font-size:1.6rem}
 .btn{margin-top:20px;background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:13px 20px;font-weight:700;width:100%}
 .ghost{background:none;color:var(--ink);border:1px solid var(--line);margin-top:10px}
