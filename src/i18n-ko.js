@@ -83,10 +83,9 @@ const X = {
   'Raw evidence is processed in memory only, never stored, and never shown publicly. The design detects passport, ARC/ID, faces, phone numbers, addresses, account numbers, emails and document numbers with YOLO and OCR (Korean + English), then redacts them before a moderator sees the safe version.':'원본 증거는 메모리에서만 처리되며 저장되지 않고 공개되지도 않습니다. 설계상 YOLO와 OCR(한국어 + 영어)로 여권, 외국인등록증/신분증, 얼굴, 전화번호, 주소, 계좌번호, 이메일, 문서 번호를 탐지한 뒤 가려서, 운영자는 안전한 버전만 보게 됩니다.',
   'Only numbers confirmed in your architecture are listed. The assistant routes legal, emergency and immigration questions to official resources; it does not give legal advice.':'구조상 확인된 번호만 표시합니다. 도우미는 법률, 긴급, 출입국 질문을 공식 자료로 안내하며 법률 자문은 제공하지 않습니다.',
   // login / signup
-  'Email':'이메일','Password':'비밀번호','Remember me':'로그인 상태 유지','Forgot password':'비밀번호 찾기','Continue with Google':'Google로 계속하기','Continue with GitHub':'GitHub로 계속하기',
+  'Email':'이메일','Password':'비밀번호','Remember me':'로그인 상태 유지','Forgot password':'비밀번호 찾기','Continue with Google':'Google로 계속하기',
   'Enter your email and password.':'이메일과 비밀번호를 입력하세요.','Enter a valid email and a password of at least 8 characters.':'올바른 이메일과 8자 이상의 비밀번호를 입력하세요.','At least 8 characters.':'8자 이상.',
   'Google sign-in is not available yet. Please use email and password.':'Google 로그인은 아직 사용할 수 없습니다. 이메일과 비밀번호를 사용하세요.',
-  'GitHub sign-in is not available yet. Please use email and password.':'GitHub 로그인은 아직 사용할 수 없습니다. 이메일과 비밀번호를 사용하세요.',
   'Password reset by email is not available yet.':'이메일을 통한 비밀번호 재설정은 아직 사용할 수 없습니다.',
   'Identity':'신원','Profile':'프로필','Privacy':'개인정보','Ready':'준비 완료','Preferred language':'선호 언어','Student status':'학생 신분',
   'Current student':'재학생','Incoming student':'입학 예정','Recent graduate':'최근 졸업생','Not applicable':'해당 없음','University (optional)':'대학교(선택)','District (optional)':'시·군·구(선택)',
@@ -191,6 +190,7 @@ const X = {
   'You have no reports linked to this account yet. Reports made while signed in appear here.':'이 계정에 연결된 신고가 아직 없습니다. 로그인한 상태에서 제출한 신고가 여기에 표시됩니다.',
   'Report details you wrote stay private. Deleting your data and changing your email are not available yet.':'작성한 신고 내용은 비공개로 유지됩니다. 데이터 삭제와 이메일 변경은 아직 사용할 수 없습니다.',
   'Your account is ready once you confirm it. Then log in.':'인증을 마치면 계정을 사용할 수 있습니다. 그런 다음 로그인하세요.',
+  'Could not start Google sign-in. Please try again or use email and password.':'Google 로그인을 시작할 수 없습니다. 다시 시도하거나 이메일과 비밀번호를 사용하세요.',
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",

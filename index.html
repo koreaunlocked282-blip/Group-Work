@@ -310,7 +310,7 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <label for="le">Email</label><input id="le" type="email" autocomplete="email"><label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password">
 <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="width:auto">Remember me</label>
 <button class="btn" onclick="doLogin(this)">Log in</button><p id="a1" class="note" hidden></p>
-<button class="btn ghost" onclick="soon('a1','Google sign-in is not available yet. Please use email and password.')">Continue with Google</button><button class="btn ghost" onclick="soon('a1','GitHub sign-in is not available yet. Please use email and password.')">Continue with GitHub</button>
+<button class="btn ghost" id="gbtn" type="button" onclick="doGoogle(this)">Continue with Google</button>
 <p><a href="#" onclick="event.preventDefault();soon('a1','Password reset by email is not available yet.')">Forgot password</a></p></div></div>
 
 <div class="ov" id="o-signup" role="dialog" aria-modal="true" aria-label="Create account"><div class="grid-bg"></div><div class="scan"></div>
@@ -547,7 +547,7 @@ var cc="",sc="";function trk(){$("#rg").innerHTML="";$("#rp").innerHTML='<div cl
    if(data.story_status=="approved"||data.story_status=="pending"){const w=dEl("button","Withdraw my public story","btn ghost");w.id="wd";w.type="button";w.onclick=async()=>{w.disabled=true;try{const r=await KU.supabase.functions.invoke("track-case",{body:{action:"withdraw_story",case_code:cc,tracking_secret:sc}});if(r.error)throw 0;put(m,["Your public story was withdrawn. It is no longer shown."]);w.remove()}catch{put(m,["Could not withdraw the story. Please try again."]);w.disabled=false}sc=""};m.after(w)}}
   catch(c){put(m,[ER[c]||ER.server_error])}$("#ts2").value="";$("#tg").disabled=false}}
 
-/* ===== Supabase Auth: email/password only. Google, GitHub and Forgot password stay stubs ===== */
+/* ===== Supabase Auth: email/password and Google. Forgot password stays a stub ===== */
 function setAuthUi(on){const b=document.querySelector("header .pill:not(.fill)"),m=$("#mauth");
  [b,m].forEach(x=>{if(x)x.dataset.i=on?"logout":"login"});
  if(b)b.onclick=on?doLogout:()=>ov("login");
@@ -560,6 +560,14 @@ async function doLogin(b){const m=$("#a1");if(!KU.supabaseConfigured)return need
  const {error}=await KU.supabase.auth.signInWithPassword({email,password:pw});b.disabled=false;$("#lp").value="";
  if(error)return put(m,[error.code==="email_not_confirmed"?"Please confirm your email first. Check your inbox.":error.status===429?"Too many attempts. Please wait a while.":"Email or password is incorrect."]);
  put(m,["Signed in."]);setTimeout(()=>ov(),500)}
+async function doGoogle(b){const m=$("#a1");if(!KU.supabaseConfigured)return need("a1");
+ b.disabled=true;
+ try{const c=KU.supabase;const r=await fetch(c.supabaseUrl+"/auth/v1/settings",{headers:{apikey:c.supabaseKey}});   // public settings: tells us whether Google is switched on
+  const st=r.ok?await r.json():null;
+  if(!st||!st.external||!st.external.google){b.disabled=false;return put(m,["Google sign-in is not available yet. Please use email and password."])}
+  const {error}=await c.auth.signInWithOAuth({provider:"google",options:{redirectTo:location.origin}});
+  if(error)throw error}   // on success the browser leaves for Google
+ catch{b.disabled=false;put(m,["Could not start Google sign-in. Please try again or use email and password."])}}
 async function doLogout(){await KU.supabase.auth.signOut();RD={}}
 async function syncProfile(u){const m=u.user_metadata||{};if(!m.university_id&&!m.district_code)return;   // one-time apply of optional signup choices (own row, RLS)
  const {data}=await KU.supabase.from("profiles").select("university_id,district_code").eq("id",u.id).single();
