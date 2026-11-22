@@ -192,6 +192,7 @@ const X = {
   'Report details you wrote stay private. Deleting your data and changing your email are not available yet.':'작성한 신고 내용은 비공개로 유지됩니다. 데이터 삭제와 이메일 변경은 아직 사용할 수 없습니다.',
   'Your account is ready once you confirm it. Then log in.':'인증을 마치면 계정을 사용할 수 있습니다. 그런 다음 로그인하세요.',
   // ghush-style redesign
+  'Ask the AI assistant':'AI 도우미에게 물어보기',
   "Anonymous reporting":"익명 신고",
   "No account needed":"계정 불필요",
   "Private unless you choose to share":"공유를 선택하지 않으면 비공개",

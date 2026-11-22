@@ -202,6 +202,7 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 .foot button{color:#fff}.foot b{color:var(--yellow)}
 .menu a:hover{color:var(--c)}
 #cur{display:none!important}
+@media(max-width:1060px){header{flex-wrap:wrap}}
 @media(max-width:720px){.strip span+span:before{display:none}.strip{flex-direction:column;align-items:center;gap:2px}header{gap:4px;padding:10px 14px}.logo{white-space:nowrap;font-size:1rem}.logo sup{display:none}.nb,#lang{white-space:nowrap;padding:8px 6px}.pill{padding:9px 11px;font-size:.88rem;white-space:nowrap}h1{font-size:clamp(1.9rem,8.4vw,2.6rem)}}
 </style></head><body>
 <div id="cur" aria-hidden="true"></div>
@@ -213,6 +214,7 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <button class="nb hide-s" onclick="ov('report')" data-i="report">Report</button>
 <a class="nb hide-s" href="#pat-s" data-i="pat">Patterns</a>
 <button class="nb hide-s" onclick="openStories()">Public stories</button>
+<button class="nb hide-s" onclick="ov('chat')" style="font-weight:700">AI assistant</button>
 <button class="nb" id="lang" aria-label="Switch language">한국어</button>
 <button class="pill hide-s" onclick="ov('login')" data-i="login" style="border-color:transparent">Log in</button>
 <button class="pill fill" onclick="ov('signup')" data-i="signup">Create account</button>
@@ -225,7 +227,7 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <p class="kicker"><span>Public pattern ledger</span><span>Aggregates only</span><span>Free student project</span></p>
 <h1 id="t"><span>Someone treated you <em>differently.</em></span><span>You remember <em>every detail.</em></span><span>Now put it <em>on the record.</em></span></h1>
 <p class="sub" data-i="sub">Korea has a pattern you cannot see from one story.</p><p class="sub" data-i="sub2">Report discrimination. Protect your evidence. Understand patterns. Find support.</p>
-<div class="cta"><button class="pill fill" onclick="ov('report')">Report an experience →</button><a class="pill" href="#map-s" data-i="explore">Explore Korea map</a></div>
+<div class="cta"><button class="pill fill" onclick="ov('report')">Report an experience →</button><a class="pill" href="#map-s" data-i="explore">Explore Korea map</a><button class="pill" style="background:var(--yellow)" onclick="ov('chat')">Ask the AI assistant</button></div>
 <div class="trio"><div><small>Anonymous</small><b>No real name needed</b><span>File a report without an account and track it with a case code.</span></div><div><small>Private by default</small><b>You choose what is shared</b><span>Only stories whose authors pick public are ever published.</span></div><div><small>Checked first</small><b>Names and phone numbers removed</b><span>An automatic check runs before any story goes public.</span></div></div>
 <div class="callout"><div><b>Patterns are hard to ignore.</b><br><span>One story is a complaint. Many records expose a system.</span></div><a class="pill fill" href="#flow-s">How it works →</a></div>
 </section>
