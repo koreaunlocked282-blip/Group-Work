@@ -261,6 +261,9 @@ body{background-image:radial-gradient(900px 520px at 88% -8%,rgba(255,218,0,.20)
 .h3d-orb{right:2%;top:2%;width:92px;height:92px;border-radius:50%;border:0;background:linear-gradient(180deg,#cd2e3a 50%,#0047a0 50%);transform:translateZ(120px);animation:h3f 5s ease-in-out -1s infinite;box-shadow:0 26px 30px -14px rgba(0,0,0,.5)}
 .h3d-pin{right:-4%;bottom:6%;padding:10px 14px;transform:translateZ(60px);animation:h3f 8s ease-in-out -3s infinite}
 .h3d-pin b{display:block;font:italic 400 30px/1 Georgia,serif}.h3d-pin small{font:11px "IBM Plex Mono",monospace;color:var(--mut)}
+.h3d-mid em{display:block;height:20px;width:46%;background:var(--ink);margin:2px 0 16px}
+.h3d-chip{padding:11px 16px!important}.h3d-chip u{display:block;width:38px;height:6px;background:#fff;opacity:.85}
+.h3d-pin{width:92px;padding:14px 12px!important}.h3d-pin i{display:block;height:6px;background:#d8d6cd;margin:6px 0}.h3d-pin i.s{width:60%}
 @keyframes h3f{0%,100%{translate:0 0}50%{translate:0 -12px}}
 @keyframes h3g{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.72)}}
 @media(max-width:1240px){.hero>.h3d{display:none}}
@@ -362,7 +365,11 @@ html.js-rv .rv.in{opacity:1;transform:none}
 <svg id="sig" aria-hidden="true"></svg><canvas id="bg" aria-hidden="true"></canvas>
 <div class="h3d" aria-hidden="true"><div class="h3d-in" id="h3d-in">
 <div class="h3d-l h3d-back"></div>
-<div class="h3d-l h3d-mid"><small>KX-••••• · RECEIVED</small><b>Housing / Landlord</b><i></i><i></i><i class="s"></i><div class="h3d-bars"><span style="--h:46%"></span><span style="--h:78%"></span><span style="--h:58%"></span><span style="--h:92%"></span><span style="--h:66%"></span></div></div>
+<div class="h3d-l h3d-mid"><em></em><i></i><i></i><i class="s"></i><div class="h3d-bars"><span style="--h:46%"></span><span style="--h:78%"></span><span style="--h:58%"></span><span style="--h:92%"></span><span style="--h:66%"></span></div></div>
+<div class="h3d-l h3d-chip"><span></span><u></u></div>
+<div class="h3d-l h3d-orb"></div>
+<div class="h3d-l h3d-pin"><i></i><i class="s"></i></div>
+</div></div>
 <div class="h3d-l h3d-chip"><span></span>Anonymous</div>
 <div class="h3d-l h3d-orb"></div>
 <div class="h3d-l h3d-pin"><b>605</b><small>Seoul</small></div>
