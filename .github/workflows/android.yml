@@ -33,11 +33,17 @@ jobs:
       - name: Install Bubblewrap
         run: npm install -g @bubblewrap/cli
 
-      - name: Accept Android SDK licences and point Bubblewrap at the SDK
+      - name: Prepare the Android SDK for Bubblewrap
         run: |
-          yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+          SDK="$ANDROID_SDK_ROOT"
+          CMD="$SDK/cmdline-tools/latest"
+          # Bubblewrap expects the classic <sdk>/tools/bin layout: link the new command-line tools there
+          [ -e "$SDK/tools" ] || sudo ln -s "$CMD" "$SDK/tools"
+          yes | sudo -E "$CMD/bin/sdkmanager" --sdk_root="$SDK" --licenses > /dev/null || true
+          sudo -E "$CMD/bin/sdkmanager" --sdk_root="$SDK" "build-tools;36.1.0" "platforms;android-36" "platform-tools"
+          sudo chmod -R a+rwX "$SDK"
           mkdir -p ~/.bubblewrap
-          printf '{"jdkPath":"%s","androidSdkPath":"%s"}' "$JAVA_HOME" "$ANDROID_SDK_ROOT" > ~/.bubblewrap/config.json
+          printf '{"jdkPath":"%s","androidSdkPath":"%s"}' "$JAVA_HOME" "$SDK" > ~/.bubblewrap/config.json
 
       # A repository secret keeps the same signing key forever (needed for updates and the Play Store).
       # Without it, a test key is created and cached, so test builds can still be updated over each other for a while.
