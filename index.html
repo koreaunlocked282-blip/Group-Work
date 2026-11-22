@@ -2,6 +2,7 @@
 <html lang="en"><head><meta charset="utf-8"><title>Korea Unlocked</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f4f3ef">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="icon" type="image/png" href="/icons/icon-192.png"><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f4f3ef;--bg2:#fff;--bg3:#fff;--ink:#0b0b0a;--mut:#696965;--line:#171715;--soft:#cbc9c1;--yellow:#ffda00;--rep:#b3261e;--pro:#5b3fd0;--ver:#1f5fc4;--ana:#9a5a00;--sup:#1c7a4f;--warn:#c8161d;--serif:"Source Serif 4","Noto Serif KR",Georgia,serif;--mono:"IBM Plex Mono","Noto Sans KR",monospace;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -883,4 +884,5 @@ async function doSignup(){const m=$("#se"),{e,p,lang,stat,uni,dist}=SD;if(!KU.su
 
 tr();addEventListener("DOMContentLoaded",openHash);
 </script><script type="module" src="/src/main.js"></script>
+<script>if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))</script>
 </body></html>

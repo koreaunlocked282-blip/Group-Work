@@ -1,0 +1,84 @@
+name: Android app (APK)
+
+# Wraps the live website as an Android app (Trusted Web Activity) and publishes the APK on the Releases page.
+# Run it from the Actions tab ("Run workflow") or by pushing a change under android/.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['android/**', '.github/workflows/android.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      KS_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD || 'korea-unlocked-test-key' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Install Bubblewrap
+        run: npm install -g @bubblewrap/cli
+
+      - name: Accept Android SDK licences and point Bubblewrap at the SDK
+        run: |
+          yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+          mkdir -p ~/.bubblewrap
+          printf '{"jdkPath":"%s","androidSdkPath":"%s"}' "$JAVA_HOME" "$ANDROID_SDK_ROOT" > ~/.bubblewrap/config.json
+
+      # A repository secret keeps the same signing key forever (needed for updates and the Play Store).
+      # Without it, a test key is created and cached, so test builds can still be updated over each other for a while.
+      - name: Restore cached test keystore
+        if: ${{ secrets.ANDROID_KEYSTORE_B64 == '' }}
+        uses: actions/cache@v4
+        with:
+          path: android/android.keystore
+          key: android-test-keystore-v1
+
+      - name: Prepare keystore
+        working-directory: android
+        env:
+          KS_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KS_B64" ]; then
+            echo "$KS_B64" | base64 -d > android.keystore
+          elif [ ! -f android.keystore ]; then
+            keytool -genkeypair -v -keystore android.keystore -alias koreaunlocked -keyalg RSA -keysize 2048 -validity 10000 \
+              -storepass "$KS_PASS" -keypass "$KS_PASS" -dname "CN=Korea Unlocked, O=Korea Unlocked, C=KR"
+          fi
+          keytool -list -v -keystore android.keystore -alias koreaunlocked -storepass "$KS_PASS" | grep "SHA256:" | tee fingerprint.txt
+
+      - name: Generate the Android project
+        working-directory: android
+        run: bubblewrap update --skipVersionUpgrade --manifest=./twa-manifest.json < /dev/null
+
+      - name: Build the APK
+        working-directory: android
+        env:
+          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ env.KS_PASS }}
+          BUBBLEWRAP_KEY_PASSWORD: ${{ env.KS_PASS }}
+        run: bubblewrap build --skipPwaValidation < /dev/null
+
+      - name: Publish to Releases
+        working-directory: android
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp app-release-signed.apk korea-unlocked.apk
+          FP=$(sed 's/^ *//' fingerprint.txt)
+          gh release delete android-latest --yes --cleanup-tag || true
+          gh release create android-latest korea-unlocked.apk \
+            --title "Korea Unlocked for Android" \
+            --notes "Install: download korea-unlocked.apk on an Android phone and open it (allow installs from this source when asked). Signing certificate $FP"
