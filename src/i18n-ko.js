@@ -32,7 +32,7 @@ const X = {
   'Report an experience':'경험 신고하기','Explore Korea map':'한국 지도 살펴보기','What are students reporting?':'학생들은 무엇을 신고하고 있나요?',
   'Your report moves through five protected stages.':'신고는 보호되는 다섯 단계를 거칩니다.',
   'Select a stage to see what happens and what is still waiting on a live service.':'단계를 선택하면 어떤 일이 일어나는지, 아직 실제 서비스가 필요한 부분이 무엇인지 볼 수 있습니다.',
-  'Explore the pattern':'패턴 살펴보기','Protect the evidence before anyone sees it.':'누구도 보기 전에 증거를 보호합니다.','Help that exists today.':'지금 받을 수 있는 도움.',
+  'Explore the Unlocked Korea':'언락드 코리아 살펴보기','Protect the evidence before anyone sees it.':'누구도 보기 전에 증거를 보호합니다.','Help that exists today.':'지금 받을 수 있는 도움.',
   'Your identity is not the story. The pattern is. No account is needed to report.':'당신의 신원이 이야기의 핵심이 아닙니다. 패턴이 핵심입니다. 신고에 계정은 필요하지 않습니다.',
   'Emergency now? Call':'긴급 상황인가요? 전화하세요:','(police) or':'(경찰) 또는','(fire and ambulance). This site is a prototype and does not replace legal advice or official services.':'(소방·구급). 이 사이트는 프로토타입이며 법률 자문이나 공식 서비스를 대체하지 않습니다.',
   'Emergency:':'긴급 연락:','112 (police) or 119 (fire and ambulance).':'112(경찰) 또는 119(소방·구급).','or':'또는',
