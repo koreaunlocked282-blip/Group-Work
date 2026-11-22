@@ -1,3 +1,4 @@
+import { checkStory } from '../_shared/story-check.ts'
 import { admin, allow, corsHeaders, fail, hashSecret, ipBucket, limitKey, newSecret, normalizeSecret, respond, trustedClientIp } from '../_shared/common.ts'
 
 const CATEGORY = ['university_classroom','workplace_parttime','housing_landlord','public_service_business','racism','language_discrimination','harassment_verbal','online_harassment','immigration_admin','public_transport_space','healthcare_service','other']
@@ -37,7 +38,9 @@ function parse(b: any) {
   if (description.length < 10 || description.length > 5000) return null
   if (!okDate(b.date_from) || !okDate(b.date_to) || b.date_from > b.date_to) return null
   if (consent && visibility !== 'pattern_after_review' && visibility !== 'public_after_review') return null
-  return { category, treatment, description, district, university, workplace, housing, dateFrom: b.date_from, dateTo: b.date_to, resolution, help, visibility, consent, language }
+  const publicText = typeof b.public_text === 'string' ? b.public_text.trim() : ''
+  if (visibility === 'public_after_review' && (publicText.length < 10 || publicText.length > 5000)) return null
+  return { publicText, category, treatment, description, district, university, workplace, housing, dateFrom: b.date_from, dateTo: b.date_to, resolution, help, visibility, consent, language }
 }
 
 async function verifyTurnstile(token: unknown, ip: string) {
@@ -86,6 +89,16 @@ Deno.serve(async (req) => {
 
     if (!(await verifyTurnstile(body.turnstile_token, ip))) return fail(400, 'captcha_failed', h)
 
+    // Public version: checked again on the server (the browser preview is only a convenience).
+    // Clean text is published at once; otherwise the redacted text is held for the moderator. Fail closed.
+    let storyAuto = false, storyText: string | null = null, storyNotes: string | null = null
+    if (p.visibility === 'public_after_review') {
+      const v = await checkStory(p.publicText, Deno.env.get('ANTHROPIC_API_KEY'), Deno.env.get('AI_MODEL') ?? 'claude-haiku-5-5')
+      storyAuto = v.clean && !v.unavailable
+      storyText = storyAuto ? p.publicText : v.cleaned
+      storyNotes = storyAuto ? null : (v.unavailable ? 'Automatic check unavailable. ' : '') + v.reasons.join('; ')
+    }
+
     const secret = userId ? null : newSecret()
     const secretHash = secret ? await hashSecret(normalizeSecret(secret)) : null
 
@@ -95,12 +108,15 @@ Deno.serve(async (req) => {
       _date_from: p.dateFrom, _date_to: p.dateTo, _resolution: p.resolution, _help_sought: p.help,
       _visibility: p.visibility, _pattern_consent: p.consent, _language: p.language,
       _user_id: userId, _secret_hash: secretHash,
+      _public_text: storyText, _public_auto: storyAuto, _check_notes: storyNotes,
     })
     if (error) {
       console.error('submit_report failed', error.code) // code only: no message, no content
       return error.code === '22023' ? fail(400, 'invalid_request', h) : fail(500, 'server_error', h)
     }
-    return respond(201, secret ? { case_code: data, tracking_secret: secret } : { case_code: data }, h)
+    const out: Record<string, unknown> = secret ? { case_code: data, tracking_secret: secret } : { case_code: data }
+    if (p.visibility === 'public_after_review') out.story = storyAuto ? 'published' : 'held'
+    return respond(201, out, h)
   } catch (e) {
     console.error('submit-report error', (e as Error).message === 'config' ? 'config' : 'unexpected')
     return fail(500, 'server_error', h)

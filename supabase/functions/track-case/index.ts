@@ -19,6 +19,17 @@ Deno.serve(async (req) => {
     if (!(await allow(sb, 'track_ip', await limitKey('ip', ipBucket(ip)), 30, '15 minutes')))
       return fail(429, 'rate_limited', h, { 'Retry-After': '900' })
 
+    if (body.action === 'withdraw_story_owner') { // signed-in owner: no tracking secret needed
+      const c = typeof body.case_code === 'string' ? body.case_code.trim().toUpperCase() : ''
+      const tk = (req.headers.get('authorization') ?? '').replace(/^Bearer\s+/i, '').trim()
+      if (!CODE.test(c) || !tk || tk === req.headers.get('apikey') || tk === Deno.env.get('SUPABASE_ANON_KEY')) return fail(400, 'invalid_request', h)
+      const { data: u, error: ue } = await sb.auth.getUser(tk)
+      if (ue || !u.user) return fail(401, 'unauthorized', h)
+      const { data: ok, error: we } = await sb.rpc('withdraw_story', { _case_code: c, _secret_hash: null, _user_id: u.user.id })
+      if (we) { console.error('withdraw failed', we.code); return fail(500, 'server_error', h) }
+      return ok ? respond(200, { withdrawn: true }, h) : fail(404, 'not_found', h)
+    }
+
     const code = typeof body.case_code === 'string' ? body.case_code.trim().toUpperCase() : ''
     const norm = typeof body.tracking_secret === 'string' ? normalizeSecret(body.tracking_secret) : ''
     if (!CODE.test(code) || norm.length !== 20) return fail(400, 'invalid_request', h)
@@ -26,6 +37,12 @@ Deno.serve(async (req) => {
     // per-case limit stops guessing across many IPs
     if (!(await allow(sb, 'track_code', await limitKey('case', code), 10, '1 hour')))
       return fail(429, 'rate_limited', h, { 'Retry-After': '3600' })
+
+    if (body.action === 'withdraw_story') {
+      const { data: ok, error: we } = await sb.rpc('withdraw_story', { _case_code: code, _secret_hash: await hashSecret(norm), _user_id: null })
+      if (we) { console.error('withdraw failed', we.code); return fail(500, 'server_error', h) }
+      return ok ? respond(200, { withdrawn: true }, h) : fail(404, 'not_found', h)
+    }
 
     const { data, error } = await sb.rpc('get_case_for_tracking', { _case_code: code, _secret_hash: await hashSecret(norm) })
     if (error) { console.error('tracking failed', error.code); return fail(500, 'server_error', h) }

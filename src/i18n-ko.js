@@ -167,6 +167,16 @@ const X = {
   'Reports are private by default and only moderators can read them. If you choose to share an anonymous version publicly, a moderator rewrites it before anything is shown, and the AI assistant may show it to other students.':'신고는 기본적으로 비공개이며 운영자만 읽을 수 있습니다. 익명 버전을 공개적으로 공유하기로 하면, 운영자가 다시 작성한 뒤에만 표시되며 AI 도우미가 다른 학생에게 보여 줄 수 있습니다.',
   'Yes, for signed-in users. It can use live totals and stories that their authors chose to share publicly. It cannot read private reports.':'네, 로그인한 사용자에게 제공됩니다. 실시간 합계와 작성자가 공개하기로 선택한 이야기를 사용할 수 있으며, 비공개 신고는 읽을 수 없습니다.',
   'The site is built on Supabase (database and sign-in) and Cloudflare Turnstile (bot check on submit). The AI assistant sends your question and the last few messages of the chat to Anthropic\'s Claude API to get an answer. Nothing from the chat is stored on this site. Do not type personal details. These services process data as described in their own policies.':'이 사이트는 Supabase(데이터베이스 및 로그인)와 Cloudflare Turnstile(제출 시 봇 확인)을 기반으로 합니다. AI 도우미는 답변을 받기 위해 질문과 최근 몇 개의 대화 메시지를 Anthropic의 Claude API로 보냅니다. 대화 내용은 이 사이트에 저장되지 않습니다. 개인 정보를 입력하지 마세요. 이 서비스들은 각자의 정책에 따라 데이터를 처리합니다.',
+  'Public version':'공개 버전','This is the only text that can be shown publicly. Your private description stays private. Before publishing we check it for phone numbers, people\'s names and business details. Places and locations may stay.':'공개적으로 표시될 수 있는 것은 이 글뿐입니다. 비공개 설명은 계속 비공개로 유지됩니다. 게시하기 전에 전화번호, 사람 이름, 업체 정보가 있는지 확인합니다. 장소와 위치는 그대로 둘 수 있습니다.',
+  'Do not include names, phone numbers or exact addresses in your description. You can withdraw a public story at any time from Track an existing case.':'설명에 이름, 전화번호, 정확한 주소를 포함하지 마세요. 공개한 이야기는 언제든 ‘기존 사례 추적’에서 철회할 수 있습니다.',
+  'Please write the public version (at least 10 characters).':'공개 버전을 작성하세요(10자 이상).','Checking the public version...':'공개 버전을 확인하는 중...',
+  'The automatic check is not available right now. If you continue, your public version will be held for review and not shown until it is checked.':'자동 확인을 지금은 사용할 수 없습니다. 계속하면 공개 버전은 검토 대기 상태가 되며, 확인되기 전에는 표시되지 않습니다.','Continue anyway':'그래도 계속',
+  'We found details that should not be public:':'공개하면 안 되는 정보가 발견되었습니다:','Suggested clean version:':'수정된 버전 제안:','Use the clean version':'수정된 버전 사용','Updated. Press Continue to check it again.':'업데이트되었습니다. 계속을 눌러 다시 확인하세요.',
+  'The check could not be done. Please try again.':'확인을 완료할 수 없었습니다. 다시 시도하세요.',
+  'Your public version passed the automatic check and is now published.':'공개 버전이 자동 확인을 통과하여 게시되었습니다.','Your public version is held for review and is not public yet.':'공개 버전이 검토 대기 중이며 아직 공개되지 않았습니다.',
+  'Withdraw my public story':'내 공개 이야기 철회','Withdraw my public story (if any)':'내 공개 이야기 철회(있는 경우)','Your public story was withdrawn. It is no longer shown.':'공개 이야기가 철회되었습니다. 더 이상 표시되지 않습니다.',
+  'Could not withdraw the story. Please try again.':'이야기를 철회하지 못했습니다. 다시 시도하세요.','No public story to withdraw for this report.':'이 신고에는 철회할 공개 이야기가 없습니다.',
+  'Removed a phone number':'전화번호를 삭제했습니다','Removed an email address':'이메일 주소를 삭제했습니다','Removed an ID number':'신분증 번호를 삭제했습니다','Removed a passport-style number':'여권 번호 형식의 숫자를 삭제했습니다','Removed a long number (account or ID)':'긴 숫자(계좌 또는 신분증)를 삭제했습니다',
   'Support intelligence':'지원 정보','Loading...':'불러오는 중...','Account created':'계정이 만들어졌습니다','Account':'계정','Check your email':'이메일을 확인하세요','Go to log in':'로그인으로 이동',
   'Overview':'개요','Your reports':'내 신고 목록','Korean':'한국어','Signed in.':'로그인되었습니다.','You are signed in.':'로그인되어 있습니다.',
   'Email or password is incorrect.':'이메일 또는 비밀번호가 올바르지 않습니다.','Please confirm your email first. Check your inbox.':'먼저 이메일을 인증하세요. 받은편지함을 확인하세요.',
@@ -211,6 +221,7 @@ function tr1(s){
   // aria-labels on map tiles: "Seoul: Low concentration. Select to see districts."
   if((m = s.match(/^(.+?): (Low|Moderate|Elevated|High) concentration\. Select to see districts\.$/)) && place(m[1])) return `${place(m[1])}: 집중도 ${LEVEL[m[2]]}. 선택하면 시·군·구를 볼 수 있습니다.`;
   if((m = s.match(/^(\S+) (\S+): (Low|Moderate|Elevated|High) concentration$/)) && place(m[1]) && place(m[2])) return `${place(m[1])} ${place(m[2])}: 집중도 ${LEVEL[m[3]]}`;
+  if((m = s.match(/^Public story: (.+)$/))) return '공개 이야기: ' + ({Approved:'게시됨',Pending:'검토 대기',Withdrawn:'철회됨',Rejected:'거부됨'}[m[1]] ?? m[1]);
   if((m = s.match(/^Signed in as (.+)$/))) return `${m[1]} 계정으로 로그인됨`;
   if((m = s.match(/^If this address can be registered, we sent a confirmation link to (.+?)\.?$/))) return `이 주소로 가입할 수 있는 경우, ${m[1]} 로 확인 링크를 보냈습니다.`;
   if((m = s.match(/^(Low|Moderate|Elevated|High)$/))) return LEVEL[m[1]];
