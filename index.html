@@ -226,6 +226,18 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 .mod-card textarea{width:100%;min-height:110px;margin:8px 0}
 .mod-card .st-meta{margin-bottom:6px}.mod-card .mod-note{background:#fff7cc;border:1px solid #e0c200;padding:6px 8px;font-size:13px;margin:6px 0}
 .mod-acts{display:flex;flex-wrap:wrap;gap:8px}.mod-card img{max-width:100%;max-height:320px;display:block;margin:8px 0}.mod-card audio{width:100%;margin:8px 0}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));border:1px solid var(--ink);margin-top:16px}
+.tm{display:flex;flex-direction:column;border-right:1px solid var(--ink);background:#fff;margin-right:-1px}
+.tm-mark{height:150px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--ink);position:relative;overflow:hidden}
+.tm-1 .tm-mark{background:var(--yellow,#ffda00)}.tm-2 .tm-mark{background:#0b0b0a;color:#fff}.tm-3 .tm-mark{background:#cd2e3a;color:#fff}
+.tm-mark span{font-family:Georgia,serif;font-style:italic;font-size:92px;line-height:1;transition:transform .3s}
+.tm:hover .tm-mark span{transform:translateY(-6px) rotate(-4deg)}
+.tm-mark:after{content:"";position:absolute;right:-30px;bottom:-30px;width:110px;height:110px;border:1px solid currentColor;border-radius:50%;opacity:.35}
+.tm-b{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;flex:1}
+.tm-b small{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.tm-b h3{margin:0;font-size:30px}.tm-b p{margin:0 0 6px;color:var(--mut);flex:1}
+.fr-box textarea{width:100%;min-height:130px}.fr-box label{display:block;margin-top:10px}
+.mod-card .fr-meta{font-size:13px;color:var(--mut)}
 .tp-out{margin-top:18px}.tp-out h3{margin:0 0 10px;font-size:22px}
 
 .m3d{perspective:1200px;background:#fff;border:1px solid var(--line);overflow:hidden;position:relative}
@@ -303,6 +315,8 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <a class="nb hide-s" href="#map-s" data-i="map">Map</a>
 <button class="nb hide-s" onclick="ov('report')" data-i="report">Report</button>
 <button class="nb hide-s" onclick="ov('chat')" style="font-weight:700">AI assistant</button>
+<button class="nb hide-s" onclick="openFeature()">Feature request</button>
+<a class="nb hide-s" href="#team-s">Meet the team</a>
 <button class="nb" id="lang" aria-label="Switch language">한국어</button>
 <button class="pill hide-s" onclick="ov('login')" data-i="login" style="border-color:transparent">Log in</button>
 <button class="pill fill" onclick="ov('signup')" data-i="signup">Create account</button>
@@ -356,8 +370,15 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <div class="res"><big>1345</big>Immigration contact<br><small>Immigration</small></div>
 </div></section>
 
+<section id="team-s" aria-labelledby="tmh"><h2 id="tmh">Meet <em>the team</em></h2><p class="lead">Korea Unlocked is a free, non-commercial capstone project built by three students who want the next international student in Korea to arrive better informed and less alone.</p>
+<div class="team">
+<article class="tm tm-1"><div class="tm-mark" aria-hidden="true"><span>S</span></div><div class="tm-b"><small>01 · Team leader</small><h3>Sakil</h3><p>Leads the project and keeps the pieces together, from the idea to the live site.</p><a class="btn ghost" href="https://www.facebook.com/rockstar.shakil.31" target="_blank" rel="noopener noreferrer">Facebook ↗</a></div></article>
+<article class="tm tm-2"><div class="tm-mark" aria-hidden="true"><span>S</span></div><div class="tm-b"><small>02 · Team member</small><h3>Sadiya</h3><p>Part of the team behind Korea Unlocked, working so students can speak up safely.</p><a class="btn ghost" href="https://www.facebook.com/athqiya896" target="_blank" rel="noopener noreferrer">Facebook ↗</a></div></article>
+<article class="tm tm-3"><div class="tm-mark" aria-hidden="true"><span>B</span></div><div class="tm-b"><small>03 · Team member</small><h3>Borhan</h3><p>Part of the team behind Korea Unlocked, helping turn real experiences into a clearer picture.</p><a class="btn ghost" href="https://www.facebook.com/borhanuddin.borhan.3386" target="_blank" rel="noopener noreferrer">Facebook ↗</a></div></article>
+</div><p class="note" style="margin-top:14px">Have an idea for the site? Use <b>Feature request</b> in the top bar.</p></section>
+
 <section id="mod-s" aria-labelledby="modh" hidden><h2 id="modh">Moderation <em>desk</em></h2><p class="lead">Only accounts with a moderator or admin role can see this. Review stories held by the automatic check, take down published ones, and approve evidence files before they are shown.</p>
-<div class="mod-tabs" role="tablist"><button type="button" class="on" data-t="pending">Waiting for review</button><button type="button" data-t="approved">Published</button><button type="button" data-t="rejected">Rejected</button><button type="button" data-t="files">Evidence files</button></div>
+<div class="mod-tabs" role="tablist"><button type="button" class="on" data-t="pending">Waiting for review</button><button type="button" data-t="approved">Published</button><button type="button" data-t="rejected">Rejected</button><button type="button" data-t="files">Evidence files</button><button type="button" data-t="feat" id="mod-feat" hidden>Feature requests</button></div>
 <div id="mod-list" aria-live="polite"></div></section>
 
 <section id="faq-s" aria-labelledby="qh"><div class="faq"><div class="qa-l"><p class="qa-k">FAQ / Safety notes</p><h2 id="qh">Questions.</h2><p class="qa-s">Clear answers before you put anything on the public record.</p></div><div class="qa-r"><details name="faq" open><summary><span class="qa-n">01</span><span class="qa-q">Is my report really anonymous?</span><span class="qa-i" aria-hidden="true"></span></summary><p>Yes. You can report without an account or contact details, and you get a case code and a tracking secret instead. Public versions never include your name. Only a hash of your tracking secret is stored, and network addresses are used only in scrambled form to limit abuse.</p></details><details name="faq"><summary><span class="qa-n">02</span><span class="qa-q">Can I name the person who treated me unfairly?</span><span class="qa-i" aria-hidden="true"></span></summary><p>No. Public versions cannot contain names or phone numbers. An automatic check looks for people's names, phone numbers and business details before anything is shown. Describe what happened and where in general terms. Places may stay.</p></details><details name="faq"><summary><span class="qa-n">03</span><span class="qa-q">Is this an official complaint?</span><span class="qa-i" aria-hidden="true"></span></summary><p>No. Korea Unlocked is a free student project, not an official complaint channel, and a story here is not proof of any allegation. For emergencies call 112 or 119, and for immigration questions call 1345.</p></details><details name="faq"><summary><span class="qa-n">04</span><span class="qa-q">Can I take my story down?</span><span class="qa-i" aria-hidden="true"></span></summary><p>Yes. If you shared a public story, open Track an existing case with your case code and tracking secret, or My reports if you have an account, and use the withdraw button. It stops being shown. Deleting all your data is not available yet.</p></details></div></div></section>
@@ -655,8 +676,8 @@ async function rp(i){keep();if(i==1&&!REF){try{await loadRef()}catch{}}
  document.querySelectorAll('#rp input[name="vis"]').forEach(r=>r.onchange=e=>{RD.vis=e.target.value;RD.cn=RD.vis!="private";if($("#pbox"))$("#pbox").hidden=RD.vis!="public_after_review"})
  $("#rn").onclick=async()=>{keep();const m=chk(i);if(m)return put($("#re"),[m]);if(i==4&&RD.vis=="public_after_review"&&!(await pubCheck()))return;last?sendReport():rp(i+1)};
  if(i)$("#rb").onclick=()=>rp(i-1);else $("#tk").onclick=trk}
-function ts(){return new Promise((ok,no)=>{const k=KU.turnstileSiteKey;if(!k)return no("server_error");
- const run=()=>{if(tsw!==null)window.turnstile.remove(tsw);tsw=window.turnstile.render("#ts",{sitekey:k,appearance:"interaction-only",callback:ok,"error-callback":()=>no("captcha_failed"),"expired-callback":()=>no("captcha_failed")})};
+function ts(sel="#ts"){return new Promise((ok,no)=>{const k=KU.turnstileSiteKey;if(!k)return no("server_error");
+ const run=()=>{if(tsw!==null)window.turnstile.remove(tsw);tsw=window.turnstile.render(sel,{sitekey:k,appearance:"interaction-only",callback:ok,"error-callback":()=>no("captcha_failed"),"expired-callback":()=>no("captcha_failed")})};
  if(window.turnstile)return run();const s=document.createElement("script");s.src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";s.async=true;s.onload=run;s.onerror=()=>no("captcha_failed");document.head.append(s)})}
 var EV=[];const EVA=["audio/mpeg","audio/mp4","audio/x-m4a","audio/wav","audio/x-wav","audio/ogg","audio/webm"];
 async function evStrip(f){let b;try{b=await createImageBitmap(f,{imageOrientation:"from-image"})}catch{b=await createImageBitmap(f)}   // re-drawing the picture drops EXIF/GPS and other hidden data
@@ -700,13 +721,30 @@ var cc="",sc="";function trk(){$("#rg").innerHTML="";$("#rp").innerHTML='<div cl
   catch(c){put(m,[ER[c]||ER.server_error])}$("#ts2").value="";$("#tg").disabled=false}}
 
 /* ===== Supabase Auth: email/password and Google. Forgot password stays a stub ===== */
+/* ===== Feature requests ===== */
+function openFeature(){const b=$("#info-body");b.replaceChildren(dEl("h2","Feature request"));
+ const w=dEl("div",null,"fr-box"),l1=dEl("label","What should we add or improve?"),t=document.createElement("textarea"),l2=dEl("label","How can we reach you? (optional)"),c=document.createElement("input"),ts0=dEl("div"),msg=dEl("p",null,"note"),go=dEl("button","Send request","btn");
+ l1.htmlFor=t.id="fr-t";l2.htmlFor=c.id="fr-c";t.maxLength=1000;c.maxLength=120;c.placeholder="Email or social handle. Leave empty to stay anonymous.";ts0.id="fr-ts";msg.hidden=true;go.type="button";
+ w.append(dEl("p","Tell us what would make Korea Unlocked more useful. Do not include private details about other people."),l1,t,l2,c,ts0,msg,go);b.append(w);ov("info");
+ go.onclick=async()=>{const v=t.value.trim();if(v.length<10)return put(msg,["Please write at least 10 characters."]);go.disabled=true;
+  try{if(!KU.supabaseConfigured)throw"server_error";const tok=await ts("#fr-ts");const {error}=await KU.supabase.functions.invoke("feature-request",{body:{body:v,contact:c.value.trim(),turnstile_token:tok}});if(error)throw await ecode(error);
+   w.replaceChildren(dEl("p","Thank you. Your request was sent to the team."))}
+  catch(x){put(msg,[ER[x]||ER.server_error]);go.disabled=false}}}
 /* ===== Moderation desk (moderator/admin roles only; every action is re-checked by the database) ===== */
 var MOD={tab:"pending",ok:false};
 async function modCheck(on){let ok=false;try{if(on&&KU.supabaseConfigured){const {data,error}=await KU.supabase.rpc("is_moderator");ok=!error&&data===true}}catch{}
+ if(ok){try{const {data}=await KU.supabase.rpc("has_role",{_role:"admin"});const f=$("#mod-feat");if(f)f.hidden=data!==true}catch{}}
  MOD.ok=ok;const n=$("#mod-nav"),sc=$("#mod-s");if(n)n.hidden=!ok;if(sc)sc.hidden=!ok;if(ok)modLoad()}
 async function modAct(fn,args,btn){btn.disabled=true;try{const {data,error}=await KU.supabase.rpc(fn,args);if(error||data!==true)throw 0;modLoad()}catch{btn.disabled=false;alert("This action could not be completed.")}}
+async function featLoad(){const L0=$("#mod-list");
+ const {data,error}=await KU.supabase.rpc("admin_feature_queue",{_status:MOD.fs||"new"});if(error)throw 0;
+ const bar=dEl("div",null,"mod-acts");bar.style.marginBottom="10px";[["new","New"],["planned","Planned"],["done","Done"],["dismissed","Dismissed"]].forEach(([k,n])=>{const b=dEl("button",n,(MOD.fs||"new")==k?"btn":"btn ghost");b.type="button";b.onclick=()=>{MOD.fs=k;modLoad()};bar.append(b)});
+ L0.replaceChildren(bar);if(!data.length){L0.append(dEl("p","No requests in this list."));return}
+ data.forEach(x=>{const c=dEl("div",null,"mod-card");c.append(dEl("p",x.body),dEl("p",new Date(x.created_at).toLocaleString()+" · "+(x.contact?"Contact: "+x.contact:"Anonymous"),"fr-meta"));
+  const a=dEl("div",null,"mod-acts");[["planned","Planned"],["done","Done"],["dismissed","Dismiss"],["new","Back to new"]].filter(z=>z[0]!=x.status).forEach(([k,n])=>{const b=dEl("button",n,"btn ghost");b.type="button";b.onclick=()=>modAct("admin_feature_set",{_id:x.id,_status:k},b);a.append(b)});c.append(a);L0.append(c)})}
 async function modLoad(){const L0=$("#mod-list");if(!L0)return;L0.replaceChildren(dEl("p","Loading..."));
- try{if(MOD.tab=="files"){const {data,error}=await KU.supabase.rpc("mod_file_queue",{_limit:20});if(error)throw 0;
+ try{if(MOD.tab=="feat"){await featLoad();return}
+  if(MOD.tab=="files"){const {data,error}=await KU.supabase.rpc("mod_file_queue",{_limit:20});if(error)throw 0;
    if(!data.length){L0.replaceChildren(dEl("p","No evidence files are waiting."));return}
    const r=await KU.supabase.functions.invoke("moderation",{body:{ids:data.map(x=>x.id)}}),urls=(r.data&&r.data.files)||{};L0.replaceChildren();
    data.forEach(x=>{const c=dEl("div",null,"mod-card"),m=dEl("div",null,"st-meta");m.append(dEl("span",x.kind=="image"?"Photo":"Audio","tag"),dEl("span",Math.max(1,Math.round(x.bytes/1024))+" KB"),dEl("span","Story: "+human(x.story_status||"none")));c.append(m);
