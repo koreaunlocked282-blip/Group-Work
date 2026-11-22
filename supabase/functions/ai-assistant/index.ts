@@ -78,7 +78,7 @@ Deno.serve(async (req) => {
     }
 
     // Live, privacy-safe database context. Only two read-only functions are used (no access to the reports table):
-    //  ai_pattern_totals: totals per province and category, only groups with >= 5 reviewed, consented reports
+    //  ai_pattern_totals: totals of published (approved) stories per province and category
     //  ai_search_stories: moderator-approved stories whose authors chose to share them publicly
     let context = ''
     try {
@@ -88,7 +88,7 @@ Deno.serve(async (req) => {
         cat ? sb.rpc('ai_search_stories', { _category: cat, _province: null, _limit: 2 }) : Promise.resolve({ data: [], error: null }),
       ])
       const lines: string[] = []
-      if (tot.error || !tot.data?.length) lines.push('PATTERN_TOTALS: no area has at least 5 reviewed reports yet. State no numbers.')
+      if (tot.error || !tot.data?.length) lines.push('PATTERN_TOTALS: no published stories match yet. State no numbers.')
       else for (const t of tot.data) lines.push(`PATTERN_TOTALS: ${t.province_code} / ${t.category}: ${t.total} reports in total, ${t.last_6m} in the last 6 months, ${t.prev_6m} in the 6 months before`)
       if (!sto.error && sto.data?.length) for (const x of sto.data) lines.push(`APPROVED_STORY (${x.province_code}, ${x.category}) link ${SITE}/#story=${x.id} :: ${String(x.story_text).replace(/\s+/g, ' ')}`)
       else lines.push('APPROVED_STORIES: none available for this topic.')
