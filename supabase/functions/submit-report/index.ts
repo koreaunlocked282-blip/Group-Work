@@ -30,17 +30,19 @@ function parse(b: any) {
   const workplace = b.workplace_category ? one(b.workplace_category, WORKPLACE) : null
   const housing = b.housing_category ? one(b.housing_category, HOUSING) : null
   const university = b.university_id ? (typeof b.university_id === 'string' && UUID.test(b.university_id) ? b.university_id : 'bad') : null
+  const uoRaw = typeof b.university_other === 'string' ? b.university_other.trim() : ''
+  const universityOther = uoRaw ? (uoRaw.length >= 2 && uoRaw.length <= 100 && !b.university_id ? uoRaw : 'bad') : null
   const description = typeof b.description === 'string' ? b.description.trim() : ''
   const district = typeof b.district_code === 'string' && DISTRICT.test(b.district_code) ? b.district_code : null
   const consent = b.pattern_consent === true || visibility === 'public_after_review'
   if (!category || !treatment || !resolution || !help || !visibility || !language || !district) return null
-  if ((b.workplace_category && !workplace) || (b.housing_category && !housing) || university === 'bad') return null
+  if ((b.workplace_category && !workplace) || (b.housing_category && !housing) || university === 'bad' || universityOther === 'bad') return null
   if (description.length < 10 || description.length > 5000) return null
   if (!okDate(b.date_from) || !okDate(b.date_to) || b.date_from > b.date_to) return null
   if (consent && visibility !== 'pattern_after_review' && visibility !== 'public_after_review') return null
   const publicText = typeof b.public_text === 'string' ? b.public_text.trim() : ''
   if (visibility === 'public_after_review' && (publicText.length < 10 || publicText.length > 5000)) return null
-  return { publicText, category, treatment, description, district, university, workplace, housing, dateFrom: b.date_from, dateTo: b.date_to, resolution, help, visibility, consent, language }
+  return { publicText, category, treatment, description, district, university, universityOther, workplace, housing, dateFrom: b.date_from, dateTo: b.date_to, resolution, help, visibility, consent, language }
 }
 
 async function verifyTurnstile(token: unknown, ip: string) {
@@ -104,7 +106,7 @@ Deno.serve(async (req) => {
 
     const { data, error } = await sb.rpc('submit_report', {
       _category: p.category, _treatment: p.treatment, _description: p.description, _district_code: p.district,
-      _university_id: p.university, _workplace_category: p.workplace, _housing_category: p.housing,
+      _university_id: p.university, _university_other: p.universityOther, _workplace_category: p.workplace, _housing_category: p.housing,
       _date_from: p.dateFrom, _date_to: p.dateTo, _resolution: p.resolution, _help_sought: p.help,
       _visibility: p.visibility, _pattern_consent: p.consent, _language: p.language,
       _user_id: userId, _secret_hash: secretHash,

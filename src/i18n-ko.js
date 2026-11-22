@@ -328,6 +328,9 @@ const X = {
   "Share your story":"내 이야기 공유하기",
   "No stories here yet. Share yours so the next student does not have to guess.":"아직 이야기가 없습니다. 다음 학생이 막막하지 않도록 이야기를 들려주세요.",
   "Live counts of published stories":"공개된 이야기의 실시간 집계",
+  "Other (write the name)":"기타 (이름 직접 입력)",
+  "Name of your university":"대학교 이름",
+  "Please write the name of your university.":"대학교 이름을 입력해 주세요.",
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",
