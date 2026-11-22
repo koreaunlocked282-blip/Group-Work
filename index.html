@@ -244,6 +244,35 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 .tp-c p{margin:0 4px 14px;font-size:15px;line-height:1.6;color:#3a3a38;flex:1}
 .tp-c a{margin:0 4px;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--ink);word-break:break-all}
 .tp-cta{margin-top:26px;border:1px solid var(--ink);background:var(--yellow,#ffda00);padding:34px 16px;text-align:center}
+/* ===== depth layer: 3D hero scene, pressable buttons, card lift, scroll reveal ===== */
+body{background-image:radial-gradient(900px 520px at 88% -8%,rgba(255,218,0,.20),transparent 62%),radial-gradient(700px 480px at -6% 40%,rgba(205,46,58,.06),transparent 60%),radial-gradient(800px 520px at 100% 75%,rgba(0,71,160,.06),transparent 60%);background-attachment:fixed}
+.hero>.h3d{position:absolute!important;right:clamp(10px,3vw,60px);top:clamp(70px,11vh,130px);width:min(31vw,400px);height:430px;perspective:1100px;z-index:1;pointer-events:none}
+.h3d-in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:rotateX(calc(12deg + var(--hx,0deg))) rotateY(calc(-24deg + var(--hy,0deg)));will-change:transform}
+.h3d-l{position:absolute;border:1px solid var(--ink);background:#fff;box-shadow:0 22px 34px -18px rgba(0,0,0,.45)}
+.h3d-back{left:14%;top:8%;width:78%;height:78%;background:var(--yellow,#ffda00);transform:translateZ(-70px)}
+.h3d-mid{left:2%;top:16%;width:80%;padding:16px;transform:translateZ(10px);animation:h3f 7s ease-in-out infinite}
+.h3d-mid small{display:block;font:11px "IBM Plex Mono",monospace;letter-spacing:.08em;color:var(--mut)}
+.h3d-mid b{display:block;font-size:20px;margin:8px 0 12px}
+.h3d-mid i{display:block;height:7px;background:#e4e2da;margin:7px 0;width:100%}.h3d-mid i.s{width:62%}
+.h3d-bars{display:flex;align-items:flex-end;gap:7px;height:86px;margin-top:16px;border-bottom:1px solid var(--ink)}
+.h3d-bars span{flex:1;height:var(--h);background:var(--ink);transform-origin:bottom;animation:h3g 3.6s ease-in-out infinite}.h3d-bars span:nth-child(2n){animation-delay:-1.2s;background:#cd2e3a}.h3d-bars span:nth-child(3n){animation-delay:-2.2s;background:#0047a0}
+.h3d-chip{left:-6%;bottom:12%;padding:10px 16px;background:var(--ink);color:#fff;font:600 13px system-ui;display:flex;gap:8px;align-items:center;transform:translateZ(84px);animation:h3f 6s ease-in-out -2s infinite}
+.h3d-chip span{width:9px;height:9px;border-radius:50%;background:var(--yellow,#ffda00)}
+.h3d-orb{right:2%;top:2%;width:92px;height:92px;border-radius:50%;border:0;background:linear-gradient(180deg,#cd2e3a 50%,#0047a0 50%);transform:translateZ(120px);animation:h3f 5s ease-in-out -1s infinite;box-shadow:0 26px 30px -14px rgba(0,0,0,.5)}
+.h3d-pin{right:-4%;bottom:6%;padding:10px 14px;transform:translateZ(60px);animation:h3f 8s ease-in-out -3s infinite}
+.h3d-pin b{display:block;font:italic 400 30px/1 Georgia,serif}.h3d-pin small{font:11px "IBM Plex Mono",monospace;color:var(--mut)}
+@keyframes h3f{0%,100%{translate:0 0}50%{translate:0 -12px}}
+@keyframes h3g{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.72)}}
+@media(max-width:1180px){.hero>.h3d{display:none}}
+.hero .cta .pill,.btn{box-shadow:0 4px 0 rgba(11,11,10,.9);transition:transform .15s,box-shadow .15s,background .2s}
+.hero .cta .pill:hover,.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 0 rgba(11,11,10,.9)}
+.hero .cta .pill:active,.btn:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 rgba(11,11,10,.9)}
+.btn:disabled{box-shadow:none}
+.st-card,.tp-card,.tp-c{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;transform:perspective(900px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));will-change:transform}
+.st-card:hover,.tp-c:hover,.tp-card:hover{box-shadow:0 22px 30px -16px rgba(0,0,0,.4);position:relative;z-index:2}
+html.js-rv .rv{opacity:0;transform:perspective(1100px) translateY(46px) rotateX(9deg);transform-origin:50% 0;transition:opacity .7s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+html.js-rv .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.h3d-l,.h3d-bars span{animation:none!important}html.js-rv .rv{opacity:1;transform:none;transition:none}.st-card,.tp-card,.tp-c{transform:none!important}}
 .tp-out{margin-top:18px}.tp-out h3{margin:0 0 10px;font-size:22px}
 
 .m3d{perspective:1200px;background:#fff;border:1px solid var(--line);overflow:hidden;position:relative}
@@ -331,6 +360,13 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <main>
 <section class="hero" aria-labelledby="t">
 <svg id="sig" aria-hidden="true"></svg><canvas id="bg" aria-hidden="true"></canvas>
+<div class="h3d" aria-hidden="true"><div class="h3d-in" id="h3d-in">
+<div class="h3d-l h3d-back"></div>
+<div class="h3d-l h3d-mid"><small>KX-••••• · RECEIVED</small><b>Housing / Landlord</b><i></i><i></i><i class="s"></i><div class="h3d-bars"><span style="--h:46%"></span><span style="--h:78%"></span><span style="--h:58%"></span><span style="--h:92%"></span><span style="--h:66%"></span></div></div>
+<div class="h3d-l h3d-chip"><span></span>Anonymous</div>
+<div class="h3d-l h3d-orb"></div>
+<div class="h3d-l h3d-pin"><b>605</b><small>Seoul</small></div>
+</div></div>
 <p class="kicker"><span>Public pattern ledger</span><span>Aggregates only</span><span>Free student project</span></p>
 <h1 id="t"><span>Someone treated you <em>differently.</em></span><span>You remember <em>every detail.</em></span><span>Now put it <em>on the record.</em></span></h1>
 <p class="sub" data-i="sub">Korea has a pattern you cannot see from one story.</p><p class="sub" data-i="sub2">Report discrimination. Protect your evidence. Understand patterns. Find support.</p>
@@ -632,6 +668,20 @@ $("#pn").innerHTML='<p style="margin:0">Select a province, then a district.</p>'
  w.addEventListener("pointerleave",()=>{hov=false});
  (function f(t){requestAnimationFrame(f);if(!vis||document.hidden)return;const i=(t-t0)/1000;if(!hov){tx=Math.sin(i*.45)*.75;ty=Math.cos(i*.33)*.5}
   cx+=(tx-cx)*.07;cy+=(ty-cy)*.07;inn.style.setProperty("--ry",(cx*9).toFixed(2)+"deg");inn.style.setProperty("--rx",(-cy*6).toFixed(2)+"deg")})(0)})();
+/* ===== depth layer behaviour ===== */
+(()=>{const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;if(rm)return;
+ document.documentElement.classList.add("js-rv");
+ const secs=[...document.querySelectorAll("main > section")].filter(x=>!x.classList.contains("hero"));secs.forEach(x=>x.classList.add("rv"));
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.06});secs.forEach(x=>io.observe(x));
+ setTimeout(()=>secs.forEach(x=>x.classList.add("in")),6000);   // failsafe: nothing stays hidden
+ const SEL=".st-card,.tp-card,.tp-c";let cur=null;const reset=e=>{if(e){e.style.removeProperty("--tx");e.style.removeProperty("--ty")}};
+ document.addEventListener("pointermove",e=>{if(e.pointerType=="touch")return;const t=e.target.closest&&e.target.closest(SEL);if(cur&&cur!==t)reset(cur);cur=t||null;if(!t)return;
+  const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;t.style.setProperty("--ty",(x*9).toFixed(2)+"deg");t.style.setProperty("--tx",(-y*9).toFixed(2)+"deg")},{passive:true});
+ document.addEventListener("pointerleave",()=>{reset(cur);cur=null},true);
+ const h=document.querySelector(".hero"),hi=document.getElementById("h3d-in");if(h&&hi){let tx=0,ty=0,cx=0,cy=0,over=false,vis=true;
+  new IntersectionObserver(es=>{vis=es[0].isIntersecting}).observe(h);
+  h.addEventListener("pointermove",e=>{if(e.pointerType=="touch")return;const r=h.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*2;ty=((e.clientY-r.top)/r.height-.5)*2;over=true});h.addEventListener("pointerleave",()=>{over=false});
+  (function f(t){requestAnimationFrame(f);if(!vis||document.hidden)return;if(!over){tx=Math.sin(t/2200)*.6;ty=Math.cos(t/2900)*.4}cx+=(tx-cx)*.06;cy+=(ty-cy)*.06;hi.style.setProperty("--hy",(cx*12).toFixed(2)+"deg");hi.style.setProperty("--hx",(-cy*8).toFixed(2)+"deg")})(0)}})();
 /* hero signal */
 (()=>{const s=$("#sig");s.setAttribute("viewBox","0 0 400 520");s.setAttribute("preserveAspectRatio","xMaxYMid slice");const pts=cells.filter((c,i)=>i%5==0);let h="";pts.forEach((c,i)=>{const k=S[i%5][1];h+='<circle cx="'+c.x+'" cy="'+c.y+'" r="2" fill="var('+k+')"><animate attributeName="opacity" values=".2;1;.2" dur="'+(2+i%4)+'s" repeatCount="indefinite"/></circle>'});s.innerHTML=h;
 addEventListener("pointermove",e=>{s.style.transform="translate("+(e.clientX/innerWidth-.5)*-20+"px,"+(e.clientY/innerHeight-.5)*-20+"px)";const c=$("#cur");c.style.left=e.clientX+"px";c.style.top=e.clientY+"px";const t=e.target.closest("button,a,.tl");c.style.width=c.style.height=t?"34px":"10px"})})();
