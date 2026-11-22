@@ -363,11 +363,13 @@ async function openStories(){ov("stories");STO.off=0;const L0=$("#st-list");L0.r
   top.forEach(([k,n])=>{const d=dEl("div",null,"st-stat");d.append(dEl("b",String(n)),dEl("span",catL(k)));const bar=dEl("div",null,"st-bar"),i=dEl("i");i.style.width=(tot?Math.round(n/tot*100):0)+"%";bar.append(i);d.append(bar);st.append(d)})}
  catch{$("#st-stats").replaceChildren()}
  loadStories(true)}
+function devId(){const mk=()=>[...crypto.getRandomValues(new Uint8Array(16))].map(b=>b.toString(16).padStart(2,"0")).join("");
+ try{let d=localStorage.getItem("ku_dev");if(!/^[0-9a-f]{32}$/.test(d||"")){d=mk();localStorage.setItem("ku_dev",d)}return d}catch{return window._kd||(window._kd=mk())}}
 function cfDone(id){try{return JSON.parse(localStorage.getItem("ku_conf")||"[]").includes(id)}catch{return false}}
 function cfMark(id){try{const a=JSON.parse(localStorage.getItem("ku_conf")||"[]");a.push(id);localStorage.setItem("ku_conf",JSON.stringify(a.slice(-300)))}catch{}}
 function cfBox(id,n){const w=dEl("div",null,"st-conf"),b=dEl("button",null),c=dEl("b",String(n||0));b.type="button";
  const set=d=>{b.textContent=d?"✓ Confirmed":"▲ Confirm this report";b.disabled=d;w.classList.toggle("done",d)};set(cfDone(id));
- b.onclick=async()=>{b.disabled=true;try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.functions.invoke("confirm-story",{body:{story_id:id}});if(error||!data||typeof data.confirmations!="number")throw 0;c.textContent=String(data.confirmations);cfMark(id);set(true)}catch{b.textContent="Could not confirm. Try again.";setTimeout(()=>set(false),2500)}};
+ b.onclick=async()=>{b.disabled=true;try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.functions.invoke("confirm-story",{body:{story_id:id,device:devId()}});if(error||!data||typeof data.confirmations!="number")throw 0;c.textContent=String(data.confirmations);cfMark(id);set(true)}catch{b.textContent="Could not confirm. Try again.";setTimeout(()=>set(false),2500)}};
  w.append(b,c);return w}
 async function loadStories(reset){const L0=$("#st-list"),more=$("#st-more");if(reset){STO.off=0;L0.replaceChildren(dEl("p","Loading..."))}
  try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("list_public_stories",{_category:$("#st-c").value||null,_province:$("#st-p").value||null,_limit:12,_offset:STO.off,_sort:$("#st-s").value});if(error)throw 0;
