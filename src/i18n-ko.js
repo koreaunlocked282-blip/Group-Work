@@ -244,7 +244,7 @@ const X = {
   "Yes. You can attach up to 4 photos or audio recordings (10 MB each) when you report. Files are private and only moderators can open them. If you share a public version, you can let a moderator show the files with it. Do not include other people's personal details.":"네. 신고할 때 사진이나 음성 녹음을 최대 4개(각 10MB)까지 첨부할 수 있습니다. 파일은 비공개이며 운영자만 열 수 있습니다. 공개 버전을 공유하면 운영자가 파일을 함께 보여 주도록 허용할 수 있습니다. 다른 사람의 개인정보는 넣지 마세요.",
   "It is checked automatically for names, phone numbers and business details before it is shown. You will not be named. The AI assistant may show published stories to other students.":"표시되기 전에 이름, 전화번호, 업체 정보가 있는지 자동으로 검사됩니다. 작성자의 이름은 공개되지 않습니다. AI 도우미가 게시된 이야기를 다른 학생에게 보여 줄 수 있습니다.",
   "This anonymous story was shared by its author and checked automatically. It is not proof of any allegation. For help, see the Support section.":"이 익명 이야기는 작성자가 공유했고 자동 검사를 거쳤습니다. 어떤 주장의 증거도 아닙니다. 도움이 필요하면 지원 섹션을 보세요.",
-  "The pale shape behind the tiles is South Korea's coastline (Natural Earth, public domain). Move your mouse or finger over the map to tilt it.":"타일 뒤의 옅은 모양은 대한민국의 해안선입니다(Natural Earth, 퍼블릭 도메인). 마우스나 손가락을 지도 위에서 움직이면 지도가 기울어집니다.",
+  "Behind the tiles are the Taegukgi (South Korea's flag, drawn as an illustration) and the country's coastline (Natural Earth, public domain). Move your mouse or finger over the map to tilt it.":"타일 뒤에는 태극기(일러스트로 그린 것)와 대한민국의 해안선(Natural Earth, 퍼블릭 도메인)이 있습니다. 마우스나 손가락을 지도 위에서 움직이면 지도가 기울어집니다.",
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",
