@@ -219,6 +219,13 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 .tp-card .tp-n{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
 .tp-card .tp-t{font-size:19px;font-weight:600;line-height:1.2}
 .tp-card .tp-c{font-family:"IBM Plex Mono",monospace;font-size:12px}
+.mod-tabs{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--ink);margin:14px 0}
+.mod-tabs button{all:unset;cursor:pointer;padding:10px 16px;border-right:1px solid var(--ink);background:#fff;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.mod-tabs button:last-child{border-right:0}.mod-tabs button.on{background:#0b0b0a;color:#fff}.mod-tabs button:hover:not(.on){background:var(--yellow,#ffda00)}
+.mod-card{border:1px solid var(--ink);background:#fff;padding:14px;margin-bottom:12px}
+.mod-card textarea{width:100%;min-height:110px;margin:8px 0}
+.mod-card .st-meta{margin-bottom:6px}.mod-card .mod-note{background:#fff7cc;border:1px solid #e0c200;padding:6px 8px;font-size:13px;margin:6px 0}
+.mod-acts{display:flex;flex-wrap:wrap;gap:8px}.mod-card img{max-width:100%;max-height:320px;display:block;margin:8px 0}.mod-card audio{width:100%;margin:8px 0}
 .tp-out{margin-top:18px}.tp-out h3{margin:0 0 10px;font-size:22px}
 
 .m3d{perspective:1200px;background:#fff;border:1px solid var(--line);overflow:hidden;position:relative}
@@ -295,7 +302,7 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <button class="nb" onclick="ov('menu')" aria-haspopup="dialog" data-i="menu">Menu</button>
 <a class="nb hide-s" href="#map-s" data-i="map">Map</a>
 <button class="nb hide-s" onclick="ov('report')" data-i="report">Report</button>
-<a class="nb hide-s" href="#pat-s" data-i="pat">Topics</a>
+<a class="nb hide-s" href="#pat-s" data-i="pat">Topics</a><a class="nb hide-s" href="#mod-s" id="mod-nav" hidden>Moderation</a>
 <button class="nb hide-s" onclick="openStories()">Public stories</button>
 <button class="nb hide-s" onclick="ov('chat')" style="font-weight:700">AI assistant</button>
 <button class="nb" id="lang" aria-label="Switch language">한국어</button>
@@ -350,6 +357,10 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <div class="res"><big>119</big>Fire and medical emergency<br><small>Korea, emergency</small></div>
 <div class="res"><big>1345</big>Immigration contact<br><small>Immigration</small></div>
 </div></section>
+
+<section id="mod-s" aria-labelledby="modh" hidden><h2 id="modh">Moderation <em>desk</em></h2><p class="lead">Only accounts with a moderator or admin role can see this. Review stories held by the automatic check, take down published ones, and approve evidence files before they are shown.</p>
+<div class="mod-tabs" role="tablist"><button type="button" class="on" data-t="pending">Waiting for review</button><button type="button" data-t="approved">Published</button><button type="button" data-t="rejected">Rejected</button><button type="button" data-t="files">Evidence files</button></div>
+<div id="mod-list" aria-live="polite"></div></section>
 
 <section id="faq-s" aria-labelledby="qh"><div class="faq"><div class="qa-l"><p class="qa-k">FAQ / Safety notes</p><h2 id="qh">Questions.</h2><p class="qa-s">Clear answers before you put anything on the public record.</p></div><div class="qa-r"><details name="faq" open><summary><span class="qa-n">01</span><span class="qa-q">Is my report really anonymous?</span><span class="qa-i" aria-hidden="true"></span></summary><p>Yes. You can report without an account or contact details, and you get a case code and a tracking secret instead. Public versions never include your name. Only a hash of your tracking secret is stored, and network addresses are used only in scrambled form to limit abuse.</p></details><details name="faq"><summary><span class="qa-n">02</span><span class="qa-q">Can I name the person who treated me unfairly?</span><span class="qa-i" aria-hidden="true"></span></summary><p>No. Public versions cannot contain names or phone numbers. An automatic check looks for people's names, phone numbers and business details before anything is shown. Describe what happened and where in general terms. Places may stay.</p></details><details name="faq"><summary><span class="qa-n">03</span><span class="qa-q">Is this an official complaint?</span><span class="qa-i" aria-hidden="true"></span></summary><p>No. Korea Unlocked is a free student project, not an official complaint channel, and a story here is not proof of any allegation. For emergencies call 112 or 119, and for immigration questions call 1345.</p></details><details name="faq"><summary><span class="qa-n">04</span><span class="qa-q">Can I take my story down?</span><span class="qa-i" aria-hidden="true"></span></summary><p>Yes. If you shared a public story, open Track an existing case with your case code and tracking secret, or My reports if you have an account, and use the withdraw button. It stops being shown. Deleting all your data is not available yet.</p></details></div></div></section>
 </main>
@@ -691,13 +702,40 @@ var cc="",sc="";function trk(){$("#rg").innerHTML="";$("#rp").innerHTML='<div cl
   catch(c){put(m,[ER[c]||ER.server_error])}$("#ts2").value="";$("#tg").disabled=false}}
 
 /* ===== Supabase Auth: email/password and Google. Forgot password stays a stub ===== */
+/* ===== Moderation desk (moderator/admin roles only; every action is re-checked by the database) ===== */
+var MOD={tab:"pending",ok:false};
+async function modCheck(on){let ok=false;try{if(on&&KU.supabaseConfigured){const {data,error}=await KU.supabase.rpc("is_moderator");ok=!error&&data===true}}catch{}
+ MOD.ok=ok;const n=$("#mod-nav"),sc=$("#mod-s");if(n)n.hidden=!ok;if(sc)sc.hidden=!ok;if(ok)modLoad()}
+async function modAct(fn,args,btn){btn.disabled=true;try{const {data,error}=await KU.supabase.rpc(fn,args);if(error||data!==true)throw 0;modLoad()}catch{btn.disabled=false;alert("This action could not be completed.")}}
+async function modLoad(){const L0=$("#mod-list");if(!L0)return;L0.replaceChildren(dEl("p","Loading..."));
+ try{if(MOD.tab=="files"){const {data,error}=await KU.supabase.rpc("mod_file_queue",{_limit:20});if(error)throw 0;
+   if(!data.length){L0.replaceChildren(dEl("p","No evidence files are waiting."));return}
+   const r=await KU.supabase.functions.invoke("moderation",{body:{ids:data.map(x=>x.id)}}),urls=(r.data&&r.data.files)||{};L0.replaceChildren();
+   data.forEach(x=>{const c=dEl("div",null,"mod-card"),m=dEl("div",null,"st-meta");m.append(dEl("span",x.kind=="image"?"Photo":"Audio","tag"),dEl("span",Math.max(1,Math.round(x.bytes/1024))+" KB"),dEl("span","Story: "+human(x.story_status||"none")));c.append(m);
+    const u=urls[x.id];if(u){const e=document.createElement(x.kind=="image"?"img":"audio");e.src=u.url;if(x.kind=="image")e.alt="Evidence photo awaiting review";else e.controls=true;c.append(e)}else c.append(dEl("p","Preview unavailable."));
+    const a=dEl("div",null,"mod-acts"),ap=dEl("button","Approve for the public story","btn"),rj=dEl("button","Reject","btn ghost");ap.type=rj.type="button";ap.onclick=()=>modAct("mod_review_file",{_id:x.id,_action:"approve"},ap);rj.onclick=()=>modAct("mod_review_file",{_id:x.id,_action:"reject"},rj);a.append(ap,rj);c.append(a);L0.append(c)});return}
+  const {data,error}=await KU.supabase.rpc("mod_story_queue",{_status:MOD.tab,_limit:20,_offset:0});if(error)throw 0;
+  if(!data.length){L0.replaceChildren(dEl("p",MOD.tab=="pending"?"Nothing is waiting for review.":"Nothing here yet."));return}
+  L0.replaceChildren();
+  data.forEach(x=>{const c=dEl("div",null,"mod-card"),m=dEl("div",null,"st-meta");m.append(dEl("span",catL(x.category),"tag"),dEl("span",x.province_code?human(x.province_code):"Area unknown"),dEl("span",new Date(x.created_at).toLocaleDateString()));
+   if(x.status=="approved")m.append(dEl("span",x.auto_published?"Auto-published":"Approved by a moderator"),dEl("span",x.confirm_count+" confirmations"));
+   if(x.files)m.append(dEl("span",x.files+" file(s) waiting"));c.append(m);
+   if(x.check_notes)c.append(dEl("div","Automatic check: "+x.check_notes,"mod-note"));
+   const t=document.createElement("textarea");t.value=x.story_text;t.maxLength=5000;t.setAttribute("aria-label","Story text");c.append(t);
+   const a=dEl("div",null,"mod-acts");
+   if(x.status!="approved"){const ap=dEl("button","Approve and publish","btn");ap.type="button";ap.onclick=()=>modAct("mod_review_story",{_report_id:x.report_id,_action:"approve",_text:t.value!==x.story_text?t.value:null},ap);a.append(ap)}
+   else{const sv=dEl("button","Save edit","btn ghost");sv.type="button";sv.onclick=()=>modAct("mod_review_story",{_report_id:x.report_id,_action:"approve",_text:t.value},sv);a.append(sv)}
+   if(x.status!="rejected"){const rj=dEl("button",x.status=="approved"?"Take down":"Reject","btn ghost");rj.type="button";rj.onclick=()=>modAct("mod_review_story",{_report_id:x.report_id,_action:"reject"},rj);a.append(rj)}
+   c.append(a);L0.append(c)})}
+ catch{L0.replaceChildren(dEl("p","The moderation list could not be loaded."))}}
+document.querySelector("#mod-s .mod-tabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;MOD.tab=b.dataset.t;document.querySelectorAll("#mod-s .mod-tabs button").forEach(x=>x.classList.toggle("on",x===b));modLoad()};
 function setAuthUi(on){const b=document.querySelector("header .pill:not(.fill)"),m=$("#mauth");
  [b,m].forEach(x=>{if(x)x.dataset.i=on?"logout":"login"});
  if(b)b.onclick=on?doLogout:()=>ov("login");
  if(m)m.onclick=e=>{e.preventDefault();on?doLogout():setTimeout(()=>ov("login"),50)};   // menu closes via the nav's own onclick
  const d=$("#mdash");if(d)d.hidden=!on;
  document.querySelectorAll('[data-i="signup"]').forEach(x=>x.hidden=on);   // signed-in users do not need Create account
- tr()}
+ setTimeout(()=>modCheck(on),0);tr()}
 async function doLogin(b){const m=$("#a1");if(!KU.supabaseConfigured)return need("a1");
  const email=$("#le").value.trim(),pw=$("#lp").value;if(!email||!pw)return put(m,["Enter your email and password."]);
  localStorage.setItem("ku_remember",$("#o-login input[type=checkbox]").checked?"1":"0");b.disabled=true;
