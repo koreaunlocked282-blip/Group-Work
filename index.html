@@ -214,9 +214,10 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 .st-card.demo{border-style:dashed}
 .m3d{perspective:1200px;background:#fff;border:1px solid var(--line);overflow:hidden;position:relative}
 .m3d-in{position:relative;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));will-change:transform}
-#kf{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.32;transform:translateZ(-80px) scale(1.2)}
+#kf{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:1;transform:translateZ(-80px) scale(1.2)}
+#map .tl rect:not(.tl-side){fill-opacity:.78}
 #kr{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;transform:translateZ(-38px) scale(1.05);transition:opacity .4s}
-#kr path{fill:#ebe9e0;stroke:#c4c1b4;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+#kr path{fill:rgba(255,255,255,.35);stroke:#fff;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round}
 .m3d #map{background:transparent!important;border:0!important;position:relative;max-height:78vh;display:block}
 .m3d.drill #kr{opacity:0}
 .tl-side{filter:brightness(.55)}
