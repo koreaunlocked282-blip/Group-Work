@@ -313,6 +313,12 @@ const X = {
   "Works on Korea Unlocked so international students can speak up safely and be heard.":"유학생들이 안전하게 목소리를 내고 그 목소리가 전달되도록 Korea Unlocked를 만듭니다.",
   "Helps turn real experiences of students in Korea into a clearer picture for the next ones.":"한국 유학생들의 실제 경험이 다음 학생들에게 더 선명한 그림이 되도록 돕습니다.",
   "Send a feature request →":"기능 요청 보내기 →",
+  "Team leader · Full-stack developer":"팀장 · 풀스택 개발자",
+  "AI assistant developer":"AI 어시스턴트 개발자",
+  "Originator of the idea · Designer":"아이디어 제안자 · 디자이너",
+  "Leads the team and serves as full-stack developer, responsible for building and publishing the platform from front end to back end.":"팀을 이끄는 팀장이자 풀스택 개발자로서, 프런트엔드부터 백엔드까지 플랫폼의 구축과 공개를 담당했습니다.",
+  "Developed the cloud-based AI assistant, which guides international students to reliable information and official support.":"유학생에게 신뢰할 수 있는 정보와 공식 지원을 안내하는 클라우드 기반 AI 어시스턴트를 개발했습니다.",
+  "Conceived the idea for Korea Unlocked and carried out the complete design of the platform.":"Korea Unlocked의 아이디어를 구상하고 플랫폼의 전체 디자인을 맡았습니다.",
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",
