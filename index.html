@@ -560,7 +560,7 @@ async function doLogin(b){const m=$("#a1");if(!KU.supabaseConfigured)return need
  const {error}=await KU.supabase.auth.signInWithPassword({email,password:pw});b.disabled=false;$("#lp").value="";
  if(error)return put(m,[error.code==="email_not_confirmed"?"Please confirm your email first. Check your inbox.":error.status===429?"Too many attempts. Please wait a while.":"Email or password is incorrect."]);
  put(m,["Signed in."]);setTimeout(()=>ov(),500)}
-async function doGoogle(b){const m=$("#a1");if(!KU.supabaseConfigured)return need("a1");
+async function doGoogle(b,id){const m=$("#"+(id||"a1"));if(!KU.supabaseConfigured)return need("a1");
  b.disabled=true;
  try{const c=KU.supabase;const r=await fetch(c.supabaseUrl+"/auth/v1/settings",{headers:{apikey:c.supabaseKey}});   // public settings: tells us whether Google is switched on
   const st=r.ok?await r.json():null;
@@ -586,7 +586,7 @@ async function su(i){sk();if(i==1&&!REF){try{await loadRef()}catch{}}
   "<p>Reports get a pseudonymous case ID. Only aggregated, district-level patterns can ever be shown, and only at k ≥ 5. You will be able to delete your data.</p><p class='note'>Case IDs and k ≥ 5 aggregation are built into the reporting service. Deleting your data is not available yet.</p>",
   "<p>Create your account. We will email you a link to confirm it before you can log in.</p>"];
  $("#sg").innerHTML=S.map((s,j)=>'<i style="background:'+(j<=i?"var("+s[1]+")":"")+'"></i>').join("");const last=i==3;
- $("#sp").innerHTML='<div class="pane"><h2 style="font-size:1.8rem">'+SU[i][0]+"</h2>"+B[i]+'<p id="se" class="note" hidden></p><button class="btn" id="nx">'+(last?"Create account":"Continue")+"</button>"+(i?'<button class="btn ghost" id="bk">Back</button>':"")+"</div>";
+ $("#sp").innerHTML='<div class="pane"><h2 style="font-size:1.8rem">'+SU[i][0]+"</h2>"+B[i]+'<p id="se" class="note" hidden></p><button class="btn" id="nx">'+(last?"Create account":"Continue")+"</button>"+(i?'<button class="btn ghost" id="bk">Back</button>':'<button class="btn ghost" type="button" onclick="doGoogle(this,\'se\')">Continue with Google</button>')+"</div>";
  document.querySelectorAll("#sp [data-s]").forEach(e=>{if(SD[e.dataset.s]!=null)e.value=SD[e.dataset.s]});
  $("#nx").onclick=()=>{sk();if(i==0&&!(/^\S+@\S+\.\S+$/.test((SD.e||"").trim())&&(SD.p||"").length>=8))return put($("#se"),["Enter a valid email and a password of at least 8 characters."]);last?doSignup():su(i+1)};
  if(i)$("#bk").onclick=()=>su(i-1)}
