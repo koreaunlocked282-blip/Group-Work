@@ -192,6 +192,13 @@ const X = {
   'Report details you wrote stay private. Deleting your data and changing your email are not available yet.':'작성한 신고 내용은 비공개로 유지됩니다. 데이터 삭제와 이메일 변경은 아직 사용할 수 없습니다.',
   'Your account is ready once you confirm it. Then log in.':'인증을 마치면 계정을 사용할 수 있습니다. 그런 다음 로그인하세요.',
   // ghush-style redesign
+  "▲ Confirm this report":"▲ 이 신고 확인하기",
+  "✓ Confirmed":"✓ 확인함",
+  "Could not confirm. Try again.":"확인하지 못했습니다. 다시 시도해 주세요.",
+  "Latest":"최신순",
+  "Most confirmed":"확인 많은 순",
+  "Sort":"정렬",
+  "Anonymous, unverified stories shared by their authors. They are not proof of any allegation and this is not an official complaint channel. If a story matches something you have experienced or know to be true, you can confirm it. Confirmations come from other readers and are not verification.":"작성자가 공유한 익명의 미확인 이야기입니다. 어떤 주장의 증거가 아니며, 공식 신고 창구도 아닙니다. 본인이 겪었거나 사실이라고 아는 내용이라면 확인할 수 있습니다. 확인은 다른 독자들이 남기는 것이며 검증이 아닙니다.",
   'Ask the AI assistant':'AI 도우미에게 물어보기',
   "Anonymous reporting":"익명 신고",
   "No account needed":"계정 불필요",
