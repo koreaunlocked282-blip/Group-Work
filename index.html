@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><title>Korea Unlocked</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f4f3ef">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#07090C;--bg2:#0B0F14;--bg3:#10151C;--ink:#EEF0F2;--mut:#8C97A6;--line:#222B37;--rep:#FF6B57;--pro:#9B7BFF;--ver:#4C9BFF;--ana:#FFB03A;--sup:#3DDC97;--warn:#E5484D;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#f4f3ef;--bg2:#fff;--bg3:#fff;--ink:#0b0b0a;--mut:#696965;--line:#171715;--soft:#cbc9c1;--yellow:#ffda00;--rep:#b3261e;--pro:#5b3fd0;--ver:#1f5fc4;--ana:#9a5a00;--sup:#1c7a4f;--warn:#c8161d;--serif:"Source Serif 4","Noto Serif KR",Georgia,serif;--mono:"IBM Plex Mono","Noto Sans KR",monospace;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
 *,*:before,*:after{box-sizing:inherit}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "Familjen Grotesk","Noto Sans KR",sans-serif;overflow-x:hidden}
@@ -122,16 +123,98 @@ html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
 .cc{border:1px solid var(--line);background:var(--bg2);border-radius:14px;padding:18px;text-align:left;border-top:3px solid var(--c)}.cc b{display:block;font-size:1.2rem}.cc small{color:var(--mut)}
 .menu a{font-size:clamp(2rem,7vw,4rem)!important}
 .ov .grid-bg{pointer-events:none}
+
+/* ghush-style theme: paper background, black ink, yellow highlight, hard borders */
+body{font-family:Helvetica,"Helvetica Neue","Noto Sans KR",sans-serif;font-size:16px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.strip{background:var(--bg);border-bottom:1px solid var(--soft);text-align:center;font:500 .78rem/1.4 var(--mono);padding:9px 14px;display:flex;flex-wrap:wrap;gap:2px 18px;justify-content:center}
+.strip span+span:before{content:"\00b7";margin-right:18px}
+header{position:sticky;top:0;left:auto;right:auto;background:var(--bg);border-bottom:1px solid var(--line);padding:12px clamp(16px,3vw,36px);gap:6px}
+.logo{font-size:1.15rem;letter-spacing:-.03em}.logo sup{font:400 .7rem var(--serif);margin-left:3px}
+.nb{border-radius:0;padding:8px 10px}.nb:hover{border-color:transparent;text-decoration:underline;text-underline-offset:4px}
+.pill{border-radius:0;padding:10px 16px;font-weight:700;border-color:var(--ink)}
+.pill.fill{background:var(--ink);color:#fff}
+#exit{border-radius:0;background:var(--yellow);border:1px solid var(--ink);color:#000;font-weight:700}#exit:hover{background:var(--warn);color:#fff}
+section{padding:clamp(44px,7vw,88px) clamp(16px,3vw,36px);max-width:1320px}
+main>section+section{border-top:1px solid var(--soft)}
+.hero{min-height:0;display:block;padding-top:clamp(36px,6vw,72px);padding-bottom:24px;border:0!important}
+#sig{display:none}
+.kicker{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;font:500 .8rem var(--mono);margin:0 0 26px}
+.kicker span:first-child:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ink);margin-right:10px}
+h1{font-size:clamp(2.1rem,5.4vw,3.8rem);line-height:1.38;font-weight:400;letter-spacing:-.015em;max-width:none}
+h1 span{display:block;overflow:visible}
+em{font-family:var(--serif);font-style:italic;font-weight:400}
+h1 em{background:var(--yellow);color:#000;padding:0 .2em;margin-left:.08em}
+.sub{color:var(--ink);max-width:58ch;font-size:clamp(1.05rem,1.8vw,1.2rem);margin:26px 0 10px}.sub+.sub{color:var(--mut);font-size:1rem!important;margin-top:0!important}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.cta .pill{text-decoration:none;display:inline-block;padding:14px 20px}
+.cta .pill:not(.fill){background:transparent;border-color:var(--mut)}
+h2{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:400;letter-spacing:-.01em;line-height:1.3;max-width:none;margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.ov h2{border-bottom:0;padding-bottom:0}
+p.lead{color:var(--mut)}
+.trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border:1px solid var(--line);margin:44px 0 18px}
+.trio>div{padding:22px;border-right:1px solid var(--soft)}.trio>div:last-child{border-right:0}
+.trio small{display:block;font:500 .78rem var(--mono);color:var(--mut)}
+.trio b{display:inline-block;margin:10px 0 8px;font-size:1.1rem;background:var(--yellow);color:#000;padding:0 .3em}
+.trio span{display:block;color:var(--mut)}
+.callout{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;border:1px solid var(--line);background:#fff;padding:22px 26px}
+.callout b{font-size:1.05rem}.callout span{color:var(--mut)}.callout .pill{text-decoration:none}
+.band{padding:clamp(40px,6vw,72px) clamp(16px,3vw,36px)}
+.band.y{background:var(--yellow);color:#000}.band.y .bi{max-width:1320px;margin:auto;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+.band small{font:500 .78rem var(--mono);display:block;margin-bottom:8px}
+.band h3{font-size:clamp(1.5rem,3.2vw,2.2rem);font-weight:700;line-height:1.25;margin:0;max-width:22ch}
+.band.y .pill.fill{background:#000;color:#fff}
+.band.d{background:#262624;color:#fff;text-align:center}.band.d h3{font-weight:400;max-width:none;margin:0 auto 12px}.band.d p{color:#cbc9c1;margin:0 0 22px}
+.band.d .pill{background:var(--yellow);color:#000;border-color:var(--yellow)}
+.res,.cc,.detail,.read,.trust,.dir,#pn,#map,.st-card,.st-stat,.st-how div,.opt,.tri div,.ch-card,.ch-box,.ch-ic,.card,input,select,textarea,.btn,.chip,.tag,.node,.dr,.ch-send,.ch-logo,.ch-av,.ch-m.me .ch-b,.pw-eye{border-radius:0!important}
+.res,.cc,.detail,.read,.trust,.st-card,.st-stat,.dir,#pn,#map{background:#fff;border:1px solid var(--line)}
+.trust{border-style:solid}
+.res big{color:var(--ink);font-weight:400}
+.cc{border-top:3px solid var(--c)}
+.detail{border-left:4px solid var(--c,var(--ink))}
+.read{border:1px solid var(--soft)}
+.chip{background:#fff;border:1px solid var(--line)}.chip[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tag{background:var(--yellow);color:#000;border-color:var(--ink)}
+.note{border-left:3px solid var(--ink);background:#fff;color:var(--ink)}
+.node{opacity:.65}.node[aria-pressed=true],.node:hover{opacity:1}
+.dr{border-bottom:1px solid var(--soft)}.dr:hover{background:var(--yellow)}
+.ov{background:rgba(244,243,239,.99)}
+.ov.chatpage{background:var(--bg)}
+.ov .grid-bg{opacity:.07}
+.card{background:#fff;border:1px solid var(--line);box-shadow:6px 6px 0 var(--ink)}
+.btn{background:var(--ink);color:#fff}.btn:hover{background:#000}
+.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.opt{border:1px solid var(--soft);background:#fff}.opt:has(input:checked){border-color:var(--ink);background:var(--yellow)}
+.tri div{border:1px solid var(--soft)}
+.steps i{background:var(--soft)}
+.ch-top{background:#fff;border-bottom:1px solid var(--line)}
+.ch-ic{border:1px solid var(--line);background:#fff}
+.ch-logo,.ch-av{background:var(--yellow);color:#000;border:1px solid var(--ink)}
+.ch-card{background:#fff;border:1px solid var(--ink)}.ch-card:hover{background:var(--yellow)}
+.ch-m.me .ch-b{background:var(--yellow);color:#000;border:1px solid var(--ink)}
+.ch-box{background:#fff;border:1px solid var(--ink)}.ch-send{background:var(--ink);color:#fff}
+.ch-bar{background:linear-gradient(transparent,var(--bg) 30%)}
+.st-how div{background:#fff;border:1px solid var(--soft)}.st-how b{background:var(--yellow);color:#000;border-radius:0}
+.st-bar{background:var(--soft);border-radius:0}.st-bar i{background:var(--ink)}
+.cell:hover,.cell:focus{stroke:#000}.tl rect{stroke:var(--bg)}.tl:hover rect,.tl:focus rect{stroke:#000}
+#pn .bar{background:var(--ink);border-radius:0}
+.foot{max-width:none;margin:0;background:#1b1b1a;color:#cbc9c1;border-top:0;padding:36px clamp(16px,3vw,36px) 96px}
+.foot button{color:#fff}.foot b{color:var(--yellow)}
+.menu a:hover{color:var(--c)}
+#cur{display:none!important}
+@media(max-width:720px){.strip span+span:before{display:none}.strip{flex-direction:column;align-items:center;gap:2px}header{gap:4px;padding:10px 14px}.logo{white-space:nowrap;font-size:1rem}.logo sup{display:none}.nb,#lang{white-space:nowrap;padding:8px 6px}.pill{padding:9px 11px;font-size:.88rem;white-space:nowrap}h1{font-size:clamp(1.9rem,8.4vw,2.6rem)}}
 </style></head><body>
 <div id="cur" aria-hidden="true"></div>
+<div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
 <header>
-<button class="logo" onclick="scrollTo({top:0})">Korea Unlocked</button>
+<button class="logo" onclick="scrollTo({top:0})">Korea Unlocked<sup>한국</sup></button>
 <button class="nb" onclick="ov('menu')" aria-haspopup="dialog" data-i="menu">Menu</button>
 <a class="nb hide-s" href="#map-s" data-i="map">Map</a>
 <button class="nb hide-s" onclick="ov('report')" data-i="report">Report</button>
 <a class="nb hide-s" href="#pat-s" data-i="pat">Patterns</a>
+<button class="nb hide-s" onclick="openStories()">Public stories</button>
 <button class="nb" id="lang" aria-label="Switch language">한국어</button>
-<button class="pill hide-s" onclick="ov('login')" data-i="login">Log in</button>
+<button class="pill hide-s" onclick="ov('login')" data-i="login" style="border-color:transparent">Log in</button>
 <button class="pill fill" onclick="ov('signup')" data-i="signup">Create account</button>
 </header>
 <button id="exit" aria-label="Quick exit: leave this site immediately (or press Escape twice)" data-i="exit">Quick exit</button>
@@ -139,38 +222,41 @@ html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
 <main>
 <section class="hero" aria-labelledby="t">
 <svg id="sig" aria-hidden="true"></svg>
-<h1 id="t"><span><i>Korea</i></span><span><i style="animation-delay:.15s">Unlocked</i></span></h1>
-<p class="sub" data-i="sub">Korea has a pattern you cannot see from one story.</p><p class="sub" style="margin-top:-12px;font-size:1rem" data-i="sub2">Report discrimination. Protect your evidence. Understand patterns. Find support.</p>
-<div><button class="pill fill" onclick="ov('report')" data-i="start">Report an experience</button> <a class="pill" style="text-decoration:none;display:inline-block" href="#map-s" data-i="explore">Explore Korea map</a></div>
+<p class="kicker"><span>Public pattern ledger</span><span>Aggregates only</span><span>Free student project</span></p>
+<h1 id="t"><span>Someone treated you <em>differently.</em></span><span>You remember <em>every detail.</em></span><span>Now put it <em>on the record.</em></span></h1>
+<p class="sub" data-i="sub">Korea has a pattern you cannot see from one story.</p><p class="sub" data-i="sub2">Report discrimination. Protect your evidence. Understand patterns. Find support.</p>
+<div class="cta"><button class="pill fill" onclick="ov('report')">Report an experience →</button><a class="pill" href="#map-s" data-i="explore">Explore Korea map</a></div>
+<div class="trio"><div><small>Anonymous</small><b>No real name needed</b><span>File a report without an account and track it with a case code.</span></div><div><small>Private by default</small><b>You choose what is shared</b><span>Only stories whose authors pick public are ever published.</span></div><div><small>Checked first</small><b>Names and phone numbers removed</b><span>An automatic check runs before any story goes public.</span></div></div>
+<div class="callout"><div><b>Patterns are hard to ignore.</b><br><span>One story is a complaint. Many records expose a system.</span></div><a class="pill fill" href="#flow-s">How it works →</a></div>
 </section>
 
-<section id="cat-s" aria-labelledby="ch"><h2 id="ch" data-i="ch">What are students reporting?</h2><p class="lead">Choose a category to filter the map. Counts appear only as aggregates. <strong>Demonstration data:</strong> figures are illustrative, not real reports.</p><div class="grid" id="cc"></div></section>
+<section id="cat-s" aria-labelledby="ch"><h2 id="ch">What are students <em>reporting?</em></h2><p class="lead">Choose a category to filter the map. Counts appear only as aggregates. <strong>Demonstration data:</strong> figures are illustrative, not real reports.</p><div class="grid" id="cc"></div></section>
 <section id="flow-s" aria-labelledby="fh">
-<h2 id="fh" data-i="fh">Your report moves through five protected stages.</h2>
+<h2 id="fh">Your report moves through <em>five protected stages.</em></h2>
 <p class="lead" data-i="fp">Select a stage to see what happens and what is still waiting on a live service.</p>
 <div class="flow" id="flow"></div><div class="detail" id="det" aria-live="polite"></div><p class="lead" style="margin-top:22px">Report status you will see: Received, Privacy protected, Under review, Needs more information, Corroborated, Included in pattern, Not published, Support referred. Passing moderation never means an allegation is proven. Individual reports are called reported experiences; only aggregates form a pattern.</p>
 </section>
 
 <section id="map-s" aria-labelledby="mh">
-<h2 id="mh" data-i="mh">Explore the pattern</h2>
+<h2 id="mh">Explore <em>the pattern</em></h2>
 <div class="fl"><div><label for="fc">Incident</label><select id="fc"></select></div><div><label for="ft">Time</label><select id="ft"></select></div><div><label for="fv">Verification</label><select id="fv"></select></div><div><label for="fs">Search province, district or university</label><input id="fs" list="sl" autocomplete="off"><datalist id="sl"></datalist></div></div>
 <div class="mapwrap"><div><div class="bc" id="bc"></div>
 <svg id="map" viewBox="0 0 380 450" role="group" aria-label="Aggregated pattern map of South Korea. Demo data."></svg></div>
 <div><div class="zl" aria-label="Legend"><span><i style="background:#3a4656"></i>Insufficient data</span><span><i style="background:#3DDC97"></i>Low</span><span><i style="background:#F5D442"></i>Moderate</span><span><i style="background:#FF9A3D"></i>Elevated</span><span><i style="background:#FF5A4F"></i>High</span></div>
 <p class="note"><b>This map shows aggregated reported patterns, not a definitive safety rating.</b> Fewer than 5 reports shows as grey. <span class="tag">Demo data</span> Generated for this prototype; not real reports or statistics. Tiles are a stylised layout, not real boundaries. Real boundary polygons (MapLibre + GeoJSON from PostGIS) are the next step.</p>
 <div class="read" id="rd" aria-live="polite">Hover or focus an area.</div><div id="pn" aria-live="polite"></div></div></div></section>
-<section id="pat-s" aria-labelledby="ph"><h2 id="ph">Pattern directory</h2><p class="lead">Aggregates only, listed alphabetically and never ranked. Uses the filters above.</p><p class="lead" role="note"><strong>Demonstration data:</strong> the numbers shown here are illustrative and are not real reports.</p>
+<section id="pat-s" aria-labelledby="ph"><h2 id="ph">Pattern <em>directory</em></h2><p class="lead">Aggregates only, listed alphabetically and never ranked. Uses the filters above.</p><p class="lead" role="note"><strong>Demonstration data:</strong> the numbers shown here are illustrative and are not real reports.</p>
 <label for="dq">Search</label><input id="dq" placeholder="Seoul, Haeundae-gu, Yonsei University"><div class="dir" id="dl2" style="margin-top:12px"></div></section>
 
 <section id="report-s" aria-labelledby="rh">
-<h2 id="rh" data-i="rh">Protect the evidence before anyone sees it.</h2>
+<h2 id="rh">Protect the evidence <em>before anyone sees it.</em></h2>
 <p class="lead">Raw evidence is processed in memory only, never stored, and never shown publicly. The design detects passport, ARC/ID, faces, phone numbers, addresses, account numbers, emails and document numbers with YOLO and OCR (Korean + English), then redacts them before a moderator sees the safe version.</p>
 <div class="trust"><div class="tri"><div>Original<br><small>in memory only</small></div><div>Protection service<br><small>EXIF · face/ID · OCR · PII</small></div><div>Redacted<br><small>only this is stored</small></div></div>
 <p><span class="tag">Processing service unavailable</span> Evidence upload is not available yet, so nothing is uploaded, processed or stored. Do not send evidence through the report form.</p></div>
 </section>
 
 <section id="res-s" aria-labelledby="sh">
-<h2 id="sh" data-i="sh">Help that exists today.</h2>
+<h2 id="sh">Help <em>that exists today.</em></h2>
 <p class="lead">Only numbers confirmed in your architecture are listed. The assistant routes legal, emergency and immigration questions to official resources; it does not give legal advice.</p>
 <div class="grid">
 <div class="res"><big>112</big>Police emergency<br><small>Korea, emergency</small></div>
@@ -180,7 +266,7 @@ html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
 </div></section>
 
 <section id="sec-s" aria-labelledby="xh">
-<h2 id="xh">Privacy and security architecture</h2>
+<h2 id="xh">Privacy and <em>security architecture</em></h2>
 <p class="lead">This is the design, not a claim of compliance. PIPA and legal review are required before launch.</p>
 <div class="grid">
 <div class="res">Pseudonymous case IDs<br><small>Design</small></div><div class="res">k ≥ 5 before anything is public<br><small>Design</small></div>
@@ -188,9 +274,11 @@ html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
 <div class="res">Retention and delete-my-data<br><small>Needs backend</small></div><div class="res">Malware scan on upload<br><small>Needs backend</small></div>
 </div></section>
 </main>
+<div class="band y"><div class="bi"><div><small>Take part</small><h3>Seen or lived something unfair? <em>Add it to the record.</em></h3></div><button class="pill fill" onclick="ov('report')">Report an experience →</button></div></div>
+<div class="band d"><h3>One story can be dismissed.<br>Many together cannot.</h3><p>No account needed. No real name.</p><button class="pill" onclick="ov('report')">Report an experience →</button></div>
 <footer class="foot"><span>Korea Unlocked, a free non-commercial student project</span>
 <button onclick="info('privacy')">Privacy notice</button><button onclick="info('terms')">Terms of use</button><button onclick="info('faq')">FAQ</button><button onclick="info('contact')">Contact and support</button>
-<p>Emergency now? Call <b style="color:var(--ink)">112</b> (police) or <b style="color:var(--ink)">119</b> (fire and ambulance). This site is a prototype and does not replace legal advice or official services.</p></footer>
+<p>Emergency now? Call <b>112</b> (police) or <b>119</b> (fire and ambulance). This site is a prototype and does not replace legal advice or official services.</p></footer>
 
 <div class="ov" id="o-menu" role="dialog" aria-modal="true" aria-label="Menu"><div class="grid-bg"></div><button class="x" onclick="ov()" aria-label="Close">×</button>
 <nav class="menu" onclick="ov()"><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();scrollTo({top:0})">Home</a><a href="#" style="--c:var(--rep)" onclick="event.preventDefault();setTimeout(()=>ov('report'),50)">Report</a><a href="#map-s" style="--c:var(--ana)">Map</a><a href="#pat-s" style="--c:var(--ver)">Patterns</a><a href="#" style="--c:var(--pro)" onclick="event.preventDefault();setTimeout(openStories,50)">Public stories</a><a href="#res-s" style="--c:var(--sup)">Support</a><a href="#" style="--c:var(--ver)" onclick="event.preventDefault();setTimeout(()=>ov('chat'),50)">AI assistant</a><a href="#sec-s" style="--c:var(--pro)">About</a><a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a><a href="#" id="mauth" data-i="login" style="--c:var(--rep)">Log in</a></nav></div>
