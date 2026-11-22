@@ -81,7 +81,8 @@ jobs:
           bubblewrap build --skipPwaValidation < /dev/null 2>&1 | tee build.log
           code=${PIPESTATUS[0]}
           if [ "$code" != "0" ]; then
-            tail -n 30 build.log | sed 's/\r//g; s/%/%25/g' | while IFS= read -r l; do echo "::error::$l"; done
+            M=$(sed 's/\x1b\[[0-9;]*m//g; s/\r//g' build.log | grep -n -i -E 'what went wrong|FAILURE|error:|Could not|Execution failed|Caused by|not found|No such|licen[cs]e|requires' | grep -v '^[0-9]*:\s*at ' | head -14 | sed 's/%/%25/g' | awk '{printf "%s%%0A", substr($0,1,220)}')
+            echo "::error title=Gradle build failed::$M"
             exit 1
           fi
 
