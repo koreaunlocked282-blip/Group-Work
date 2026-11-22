@@ -351,17 +351,27 @@ html.js-rv .rv.in{opacity:1;transform:none}
 
 @media(max-width:1060px){header{flex-wrap:wrap}}
 @media(max-width:720px){.strip span+span:before{display:none}.strip{flex-direction:column;align-items:center;gap:2px}header{gap:4px;padding:10px 14px}.logo{white-space:nowrap;font-size:1rem}.logo sup{display:none}.nb,#lang{white-space:nowrap;padding:8px 6px}.pill{padding:9px 11px;font-size:.88rem;white-space:nowrap}h1{font-size:clamp(1.9rem,8.4vw,2.6rem)}}
-</style></head><body>
+</style><style>
+header .hl-ai,header .hl-rp{font-weight:700;border:2px solid var(--ink);padding:8px 14px;transition:transform .18s,box-shadow .18s}
+header .hl-rp{background:#ffda00;color:#0b0b0a;box-shadow:3px 3px 0 #0b0b0a}
+header .hl-ai{background:#0b0b0a;color:#fff;box-shadow:3px 3px 0 #ffda00;display:inline-flex;align-items:center;gap:8px}
+header .hl-ai:hover,header .hl-rp:hover{transform:translate(-2px,-2px);text-decoration:none;border-color:var(--ink)}
+header .hl-rp:hover{box-shadow:5px 5px 0 #0b0b0a}header .hl-ai:hover{box-shadow:5px 5px 0 #ffda00}
+.hl-dot{width:8px;height:8px;border-radius:50%;background:#ffda00;animation:hlp 1.8s ease-in-out infinite}
+@keyframes hlp{0%,100%{box-shadow:0 0 0 0 rgba(255,218,0,.7)}50%{box-shadow:0 0 0 6px rgba(255,218,0,0)}}
+@media(prefers-reduced-motion:reduce){.hl-dot{animation:none}header .hl-ai,header .hl-rp{transition:none}}
+</style>
+</head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
 <header>
 <button class="logo" onclick="scrollTo({top:0})">Korea Unlocked<sup>한국</sup></button>
 <button class="nb" onclick="ov('menu')" aria-haspopup="dialog" data-i="menu">Menu</button>
 <a class="nb hide-s" href="#map-s" data-i="map">Map</a>
-<button class="nb hide-s" onclick="ov('chat')" style="font-weight:700">AI assistant</button>
+<button class="nb hide-s hl-ai" onclick="ov('chat')"><i class="hl-dot"></i>AI assistant</button>
 <button class="nb hide-s" onclick="openFeature()">Feature request</button>
 <button class="nb hide-s" onclick="openTeam()">Meet the team</button>
-<button class="nb hide-s" onclick="ov('report')" data-i="report">Report</button>
+<button class="nb hide-s hl-rp" onclick="ov('report')" data-i="report">Report</button>
 <button class="nb" id="lang" aria-label="Switch language">한국어</button>
 <button class="pill hide-s" onclick="ov('login')" data-i="login" style="border-color:transparent">Log in</button>
 <button class="pill fill" onclick="ov('signup')" data-i="signup">Create account</button>
