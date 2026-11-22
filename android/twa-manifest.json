@@ -26,6 +26,6 @@
   "isChromeOSOnly": false,
   "isMetaQuest": false,
   "fullScopeUrl": "https://group-work-mu.vercel.app/",
-  "minSdkVersion": 21,
+  "minSdkVersion": 24,
   "generatorApp": "bubblewrap-cli"
 }
