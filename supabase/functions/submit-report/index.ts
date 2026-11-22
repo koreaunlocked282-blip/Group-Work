@@ -4,7 +4,7 @@ const CATEGORY = ['university_classroom','workplace_parttime','housing_landlord'
 const TREATMENT = ['discrimination','harassment','refusal_of_service','unfair_treatment','threat','other']
 const RESOLUTION = ['unresolved','resolved','partly_resolved','ongoing']
 const HELP = ['none','university_office','employer','police','labor_or_human_rights_office','other']
-const VISIBILITY = ['private','pattern_after_review']
+const VISIBILITY = ['private','pattern_after_review','public_after_review']
 const WORKPLACE = ['part_time_job','restaurant','factory','delivery','retail','other_workplace']
 const HOUSING = ['landlord','real_estate_agency','dormitory','shared_housing','rental_contract','other_housing']
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
@@ -31,12 +31,12 @@ function parse(b: any) {
   const university = b.university_id ? (typeof b.university_id === 'string' && UUID.test(b.university_id) ? b.university_id : 'bad') : null
   const description = typeof b.description === 'string' ? b.description.trim() : ''
   const district = typeof b.district_code === 'string' && DISTRICT.test(b.district_code) ? b.district_code : null
-  const consent = b.pattern_consent === true
+  const consent = b.pattern_consent === true || visibility === 'public_after_review'
   if (!category || !treatment || !resolution || !help || !visibility || !language || !district) return null
   if ((b.workplace_category && !workplace) || (b.housing_category && !housing) || university === 'bad') return null
   if (description.length < 10 || description.length > 5000) return null
   if (!okDate(b.date_from) || !okDate(b.date_to) || b.date_from > b.date_to) return null
-  if (consent && visibility !== 'pattern_after_review') return null
+  if (consent && visibility !== 'pattern_after_review' && visibility !== 'public_after_review') return null
   return { category, treatment, description, district, university, workplace, housing, dateFrom: b.date_from, dateTo: b.date_to, resolution, help, visibility, consent, language }
 }
 
