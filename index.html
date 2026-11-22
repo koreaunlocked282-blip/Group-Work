@@ -404,13 +404,15 @@ async function showStory(id){const b=$("#info-body");b.replaceChildren(dEl("h2",
  try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("get_public_story",{_id:id});if(error||!data||!data.length)throw 0;const r=data[0];
   b.append(dEl("p","Category: "+catL(r.category)+(r.province_code?" · "+human(r.province_code):"")),dEl("p",r.story_text),dEl("p","This anonymous story was shared by its author and reviewed by a moderator. It is not proof of any allegation. For help, see the Support section."),cfBox(r.id,r.confirm_count))}
  catch{b.append(dEl("p","This story is not available."))}}
+function cfDemo(n){const w=dEl("div",null,"st-conf"),b=dEl("button","▲ Confirm this report"),c=dEl("b",String(n));b.type="button";   // demo only: counts here are not saved anywhere
+ b.onclick=()=>{b.disabled=true;b.textContent="✓ Confirmed";w.classList.add("done");c.textContent=String(n+1)};w.append(b,c);return w}
 const LVDEMO=[["Housing / Landlord","Refusal of service","Seoul","The landlord stopped replying after learning I was an international student. The room was listed as available again the next day."],["Workplace / Part-time job","Unfair treatment","Busan","My manager gave me the least popular shifts and joked about my accent in front of customers."],["Public service / Business","Refusal of service","Incheon","A shop refused to serve me and said it only accepts Korean customers."]];
 async function loadLive(reset){const L0=$("#lv-list"),more=$("#lv-more");if(reset){STO.lv=0;L0.replaceChildren(dEl("p","Loading..."))}
  try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("list_public_stories",{_category:$("#lv-c").value||null,_province:$("#lv-p").value||null,_limit:6,_offset:STO.lv||0,_sort:$("#lv-s").value});if(error)throw 0;
   if(reset)L0.replaceChildren();
   if(!data.length&&reset){const f=$("#lv-c").value||$("#lv-p").value||$("#lv-s").value!="latest";more.hidden=true;
    if(f)return L0.append(dEl("p","No stories match these filters."));
-   LVDEMO.forEach(x=>{const d=dEl("div",null,"st-card demo"),m=dEl("div",null,"st-meta");m.append(dEl("span",x[0],"tag"),dEl("span",x[2]),dEl("span","Demonstration data"));d.append(m,dEl("p",x[3]));L0.append(d)});return}
+   LVDEMO.forEach((x,i)=>{const d=dEl("div",null,"st-card demo"),m=dEl("div",null,"st-meta");m.append(dEl("span",x[0],"tag"),dEl("span",x[2]),dEl("span","Demonstration data"));d.append(m,dEl("p",x[3]),cfDemo([12,7,4][i]));L0.append(d)});return}
   data.forEach(r=>L0.append(stCard(r)));STO.lv=(STO.lv||0)+data.length;more.hidden=data.length<6}
  catch{L0.replaceChildren(dEl("p","Stories could not be loaded right now. Please try again later."))}}
 async function initLive(){try{await loadRef()}catch{}
