@@ -302,8 +302,6 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <button class="nb" onclick="ov('menu')" aria-haspopup="dialog" data-i="menu">Menu</button>
 <a class="nb hide-s" href="#map-s" data-i="map">Map</a>
 <button class="nb hide-s" onclick="ov('report')" data-i="report">Report</button>
-<a class="nb hide-s" href="#pat-s" data-i="pat">Topics</a><a class="nb hide-s" href="#mod-s" id="mod-nav" hidden>Moderation</a>
-<button class="nb hide-s" onclick="openStories()">Public stories</button>
 <button class="nb hide-s" onclick="ov('chat')" style="font-weight:700">AI assistant</button>
 <button class="nb" id="lang" aria-label="Switch language">한국어</button>
 <button class="pill hide-s" onclick="ov('login')" data-i="login" style="border-color:transparent">Log in</button>
@@ -371,7 +369,7 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <p>Emergency now? Call <b>112</b> (police) or <b>119</b> (fire and ambulance). This site is a prototype and does not replace legal advice or official services.</p></footer>
 
 <div class="ov" id="o-menu" role="dialog" aria-modal="true" aria-label="Menu"><div class="grid-bg"></div><button class="x" onclick="ov()" aria-label="Close">×</button>
-<nav class="menu" onclick="ov()"><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();scrollTo({top:0})">Home</a><a href="#" style="--c:var(--rep)" onclick="event.preventDefault();setTimeout(()=>ov('report'),50)">Report</a><a href="#map-s" style="--c:var(--ana)">Map</a><a href="#pat-s" style="--c:var(--ver)">Patterns</a><a href="#" style="--c:var(--pro)" onclick="event.preventDefault();setTimeout(openStories,50)">Public stories</a><a href="#res-s" style="--c:var(--sup)">Support</a><a href="#" style="--c:var(--ver)" onclick="event.preventDefault();setTimeout(()=>ov('chat'),50)">AI assistant</a><a href="#faq-s" style="--c:var(--pro)">FAQ</a><a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a><a href="#" id="mauth" data-i="login" style="--c:var(--rep)">Log in</a></nav></div>
+<nav class="menu" onclick="ov()"><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();scrollTo({top:0})">Home</a><a id="mod-nav" href="#mod-s" style="--c:var(--rep)" hidden>Moderation</a><a href="#" style="--c:var(--rep)" onclick="event.preventDefault();setTimeout(()=>ov('report'),50)">Report</a><a href="#map-s" style="--c:var(--ana)">Map</a><a href="#pat-s" style="--c:var(--ver)">Patterns</a><a href="#" style="--c:var(--pro)" onclick="event.preventDefault();setTimeout(openStories,50)">Public stories</a><a href="#res-s" style="--c:var(--sup)">Support</a><a href="#" style="--c:var(--ver)" onclick="event.preventDefault();setTimeout(()=>ov('chat'),50)">AI assistant</a><a href="#faq-s" style="--c:var(--pro)">FAQ</a><a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a><a href="#" id="mauth" data-i="login" style="--c:var(--rep)">Log in</a></nav></div>
 
 <div class="ov" id="o-login" role="dialog" aria-modal="true" aria-label="Log in"><div class="grid-bg"></div><div class="scan"></div>
 <div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">Access</h2>
