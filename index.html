@@ -183,6 +183,7 @@ p.lead{color:var(--mut)}
 .btn{background:var(--ink);color:#fff}.btn:hover{background:#000}
 .ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
 .btn.ghost:hover,.btn.ghost:active,.btn.ghost:focus-visible{background:var(--yellow);color:#000}
+[data-i=signup][hidden]{display:none!important}
 input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--ink)}
 .opt{border:1px solid var(--soft);background:#fff}.opt:has(input:checked){border-color:var(--ink);background:var(--yellow)}
 .tri div{border:1px solid var(--soft)}
@@ -553,6 +554,7 @@ function setAuthUi(on){const b=document.querySelector("header .pill:not(.fill)")
  if(b)b.onclick=on?doLogout:()=>ov("login");
  if(m)m.onclick=e=>{e.preventDefault();on?doLogout():setTimeout(()=>ov("login"),50)};   // menu closes via the nav's own onclick
  const d=$("#mdash");if(d)d.hidden=!on;
+ document.querySelectorAll('[data-i="signup"]').forEach(x=>x.hidden=on);   // signed-in users do not need Create account
  tr()}
 async function doLogin(b){const m=$("#a1");if(!KU.supabaseConfigured)return need("a1");
  const email=$("#le").value.trim(),pw=$("#lp").value;if(!email||!pw)return put(m,["Enter your email and password."]);
