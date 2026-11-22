@@ -212,6 +212,9 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 #lv-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}#lv-list>p{grid-column:1/-1;margin:0}#lv-list .st-card{margin:0}
 .lv-foot{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.lv-foot .btn{width:auto;margin:0}
 .st-card.demo{border-style:dashed}
+.lv-view{display:flex;margin-left:auto}.lv-view button{border:1px solid var(--ink);background:#fff;color:var(--ink);padding:10px 16px;font:600 .8rem var(--mono);letter-spacing:.06em;text-transform:uppercase;border-radius:0}.lv-view button+button{border-left:0}.lv-view .on{background:var(--ink);color:#fff}
+#lv-list.tbl{display:block;overflow-x:auto}.lv-t{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:.95rem}.lv-t th{font:500 .75rem var(--mono);letter-spacing:.06em;text-transform:uppercase;text-align:left;color:var(--mut);padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}.lv-t td{padding:12px 14px;border-bottom:1px solid var(--soft);vertical-align:top}.lv-t td.n{font:700 .95rem var(--mono);text-align:right}.lv-t tr.demo td{color:var(--mut)}.lv-t .tag{white-space:nowrap}
+
 
 @media(max-width:760px){.trio>div{border-right:0}.trio>div+div{border-top:1px solid var(--soft)}}
 .trio .lt{display:block;font-size:1.05rem;margin:2px 0 6px}.trio .in{display:inline}.trio .dm{font:500 .72rem var(--mono);margin-top:10px;color:var(--mut)}
@@ -265,7 +268,7 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 
 <section id="live-s" aria-labelledby="lh"><h2 id="lh">Live <em>reports.</em></h2>
 <p class="lv-note">Every entry is an unverified, anonymous story shared by its author.</p>
-<div class="lv-filters"><select id="lv-c" aria-label="Category"></select><select id="lv-p" aria-label="Province"></select><select id="lv-s" aria-label="Sort"><option value="latest">Latest</option><option value="confirmed">Most confirmed</option></select></div>
+<div class="lv-filters"><select id="lv-c" aria-label="Category"></select><select id="lv-p" aria-label="Province"></select><select id="lv-s" aria-label="Sort"><option value="latest">Latest</option><option value="confirmed">Most confirmed</option></select><div class="lv-view" role="group" aria-label="View"><button type="button" id="lv-vc" class="on">Cards</button><button type="button" id="lv-vt">Table</button></div></div>
 <div id="lv-list" aria-live="polite"></div><div class="lv-foot"><button class="btn ghost" id="lv-more" hidden>Load more</button><button class="btn ghost" onclick="openStories()">View all public stories →</button></div></section>
 <section id="cat-s" aria-labelledby="ch"><h2 id="ch">What are students <em>reporting?</em></h2><p class="lead">Choose a category to filter the map. Counts appear only as aggregates. <strong>Demonstration data:</strong> figures are illustrative, not real reports.</p><div class="grid" id="cc"></div></section>
 <section id="flow-s" aria-labelledby="fh">
@@ -404,20 +407,31 @@ async function showStory(id){const b=$("#info-body");b.replaceChildren(dEl("h2",
  try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("get_public_story",{_id:id});if(error||!data||!data.length)throw 0;const r=data[0];
   b.append(dEl("p","Category: "+catL(r.category)+(r.province_code?" · "+human(r.province_code):"")),dEl("p",r.story_text),dEl("p","This anonymous story was shared by its author and reviewed by a moderator. It is not proof of any allegation. For help, see the Support section."),cfBox(r.id,r.confirm_count))}
  catch{b.append(dEl("p","This story is not available."))}}
-function cfDemo(n){const w=dEl("div",null,"st-conf"),b=dEl("button","▲ Confirm this report"),c=dEl("b",String(n));b.type="button";   // demo only: counts here are not saved anywhere
- b.onclick=()=>{b.disabled=true;b.textContent="✓ Confirmed";w.classList.add("done");c.textContent=String(n+1)};w.append(b,c);return w}
-const LVDEMO=[["Housing / Landlord","Refusal of service","Seoul","The landlord stopped replying after learning I was an international student. The room was listed as available again the next day."],["Workplace / Part-time job","Unfair treatment","Busan","My manager gave me the least popular shifts and joked about my accent in front of customers."],["Public service / Business","Refusal of service","Incheon","A shop refused to serve me and said it only accepts Korean customers."]];
-async function loadLive(reset){const L0=$("#lv-list"),more=$("#lv-more");if(reset){STO.lv=0;L0.replaceChildren(dEl("p","Loading..."))}
- try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("list_public_stories",{_category:$("#lv-c").value||null,_province:$("#lv-p").value||null,_limit:6,_offset:STO.lv||0,_sort:$("#lv-s").value});if(error)throw 0;
-  if(reset)L0.replaceChildren();
+const LVDEMO=[["Housing / Landlord","Refusal of service","Seoul","The landlord stopped replying after learning I was an international student. The room was listed as available again the next day.",12],["Workplace / Part-time job","Unfair treatment","Busan","My manager gave me the least popular shifts and joked about my accent in front of customers.",7],["Public service / Business","Refusal of service","Incheon","A shop refused to serve me and said it only accepts Korean customers.",4]];
+var LV={rows:[],demo:false,view:"cards",off:0};
+function cfDemo(x){const w=dEl("div",null,"st-conf"),b=dEl("button","▲ Confirm this report"),c=dEl("b",String(x.n+(x.done?1:0)));b.type="button";   // demo only: nothing is saved
+ const set=()=>{b.disabled=x.done;b.textContent=x.done?"✓ Confirmed":"▲ Confirm this report";w.classList.toggle("done",!!x.done);c.textContent=String(x.n+(x.done?1:0))};set();
+ b.onclick=()=>{x.done=true;set()};w.append(b,c);return w}
+function lvRender(){const L0=$("#lv-list");L0.replaceChildren();L0.classList.toggle("tbl",LV.view==="table");
+ $("#lv-vc").classList.toggle("on",LV.view!=="table");$("#lv-vt").classList.toggle("on",LV.view==="table");
+ if(LV.view!=="table"){LV.rows.forEach(x=>{if(!x.demo)return L0.append(stCard(x.r));
+   const d=dEl("div",null,"st-card demo"),m=dEl("div",null,"st-meta");m.append(dEl("span",x.cat,"tag"),dEl("span",x.prov),dEl("span","Demonstration data"));d.append(m,dEl("p",x.text),cfDemo(x));L0.append(d)});return}
+ const t=dEl("table",null,"lv-t"),h=dEl("tr");["Category","Province","Month","Story","Confirmations"].forEach(c=>h.append(dEl("th",c)));const th=dEl("thead");th.append(h);t.append(th);
+ const tb=dEl("tbody");LV.rows.forEach(x=>{const tr=dEl("tr",null,x.demo?"demo":""),sn=x.text.length>110?x.text.slice(0,110)+"...":x.text,cell=dEl("td");
+  tr.append(dEl("td",x.cat),dEl("td",x.prov),dEl("td",x.demo?"Demonstration data":x.month));
+  if(x.demo)cell.textContent=sn;else{const a=dEl("a",sn);a.href="#story="+x.id;a.onclick=()=>setTimeout(openHash,0);cell.append(a)}
+  tr.append(cell,dEl("td",String(x.n+(x.done?1:0)),"n"));tb.append(tr)});t.append(tb);L0.append(t)}
+async function loadLive(reset){const L0=$("#lv-list"),more=$("#lv-more");if(reset){LV.off=0;LV.rows=[];LV.demo=false;L0.replaceChildren(dEl("p","Loading..."))}
+ try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("list_public_stories",{_category:$("#lv-c").value||null,_province:$("#lv-p").value||null,_limit:6,_offset:LV.off,_sort:$("#lv-s").value});if(error)throw 0;
   if(!data.length&&reset){const f=$("#lv-c").value||$("#lv-p").value||$("#lv-s").value!="latest";more.hidden=true;
-   if(f)return L0.append(dEl("p","No stories match these filters."));
-   LVDEMO.forEach((x,i)=>{const d=dEl("div",null,"st-card demo"),m=dEl("div",null,"st-meta");m.append(dEl("span",x[0],"tag"),dEl("span",x[2]),dEl("span","Demonstration data"));d.append(m,dEl("p",x[3]),cfDemo([12,7,4][i]));L0.append(d)});return}
-  data.forEach(r=>L0.append(stCard(r)));STO.lv=(STO.lv||0)+data.length;more.hidden=data.length<6}
+   if(f){L0.replaceChildren(dEl("p","No stories match these filters."));return}
+   LV.demo=true;LV.rows=LVDEMO.map(x=>({demo:true,cat:x[0],prov:x[2],text:x[3],n:x[4],done:false}));lvRender();return}
+  data.forEach(r=>{const pn=REF&&REF.p.find(x=>x.code==r.province_code);LV.rows.push({r,id:r.id,cat:catL(r.category),prov:pn?pn.name_en:human(r.province_code),month:new Date(r.approved_month).toLocaleDateString(L=="ko"?"ko-KR":"en-US",{year:"numeric",month:"long"}),text:r.story_text,n:r.confirm_count||0})});
+  LV.off+=data.length;more.hidden=data.length<6;lvRender()}
  catch{L0.replaceChildren(dEl("p","Stories could not be loaded right now. Please try again later."))}}
 async function initLive(){try{await loadRef()}catch{}
  const c=$("#lv-c"),pv=$("#lv-p");c.innerHTML=eo([["All categories",""],...OPT.cat],"");pv.innerHTML=eo([["All provinces",""],...(REF?REF.p.map(p=>[p.name_en,p.code]):[])],"");
- c.onchange=pv.onchange=$("#lv-s").onchange=()=>loadLive(true);$("#lv-more").onclick=()=>loadLive(false);loadLive(true)}
+ c.onchange=pv.onchange=$("#lv-s").onchange=()=>loadLive(true);$("#lv-vc").onclick=()=>{LV.view="cards";lvRender()};$("#lv-vt").onclick=()=>{LV.view="table";lvRender()};$("#lv-more").onclick=()=>loadLive(false);loadLive(true)}
 document.addEventListener("DOMContentLoaded",initLive);
 function openHash(){const m=location.hash.match(/^#story=([0-9a-f-]{36})$/i);if(m)showStory(m[1])}
 addEventListener("hashchange",openHash);

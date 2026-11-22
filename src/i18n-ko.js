@@ -204,6 +204,7 @@ const X = {
   "The landlord stopped replying after learning I was an international student. The room was listed as available again the next day.":"집주인은 제가 유학생이라는 것을 알고 나서 답장을 멈췄습니다. 그 방은 다음 날 다시 입주 가능으로 올라왔습니다.",
   "My manager gave me the least popular shifts and joked about my accent in front of customers.":"매니저는 제게 가장 인기 없는 근무 시간을 배정했고, 손님들 앞에서 제 억양을 두고 농담을 했습니다.",
   "A shop refused to serve me and said it only accepts Korean customers.":"한 가게가 저에게 서비스를 거부하며 한국인 손님만 받는다고 말했습니다.",
+  'Cards':'카드','Table':'표','Month':'월','Story':'이야기','Confirmations':'확인 수',
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",
