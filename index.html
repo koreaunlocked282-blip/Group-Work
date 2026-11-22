@@ -75,6 +75,11 @@ p.lead{color:var(--mut);max-width:60ch;margin:0 0 32px}
 .ch-send{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);font-size:1.2rem;font-weight:700}.ch-send:disabled{opacity:.4}
 body:has(#o-chat.on) #exit{bottom:auto;top:calc(14px + env(safe-area-inset-top,0px));right:64px;padding:8px 12px;font-size:.85rem}
 @media(max-width:520px){.ch-title .tag{display:none}}
+.st-how{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:14px 0}.st-how div{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:.9rem}.st-how b{color:#000;font-weight:700;display:grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg)}
+.st-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:12px 0}.st-stat{border:1px solid var(--line);border-radius:12px;padding:12px}.st-stat b{display:block;font-size:1.6rem}.st-stat span{color:var(--mut);font-size:.85rem}
+.st-bar{height:6px;border-radius:3px;background:var(--line);margin-top:6px;overflow:hidden}.st-bar i{display:block;height:100%;background:var(--ink)}
+.st-filters{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.st-filters select{flex:1;min-width:150px}
+.st-card{border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 10px}.st-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;color:var(--mut);font-size:.85rem;margin-bottom:6px}.st-card p{margin:0 0 8px;white-space:pre-wrap;overflow-wrap:anywhere}.st-card a{color:var(--ink)}
 .ch-foot{color:var(--mut);font-size:.78rem;text-align:center;margin:8px 0 0}.ch-foot b{color:var(--ink)}
 .foot{padding:32px clamp(16px,5vw,72px) 96px;max-width:1400px;margin:auto;border-top:1px solid var(--line);color:var(--mut);display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 .foot button{background:none;border:0;padding:8px 0;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
@@ -188,7 +193,7 @@ html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
 <p>Emergency now? Call <b style="color:var(--ink)">112</b> (police) or <b style="color:var(--ink)">119</b> (fire and ambulance). This site is a prototype and does not replace legal advice or official services.</p></footer>
 
 <div class="ov" id="o-menu" role="dialog" aria-modal="true" aria-label="Menu"><div class="grid-bg"></div><button class="x" onclick="ov()" aria-label="Close">×</button>
-<nav class="menu" onclick="ov()"><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();scrollTo({top:0})">Home</a><a href="#" style="--c:var(--rep)" onclick="event.preventDefault();setTimeout(()=>ov('report'),50)">Report</a><a href="#map-s" style="--c:var(--ana)">Map</a><a href="#pat-s" style="--c:var(--ver)">Patterns</a><a href="#res-s" style="--c:var(--sup)">Support</a><a href="#" style="--c:var(--ver)" onclick="event.preventDefault();setTimeout(()=>ov('chat'),50)">AI assistant</a><a href="#sec-s" style="--c:var(--pro)">About</a><a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a><a href="#" id="mauth" data-i="login" style="--c:var(--rep)">Log in</a></nav></div>
+<nav class="menu" onclick="ov()"><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();scrollTo({top:0})">Home</a><a href="#" style="--c:var(--rep)" onclick="event.preventDefault();setTimeout(()=>ov('report'),50)">Report</a><a href="#map-s" style="--c:var(--ana)">Map</a><a href="#pat-s" style="--c:var(--ver)">Patterns</a><a href="#" style="--c:var(--pro)" onclick="event.preventDefault();setTimeout(openStories,50)">Public stories</a><a href="#res-s" style="--c:var(--sup)">Support</a><a href="#" style="--c:var(--ver)" onclick="event.preventDefault();setTimeout(()=>ov('chat'),50)">AI assistant</a><a href="#sec-s" style="--c:var(--pro)">About</a><a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a><a href="#" id="mauth" data-i="login" style="--c:var(--rep)">Log in</a></nav></div>
 
 <div class="ov" id="o-login" role="dialog" aria-modal="true" aria-label="Log in"><div class="grid-bg"></div><div class="scan"></div>
 <div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">Access</h2>
@@ -207,6 +212,13 @@ html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
 <div class="ov" id="o-info" role="dialog" aria-modal="true" aria-label="Information"><div class="grid-bg"></div>
 <div class="card wide info"><button class="x" onclick="ov()" aria-label="Close">×</button><div id="info-body"></div></div></div>
 
+<div class="ov" id="o-stories" role="dialog" aria-modal="true" aria-label="Public stories"><div class="grid-bg"></div>
+<div class="card wide info"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">Public stories</h2>
+<p class="note">Anonymous, unverified stories shared by their authors. They are not proof of any allegation and this is not an official complaint channel.</p>
+<div class="st-how"><div><b>1</b><span>Share anonymously</span></div><div><b>2</b><span>Automatic check removes names, phone numbers and business details</span></div><div><b>3</b><span>Published, and the author can withdraw it any time</span></div></div>
+<div id="st-stats" class="st-stats"></div>
+<div class="st-filters"><select id="st-c" aria-label="Category"></select><select id="st-p" aria-label="Province"></select></div>
+<div id="st-list" aria-live="polite"></div><button class="btn ghost" id="st-more" hidden>Load more</button></div></div>
 <div class="ov" id="o-dash" role="dialog" aria-modal="true" aria-label="My reports"><div class="grid-bg"></div>
 <div class="card wide info"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">My reports</h2><div id="dash-body" aria-live="polite"></div></div></div>
 
@@ -237,9 +249,27 @@ privacy:`<h2 style="font-size:2rem">Privacy notice</h2><p><b>Status: draft for a
 terms:`<h2 style="font-size:2rem">Terms of use</h2><p><b>Draft for a student prototype.</b></p><ul><li>This site is free and non-commercial. It is a capstone project, provided as is, with no guarantee that it is available or error-free.</li><li>It is <b>not</b> legal advice, not an emergency service and not an official complaint channel. For danger call 112 or 119. Reports here are not automatically sent to the police, your university, an employer or any authority.</li><li>Submit only true accounts of your own experience. Do not post other people's personal details, threats or unlawful content.</li><li>Map and directory figures marked Demonstration data are illustrative and are not real reports or statistics.</li><li>We may change or remove features at any time while the project is in development.</li></ul>`,
 faq:`<h2 style="font-size:2rem">FAQ</h2><h3>Do I need an account to report?</h3><p>No. An anonymous report gives you a case code and a tracking secret.</p><h3>I lost my tracking secret. Can you recover it?</h3><p>No. Only a hash is stored, so it cannot be shown again. You can submit a new report.</p><h3>Who sees my report?</h3><p>Reports are private by default and only moderators can read them. If you choose to share an anonymous version publicly, a moderator rewrites it before anything is shown, and the AI assistant may show it to other students.</p><h3>Is the map real?</h3><p>Not yet. Map and directory numbers are demonstration data until enough real reports exist (at least 5 per area).</p><h3>Can I upload evidence?</h3><p>Not yet. Please do not put documents or personal details in the description.</p><h3>Is there an AI assistant?</h3><p>Yes, for signed-in users. It can use live totals and stories that their authors chose to share publicly. It cannot read private reports.</p><h3>Is this legal advice?</h3><p>No. For legal or immigration questions use official services.</p>`,
 contact:`<h2 style="font-size:2rem">Contact and support</h2><p><b>Emergency:</b> 112 (police) or 119 (fire and ambulance).</p><p>Verified support organisations (university offices, human rights and labor centers, counseling) are not listed yet because their contact details have not been verified. See the Support section for status.</p><p>A project contact address will be published here before any public launch. Until then, please do not send personal information to unverified addresses.</p>`};
+var STO={off:0};const catL=c=>{const o=OPT.cat.find(x=>x[1]==c);return o?o[0]:human(c)};
+async function openStories(){ov("stories");STO.off=0;const L0=$("#st-list");L0.replaceChildren(dEl("p","Loading..."));
+ try{await loadRef()}catch{}
+ const c=$("#st-c"),pv=$("#st-p");if(!c.options.length){c.innerHTML=eo([["All categories",""],...OPT.cat],"");pv.innerHTML=eo([["All provinces",""],...(REF?REF.p.map(p=>[p.name_en,p.code]):[])],"");c.onchange=pv.onchange=()=>{STO.off=0;loadStories(true)};$("#st-more").onclick=()=>loadStories(false)}
+ try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("public_story_stats");if(error)throw 0;
+  const st=$("#st-stats"),tot=data.total||0,top=Object.entries(data.by_category||{}).sort((a,b)=>b[1]-a[1]).slice(0,3);st.replaceChildren();
+  const t=dEl("div",null,"st-stat");t.append(dEl("b",String(tot)),dEl("span","Published stories"));st.append(t);
+  top.forEach(([k,n])=>{const d=dEl("div",null,"st-stat");d.append(dEl("b",String(n)),dEl("span",catL(k)));const bar=dEl("div",null,"st-bar"),i=dEl("i");i.style.width=(tot?Math.round(n/tot*100):0)+"%";bar.append(i);d.append(bar);st.append(d)})}
+ catch{$("#st-stats").replaceChildren()}
+ loadStories(true)}
+async function loadStories(reset){const L0=$("#st-list"),more=$("#st-more");if(reset){STO.off=0;L0.replaceChildren(dEl("p","Loading..."))}
+ try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("list_public_stories",{_category:$("#st-c").value||null,_province:$("#st-p").value||null,_limit:12,_offset:STO.off});if(error)throw 0;
+  if(reset)L0.replaceChildren();
+  if(!data.length&&reset)L0.append(dEl("p","No public stories yet."));
+  data.forEach(r=>{const d=dEl("div",null,"st-card"),m=dEl("div",null,"st-meta");m.append(dEl("span",catL(r.category),"tag"));const pn=REF&&REF.p.find(x=>x.code==r.province_code);m.append(dEl("span",pn?pn.name_en:human(r.province_code)),dEl("span",new Date(r.approved_month).toLocaleDateString(L=="ko"?"ko-KR":"en-US",{year:"numeric",month:"long"})));
+   const t=r.story_text.length>320?r.story_text.slice(0,320)+"...":r.story_text;d.append(m,dEl("p",t));const a=dEl("a","Read the shared story");a.href="#story="+r.id;a.onclick=()=>setTimeout(openHash,0);d.append(a);L0.append(d)});
+  STO.off+=data.length;more.hidden=data.length<12}
+ catch{L0.replaceChildren(dEl("p","Stories could not be loaded right now. Please try again later."))}}
 async function showStory(id){const b=$("#info-body");b.replaceChildren(dEl("h2","Shared story"));ov("info");
  try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("get_public_story",{_id:id});if(error||!data||!data.length)throw 0;const r=data[0];
-  b.append(dEl("p","Category: "+(human(r.category)||"")+(r.province_code?" · "+human(r.province_code):"")),dEl("p",r.story_text),dEl("p","This anonymous story was shared by its author and reviewed by a moderator. It is not proof of any allegation. For help, see the Support section."))}
+  b.append(dEl("p","Category: "+catL(r.category)+(r.province_code?" · "+human(r.province_code):"")),dEl("p",r.story_text),dEl("p","This anonymous story was shared by its author and reviewed by a moderator. It is not proof of any allegation. For help, see the Support section."))}
  catch{b.append(dEl("p","This story is not available."))}}
 function openHash(){const m=location.hash.match(/^#story=([0-9a-f-]{36})$/i);if(m)showStory(m[1])}
 addEventListener("hashchange",openHash);
