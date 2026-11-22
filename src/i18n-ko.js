@@ -205,6 +205,7 @@ const X = {
   "My manager gave me the least popular shifts and joked about my accent in front of customers.":"매니저는 제게 가장 인기 없는 근무 시간을 배정했고, 손님들 앞에서 제 억양을 두고 농담을 했습니다.",
   "A shop refused to serve me and said it only accepts Korean customers.":"한 가게가 저에게 서비스를 거부하며 한국인 손님만 받는다고 말했습니다.",
   'Cards':'카드','Table':'표','Month':'월','Story':'이야기','Confirmations':'확인 수',
+  'Division ledger':'시·도별 현황','Average per division':'시·도 평균','Total reports divided by the number of divisions.':'전체 신고 수를 시·도 수로 나눈 값입니다.',
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",

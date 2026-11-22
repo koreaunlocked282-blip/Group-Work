@@ -212,6 +212,12 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 #lv-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}#lv-list>p{grid-column:1/-1;margin:0}#lv-list .st-card{margin:0}
 .lv-foot{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.lv-foot .btn{width:auto;margin:0}
 .st-card.demo{border-style:dashed}
+.lv-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start}.lv-side{position:sticky;top:84px;display:grid;gap:0}
+.lg{border:1px solid var(--line);background:#fff}.lg+.lg{border-top:0}.lgh{font:500 .78rem var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:14px 16px;border-bottom:1px solid var(--line)}
+.lg ol{list-style:none;margin:0;padding:0}.lg li{display:flex;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--soft);font-size:.95rem}.lg li:last-child{border-bottom:0}.lg li>span:first-child{display:flex;gap:6px}.lg li .r{font-family:var(--mono);color:var(--mut)}.lg li b{font:500 .9rem var(--mono)}
+.lgv{padding:16px}.lgv b{display:block;font:600 2rem/1.1 "Source Serif 4","Noto Serif KR",serif;margin-bottom:8px}.lgv span{display:block;font:500 .8rem var(--mono);color:var(--mut)}.lgd{font:500 .72rem var(--mono);color:var(--mut);margin:10px 0 0}
+@media(max-width:900px){.lv-grid{grid-template-columns:1fr}.lv-side{position:static}}
+
 .lv-view{display:flex;margin-left:auto}.lv-view button{border:1px solid var(--ink);background:#fff;color:var(--ink);padding:10px 16px;font:600 .8rem var(--mono);letter-spacing:.06em;text-transform:uppercase;border-radius:0}.lv-view button+button{border-left:0}.lv-view .on{background:var(--ink);color:#fff}
 #lv-list.tbl{display:block;overflow-x:auto}.lv-t{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:.95rem}.lv-t th{font:500 .75rem var(--mono);letter-spacing:.06em;text-transform:uppercase;text-align:left;color:var(--mut);padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}.lv-t td{padding:12px 14px;border-bottom:1px solid var(--soft);vertical-align:top}.lv-t td.n{font:700 .95rem var(--mono);text-align:right}.lv-t tr.demo td{color:var(--mut)}.lv-t .tag{white-space:nowrap}
 
@@ -269,7 +275,7 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <section id="live-s" aria-labelledby="lh"><h2 id="lh">Live <em>reports.</em></h2>
 <p class="lv-note">Every entry is an unverified, anonymous story shared by its author.</p>
 <div class="lv-filters"><select id="lv-c" aria-label="Category"></select><select id="lv-p" aria-label="Province"></select><select id="lv-s" aria-label="Sort"><option value="latest">Latest</option><option value="confirmed">Most confirmed</option></select><div class="lv-view" role="group" aria-label="View"><button type="button" id="lv-vc" class="on">Cards</button><button type="button" id="lv-vt">Table</button></div></div>
-<div id="lv-list" aria-live="polite"></div><div class="lv-foot"><button class="btn ghost" id="lv-more" hidden>Load more</button><button class="btn ghost" onclick="openStories()">View all public stories →</button></div></section>
+<div class="lv-grid"><div class="lv-main"><div id="lv-list" aria-live="polite"></div><div class="lv-foot"><button class="btn ghost" id="lv-more" hidden>Load more</button><button class="btn ghost" onclick="openStories()">View all public stories →</button></div></div><aside class="lv-side" aria-label="Division ledger"><div class="lg"><div class="lgh">Division ledger</div><ol id="lg-list"></ol></div><div class="lg"><div class="lgh">Average per division</div><div class="lgv"><b id="lg-avg">0</b><span>Total reports divided by the number of divisions.</span></div></div><p class="lgd">Demonstration data</p></aside></div></section>
 <section id="cat-s" aria-labelledby="ch"><h2 id="ch">What are students <em>reporting?</em></h2><p class="lead">Choose a category to filter the map. Counts appear only as aggregates. <strong>Demonstration data:</strong> figures are illustrative, not real reports.</p><div class="grid" id="cc"></div></section>
 <section id="flow-s" aria-labelledby="fh">
 <h2 id="fh">Your report moves through <em>five protected stages.</em></h2>
@@ -494,9 +500,13 @@ const sh=q=>{const w=CATS.map((_,i)=>.05+f(q+i*7)*.25),z=w.reduce((a,b)=>a+b);re
 const cnt=(d,ci)=>{const q=hs(d),b=(30+f(q)*110)*TF[st.t]*VF[st.v];return Math.round(ci<0?b:b*sh(q)[ci])};
 const sum=(ds,ci)=>ds.reduce((a,d)=>a+cnt(d,ci),0);
 const lvl=(n,dc)=>{if(n<CFG.k)return 0;const a=n/dc,m=st.c<0?1:.3,T=CFG.d.map(x=>x*m);return 1+(a>=T[0])+(a>=T[1])+(a>=T[2])};
-function heroStats(){const rows=P.map(r=>[r[1],r[5].reduce((a,d)=>a+Math.round((30+f(hs(d))*110)*TF[4]),0)]),tot=rows.reduce((a,r)=>a+r[1],0),top=rows.slice().sort((a,b)=>b[1]-a[1]).slice(0,3),mx=top[0][1];   // fixed demo figures: whole-period, unfiltered
+function demoRows(){return P.map(r=>[r[1],r[5].reduce((a,d)=>a+Math.round((30+f(hs(d))*110)*TF[4]),0)])}   // fixed demo figures: whole-period, unfiltered
+function heroStats(){const rows=demoRows(),tot=rows.reduce((a,r)=>a+r[1],0),top=rows.slice().sort((a,b)=>b[1]-a[1]).slice(0,3),mx=top[0][1];
  $("#hs-n").textContent=tot.toLocaleString("en-US");$("#hs-s").textContent="reports in "+P.length+" cities and provinces";
- $("#hs-t").innerHTML=top.map(r=>'<div class="tr"><span>'+r[0]+'</span><i style="width:'+Math.max(12,Math.round(r[1]/mx*100))+'%"></i><em>'+r[1].toLocaleString("en-US")+"</em></div>").join("")}
+ $("#hs-t").innerHTML=top.map(r=>'<div class="tr"><span>'+r[0]+'</span><i style="width:'+Math.max(12,Math.round(r[1]/mx*100))+'%"></i><em>'+r[1].toLocaleString("en-US")+"</em></div>").join("");
+ const all=rows.slice().sort((a,b)=>b[1]-a[1]);
+ $("#lg-list").innerHTML=all.map((r,n)=>'<li><span><span class="r">'+String(n+1).padStart(2,"0")+'</span><span> · </span><span>'+r[0]+'</span></span><b>'+r[1].toLocaleString("en-US")+"</b></li>").join("");
+ $("#lg-avg").textContent=Math.round(tot/P.length).toLocaleString("en-US")}
 heroStats();
 const trend=ds=>{const v=[0,1,2,3,4,5].map(i=>ds.reduce((a,d)=>a+(30+f(hs(d))*110)/12*(.6+f(hs(d)+i*3)*.8+i*.06),0));return{v,t:v[5]>v[0]*1.1?"Increasing":v[5]<v[0]*.9?"Decreasing":"Steady"}};
 function tile(m,x,y,w,h,txt,z,aria,click,over){const g=document.createElementNS(NS,"g");g.setAttribute("class","tl");g.setAttribute("tabindex",0);g.setAttribute("role","button");g.setAttribute("aria-label",aria);g.innerHTML='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="10" fill="'+ZC[z]+'"/><text x="'+(x+w/2)+'" y="'+(y+h/2+3)+'" text-anchor="middle" fill="'+(z?"#10151C":"#dfe6ee")+'">'+txt+'</text>';g.onclick=click;g.onkeydown=e=>{if(e.key=="Enter"||e.key==" "){e.preventDefault();click()}};g.onmouseenter=g.onfocus=over;m.append(g);try{const t=g.querySelector("text"),bw=t.getBBox().width,mx=w-10;if(bw>mx)t.style.fontSize=Math.max(6.5,10*mx/bw)+"px"}catch(e){}}
