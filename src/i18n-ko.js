@@ -265,6 +265,12 @@ const X = {
   "No reports in this topic yet.":"이 주제에는 아직 신고가 없습니다.",
   "Reports could not be loaded right now. Please try again later.":"지금은 신고를 불러올 수 없습니다. 나중에 다시 시도해 주세요.",
   "Show more":"더 보기",
+  "Your public story":"공개 이야기",
+  "Every report on Korea Unlocked is shared as an anonymous story, so the next student does not have to go through the same thing alone. You will not be named.":"Korea Unlocked의 모든 신고는 익명 이야기로 공유되어, 다음 학생이 같은 일을 혼자 겪지 않도록 돕습니다. 작성자의 이름은 공개되지 않습니다.",
+  "This is the only text that is shown publicly. Before it is published it is checked automatically for phone numbers, people's names and business details; if something is found you can edit it. Places and locations may stay. Your longer private description, contact choices and tracking secret are never shown.":"공개되는 글은 이 부분뿐입니다. 게시 전에 전화번호, 사람 이름, 업체 정보가 있는지 자동으로 확인하며, 발견되면 수정할 수 있습니다. 장소와 위치는 남을 수 있습니다. 더 자세한 비공개 설명, 연락 선택, 추적 비밀번호는 절대 공개되지 않습니다.",
+  "I understand this story will be public.":"이 이야기가 공개된다는 점을 이해합니다.",
+  "I wrote it myself and did not include names, phone numbers or exact addresses. I can withdraw it at any time from Track an existing case.":"직접 작성했으며 이름, 전화번호, 정확한 주소를 포함하지 않았습니다. '기존 사례 추적'에서 언제든 철회할 수 있습니다.",
+  "Please confirm that you understand your story will be public.":"이야기가 공개된다는 점을 이해했는지 확인해 주세요.",
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",
