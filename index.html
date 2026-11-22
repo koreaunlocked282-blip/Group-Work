@@ -74,7 +74,6 @@ p.lead{color:var(--mut);max-width:60ch;margin:0 0 32px}
 .ch-box{display:flex;align-items:flex-end;gap:8px;background:var(--bg3);border:1px solid var(--line);border-radius:24px;padding:8px 8px 8px 16px}
 .ch-box textarea{border:0;background:none;resize:none;max-height:200px;padding:8px 0;outline:none}
 .ch-send{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);font-size:1.2rem;font-weight:700}.ch-send:disabled{opacity:.4}
-body:has(#o-chat.on) #exit{bottom:auto;top:calc(14px + env(safe-area-inset-top,0px));right:64px;padding:8px 12px;font-size:.85rem}
 @media(max-width:520px){.ch-title .tag{display:none}}
 .st-how{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:14px 0}.st-how div{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:.9rem}.st-how b{color:#000;font-weight:700;display:grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg)}
 .st-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:12px 0}.st-stat{border:1px solid var(--line);border-radius:12px;padding:12px}.st-stat b{display:block;font-size:1.6rem}.st-stat span{color:var(--mut);font-size:.85rem}
@@ -230,7 +229,6 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <button class="pill hide-s" onclick="ov('login')" data-i="login" style="border-color:transparent">Log in</button>
 <button class="pill fill" onclick="ov('signup')" data-i="signup">Create account</button>
 </header>
-<button id="exit" aria-label="Quick exit: leave this site immediately (or press Escape twice)" data-i="exit">Quick exit</button>
 
 <main>
 <section class="hero" aria-labelledby="t">
@@ -414,7 +412,7 @@ function need(id){const e=$("#"+id);e.hidden=false;e.innerHTML='<span class="tag
 function soon(id,t){const e=$("#"+id);e.hidden=false;e.textContent=t}
 /* quick exit */
 let esc=0;const qx=()=>{document.querySelectorAll("input,textarea").forEach(e=>e.value="");["localStorage","sessionStorage"].forEach(k=>Object.keys(window[k]).filter(x=>x.startsWith("sb-")).forEach(x=>window[k].removeItem(x)));RD={};SD={};document.body.innerHTML="";location.replace("https://www.google.com")};
-$("#exit").onclick=qx;addEventListener("keydown",e=>{if(e.key=="Escape"){ov();esc++;setTimeout(()=>esc=0,700);if(esc>=2)qx()}});
+addEventListener("keydown",e=>{if(e.key=="Escape"){ov();esc++;setTimeout(()=>esc=0,700);if(esc>=2)qx()}});
 /* stages */
 const S=[["Report","--rep","Private by default. Categories: workplace, housing, university, public space, online. Optional contribution to anonymized patterns.","Needs: report API + database"],["Protect","--pro","Strip metadata, detect ID/passport/faces, OCR Korean and English, find PII, redact. Raw evidence stays in memory.","Needs: evidence protection service"],["Verify","--ver","AI pre-check, human review, duplicate and abuse detection, cross-report corroboration. Named parties get a right of response.","Needs: verification engine + moderators"],["Map","--ana","Only aggregates reach the map: province and district, broad category, count and trend. Nothing public below k ≥ 5, and never a single complaint as a marker.","Needs: PostGIS aggregation"],["Support","--sup","Guidance, connection to support offices, signed evidence packet, private status alerts.","Needs: partner offices + notifications"]];
 S.forEach((s,i)=>{const b=document.createElement("button");b.className="node";b.style.setProperty("--c","var("+s[1]+")");b.innerHTML="<b>"+s[0]+"</b>";b.setAttribute("aria-pressed",i==0);b.onclick=()=>pick(i);$("#flow").append(b)});
