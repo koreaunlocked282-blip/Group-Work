@@ -192,6 +192,7 @@ const X = {
   'Your account is ready once you confirm it. Then log in.':'인증을 마치면 계정을 사용할 수 있습니다. 그런 다음 로그인하세요.',
   'Could not start Google sign-in. Please try again or use email and password.':'Google 로그인을 시작할 수 없습니다. 다시 시도하거나 이메일과 비밀번호를 사용하세요.',
   'Project team':'프로젝트 팀','Korea Unlocked is a free capstone project built by three students.':'Korea Unlocked는 세 명의 학생이 만든 무료 캡스톤 프로젝트입니다.',
+  ' — Team Leader':' — 팀장',
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",
