@@ -194,6 +194,8 @@ const X = {
   'Project team':'프로젝트 팀','Korea Unlocked is a free capstone project built by three students.':'Korea Unlocked는 세 명의 학생이 만든 무료 캡스톤 프로젝트입니다.',
   ' — Team Leader':' — 팀장',
   "Public reports cannot contain names or phone numbers. Before a public version is shared, an automatic check looks for people's names, phone numbers and business details. If it finds any, you see what was found and a cleaned version, and you cannot continue until the text is clean. The check runs again on our server, so a public version that still contains them is held for review and not shown. Places and locations may stay.":"공개 신고에는 이름이나 전화번호를 넣을 수 없습니다. 공개 버전이 공유되기 전에 자동 검사가 사람 이름, 전화번호, 업체 정보가 있는지 확인합니다. 발견되면 어떤 내용이 문제인지와 정리된 버전을 보여 주며, 글이 깨끗해질 때까지 다음 단계로 넘어갈 수 없습니다. 이 검사는 서버에서 다시 실행되므로, 그런 정보가 남아 있는 공개 버전은 검토를 위해 보류되고 표시되지 않습니다. 장소와 위치는 남아 있을 수 있습니다.",
+  'Latest report':'최근 신고','Total reports':'전체 신고','Top cities':'신고 많은 도시','3 days ago':'3일 전',
+  'reports in 17 cities and provinces':'17개 시·도의 신고',
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",

@@ -207,6 +207,9 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 #bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.55),#000 55%);mask-image:linear-gradient(90deg,rgba(0,0,0,.55),#000 55%)}
 .hero>*:not(#bg):not(#sig){position:relative;z-index:1}
 .trio{background:var(--bg)}
+.trio .lt{display:block;font-size:1.05rem;margin:2px 0 6px}.trio .in{display:inline}.trio .dm{font:500 .72rem var(--mono);margin-top:10px;color:var(--mut)}
+.trio .tr{display:grid;grid-template-columns:minmax(70px,auto) 1fr auto;gap:12px;align-items:center;margin-top:12px;font-size:.98rem}.trio .tr i{display:block;height:5px;background:var(--ink)}.trio .tr em{font-style:normal;font-family:var(--mono);font-size:.9rem}
+
 @media(max-width:720px){header{flex-wrap:nowrap;padding:10px 12px;gap:2px}.logo{margin-right:auto;font-size:.95rem}.nb,#lang{padding:8px 5px;font-size:.92rem}.pill{padding:9px 10px;font-size:.82rem}}
 .st-conf{display:flex;align-items:stretch;border:1px solid var(--ink);margin-top:12px;max-width:340px}
 .st-conf button{flex:1;text-align:left;background:var(--yellow);color:#000;border:0;border-radius:0;font-weight:700;padding:10px 14px}
@@ -249,7 +252,7 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <h1 id="t"><span>Someone treated you <em>differently.</em></span><span>You remember <em>every detail.</em></span><span>Now put it <em>on the record.</em></span></h1>
 <p class="sub" data-i="sub">Korea has a pattern you cannot see from one story.</p><p class="sub" data-i="sub2">Report discrimination. Protect your evidence. Understand patterns. Find support.</p>
 <div class="cta"><button class="pill fill" onclick="ov('report')">Report an experience →</button><a class="pill" href="#map-s" data-i="explore">Explore Korea map</a><button class="pill" style="background:var(--yellow)" onclick="ov('chat')">Ask the AI assistant</button></div>
-<div class="trio"><div><small>Anonymous</small><b>No real name needed</b><span>File a report without an account and track it with a case code.</span></div><div><small>Private by default</small><b>You choose what is shared</b><span>Only stories whose authors pick public are ever published.</span></div><div><small>Checked first</small><b>Names and phone numbers removed</b><span>An automatic check runs before any story goes public.</span></div></div>
+<div class="trio"><div><small>Latest report</small><b>Refusal of service</b><strong class="lt">Housing / Landlord</strong><span><span class="in">Seoul</span> · <span class="in">Mapo-gu</span> · <span class="in">3 days ago</span></span><span class="dm">Demonstration data</span></div><div><small>Total reports</small><b id="hs-n">0</b><span id="hs-s"></span><span class="dm">Demonstration data</span></div><div><small>Top cities</small><div id="hs-t"></div></div></div>
 <div class="callout"><div><b>Patterns are hard to ignore.</b><br><span>One story is a complaint. Many records expose a system.</span></div><a class="pill fill" href="#flow-s">How it works →</a></div>
 </section>
 
@@ -450,6 +453,10 @@ const sh=q=>{const w=CATS.map((_,i)=>.05+f(q+i*7)*.25),z=w.reduce((a,b)=>a+b);re
 const cnt=(d,ci)=>{const q=hs(d),b=(30+f(q)*110)*TF[st.t]*VF[st.v];return Math.round(ci<0?b:b*sh(q)[ci])};
 const sum=(ds,ci)=>ds.reduce((a,d)=>a+cnt(d,ci),0);
 const lvl=(n,dc)=>{if(n<CFG.k)return 0;const a=n/dc,m=st.c<0?1:.3,T=CFG.d.map(x=>x*m);return 1+(a>=T[0])+(a>=T[1])+(a>=T[2])};
+function heroStats(){const rows=P.map(r=>[r[1],r[5].reduce((a,d)=>a+Math.round((30+f(hs(d))*110)*TF[4]),0)]),tot=rows.reduce((a,r)=>a+r[1],0),top=rows.slice().sort((a,b)=>b[1]-a[1]).slice(0,3),mx=top[0][1];   // fixed demo figures: whole-period, unfiltered
+ $("#hs-n").textContent=tot.toLocaleString("en-US");$("#hs-s").textContent="reports in "+P.length+" cities and provinces";
+ $("#hs-t").innerHTML=top.map(r=>'<div class="tr"><span>'+r[0]+'</span><i style="width:'+Math.max(12,Math.round(r[1]/mx*100))+'%"></i><em>'+r[1].toLocaleString("en-US")+"</em></div>").join("")}
+heroStats();
 const trend=ds=>{const v=[0,1,2,3,4,5].map(i=>ds.reduce((a,d)=>a+(30+f(hs(d))*110)/12*(.6+f(hs(d)+i*3)*.8+i*.06),0));return{v,t:v[5]>v[0]*1.1?"Increasing":v[5]<v[0]*.9?"Decreasing":"Steady"}};
 function tile(m,x,y,w,h,txt,z,aria,click,over){const g=document.createElementNS(NS,"g");g.setAttribute("class","tl");g.setAttribute("tabindex",0);g.setAttribute("role","button");g.setAttribute("aria-label",aria);g.innerHTML='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="10" fill="'+ZC[z]+'"/><text x="'+(x+w/2)+'" y="'+(y+h/2+3)+'" text-anchor="middle" fill="'+(z?"#10151C":"#dfe6ee")+'">'+txt+'</text>';g.onclick=click;g.onkeydown=e=>{if(e.key=="Enter"||e.key==" "){e.preventDefault();click()}};g.onmouseenter=g.onfocus=over;m.append(g);try{const t=g.querySelector("text"),bw=t.getBBox().width,mx=w-10;if(bw>mx)t.style.fontSize=Math.max(6.5,10*mx/bw)+"px"}catch(e){}}
 function draw(){const m=$("#map");m.innerHTML="";const pr=st.p==null?null:P[st.p];
