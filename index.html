@@ -212,6 +212,15 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 #lv-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}#lv-list>p{grid-column:1/-1;margin:0}#lv-list .st-card{margin:0}
 .lv-foot{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.lv-foot .btn{width:auto;margin:0}
 .st-card.demo{border-style:dashed}
+.tp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0;border:1px solid var(--ink);margin-top:14px}
+.tp-card{all:unset;box-sizing:border-box;cursor:pointer;padding:16px 16px 14px;border:0;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);display:flex;flex-direction:column;gap:6px;background:#fff;margin:0 -1px -1px 0}
+.tp-card:hover,.tp-card:focus-visible{background:var(--yellow,#ffda00)}
+.tp-card[aria-pressed=true]{background:#0b0b0a;color:#fff}
+.tp-card .tp-n{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.tp-card .tp-t{font-size:19px;font-weight:600;line-height:1.2}
+.tp-card .tp-c{font-family:"IBM Plex Mono",monospace;font-size:12px}
+.tp-out{margin-top:18px}.tp-out h3{margin:0 0 10px;font-size:22px}
+
 .m3d{perspective:1200px;background:#fff;border:1px solid var(--line);overflow:hidden;position:relative}
 .m3d-in{position:relative;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));will-change:transform}
 #kf{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:1;transform:translateZ(-80px) scale(1.2)}
@@ -286,7 +295,7 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <button class="nb" onclick="ov('menu')" aria-haspopup="dialog" data-i="menu">Menu</button>
 <a class="nb hide-s" href="#map-s" data-i="map">Map</a>
 <button class="nb hide-s" onclick="ov('report')" data-i="report">Report</button>
-<a class="nb hide-s" href="#pat-s" data-i="pat">Patterns</a>
+<a class="nb hide-s" href="#pat-s" data-i="pat">Topics</a>
 <button class="nb hide-s" onclick="openStories()">Public stories</button>
 <button class="nb hide-s" onclick="ov('chat')" style="font-weight:700">AI assistant</button>
 <button class="nb" id="lang" aria-label="Switch language">한국어</button>
@@ -323,8 +332,8 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 <p class="note">Behind the tiles are the Taegukgi (South Korea's flag, drawn as an illustration) and the country's coastline (Natural Earth, public domain). Move your mouse or finger over the map to tilt it.</p>
 <p class="note"><b>This map shows aggregated reported patterns, not a definitive safety rating.</b> Fewer than 5 reports shows as grey. <span class="tag">Demo data</span> Generated for this prototype; not real reports or statistics. Tiles are a stylised layout, not real boundaries. Real boundary polygons (MapLibre + GeoJSON from PostGIS) are the next step.</p>
 <div class="read" id="rd" aria-live="polite">Hover or focus an area.</div><div id="pn" aria-live="polite"></div></div></div></section>
-<section id="pat-s" aria-labelledby="ph"><h2 id="ph">Pattern <em>directory</em></h2><p class="lead">Aggregates only, listed alphabetically and never ranked. Uses the filters above.</p><p class="lead" role="note"><strong>Demonstration data:</strong> the numbers shown here are illustrative and are not real reports.</p>
-<label for="dq">Search</label><input id="dq" placeholder="Seoul, Haeundae-gu, Yonsei University"><div class="dir" id="dl2" style="margin-top:12px"></div></section>
+<section id="pat-s" aria-labelledby="ph"><h2 id="ph">Reports <em>by topic</em></h2><p class="lead">Pick a topic, such as part-time jobs or housing, to read the shared reports about it.</p><p class="lead" role="note"><strong>Demonstration data:</strong> counts and sample reports shown here are illustrative until enough real reports exist.</p>
+<div class="tp-grid" id="tp-grid"></div><div class="tp-out" id="tp-out" aria-live="polite" hidden><h3 id="tp-h"></h3><div class="lv-list" id="tp-list"></div><button class="btn ghost" id="tp-more" type="button" hidden>Show more</button></div></section>
 
 <section id="report-s" aria-labelledby="rh">
 <h2 id="rh">Protect the evidence <em>before anyone sees it.</em></h2>
@@ -392,8 +401,8 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--i
 </div>
 
 <script>
-const $=s=>document.querySelector(s),D={en:{menu:"Menu",map:"Map",report:"Report",pat:"Patterns",login:"Log in",logout:"Log out",signup:"Create account",exit:"Quick exit",sub:"Korea has a pattern you cannot see from one story.",sub2:"Report discrimination. Protect your evidence. Understand patterns. Find support.",start:"Report an experience",explore:"Explore Korea map",ch:"What are students reporting?",fh:"Your report moves through five protected stages.",fp:"Select a stage to see what happens and what is still waiting on a live service.",mh:"Explore the Unlocked Korea",rh:"Protect the evidence before anyone sees it.",sh:"Help that exists today."},
-ko:{menu:"메뉴",map:"지도",report:"신고",pat:"패턴",login:"로그인",logout:"로그아웃",signup:"계정 만들기",exit:"빠른 종료",sub:"한 사람의 이야기로는 보이지 않는 패턴이 있습니다.",sub2:"차별을 신고하고, 증거를 보호하고, 패턴을 이해하고, 도움을 찾으세요.",start:"경험 신고하기",explore:"한국 지도 보기",ch:"유학생들은 무엇을 신고하고 있나요?",fh:"신고는 다섯 단계의 보호 과정을 거칩니다.",fp:"단계를 선택하면 어떤 일이 일어나고 무엇이 아직 연결 전인지 볼 수 있습니다.",mh:"패턴 살펴보기",rh:"누구도 보기 전에 증거를 보호합니다.",sh:"지금 이용 가능한 도움."}};
+const $=s=>document.querySelector(s),D={en:{menu:"Menu",map:"Map",report:"Report",pat:"Topics",login:"Log in",logout:"Log out",signup:"Create account",exit:"Quick exit",sub:"Korea has a pattern you cannot see from one story.",sub2:"Report discrimination. Protect your evidence. Understand patterns. Find support.",start:"Report an experience",explore:"Explore Korea map",ch:"What are students reporting?",fh:"Your report moves through five protected stages.",fp:"Select a stage to see what happens and what is still waiting on a live service.",mh:"Explore the Unlocked Korea",rh:"Protect the evidence before anyone sees it.",sh:"Help that exists today."},
+ko:{menu:"메뉴",map:"지도",report:"신고",pat:"주제",login:"로그인",logout:"로그아웃",signup:"계정 만들기",exit:"빠른 종료",sub:"한 사람의 이야기로는 보이지 않는 패턴이 있습니다.",sub2:"차별을 신고하고, 증거를 보호하고, 패턴을 이해하고, 도움을 찾으세요.",start:"경험 신고하기",explore:"한국 지도 보기",ch:"유학생들은 무엇을 신고하고 있나요?",fh:"신고는 다섯 단계의 보호 과정을 거칩니다.",fp:"단계를 선택하면 어떤 일이 일어나고 무엇이 아직 연결 전인지 볼 수 있습니다.",mh:"패턴 살펴보기",rh:"누구도 보기 전에 증거를 보호합니다.",sh:"지금 이용 가능한 도움."}};
 let L="en";const tr=()=>{document.documentElement.lang=L;document.querySelectorAll("[data-i]").forEach(e=>e.textContent=D[L][e.dataset.i]);$("#lang").textContent=L=="en"?"한국어":"English"};
 $("#lang").onclick=()=>{L=L=="en"?"ko":"en";tr();if(typeof refresh=="function")refresh()};
 /* overlays */
@@ -548,11 +557,26 @@ else{const cor=Math.round(n*(.15+f(hs(t)+99)*.3)),tr=trend(all),tot=sum(all,-1),
 h+='<p><b>'+n+'</b> eligible reports · <b>'+cor+'</b> corroborated ('+(cor>=10?"10+":cor>=5?"5+":"1+")+' similar experiences)</p><b>Most reported categories</b>'+rows.map(r=>'<div>'+r[0]+' — '+r[1]+'%</div><div class="bar" style="width:'+r[1]*2+'%"></div>').join("")+'<b>Trend, last 6 months: '+tr.t+'</b><svg viewBox="0 0 220 42" width="220" height="42" role="img" aria-label="Trend '+tr.t+'"><polyline points="'+pts+'" fill="none" stroke="#FFB03A" stroke-width="2"/></svg><p>Universities in or near the area: '+(us.join(", ")||"none listed in demo data")+'</p>'}
 h+='<p><small>Support: university international office (verified contact needed) · Immigration 1345 · Emergency 112 / 119</small></p><button class="btn ghost" onclick="this.nextElementSibling.hidden=false">I experienced something similar</button><p class="note" hidden>Demo only, nothing recorded. Live, this raises internal corroboration confidence. It is not a public vote or like.</p><p><small><span class="tag">Demo data</span> Not real reports.</small></p>';
 el.innerHTML=h;if(open)el.classList.add("open")}
-function renderDir(){const q=$("#dq").value.toLowerCase(),o=[];P.forEach((p,i)=>p[5].forEach((d,j)=>{const us=Object.keys(U).filter(u=>U[u][1]==d&&U[u][0]==p[0]).join(" ");if((p[0]+" "+d+" "+us).toLowerCase().includes(q))o.push([p[0],d,i,j])}));
-$("#dl2").innerHTML=o.sort((a,b)=>(a[0]+a[1]).localeCompare(b[0]+b[1])).map(r=>{const n=cnt(r[1],st.c),z=lvl(n,1),cor=Math.round(n*(.15+f(hs(r[0]+" — "+r[1])+99)*.3));return'<button class="dr" data-pi="'+r[2]+'" data-pj="'+r[3]+'"><span class="zd" style="background:'+ZC[z]+'"></span><b>'+r[0]+" › "+r[1]+"</b><span>"+(z?n+" eligible · "+cor+" corroborated · "+trend([r[1]]).t:"Insufficient data")+"</span></button>"}).join("")||'<p style="padding:14px">No matching areas.</p>'}
-function refresh(){draw();renderDir();if(st.sel)panel(st.sel[0],st.sel[1],st.sel[2],false)}
+/* ===== Reports by topic ===== */
+const TOPICS=[["Part-time job","workplace_parttime",1],["Housing","housing_landlord",1],["University","university_classroom",1],["Racism","racism",1],["Public service","public_service_business",1],["Language","language_discrimination",1],["Harassment","harassment_verbal",1],["Online harassment","online_harassment",1],["Immigration / admin","immigration_admin",1],["Transport / public space","public_transport_space",1],["Healthcare","healthcare_service",1],["Other","other",1]];
+const TPD={workplace_parttime:[["Busan","My manager gave me the least popular shifts and joked about my accent in front of customers.",7],["Seoul","I was paid below the agreed hourly wage for two months and told that foreign students cannot complain.",5]],housing_landlord:[["Seoul","The landlord stopped replying after learning I was an international student. The room was listed as available again the next day.",12],["Daegu","An agency refused to show me rooms and said landlords here do not rent to foreigners.",6]],university_classroom:[["Daejeon","A group of classmates kept leaving me out of project teams because of my nationality.",4]],racism:[["Incheon","A stranger on the bus told me to go back to my country and nobody said anything.",9]],public_service_business:[["Incheon","A shop refused to serve me and said it only accepts Korean customers.",4]]};
+var TP={code:null,rows:[],demo:false,off:0};
+function tpCount(i){return TPD[TOPICS[i][1]]?TPD[TOPICS[i][1]].reduce((a,x)=>a+x[2],0)*(i+3):Math.round(8+f(i+11)*30)}
+function tpDraw(){const g=$("#tp-grid");g.replaceChildren();TOPICS.forEach((t,i)=>{const b=dEl("button",null,"tp-card");b.type="button";b.setAttribute("aria-pressed",String(TP.code===t[1]));
+  b.append(dEl("span","Topic "+String(i+1).padStart(2,"0"),"tp-n"),dEl("span",t[0],"tp-t"),dEl("span",tpCount(i)+" reports (demo)","tp-c"));b.onclick=()=>tpOpen(i);g.append(b)})}
+function tpShow(){const L0=$("#tp-list");L0.replaceChildren();if(!TP.rows.length){L0.append(dEl("p","No reports in this topic yet."));return}
+ TP.rows.forEach(x=>{if(!x.demo)return L0.append(stCard(x.r));const d=dEl("div",null,"st-card demo"),m=dEl("div",null,"st-meta");m.append(dEl("span",x.cat,"tag"),dEl("span",x.prov),dEl("span","Demonstration data"));d.append(m,dEl("p",x.text),cfDemo(x));L0.append(d)});attachMedia(L0)}
+async function tpLoad(reset){const t=TOPICS.find(x=>x[1]===TP.code),more=$("#tp-more");if(reset){TP.off=0;TP.rows=[];TP.demo=false;$("#tp-list").replaceChildren(dEl("p","Loading..."))}
+ try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("list_public_stories",{_category:TP.code,_province:null,_limit:6,_offset:TP.off,_sort:"latest"});if(error)throw 0;
+  if(!data.length&&reset){more.hidden=true;TP.demo=true;TP.rows=(TPD[TP.code]||[]).map(x=>({demo:true,cat:t[0],prov:x[0],text:x[1],n:x[2],done:false}));tpShow();return}
+  data.forEach(r=>{const pn=REF&&REF.p.find(x=>x.code==r.province_code);TP.rows.push({r,id:r.id,cat:catL(r.category),prov:pn?pn.name_en:human(r.province_code),text:r.story_text,n:r.confirm_count||0})});
+  TP.off+=data.length;more.hidden=data.length<6;tpShow()}
+ catch{$("#tp-list").replaceChildren(dEl("p","Reports could not be loaded right now. Please try again later."))}}
+function tpOpen(i){TP.code=TOPICS[i][1];tpDraw();$("#tp-out").hidden=false;$("#tp-h").textContent=TOPICS[i][0];tpLoad(true)}
+$("#tp-more").onclick=()=>tpLoad(false);tpDraw();
+function refresh(){draw();if(st.sel)panel(st.sel[0],st.sel[1],st.sel[2],false)}
 function jump(i,j,uni){st.p=i;refresh();panel(i,j,uni,true);$("#map-s").scrollIntoView({behavior:"smooth"})}
-$("#dl2").onclick=e=>{const b=e.target.closest(".dr");if(b)jump(+b.dataset.pi,+b.dataset.pj)};$("#dq").oninput=renderDir;
+
 $("#fc").innerHTML='<option value="-1">All categories</option>'+CATS.map((c,i)=>'<option value="'+i+'">'+c+'</option>').join("");$("#ft").innerHTML=TL.map((c,i)=>'<option value="'+i+'">'+c+'</option>').join("");$("#ft").value=4;$("#fv").innerHTML=VL.map((c,i)=>'<option value="'+i+'">'+c+'</option>').join("");
 $("#fc").onchange=e=>{st.c=+e.target.value;refresh()};$("#ft").onchange=e=>{st.t=+e.target.value;refresh()};$("#fv").onchange=e=>{st.v=+e.target.value;refresh()};
 $("#sl").innerHTML=[...P.map(p=>p[0]),...P.flatMap(p=>p[5]),...Object.keys(U)].map(x=>'<option value="'+x+'">').join("");
