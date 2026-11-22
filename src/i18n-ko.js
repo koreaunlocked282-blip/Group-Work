@@ -70,7 +70,7 @@ const X = {
   'Low':'낮음','Moderate':'보통','Elevated':'다소 높음','High':'높음','Legend':'범례',
   'Universities in or near the area: none listed in demo data':'지역 내 또는 인근 대학교: 데모 데이터에 없음',
   'See where this pattern appears':'이 패턴이 나타나는 곳 보기',
-  'Verified support organisations (university offices, human rights and labor centers, counseling) are not listed yet because their contact details have not been verified. See the Support section for status.':'검증된 지원 기관(대학 사무국, 인권·노동 센터, 상담)은 연락처가 아직 확인되지 않아 목록에 없습니다. 현황은 지원 섹션을 확인하세요.',
+  'Verified support organisations (university offices, human rights and labor centers, counseling) are not listed yet because their contact details have not been verified.':'검증된 지원 기관(대학 사무국, 인권·노동 센터, 상담)은 연락처가 아직 확인되지 않아 목록에 없습니다.',
   // support
   'Police emergency':'경찰 긴급 신고','Fire and medical emergency':'소방·응급 의료 신고','Immigration contact':'출입국 문의','Korea, emergency':'한국, 긴급','Immigration':'출입국',
   'Not yet added':'아직 추가되지 않음','University support, Human Rights Commission, labor centers, legal and counseling':'대학 지원 기관, 국가인권위원회, 노동 센터, 법률 및 상담','Needs verified contact data':'확인된 연락처 정보 필요',
