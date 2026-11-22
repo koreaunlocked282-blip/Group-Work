@@ -245,6 +245,7 @@ const X = {
   "It is checked automatically for names, phone numbers and business details before it is shown. You will not be named. The AI assistant may show published stories to other students.":"표시되기 전에 이름, 전화번호, 업체 정보가 있는지 자동으로 검사됩니다. 작성자의 이름은 공개되지 않습니다. AI 도우미가 게시된 이야기를 다른 학생에게 보여 줄 수 있습니다.",
   "This anonymous story was shared by its author and checked automatically. It is not proof of any allegation. For help, see the Support section.":"이 익명 이야기는 작성자가 공유했고 자동 검사를 거쳤습니다. 어떤 주장의 증거도 아닙니다. 도움이 필요하면 지원 섹션을 보세요.",
   "Behind the tiles are the Taegukgi (South Korea's flag, drawn as an illustration) and the country's coastline (Natural Earth, public domain). Move your mouse or finger over the map to tilt it.":"타일 뒤에는 태극기(일러스트로 그린 것)와 대한민국의 해안선(Natural Earth, 퍼블릭 도메인)이 있습니다. 마우스나 손가락을 지도 위에서 움직이면 지도가 기울어집니다.",
+  "the Unlocked Korea":"언락드 코리아",
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",
