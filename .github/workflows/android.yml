@@ -70,7 +70,14 @@ jobs:
         env:
           BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ env.KS_PASS }}
           BUBBLEWRAP_KEY_PASSWORD: ${{ env.KS_PASS }}
-        run: bubblewrap build --skipPwaValidation < /dev/null
+        run: |
+          set +e
+          bubblewrap build --skipPwaValidation < /dev/null 2>&1 | tee build.log
+          code=${PIPESTATUS[0]}
+          if [ "$code" != "0" ]; then
+            tail -n 30 build.log | sed 's/\r//g; s/%/%25/g' | while IFS= read -r l; do echo "::error::$l"; done
+            exit 1
+          fi
 
       - name: Publish to Releases
         working-directory: android
