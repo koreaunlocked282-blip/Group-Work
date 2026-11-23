@@ -360,6 +360,26 @@ header .hl-rp:hover{box-shadow:5px 5px 0 #0b0b0a}header .hl-ai:hover{box-shadow:
 @keyframes hlp{0%,100%{box-shadow:0 0 0 0 rgba(255,218,0,.7)}50%{box-shadow:0 0 0 6px rgba(255,218,0,0)}}
 @media(prefers-reduced-motion:reduce){.hl-dot{animation:none}header .hl-ai,header .hl-rp{transition:none}}
 </style>
+<style>
+/* ===== mobile fixes ===== */
+.brk{display:none}.m-only{display:none}
+.lv-side .lg{display:block;color:inherit;font-size:inherit}
+.lv-grid{grid-template-columns:minmax(0,1fr) 300px}
+@media(max-width:900px){.lv-grid{grid-template-columns:minmax(0,1fr)}}
+html,body{overflow-x:clip}
+@media(max-width:720px){
+ header{flex-wrap:wrap;row-gap:8px;padding:8px 12px}
+ .logo{order:1;margin-right:auto}.nb[data-i=menu]{order:2}#lang{order:3}.pill.fill{order:4}
+ .brk{display:block;flex:0 0 100%;height:0;order:5}
+ header .hl-ai.hide-s,header .hl-rp.hide-s{display:inline-flex;order:6;flex:1 1 0;justify-content:center;align-items:center;padding:10px 8px;font-size:.95rem;box-shadow:3px 3px 0 #0b0b0a}
+ header .hl-ai.hide-s{box-shadow:3px 3px 0 #ffda00}
+ input,select,textarea{font-size:16px}
+ .cta{display:flex;flex-wrap:wrap;gap:10px}.cta .pill{flex:1 1 40%;text-align:center}.cta .pill.fill{flex-basis:100%;order:-1}
+ .ov .card .steps{margin-right:52px}
+}
+@media(max-width:430px){header .pill.fill{display:none}.m-only{display:block}}
+@media(max-width:860px),(pointer:coarse){html.js-rv .rv{transform:translateY(22px);transition:opacity .5s ease,transform .5s ease}html.js-rv .rv.in{transform:none}.hero{padding-top:24px}}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
@@ -374,6 +394,7 @@ header .hl-rp:hover{box-shadow:5px 5px 0 #0b0b0a}header .hl-ai:hover{box-shadow:
 <button class="nb" id="lang" aria-label="Switch language">한국어</button>
 <button class="pill hide-s" onclick="ov('login')" data-i="login" style="border-color:transparent">Log in</button>
 <button class="pill fill" onclick="ov('signup')" data-i="signup">Create account</button>
+<i class="brk" aria-hidden="true"></i>
 </header>
 
 <main>
@@ -447,7 +468,7 @@ header .hl-rp:hover{box-shadow:5px 5px 0 #0b0b0a}header .hl-ai:hover{box-shadow:
 <p>Emergency now? Call <b>112</b> (police) or <b>119</b> (fire and ambulance). This site is a prototype and does not replace legal advice or official services.</p></footer>
 
 <div class="ov" id="o-menu" role="dialog" aria-modal="true" aria-label="Menu"><div class="grid-bg"></div><button class="x" onclick="ov()" aria-label="Close">×</button>
-<nav class="menu" onclick="ov()"><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();scrollTo({top:0})">Home</a><a id="mod-nav" href="#mod-s" style="--c:var(--rep)" hidden>Moderation</a><a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a><a href="#" id="mauth" data-i="login" style="--c:var(--rep)">Log in</a></nav></div>
+<nav class="menu" onclick="ov()"><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();scrollTo({top:0})">Home</a><a href="#" style="--c:var(--rep)" onclick="event.preventDefault();setTimeout(()=>ov('report'),50)">Report an experience</a><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(()=>ov('chat'),50)">AI assistant</a><a href="#map-s" style="--c:var(--sup)">Map</a><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(openFeature,50)">Feature request</a><a href="#" style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openTeam,50)">Meet the team</a><a id="mod-nav" href="#mod-s" style="--c:var(--rep)" hidden>Moderation</a><a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a><a href="#" id="mauth" data-i="login" style="--c:var(--rep)">Log in</a><a href="#" class="m-only" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(()=>ov('signup'),50)">Create account</a><a href="#" class="m-only" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(()=>ov('signup'),50)">Create account</a></nav></div>
 
 <div class="ov" id="o-login" role="dialog" aria-modal="true" aria-label="Log in"><div class="grid-bg"></div><div class="scan"></div>
 <div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">Access</h2>
@@ -686,11 +707,11 @@ $("#pn").innerHTML='<p style="margin:0">Select a province, then a district.</p>'
 (()=>{const w=$("#m3d"),inn=$("#m3d-in");if(!w||!inn)return;const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
  const go=()=>{if(!w.classList.contains("pre"))return;w.classList.remove("pre");if(rm)return;w.classList.add("enter");setTimeout(()=>w.classList.remove("enter"),1800)};
  let vis=false;new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis)go()},{threshold:.15}).observe(w);setTimeout(go,4000);   // fallback so tiles never stay hidden
- if(rm)return;let tx=0,ty=0,cx=0,cy=0,hov=false;const t0=performance.now();
+ if(rm)return;const K=matchMedia("(pointer:coarse)").matches?.25:1;let tx=0,ty=0,cx=0,cy=0,hov=false;const t0=performance.now();
  w.addEventListener("pointermove",e=>{if(e.pointerType=="touch")return;const r=w.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*2;ty=((e.clientY-r.top)/r.height-.5)*2;hov=true});
  w.addEventListener("pointerleave",()=>{hov=false});
  (function f(t){requestAnimationFrame(f);if(!vis||document.hidden)return;const i=(t-t0)/1000;if(!hov){tx=Math.sin(i*.45)*.75;ty=Math.cos(i*.33)*.5}
-  cx+=(tx-cx)*.07;cy+=(ty-cy)*.07;inn.style.setProperty("--ry",(cx*9).toFixed(2)+"deg");inn.style.setProperty("--rx",(-cy*6).toFixed(2)+"deg")})(0)})();
+  cx+=(tx-cx)*.07;cy+=(ty-cy)*.07;inn.style.setProperty("--ry",(cx*9*K).toFixed(2)+"deg");inn.style.setProperty("--rx",(-cy*6*K).toFixed(2)+"deg")})(0)})();
 /* ===== depth layer behaviour ===== */
 (()=>{const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;if(rm)return;
  document.documentElement.classList.add("js-rv");
