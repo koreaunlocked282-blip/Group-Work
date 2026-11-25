@@ -344,6 +344,7 @@ const X = {
   "Support line for migrant women":"이주여성 긴급지원센터",
   "24-hour help for violence and other emergencies":"폭력 등 긴급 상황 24시간 지원",
   'Anonymous reports. Real patterns.':'익명 신고. 실제 패턴.',
+  'Leave out':'제외할 정보','Names':'이름','Phone numbers':'전화번호','Exact addresses':'정확한 주소','ID numbers':'신분증 번호','Report an experience.':'경험을 신고하세요.',
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",

@@ -400,6 +400,20 @@ header .dots[aria-expanded=true]:after{content:"\00d7";font-size:1.7rem;line-hei
 header .nb,header .pill{white-space:nowrap}
 @media(prefers-reduced-motion:reduce){#o-menu{animation:none}}
 </style>
+<style>
+/* ===== report: one page, ghush style ===== */
+#o-report{align-items:flex-start;padding:0 clamp(14px,3vw,36px);background:var(--bg)}
+#rback{width:auto;display:inline-block}
+#o-report .grid-bg,#o-report .x,#o-report .steps{display:none}
+#o-report .card.wide{width:min(100%,720px);margin:0 auto;border:0;box-shadow:none;background:transparent;padding:24px 0 90px}
+#o-report .rh{font-size:clamp(2rem,6vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin:22px 0 14px}
+.dnt{border:1px solid var(--ink);background:#fff;padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.dnt b{flex:0 0 100%;font-size:.95rem}
+.dnt span{background:var(--soft);padding:4px 10px;font:500 .82rem var(--mono)}
+.rsec{margin-top:34px}
+.rsec>h3{font-size:1.05rem;font-weight:700;margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid var(--ink)}
+.rsec>.btn{width:100%;margin-top:12px}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
@@ -802,14 +816,17 @@ async function pubCheck(){const t=(RD.pt||"").trim(),re=$("#re"),pc=$("#pc"),b=$
   const use=dEl("button","Use the clean version","btn ghost");use.type="button";use.onclick=()=>{$("#pt").value=data.cleaned;RD.pt=data.cleaned;RD.ptOk="";pc.replaceChildren(dEl("p","Updated. Press Continue to check it again."))};pc.append(use);
   re.hidden=true;return false}
  catch(e){put(re,["The check could not be done. Please try again."]);return false}finally{b.disabled=false}}
-async function rp(i){keep();if(i==1&&!REF){try{await loadRef()}catch{}}
- $("#rg").innerHTML=S.map((s,j)=>'<i style="background:'+(j<=Math.min(i,4)?"var("+S[j][1]+")":"")+'"></i>').join("");const last=i==5,st=RSF[i]();
- $("#rp").innerHTML='<div class="pane"><h2 style="font-size:1.8rem">'+st[0]+"</h2>"+st[1]+'<p id="re" class="note" hidden></p><button class="btn" id="rn">'+(last?"Submit report":"Continue")+"</button>"+(i?'<button class="btn ghost" id="rb">Back</button>':'<button class="btn ghost" id="tk">Track an existing case</button>')+"</div>";
+function rp(){keep();
+ $("#rg").innerHTML="";const sec=n=>{const st=RSF[n]();return '<div class="rsec" id="rs'+n+'"><h3>'+st[0]+"</h3>"+st[1]+"</div>"},wpv=()=>{if($("#pv"))$("#pv").onchange=e=>{RD.pv=e.target.value;RD.dc="";$("#dc").innerHTML=dOpts()}};
+ $("#rp").innerHTML='<button class="btn ghost" id="rback" type="button">← Back to site</button><h1 class="rh">Report an experience.</h1><div class="dnt"><b>Leave out</b><span>Names</span><span>Phone numbers</span><span>Exact addresses</span><span>ID numbers</span></div>'+[0,1,2,3,4].map(sec).join("")+'<div class="rsec"><div id="ts"></div><p id="re" class="note" hidden></p><button class="btn" id="rn" type="button">Submit report</button><p id="a4" class="note" hidden></p><button class="btn ghost" id="tk" type="button">Track an existing case</button></div>';
+ $("#o-report").scrollTop=0;$("#rback").onclick=()=>ov();
  if($("#evf")){evRender();$("#evf").onchange=e=>{evAdd([...e.target.files]);e.target.value=""}}
- if($("#pv"))$("#pv").onchange=e=>{RD.pv=e.target.value;RD.dc="";$("#dc").innerHTML=dOpts()};
- document.querySelectorAll('#rp input[name="vis"]').forEach(r=>r.onchange=e=>{RD.vis=e.target.value;RD.cn=RD.vis!="private";if($("#pbox"))$("#pbox").hidden=RD.vis!="public_after_review"})
- $("#rn").onclick=async()=>{keep();const m=chk(i);if(m)return put($("#re"),[m]);if(i==4&&RD.vis=="public_after_review"&&!(await pubCheck()))return;last?sendReport():rp(i+1)};
- if(i)$("#rb").onclick=()=>rp(i-1);else $("#tk").onclick=trk}
+ wpv();if(!REF)loadRef().then(()=>{keep();const e=$("#rs1");if(e){const st=RSF[1]();e.innerHTML="<h3>"+st[0]+"</h3>"+st[1];wpv()}}).catch(()=>{});
+ const pt=$("#pt"),w=$("#w");if(pt&&w){let touched=!!(RD.pt&&RD.pt!==RD.w);pt.oninput=()=>{touched=true};w.oninput=()=>{if(!touched)pt.value=w.value}}
+ $("#rn").onclick=async()=>{keep();for(const n of [0,1,4]){const m=chk(n);if(m){put($("#re"),[m]);$("#re").scrollIntoView({block:"center",behavior:"smooth"});return}}
+  if(RD.vis=="public_after_review"&&!(await pubCheck())){$("#re").hidden||$("#re").scrollIntoView({block:"center",behavior:"smooth"});return}
+  sendReport()};
+ $("#tk").onclick=trk}
 function ts(sel="#ts"){return new Promise((ok,no)=>{const k=KU.turnstileSiteKey;if(!k)return no("server_error");
  const run=()=>{if(tsw!==null)window.turnstile.remove(tsw);tsw=window.turnstile.render(sel,{sitekey:k,appearance:"interaction-only",callback:ok,"error-callback":()=>no("captcha_failed"),"expired-callback":()=>no("captcha_failed")})};
  if(window.turnstile)return run();const s=document.createElement("script");s.src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";s.async=true;s.onload=run;s.onerror=()=>no("captcha_failed");document.head.append(s)})}
@@ -840,14 +857,14 @@ async function sendReport(){const m=$("#a4"),b=$("#rn");b.disabled=true;
   const {data,error}=await KU.supabase.functions.invoke("submit-report",{body:{category:RD.rc,treatment:RD.rt,description:RD.w,district_code:RD.dc,university_id:RD.un&&RD.un!="__other"?RD.un:null,university_other:RD.un=="__other"?((RD.uno||"").trim()||null):null,workplace_category:RD.wk||null,housing_category:RD.hs2||null,date_from:df,date_to:dt,resolution:RD.rs,help_sought:RD.hp,visibility:RD.vis||"private",public_text:RD.vis=="public_after_review"?RD.pt:undefined,pattern_consent:RD.vis!="private",language:L,turnstile_token:tok}});
   if(error)throw await ecode(error);
   const lines=["Report received.",...(data.story=="published"?["Your public version passed the automatic check and is now published."]:data.story=="held"?["Your public version is held for review and is not public yet."]:[]),"Case code: "+data.case_code,...(data.tracking_secret?["Tracking secret (shown once): "+data.tracking_secret,"Save both now. The secret cannot be recovered."]:["Because you are signed in, you do not need a tracking secret. Open My reports from the menu to follow it."])];
-  put(m,lines);const evo=RD.evo===true&&RD.vis=="public_after_review";RD={};b.hidden=true;$("#rb").hidden=true;
+  put(m,lines);m.scrollIntoView({block:"center",behavior:"smooth"});const evo=RD.evo===true&&RD.vis=="public_after_review";RD={};b.hidden=true;
   if(EV.length){put(m,[...lines,"Uploading your files..."]);
    try{const r=await uploadEvidence(data.case_code,data.tracking_secret,evo);put(m,[...lines,r.saved+" of "+r.total+" files saved."+(evo&&r.saved?" A moderator will check them before anything is shown publicly.":"")])}
    catch{put(m,[...lines,"Your report was received, but the files could not be uploaded."])}
    EV=[]}}
- catch(c){put(m,[ER[c]||ER.server_error]);b.disabled=false}}
+ catch(c){put(m,[ER[c]||ER.server_error]);m.scrollIntoView({block:"center",behavior:"smooth"});b.disabled=false}}
 var cc="",sc="";function trk(){$("#rg").innerHTML="";$("#rp").innerHTML='<div class="pane"><h2 style="font-size:1.8rem">Track a case</h2><label for="tc">Case code</label><input id="tc" autocomplete="off"><label for="ts2">Tracking secret</label><input id="ts2" type="password" autocomplete="off"><p id="tm" class="note" hidden></p><button class="btn" id="tg">Check status</button><button class="btn ghost" id="tb">Back</button></div>';
- $("#tb").onclick=()=>rp(0);$("#tg").onclick=async()=>{const m=$("#tm");$("#tg").disabled=true;
+ $("#tb").onclick=()=>rp();$("#tg").onclick=async()=>{const m=$("#tm");$("#tg").disabled=true;
   try{if(!KU.supabaseConfigured)throw "server_error";cc=$("#tc").value;sc=$("#ts2").value;const {data,error}=await KU.supabase.functions.invoke("track-case",{body:{case_code:cc,tracking_secret:sc}});if(error)throw await ecode(error);
    put(m,["Status: "+(ST[data.status]||"Received"),"Last updated: "+new Date(data.updated_at).toLocaleDateString(),...(data.story_status?["Public story: "+human(data.story_status)]:[]),...data.history.map(h=>(ST[h.status]||"")+", "+new Date(h.at).toLocaleDateString()+(h.note?": "+h.note:""))]);
    const old=$("#wd");if(old)old.remove();
