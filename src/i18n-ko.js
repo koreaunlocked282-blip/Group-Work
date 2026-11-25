@@ -287,6 +287,8 @@ const X = {
   "Nothing here yet.":"아직 항목이 없습니다.",
   "No evidence files are waiting.":"대기 중인 증거 파일이 없습니다.",
   "Feature request":"기능 요청",
+  "Request feature":"기능 요청",
+  "Request feature →":"기능 요청 보내기 →",
   "Meet the team":"팀 소개",
   "Meet":"소개",
   "the team":"팀",

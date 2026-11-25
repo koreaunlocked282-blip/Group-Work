@@ -612,7 +612,7 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 <a href="#" style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openTeam,50)">Meet the team</a>
 <a id="mod-nav" href="#mod-s" style="--c:var(--rep)" hidden>Moderation</a>
 <a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a>
-<a href="#" class="mbtn" onclick="event.preventDefault();setTimeout(openFeature,50)">Feature request</a>
+<a href="#" class="mbtn" onclick="event.preventDefault();setTimeout(openFeature,50)">Request feature</a>
 <a href="#" id="mauth" class="mbtn" data-i="login">Log in</a>
 <a href="#" class="mbtn mfill m-only" data-i="signup" onclick="event.preventDefault();setTimeout(()=>ov('signup'),50)">Create account</a>
 </nav></div>
@@ -645,7 +645,7 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 <article class="tp-c"><img class="tp-img" src="/team/sadiya.jpg" width="640" height="640" alt="Photo of Sadiya" loading="lazy" decoding="async"><small>AI assistant developer</small><h3>Sadiya</h3><p>Developed the cloud-based AI assistant, which guides international students to reliable information and official support.</p><a href="https://www.facebook.com/athqiya896" target="_blank" rel="noopener noreferrer">facebook.com/athqiya896</a></article>
 <article class="tp-c"><img class="tp-img" src="/team/borhan.jpg" width="640" height="640" alt="Photo of Borhan" loading="lazy" decoding="async"><small>Originator of the idea · Designer</small><h3>Borhan</h3><p>Conceived the idea for Korea Unlocked and carried out the complete design of the platform.</p><a href="https://www.facebook.com/borhanuddin.borhan.3386" target="_blank" rel="noopener noreferrer">facebook.com/borhanuddin.borhan.3386</a></article>
 </div>
-<div class="tp-cta"><button class="btn" type="button" onclick="ov();setTimeout(openFeature,50)">Send a feature request →</button></div>
+<div class="tp-cta"><button class="btn" type="button" onclick="ov();setTimeout(openFeature,50)">Request feature →</button></div>
 </div></div>
 <div class="ov" id="o-stories" role="dialog" aria-modal="true" aria-label="Public stories"><div class="grid-bg"></div>
 <div class="card wide info"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">Public stories</h2>
@@ -982,7 +982,7 @@ var cc="",sc="";function trk(){$("#rg").innerHTML="";$("#rp").innerHTML='<div cl
 /* ===== Supabase Auth: email/password and Google. Forgot password stays a stub ===== */
 function openTeam(){ov("team");const o=$("#o-team");if(o)o.scrollTop=0}
 /* ===== Feature requests ===== */
-function openFeature(){const b=$("#info-body");b.replaceChildren(dEl("h2","Feature request"));
+function openFeature(){const b=$("#info-body");b.replaceChildren(dEl("h2","Request feature"));
  const w=dEl("div",null,"fr-box"),l1=dEl("label","What should we add or improve?"),t=document.createElement("textarea"),l2=dEl("label","How can we reach you? (optional)"),c=document.createElement("input"),ts0=dEl("div"),msg=dEl("p",null,"note"),go=dEl("button","Send request","btn");
  l1.htmlFor=t.id="fr-t";l2.htmlFor=c.id="fr-c";t.maxLength=1000;c.maxLength=120;c.placeholder="Email or social handle. Leave empty to stay anonymous.";ts0.id="fr-ts";msg.hidden=true;go.type="button";
  w.append(dEl("p","Tell us what would make Korea Unlocked more useful. Do not include private details about other people."),l1,t,l2,c,ts0,msg,go);b.append(w);ov("info");
