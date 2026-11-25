@@ -438,6 +438,20 @@ html.rp-on #o-menu{z-index:61}
  .aubrand .mk{width:42px;height:42px;font-size:1rem}.aubrand h2{font-size:1.5rem;flex:1}.aubrand p,.aubrand ul{display:none}
  #o-login .card,#o-signup .card{margin:28px auto 40px}}
 </style>
+<style>
+/* ===== tighter spacing between sections ===== */
+main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28px,4vw,52px)}
+@media(max-width:720px){main>section:not(.hero){padding-top:26px;padding-bottom:26px}}
+</style>
+<style>
+/* ===== compact division ledger ===== */
+.lv-grid{grid-template-columns:minmax(0,1fr) 400px}
+@media(max-width:900px){.lv-grid{grid-template-columns:minmax(0,1fr)}}
+.lg ol{display:grid;grid-template-columns:1fr 1fr}
+.lg li{padding:9px 12px;font-size:.85rem;gap:6px}
+.lg li:nth-child(odd){border-right:1px solid var(--soft)}
+.lg li:nth-last-child(-n+2){border-bottom:0}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
