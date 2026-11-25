@@ -542,6 +542,14 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 .gb-foot{margin:28px 0 12px;color:var(--mut)}.gb-cta{display:flex;flex-wrap:wrap;gap:10px}
 @media(max-width:820px){.gb-grid{column-count:1}.gb-b{padding:0 4px 20px 4px}.gb-d summary{grid-template-columns:30px 1fr 32px}}
 </style>
+<style id="h1-tidy">
+/* headline: slightly smaller, highlights separate from each other */
+.hero h1>span{line-height:1.6!important}
+.hero h1 em{display:inline-block;line-height:1.12;padding:.03em .14em!important;margin-top:0;margin-bottom:0;vertical-align:baseline}
+.hero h1>span:nth-child(1)>em:first-of-type,.hero h1>span:nth-child(3)>em:first-of-type{display:inline!important;padding:0!important;line-height:inherit}
+@media(max-width:1099px){.hero h1{font-size:calc((100vw - 32px) / 21.5)!important}}
+@media(min-width:1100px){.hero>h1{font-size:min(3.7vw,5.2rem)!important}}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
