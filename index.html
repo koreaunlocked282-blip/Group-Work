@@ -592,6 +592,11 @@ html.ov-lock #sos,html.rp-on #sos{display:none}
 .cm-link:hover{color:#000}.cm-empty{color:var(--mut)}
 @media(max-width:520px){.cm-i[data-d="2"]{margin-left:20px}.cm-i[data-d="3"]{margin-left:28px}}
 </style>
+<style id="bugfix-320">
+.lg,.lg ol,.lg li{box-sizing:border-box;max-width:100%;min-width:0}
+.lg li>span:first-child{min-width:0;overflow-wrap:anywhere}
+@media(max-width:360px){.lg ol{columns:1!important;display:block!important}.lg li{padding:10px 12px;font-size:.88rem}.lgh{padding:12px}}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
