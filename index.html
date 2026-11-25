@@ -398,7 +398,6 @@ header .dots[aria-expanded=true] svg{display:none}
 header .dots[aria-expanded=true]:after{content:"\00d7";font-size:1.7rem;line-height:1}
 @media(max-width:430px){#o-menu .menu a.m-only:not([hidden]){display:flex!important}}
 header .nb,header .pill{white-space:nowrap}
-@media(max-width:1180px){header a[data-i=map],header button[onclick="openFeature()"],header button[onclick="openTeam()"]{display:none}}
 @media(prefers-reduced-motion:reduce){#o-menu{animation:none}}
 </style>
 </head><body>
@@ -406,10 +405,7 @@ header .nb,header .pill{white-space:nowrap}
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
 <header>
 <button class="logo" onclick="scrollTo({top:0})">Korea Unlocked<sup>한국</sup></button>
-<a class="nb hide-s" href="#map-s" data-i="map">Map</a>
 <button class="nb hide-s hl-ai" onclick="ov('chat')"><i class="hl-dot"></i>AI assistant</button>
-<button class="nb hide-s" onclick="openFeature()">Feature request</button>
-<button class="nb hide-s" onclick="openTeam()">Meet the team</button>
 <button class="nb hide-s hl-rp" onclick="ov('report')" data-i="report">Report</button>
 <button class="nb" id="lang" aria-label="Switch language">한국어</button>
 <button class="pill hide-s" onclick="ov('login')" data-i="login" style="border-color:transparent">Log in</button>
