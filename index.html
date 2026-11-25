@@ -519,6 +519,7 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 }
 </style>
 <style id="h1-white">.hero h1>span:nth-child(1)>em:first-of-type,.hero h1>span:nth-child(3)>em:first-of-type{background:none;box-shadow:none;font:inherit;font-style:normal;padding:0;margin-left:0}</style>
+<style id="ov-lock">html.ov-lock,html.ov-lock body{overflow:hidden!important}.ov{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
@@ -675,7 +676,7 @@ $("#lang").onclick=()=>{L=L=="en"?"ko":"en";tr();if(typeof refresh=="function")r
 /* overlays */
 function toggleMenu(){const o=$("#o-menu");if(o.classList.contains("on")){ov();return}ov();document.documentElement.style.setProperty("--hh",Math.round(document.querySelector("header").getBoundingClientRect().bottom)+"px");ov("menu")}
 addEventListener("scroll",()=>{const o=$("#o-menu");if(o&&o.classList.contains("on"))ov()},{passive:true});
-function ov(n){document.querySelectorAll(".ov").forEach(o=>{o.classList.remove("on");const s=o.querySelector(".scan");if(s){s.style.animation="none";s.offsetWidth;s.style.animation=""}});if(!n)SD={};if(n){$("#o-"+n).classList.add("on");if(n=="signup")su(0);if(n=="report")rp(0)}try{document.querySelector("header .dots").setAttribute("aria-expanded",n=="menu"?"true":"false")}catch(e){}const H=document.documentElement;const au=["report","login","signup"].includes(n);H.classList.toggle("rp-on",au);if(au)H.style.setProperty("--hh2",document.querySelector("header").offsetHeight+"px")}
+function ov(n){document.querySelectorAll(".ov").forEach(o=>{o.classList.remove("on");const s=o.querySelector(".scan");if(s){s.style.animation="none";s.offsetWidth;s.style.animation=""}});if(!n)SD={};if(n){$("#o-"+n).classList.add("on");if(n=="signup")su(0);if(n=="report")rp(0)}try{document.querySelector("header .dots").setAttribute("aria-expanded",n=="menu"?"true":"false")}catch(e){}const H=document.documentElement;H.classList.toggle("ov-lock",!!n&&n!="menu");const au=["report","login","signup"].includes(n);H.classList.toggle("rp-on",au);if(au)H.style.setProperty("--hh2",document.querySelector("header").offsetHeight+"px")}
 const INFO={
 privacy:`<h2 style="font-size:2rem">Privacy notice</h2><p><b>Status: draft for a student prototype.</b> It has not had legal review and is not a statement of compliance with Korea's PIPA or any other law.</p>
 <h3>What we collect</h3><ul><li><b>Report content</b> you type: category, description, area, dates and the options you choose. Do not include names, phone numbers, addresses or ID numbers.</li><li><b>Evidence files</b> (optional photos and audio you attach), stored privately so that only moderators can open them. Photos are re-saved on your device before upload, which removes hidden data such as location. Audio files may contain hidden data that we do not remove.</li><li><b>Account data</b> if you sign up: email address, password (handled by the sign-in service, never visible to us), preferred language and optional student status, university and district.</li><li><b>Technical data</b>: to stop abuse we keep a salted one-way hash of your network address for rate limiting. The address itself is not stored.</li></ul>
