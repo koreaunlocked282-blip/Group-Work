@@ -506,6 +506,18 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 }
 </style>
 <style id="gap-fix">main>section:not(.hero)>:last-child{margin-bottom:0!important}</style>
+<style id="h1-3lines">
+/* headline: exactly three lines on every screen */
+.hero h1>span{display:block;white-space:nowrap!important;text-wrap:nowrap}
+.hero h1 em{white-space:nowrap;padding-left:.12em;padding-right:.12em}
+@media(max-width:1099px){.hero h1{font-size:calc((100vw - 32px) / 19.5)!important;line-height:1.5!important;letter-spacing:-.02em}}
+@media(min-width:1100px){
+ .hero>h1{grid-column:1/-1!important;grid-row:1;font-size:min(4.4vw,6rem)!important}
+ .hero>.sub,.hero>.cta{grid-column:1}
+ .hero>.h3d{grid-row:2/5!important;height:400px!important;max-width:none!important;width:310px!important;zoom:.75;align-self:end;justify-self:center;margin-top:60px}
+ .hero{row-gap:0!important}
+}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
@@ -530,7 +542,7 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 <div class="h3d-l h3d-orb"></div>
 <div class="h3d-l h3d-pin"><i></i><i class="s"></i></div>
 </div></div>
-<h1 id="t"><span>Someone treated you <em>differently</em> in Korea.</span><span>You remember <em>every detail.</em></span><span>Now put it <em>on the record</em> so everybody knows.</span></h1>
+<h1 id="t"><span>Someone treated you <em>differently</em> <em>in Korea.</em></span><span>You remember <em>every detail.</em></span><span>Now put it <em>on the record</em> <em>so everybody knows.</em></span></h1>
 <p class="sub" data-i="sub">Korea has a pattern you cannot see from one story.</p><p class="sub" data-i="sub2">Report discrimination. Protect your evidence. Understand patterns. Find support.</p>
 <div class="cta"><button class="pill fill" onclick="ov('report')">Report an experience →</button><a class="pill" href="#map-s" data-i="explore">Explore Korea map</a><button class="pill" style="background:var(--yellow)" onclick="ov('chat')">Ask the AI assistant</button></div>
 <div class="trio"><div><small>Latest story</small><b id="hs-lc">No stories yet</b><span id="hs-lm">Be the first to share yours.</span></div><div><small>Total stories</small><b id="hs-n">0</b><span id="hs-s"></span></div><div><small>Top provinces</small><div id="hs-t"></div></div></div>
