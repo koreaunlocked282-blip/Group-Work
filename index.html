@@ -550,6 +550,11 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 @media(max-width:1099px){.hero h1{font-size:calc((100vw - 32px) / 21.5)!important}}
 @media(min-width:1100px){.hero>h1{font-size:min(3.7vw,5.2rem)!important}}
 </style>
+<style id="hero-gap">
+/* PC: the picture sits beside the headline and no longer stretches the rows of text and buttons */
+@media(min-width:1100px){.hero>.h3d{margin:0!important;align-self:end!important;justify-self:end!important;grid-row:1/5!important;height:400px!important}}
+@media(min-width:1100px) and (max-width:1279px){.hero>.h3d{zoom:.62!important}}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
