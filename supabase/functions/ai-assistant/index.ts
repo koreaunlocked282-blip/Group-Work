@@ -1,9 +1,10 @@
-// ai-assistant: general-information chat for signed-in users, powered by the Claude API.
+// ai-assistant: general-information chat open to everyone (no login needed), powered by the Claude API.
 // SAFETY DESIGN
 //  - The Anthropic key lives only in the Edge Function secret ANTHROPIC_API_KEY. It never reaches the browser.
 //  - The function never reads the reports table. Its only database access is two read-only functions: ai_pattern_totals (k >= 5 totals)
 //    and ai_search_stories (moderator-approved stories whose authors chose public sharing). Private reports are unreachable.
-//  - Signed-in users only (Auth server validates the bearer token), exact-origin CORS, per-user and per-IP rate limits.
+//  - Open to everyone. Signed-in users (valid bearer token) get higher limits; anonymous visitors get strict per-IP limits.
+//    A global daily cap protects the monthly budget. Exact-origin CORS, salted-hash rate-limit keys (no raw IPs stored).
 //  - Not deployed by default. Deploy only after the secret is set and this file has been reviewed.
 import { admin, allow, corsHeaders, fail, ipBucket, limitKey, respond, trustedClientIp } from '../_shared/common.ts'
 
@@ -52,15 +53,24 @@ Deno.serve(async (req) => {
     if (!ip) { console.error('client_ip_unavailable'); return fail(503, 'server_error', h) }
 
     const token = (req.headers.get('authorization') ?? '').replace(/^Bearer\s+/i, '').trim()
-    if (!token || token === req.headers.get('apikey') || token === Deno.env.get('SUPABASE_ANON_KEY')) return fail(401, 'unauthorized', h)
     const sb = admin()
-    const { data: u, error: ue } = await sb.auth.getUser(token)
-    if (ue || !u.user) return fail(401, 'unauthorized', h)
+    // A valid user token means a signed-in user. No token, the public anon key or an expired token all count as anonymous.
+    let uid: string | null = null
+    if (token && token !== req.headers.get('apikey') && token !== Deno.env.get('SUPABASE_ANON_KEY')) {
+      const { data: u, error: ue } = await sb.auth.getUser(token)
+      if (!ue && u.user) uid = u.user.id
+    }
 
-    if (!(await allow(sb, 'ai_ip', await limitKey('ip', ipBucket(ip)), 40, '1 hour')) ||
-        !(await allow(sb, 'ai_user', await limitKey('user', u.user.id), 20, '1 hour')) ||
-        !(await allow(sb, 'ai_day', await limitKey('user', u.user.id), 60, '1 day')))
+    const ipKey = await limitKey('ip', ipBucket(ip))
+    if (!(await allow(sb, 'ai_ip', ipKey, 40, '1 hour'))) return fail(429, 'rate_limited', h, { 'Retry-After': '3600' })
+    if (uid) {
+      if (!(await allow(sb, 'ai_user', await limitKey('user', uid), 20, '1 hour')) ||
+          !(await allow(sb, 'ai_day', await limitKey('user', uid), 60, '1 day')))
+        return fail(429, 'rate_limited', h, { 'Retry-After': '3600' })
+    } else if (!(await allow(sb, 'ai_anon_ip', ipKey, 15, '1 hour')) || !(await allow(sb, 'ai_anon_day', ipKey, 40, '1 day')))
       return fail(429, 'rate_limited', h, { 'Retry-After': '3600' })
+    // global cap for everyone, so the monthly budget cannot be drained
+    if (!(await allow(sb, 'ai_global', await limitKey('global', 'all'), 600, '1 day'))) return fail(429, 'rate_limited', h, { 'Retry-After': '3600' })
 
     const q = typeof body.question === 'string' ? body.question.trim() : ''
     if (q.length < 3 || q.length > MAX_Q) return fail(400, 'invalid_request', h)

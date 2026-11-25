@@ -601,7 +601,7 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 <div class="ch-top"><button class="ch-ic" onclick="ov()" aria-label="Close">←</button><div class="ch-title">Support intelligence <span class="tag">Experimental</span></div><button class="ch-ic ch-new" id="ch-new" onclick="chatNew()" aria-label="New chat">+</button></div>
 <div class="ch-scroll" id="ch-scroll"><div class="ch-col" id="ch-msgs">
 <div class="ch-welcome" id="ch-welcome"><div class="ch-logo">KU</div><h2>Support intelligence</h2>
-<p>General information only, not legal advice. For signed-in users. The assistant can use live totals from the database and stories that their authors chose to share publicly. It cannot read private reports. Answers may be wrong, so check anything important with an official service.</p>
+<p>General information only, not legal advice. Free for everyone, no account needed. The assistant can use live totals from the database and stories that their authors chose to share publicly. It cannot read private reports. Answers may be wrong, so check anything important with an official service.</p>
 <div class="ch-cards"><button class="ch-card" onclick="chatPick(this)">What counts as discrimination at a part-time job in Korea?</button><button class="ch-card" onclick="chatPick(this)">My landlord will not return my deposit. What can I do?</button></div></div>
 </div></div>
 <div class="ch-bar"><div class="ch-col"><div class="ch-box"><textarea id="q" rows="1" placeholder="Ask anything" aria-label="Your question" maxlength="1000"></textarea><button class="ch-send" id="qa" onclick="askAI(this)" aria-label="Send">↑</button></div>
@@ -696,7 +696,7 @@ function chatPick(b){$("#q").value=b.textContent;$("#q").focus()}
 async function askAI(b){const t=$("#q"),q=t.value.trim();if(q.length<3)return t.focus();
  chatMsg("me",q);t.value="";t.style.height="";const out=chatMsg("ai","Thinking...");out.classList.add("wait");
  const done=x=>{out.classList.remove("wait");chatText(out,x)};
- try{if(!KU.supabaseConfigured)throw 0;const {data:{session}}=await KU.supabase.auth.getSession();if(!session)return done("Please log in to use the assistant.");
+ try{if(!KU.supabaseConfigured)throw 0;
   b.disabled=true;const {data,error}=await KU.supabase.functions.invoke("ai-assistant",{body:{question:q,history:chatHist.slice(-6)}});
   if(error){const c=await ecode(error);return done(c==="rate_limited"?ER.rate_limited:c==="unauthorized"?ER.unauthorized:"The assistant is not available right now. Please try again later.")}
   if(data&&data.answer){chatHist.push({role:"user",content:q},{role:"assistant",content:data.answer.slice(0,1500)});chatHist=chatHist.slice(-6)}done(data&&data.answer?data.answer:"The assistant is not available right now.")}
