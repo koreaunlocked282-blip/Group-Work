@@ -574,6 +574,24 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 html.ov-lock #sos,html.rp-on #sos{display:none}
 @media(max-width:520px){#sos>button{padding:10px 13px;font-size:.82rem}}
 </style>
+<style id="comments-css">
+.cm{margin-top:12px}
+.cm-t{display:inline-flex;gap:6px;align-items:center;background:#fff;color:#000;border:1px solid #000;padding:8px 14px;font-weight:700;cursor:pointer}
+.cm-t:hover,.cm-t[aria-expanded="true"]{background:var(--yellow,#ffda00)}
+.cm-p{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.cm-f{display:grid;gap:8px;margin-bottom:14px}.cm-f textarea{width:100%;resize:vertical;min-height:72px;box-sizing:border-box}
+.cm-f small{color:var(--mut)}.cm-msg{margin:0;color:#b00020;font-size:.9rem}.cm-msg:empty{display:none}
+.cm-row{display:flex;gap:12px;align-items:center}
+.cm-login{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px;color:var(--mut)}
+.cm-i{border-left:3px solid var(--yellow,#ffda00);padding:6px 0 6px 12px;margin:0 0 10px}
+.cm-i[data-d="1"]{margin-left:16px}.cm-i[data-d="2"]{margin-left:32px}.cm-i[data-d="3"]{margin-left:48px}
+.cm-i.off{opacity:.55;border-left-color:#999}
+.cm-h{display:flex;gap:10px;align-items:baseline;font-size:.85rem}.cm-h time{color:var(--mut)}
+.cm-i p{margin:4px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.cm-a{display:flex;gap:14px;flex-wrap:wrap}.cm-link{background:none;border:0;padding:2px 0;color:var(--mut);font-size:.85rem;text-decoration:underline;cursor:pointer}
+.cm-link:hover{color:#000}.cm-empty{color:var(--mut)}
+@media(max-width:520px){.cm-i[data-d="2"]{margin-left:20px}.cm-i[data-d="3"]{margin-left:28px}}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
@@ -911,8 +929,44 @@ function mediaEl(ms){const w=dEl("div",null,"st-media");ms.forEach(x=>{if(x.kind
 async function attachMedia(root){const cards=[...root.querySelectorAll(".st-card[data-sid]")],ids=[...new Set(cards.map(c=>c.dataset.sid))].slice(0,12);if(!ids.length||!KU.supabaseConfigured)return;
  try{const {data,error}=await KU.supabase.functions.invoke("public-media",{body:{ids}});if(error||!data||!data.media)return;
   cards.forEach(c=>{const ms=data.media[c.dataset.sid];if(!ms||c.querySelector(".st-media"))return;const el=mediaEl(ms),cf=c.querySelector(".st-conf");cf?c.insertBefore(el,cf):c.append(el)})}catch{}}
+function cmErr(c,s){return c==="no_links"?"Links are not allowed in comments.":s===401?"Please log in again to comment.":s===429?"Too many comments. Please try again later.":c==="check_unavailable"?"Comments are paused for a moment. Please try again later.":"Could not post your comment. Please try again."}
+async function cmCall(body){const {data,error}=await KU.supabase.functions.invoke("story-comments",{body});if(!error)return {ok:true,data};let j=null,s=0;try{s=error.context.status;j=await error.context.json()}catch{}return {ok:false,j,s}}
+function cmBox(sid,open){const w=dEl("div",null,"cm"),t=dEl("button",null,"cm-t"),p=dEl("div",null,"cm-p"),n=dEl("span","");t.type="button";t.append(dEl("span","Comments"),n);p.hidden=true;t.setAttribute("aria-expanded","false");let loaded=false;
+ t.onclick=()=>{p.hidden=!p.hidden;t.setAttribute("aria-expanded",String(!p.hidden));if(!p.hidden&&!loaded){loaded=true;cmLoad(sid,p,n)}};
+ w.append(t,p);if(open)t.click();return w}
+async function cmLoad(sid,p,n){p.replaceChildren(dEl("p","Loading..."));
+ try{if(!KU.supabaseConfigured)throw 0;const [{data,error},{data:ss}]=await Promise.all([KU.supabase.rpc("list_story_comments",{_story:sid}),KU.supabase.auth.getSession()]);if(error)throw 0;
+  const rows=data||[],vis=rows.filter(r=>r.status==="visible").length;n.textContent=vis?" ("+vis+")":"";cmRender(sid,p,n,rows,!!(ss&&ss.session))}
+ catch{p.replaceChildren(dEl("p","Comments could not be loaded right now."))}}
+function cmForm(sid,parent,session,onDone){const f=dEl("form",null,"cm-f");
+ if(!session){const l=dEl("div",null,"cm-login");l.append(dEl("span","Log in to join the conversation."));const b=dEl("button","Log in","btn");b.type="button";b.style.cssText="width:auto;display:inline-block";b.onclick=()=>ov("login");l.append(b);return l}
+ const ta=dEl("textarea");ta.maxLength=800;ta.rows=3;ta.placeholder="Share support or your own experience. Do not include names or contact details.";ta.setAttribute("aria-label","Write a comment");
+ const hint=dEl("small","Comments are public. Be kind, and do not name people or share contact details."),msg=dEl("p",null,"cm-msg"),row=dEl("div",null,"cm-row"),b=dEl("button","Post comment","btn");b.type="submit";b.style.cssText="width:auto;display:inline-block";row.append(b);
+ if(parent){const c=dEl("button","Cancel","cm-link");c.type="button";c.onclick=()=>f.remove();row.append(c)}
+ f.onsubmit=async e=>{e.preventDefault();const text=ta.value.trim();if(!text)return;b.disabled=true;msg.textContent="";
+  try{const r=await cmCall({action:"post",story_id:sid,parent_id:parent||null,text});
+   if(r.ok){ta.value="";onDone();return}
+   const code=r.j&&(typeof r.j.error==="string"?r.j.error:r.j.error&&r.j.error.code);
+   if(code==="needs_cleaning"&&r.j.cleaned){ta.value=r.j.cleaned;msg.textContent="We removed personal details such as names or phone numbers. Check the text, then press Post comment again."}
+   else msg.textContent=cmErr(code,r.s)}
+  catch{msg.textContent=cmErr("",0)}b.disabled=false};
+ f.append(ta,hint,msg,row);return f}
+function cmRender(sid,p,n,rows,session){p.replaceChildren();const reload=()=>cmLoad(sid,p,n);p.append(cmForm(sid,null,session,reload));
+ const kids={};rows.forEach(r=>{(kids[r.parent_id||"root"]=kids[r.parent_id||"root"]||[]).push(r)});
+ const list=dEl("div",null,"cm-list");if(!rows.length)list.append(dEl("p","No comments yet. Be the first to reply.","cm-empty"));
+ const draw=(pid,into)=>(kids[pid]||[]).forEach(c=>{const it=dEl("div",null,"cm-i"+(c.status==="hidden"?" off":""));it.dataset.d=c.depth;
+  const hd=dEl("div",null,"cm-h");hd.append(dEl("b",c.nick+(c.mine?" ("+"You"+")":"")),dEl("time",new Date(c.created_at).toLocaleDateString(L=="ko"?"ko-KR":"en-US",{month:"short",day:"numeric"})));
+  it.append(hd,dEl("p",c.status==="hidden"?"Hidden comment":c.body));const ac=dEl("div",null,"cm-a");
+  const mk=(txt,fn)=>{const b=dEl("button",txt,"cm-link");b.type="button";b.onclick=()=>fn(b);ac.append(b);return b};
+  if(c.status==="visible"){
+   if(session)mk("Reply",()=>{if(it.querySelector(".cm-f"))return;it.insertBefore(cmForm(sid,c.id,true,reload),ac.nextSibling)});
+   if(!c.mine)mk("Report",async b=>{b.disabled=true;try{const r=await cmCall({action:"report",comment_id:c.id,device:devId()});b.textContent=r.ok?"Reported":"Could not report"}catch{b.textContent="Could not report"}});
+   if(c.mine)mk("Delete",async b=>{if(!b.dataset.s){b.dataset.s="1";b.textContent="Tap again to delete";return}b.disabled=true;const r=await cmCall({action:"delete",comment_id:c.id});r.ok?reload():(b.disabled=false)})}
+  if(typeof MOD!=="undefined"&&MOD.ok)mk(c.status==="hidden"?"Restore":"Hide",async b=>{b.disabled=true;const {error}=await KU.supabase.rpc("mod_set_comment_status",{_comment:c.id,_status:c.status==="hidden"?"visible":"hidden"});error?(b.disabled=false):reload()});
+  it.append(ac);into.append(it);draw(c.id,into)});
+ draw("root",list);p.append(list)}
 function stCard(r){const d=dEl("div",null,"st-card"),m=dEl("div",null,"st-meta");m.append(dEl("span",catL(r.category),"tag"));const pn=REF&&REF.p.find(x=>x.code==r.province_code);m.append(dEl("span",pn?pn.name_en:human(r.province_code)),dEl("span",new Date(r.approved_month).toLocaleDateString(L=="ko"?"ko-KR":"en-US",{year:"numeric",month:"long"})));
-   const t=r.story_text.length>320?r.story_text.slice(0,320)+"...":r.story_text;d.append(m,dEl("p",t));const a=dEl("a","Read the shared story");a.href="#story="+r.id;a.onclick=()=>setTimeout(openHash,0);d.append(a,cfBox(r.id,r.confirm_count));d.dataset.sid=r.id;return d}
+   const t=r.story_text.length>320?r.story_text.slice(0,320)+"...":r.story_text;d.append(m,dEl("p",t));const a=dEl("a","Read the shared story");a.href="#story="+r.id;a.onclick=()=>setTimeout(openHash,0);d.append(a,cfBox(r.id,r.confirm_count),cmBox(r.id));d.dataset.sid=r.id;return d}
 async function loadStories(reset){const L0=$("#st-list"),more=$("#st-more");if(reset){STO.off=0;L0.replaceChildren(dEl("p","Loading..."))}
  try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("list_public_stories",{_category:$("#st-c").value||null,_province:$("#st-p").value||null,_limit:12,_offset:STO.off,_sort:$("#st-s").value});if(error)throw 0;
   if(reset)L0.replaceChildren();
@@ -922,7 +976,7 @@ async function loadStories(reset){const L0=$("#st-list"),more=$("#st-more");if(r
  catch{L0.replaceChildren(dEl("p","Stories could not be loaded right now. Please try again later."))}}
 async function showStory(id){const b=$("#info-body");b.replaceChildren(dEl("h2","Shared story"));ov("info");
  try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("get_public_story",{_id:id});if(error||!data||!data.length)throw 0;const r=data[0];
-  b.append(dEl("p","Category: "+catL(r.category)+(r.province_code?" · "+human(r.province_code):"")),dEl("p",r.story_text),dEl("p","This anonymous story was shared by its author and checked automatically. It is not proof of any allegation. For help, see the Support section."),cfBox(r.id,r.confirm_count));const g=dEl("div");g.dataset.sid=r.id;g.className="st-card";g.style.cssText="border:0;padding:0;margin:0";b.append(g);attachMedia(b)}
+  b.append(dEl("p","Category: "+catL(r.category)+(r.province_code?" · "+human(r.province_code):"")),dEl("p",r.story_text),dEl("p","This anonymous story was shared by its author and checked automatically. It is not proof of any allegation. For help, see the Support section."),cfBox(r.id,r.confirm_count),cmBox(r.id,true));const g=dEl("div");g.dataset.sid=r.id;g.className="st-card";g.style.cssText="border:0;padding:0;margin:0";b.append(g);attachMedia(b)}
  catch{b.append(dEl("p","This story is not available."))}}
 function emptyStories(){const d=dEl("div",null,"st-empty"),b=dEl("button","Share your story");d.append(dEl("p","No stories here yet. Share yours so the next student does not have to guess."));b.type="button";b.className="btn";b.style.cssText="width:auto;display:inline-block";b.onclick=()=>ov("report");d.append(b);return d}
 var LV={rows:[],view:"cards",off:0};
