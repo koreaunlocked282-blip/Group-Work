@@ -977,8 +977,9 @@ async function loadStories(reset){const L0=$("#st-list"),more=$("#st-more");if(r
   data.forEach(r=>L0.append(stCard(r)));attachMedia(L0);
   STO.off+=data.length;more.hidden=data.length<12}
  catch{L0.replaceChildren(dEl("p","Stories could not be loaded right now. Please try again later."))}}
-async function showStory(id){const b=$("#info-body");b.replaceChildren(dEl("h2","Shared story"));ov("info");
- try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("get_public_story",{_id:id});if(error||!data||!data.length)throw 0;const r=data[0];
+var SS_TOK=0;
+async function showStory(id){const tok=++SS_TOK,b=$("#info-body");b.replaceChildren(dEl("h2","Shared story"));ov("info");
+ try{if(!KU.supabaseConfigured)throw 0;const {data,error}=await KU.supabase.rpc("get_public_story",{_id:id});if(error||!data||!data.length)throw 0;const r=data[0];if(tok!==SS_TOK)return;
   b.append(dEl("p","Category: "+catL(r.category)+(r.province_code?" · "+human(r.province_code):"")),dEl("p",r.story_text),dEl("p","This anonymous story was shared by its author and checked automatically. It is not proof of any allegation. For help, see the Support section."),cfBox(r.id,r.confirm_count),cmBox(r.id,true));const g=dEl("div");g.dataset.sid=r.id;g.className="st-card";g.style.cssText="border:0;padding:0;margin:0";b.append(g);attachMedia(b)}
  catch{b.append(dEl("p","This story is not available."))}}
 function emptyStories(){const d=dEl("div",null,"st-empty"),b=dEl("button","Share your story");d.append(dEl("p","No stories here yet. Share yours so the next student does not have to guess."));b.type="button";b.className="btn";b.style.cssText="width:auto;display:inline-block";b.onclick=()=>ov("report");d.append(b);return d}
