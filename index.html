@@ -460,6 +460,45 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 @media(max-width:860px){.mk-svg{width:56px}}
 @media(max-width:720px){.lg-m{height:24px}.logo{gap:7px}}
 </style>
+<style id="pc-layout">
+/* ===== PC / large-screen layout (phones and tablets keep the mobile layout above) ===== */
+@media(min-width:1100px){
+ :root{--pcw:min(1800px,94vw)}
+ section,.foot,.band .bi,.band.d h3{max-width:var(--pcw)}
+ section:not(.hero){padding-left:clamp(28px,3.2vw,64px);padding-right:clamp(28px,3.2vw,64px)}
+ .foot{padding-left:clamp(28px,3.2vw,64px);padding-right:clamp(28px,3.2vw,64px)}
+ header{padding-left:clamp(28px,3.2vw,64px);padding-right:clamp(28px,3.2vw,64px)}
+ .band.y .bi{max-width:var(--pcw);padding-left:clamp(28px,3.2vw,64px);padding-right:clamp(28px,3.2vw,64px)}
+ /* hero: headline + actions on the left, big illustration on the right, stats beneath */
+ .hero{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);column-gap:clamp(24px,4vw,80px);align-items:center;padding-top:clamp(40px,5vw,84px);padding-bottom:36px}
+ .hero>h1,.hero>.sub,.hero>.cta{grid-column:1}
+ .hero>.trio,.hero>.callout{grid-column:1/-1}
+ .hero>.h3d{display:block!important;position:relative!important;grid-column:2;grid-row:1/5;right:auto;top:auto;width:100%;max-width:520px;height:min(560px,52vw);justify-self:center;align-self:center}
+ .hero h1{font-size:clamp(2.6rem,3.5vw,4.6rem);line-height:1.3}
+ .hero{padding-left:clamp(28px,3.2vw,64px)!important;padding-right:clamp(28px,3.2vw,64px)!important}
+ .hero .sub{font-size:clamp(1.1rem,1.35vw,1.5rem);max-width:46ch}
+ .hero .cta .pill{font-size:clamp(1rem,1.1vw,1.2rem);padding:16px 26px}
+ .hero>.trio,.hero>.callout{margin-top:clamp(18px,2vw,32px)}
+ h2{font-size:clamp(2.2rem,3.4vw,3.6rem)}
+ /* live reports: wider side ledger */
+ .lv-grid{grid-template-columns:minmax(0,1fr) clamp(400px,30vw,560px);gap:clamp(24px,3vw,56px)}
+ .lg ol{grid-template-columns:1fr 1fr}
+ /* map: bigger, map and info side by side with room */
+ .mapwrap{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,3vw,64px)}
+ /* topics and steps and help use more columns */
+ .tp-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))}
+ .steps3>div{padding:clamp(24px,2.4vw,40px)}
+ .steps3 h3{font-size:clamp(1.3rem,1.6vw,1.8rem)}
+ .res{min-height:0}
+ .faq{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr);gap:clamp(32px,5vw,100px)}
+ p.lead,.sub{max-width:62ch}
+}
+@media(min-width:1400px){.hero h1>span{white-space:nowrap}}
+@media(min-width:1600px){
+ html{font-size:calc(16px + (100vw - 1600px) * .008)}
+ :root{--pcw:min(2000px,94vw)}
+}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
