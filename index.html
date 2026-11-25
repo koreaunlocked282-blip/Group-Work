@@ -362,7 +362,7 @@ header .hl-rp:hover{box-shadow:5px 5px 0 #0b0b0a}header .hl-ai:hover{box-shadow:
 </style>
 <style>
 /* ===== mobile fixes ===== */
-.brk{display:none}.m-only{display:none}
+.brk{display:none}
 .lv-side .lg{display:block;color:inherit;font-size:inherit}
 .lv-grid{grid-template-columns:minmax(0,1fr) 300px}
 @media(max-width:900px){.lv-grid{grid-template-columns:minmax(0,1fr)}}
@@ -377,8 +377,30 @@ html,body{overflow-x:clip}
  .cta{display:flex;flex-wrap:wrap;gap:10px}.cta .pill{flex:1 1 40%;text-align:center}.cta .pill.fill{flex-basis:100%;order:-1}
  .ov .card .steps{margin-right:52px}
 }
-@media(max-width:430px){header .pill.fill{display:none}.m-only{display:block}}
+@media(max-width:430px){header .pill.fill{display:none}.menu a.m-only:not([hidden]){display:flex!important}}
 @media(max-width:860px),(pointer:coarse){html.js-rv .rv{transform:translateY(22px);transition:opacity .5s ease,transform .5s ease}html.js-rv .rv.in{transform:none}.hero{padding-top:24px}}
+</style>
+<style>
+/* ===== menu screen: logo + 3D tile floor ===== */
+.menu a.m-only{display:none!important}
+#o-menu{flex-direction:column;align-items:center;overflow:hidden auto}
+#mbg{position:absolute;inset:0;overflow:hidden;perspective:1400px;pointer-events:none;z-index:0;-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 35%,transparent 78%);mask-image:radial-gradient(ellipse at 50% 50%,#000 35%,transparent 78%)}
+.mf{position:absolute;left:50%;top:52%;width:1100px;height:1100px;margin:-550px 0 0 -550px;display:grid;grid-template-columns:repeat(8,1fr);gap:30px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-32deg);animation:mfr 16s ease-in-out infinite alternate}
+.mf b{display:block;border:2px solid #0b0b0a;background:#f4f3ef;box-shadow:7px 7px 0 #0b0b0a;transform-style:preserve-3d;animation:mfb 5s ease-in-out infinite;animation-delay:var(--d,0s)}
+.mf b.y{background:#ffda00}.mf b.k{background:#0b0b0a}
+@keyframes mfr{from{transform:rotateX(58deg) rotateZ(-38deg)}to{transform:rotateX(58deg) rotateZ(-26deg)}}
+@keyframes mfb{0%,100%{transform:translateZ(0)}50%{transform:translateZ(44px)}}
+.mhead{position:relative;z-index:1;box-sizing:border-box;padding:14px 18px;background:#f4f3ef;border:2px solid #0b0b0a;box-shadow:6px 6px 0 #0b0b0a;width:min(100%,560px);margin:clamp(32px,7vh,72px) auto 0;display:flex;align-items:center;gap:16px}
+.mk{flex:none;display:grid;place-items:center;width:56px;height:56px;background:#ffda00;border:2px solid #0b0b0a;font:700 1.35rem var(--mono);letter-spacing:.04em;color:#0b0b0a}
+.mhead b{display:block;font-size:1.7rem;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.mhead sup{font-size:.7rem;font-weight:500;color:var(--mut);margin-left:6px}
+.mhead small{display:block;margin-top:4px;font:500 .8rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+#o-menu .menu{position:relative;z-index:1;margin-top:30px;width:min(100%,560px)}
+#o-menu .menu a{background:rgba(244,243,239,.92)}
+#o-menu .menu a:hover{background:var(--yellow)}
+#o-menu .x{z-index:2}
+@media(max-width:720px){#mbg{opacity:.55}.mf{width:900px;height:900px;margin:-450px 0 0 -450px;gap:22px}}
+@media(prefers-reduced-motion:reduce){.mf,.mf b{animation:none}}
 </style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
@@ -468,7 +490,8 @@ html,body{overflow-x:clip}
 <p>Emergency now? Call <b>112</b> (police) or <b>119</b> (fire and ambulance). This site is a prototype and does not replace legal advice or official services.</p></footer>
 
 <div class="ov" id="o-menu" role="dialog" aria-modal="true" aria-label="Menu"><div class="grid-bg"></div><button class="x" onclick="ov()" aria-label="Close">×</button>
-<nav class="menu" onclick="ov()"><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();scrollTo({top:0})">Home</a><a href="#" style="--c:var(--rep)" onclick="event.preventDefault();setTimeout(()=>ov('report'),50)">Report an experience</a><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(()=>ov('chat'),50)">AI assistant</a><a href="#map-s" style="--c:var(--sup)">Map</a><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(openFeature,50)">Feature request</a><a href="#" style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openTeam,50)">Meet the team</a><a id="mod-nav" href="#mod-s" style="--c:var(--rep)" hidden>Moderation</a><a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a><a href="#" id="mauth" data-i="login" style="--c:var(--rep)">Log in</a><a href="#" class="m-only" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(()=>ov('signup'),50)">Create account</a><a href="#" class="m-only" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(()=>ov('signup'),50)">Create account</a></nav></div>
+<div id="mbg" aria-hidden="true"><div class="mf"></div></div><div class="mhead"><span class="mk">KU</span><div><b>Korea Unlocked<sup>한국</sup></b><small>Anonymous reports. Real patterns.</small></div></div>
+<nav class="menu" onclick="ov()"><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();scrollTo({top:0})">Home</a><a href="#" style="--c:var(--rep)" onclick="event.preventDefault();setTimeout(()=>ov('report'),50)">Report an experience</a><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(()=>ov('chat'),50)">AI assistant</a><a href="#map-s" style="--c:var(--sup)">Map</a><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(openFeature,50)">Feature request</a><a href="#" style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openTeam,50)">Meet the team</a><a id="mod-nav" href="#mod-s" style="--c:var(--rep)" hidden>Moderation</a><a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a><a href="#" id="mauth" data-i="login" style="--c:var(--rep)">Log in</a><a href="#" class="m-only" data-i="signup" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(()=>ov('signup'),50)">Create account</a></nav></div>
 
 <div class="ov" id="o-login" role="dialog" aria-modal="true" aria-label="Log in"><div class="grid-bg"></div><div class="scan"></div>
 <div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">Access</h2>
@@ -925,5 +948,7 @@ async function doSignup(){const m=$("#se"),{e,p,lang,stat,uni,dist}=SD;if(!KU.su
 
 tr();addEventListener("DOMContentLoaded",openHash);
 </script><script type="module" src="/src/main.js"></script>
-<script>if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))</script>
+<script>if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))
+;(()=>{const f=document.querySelector("#mbg .mf");if(!f)return;let h="";for(let i=0;i<64;i++){const c=i%9==4||i%13==6?"y":i%11==3||i%17==8?"k":"";h+='<b class="'+c+'" style="--d:'+((i*37%50)/10-2).toFixed(1)+'s"></b>'}f.innerHTML=h})();
+</script>
 </body></html>

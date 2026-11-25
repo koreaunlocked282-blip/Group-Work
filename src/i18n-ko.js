@@ -343,6 +343,7 @@ const X = {
   "Free legal counselling":"무료 법률 상담",
   "Support line for migrant women":"이주여성 긴급지원센터",
   "24-hour help for violence and other emergencies":"폭력 등 긴급 상황 24시간 지원",
+  'Anonymous reports. Real patterns.':'익명 신고. 실제 패턴.',
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",
