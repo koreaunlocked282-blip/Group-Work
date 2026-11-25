@@ -929,13 +929,14 @@ function mediaEl(ms){const w=dEl("div",null,"st-media");ms.forEach(x=>{if(x.kind
 async function attachMedia(root){const cards=[...root.querySelectorAll(".st-card[data-sid]")],ids=[...new Set(cards.map(c=>c.dataset.sid))].slice(0,12);if(!ids.length||!KU.supabaseConfigured)return;
  try{const {data,error}=await KU.supabase.functions.invoke("public-media",{body:{ids}});if(error||!data||!data.media)return;
   cards.forEach(c=>{const ms=data.media[c.dataset.sid];if(!ms||c.querySelector(".st-media"))return;const el=mediaEl(ms),cf=c.querySelector(".st-conf");cf?c.insertBefore(el,cf):c.append(el)})}catch{}}
+var CM_ADMIN=false;
 function cmErr(c,s){return c==="no_links"?"Links are not allowed in comments.":s===401?"Please log in again to comment.":s===429?"Too many comments. Please try again later.":c==="check_unavailable"?"Comments are paused for a moment. Please try again later.":"Could not post your comment. Please try again."}
 async function cmCall(body){const {data,error}=await KU.supabase.functions.invoke("story-comments",{body});if(!error)return {ok:true,data};let j=null,s=0;try{s=error.context.status;j=await error.context.json()}catch{}return {ok:false,j,s}}
 function cmBox(sid,open){const w=dEl("div",null,"cm"),t=dEl("button",null,"cm-t"),p=dEl("div",null,"cm-p"),n=dEl("span","");t.type="button";t.append(dEl("span","Comments"),n);p.hidden=true;t.setAttribute("aria-expanded","false");let loaded=false;
  t.onclick=()=>{p.hidden=!p.hidden;t.setAttribute("aria-expanded",String(!p.hidden));if(!p.hidden&&!loaded){loaded=true;cmLoad(sid,p,n)}};
  w.append(t,p);if(open)t.click();return w}
 async function cmLoad(sid,p,n){p.replaceChildren(dEl("p","Loading..."));
- try{if(!KU.supabaseConfigured)throw 0;const [{data,error},{data:ss}]=await Promise.all([KU.supabase.rpc("list_story_comments",{_story:sid}),KU.supabase.auth.getSession()]);if(error)throw 0;
+ try{if(!KU.supabaseConfigured)throw 0;const [{data,error},{data:ss}]=await Promise.all([KU.supabase.rpc("list_story_comments",{_story:sid}),KU.supabase.auth.getSession()]);if(error)throw 0;CM_ADMIN=false;if(typeof MOD!=="undefined"&&MOD.ok){try{const a=await KU.supabase.rpc("is_site_admin");CM_ADMIN=a.data===true}catch{}}
   const rows=data||[],vis=rows.filter(r=>r.status==="visible").length;n.textContent=vis?" ("+vis+")":"";cmRender(sid,p,n,rows,!!(ss&&ss.session))}
  catch{p.replaceChildren(dEl("p","Comments could not be loaded right now."))}}
 function cmForm(sid,parent,session,onDone){const f=dEl("form",null,"cm-f");
@@ -961,8 +962,10 @@ function cmRender(sid,p,n,rows,session){p.replaceChildren();const reload=()=>cmL
   if(c.status==="visible"){
    if(session)mk("Reply",()=>{if(it.querySelector(".cm-f"))return;it.insertBefore(cmForm(sid,c.id,true,reload),ac.nextSibling)});
    if(!c.mine)mk("Report",async b=>{b.disabled=true;try{const r=await cmCall({action:"report",comment_id:c.id,device:devId()});b.textContent=r.ok?"Reported":"Could not report"}catch{b.textContent="Could not report"}});
-   if(c.mine)mk("Delete",async b=>{if(!b.dataset.s){b.dataset.s="1";b.textContent="Tap again to delete";return}b.disabled=true;const r=await cmCall({action:"delete",comment_id:c.id});r.ok?reload():(b.disabled=false)})}
+   if(c.mine)mk("Delete",async b=>{if(!b.dataset.s){b.dataset.s="1";b.textContent="Tap again to delete";return}b.disabled=true;const r=await cmCall({action:"delete",comment_id:c.id});r.ok?reload():(b.disabled=false)})
+   else if(CM_ADMIN)mk("Delete",async b=>{if(!b.dataset.s){b.dataset.s="1";b.textContent="Tap again to delete";return}b.disabled=true;const {data,error}=await KU.supabase.rpc("admin_delete_comment",{_comment:c.id});(!error&&data)?reload():(b.disabled=false)})}
   if(typeof MOD!=="undefined"&&MOD.ok)mk(c.status==="hidden"?"Restore":"Hide",async b=>{b.disabled=true;const {error}=await KU.supabase.rpc("mod_set_comment_status",{_comment:c.id,_status:c.status==="hidden"?"visible":"hidden"});error?(b.disabled=false):reload()});
+  if(CM_ADMIN&&c.status==="hidden")mk("Delete",async b=>{if(!b.dataset.s){b.dataset.s="1";b.textContent="Tap again to delete";return}b.disabled=true;const {data,error}=await KU.supabase.rpc("admin_delete_comment",{_comment:c.id});(!error&&data)?reload():(b.disabled=false)});
   it.append(ac);into.append(it);draw(c.id,into)});
  draw("root",list);p.append(list)}
 function stCard(r){const d=dEl("div",null,"st-card"),m=dEl("div",null,"st-meta");m.append(dEl("span",catL(r.category),"tag"));const pn=REF&&REF.p.find(x=>x.code==r.province_code);m.append(dEl("span",pn?pn.name_en:human(r.province_code)),dEl("span",new Date(r.approved_month).toLocaleDateString(L=="ko"?"ko-KR":"en-US",{year:"numeric",month:"long"})));
