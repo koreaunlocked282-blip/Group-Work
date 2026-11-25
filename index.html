@@ -381,22 +381,31 @@ html,body{overflow-x:clip}
 @media(max-width:860px),(pointer:coarse){html.js-rv .rv{transform:translateY(22px);transition:opacity .5s ease,transform .5s ease}html.js-rv .rv.in{transform:none}.hero{padding-top:24px}}
 </style>
 <style>
-/* ===== menu screen: corner logo ===== */
-.menu a.m-only{display:none!important}
-#o-menu{flex-direction:column;align-items:center;overflow:hidden auto}
-.mhead{position:absolute;top:16px;left:16px;z-index:2;display:flex;align-items:center;gap:10px}
-.mk{flex:none;display:grid;place-items:center;width:34px;height:34px;background:#ffda00;border:2px solid #0b0b0a;font:700 .8rem var(--mono);color:#0b0b0a}
-.mhead b{font-size:1rem;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
-#o-menu .menu{margin-top:clamp(70px,12vh,120px)}
-#o-menu .x{z-index:2}
-@media(max-width:430px){.menu a.m-only:not([hidden]){display:flex!important}}
+/* ===== menu: dropdown under the header (ghush style) ===== */
+#o-menu{inset:auto;top:var(--hh,64px);left:0;right:0;bottom:auto;z-index:19;padding:6px clamp(14px,3vw,36px) 22px;max-height:calc(100dvh - var(--hh,64px));border-bottom:1px solid var(--ink);box-shadow:0 24px 40px rgba(0,0,0,.08);overflow:auto;display:none;animation:mdrop .22s ease both}
+#o-menu.on{display:block}
+@keyframes mdrop{from{opacity:0;transform:translateY(-8px)}}
+#o-menu .menu{width:auto;margin:0;border:0;display:flex;flex-direction:column;align-items:stretch}
+#o-menu .menu a{font-size:1.05rem!important;font-weight:500;padding:14px 6px!important;border-bottom:0!important}
+#o-menu .menu a:after{content:none}
+#o-menu .menu a:hover{background:var(--yellow)}
+#o-menu .menu a.mbtn{border:1px solid var(--ink)!important;font-weight:700;padding:13px 14px!important;margin-top:10px;background:var(--bg)}
+#o-menu .menu a.mfill{background:#ffda00}
+#o-menu .menu a.m-only{display:none!important}
+header .nb[data-i=menu][aria-expanded=true]{font-size:0}
+header .nb[data-i=menu][aria-expanded=true]:after{content:"\00d7";font-size:1.7rem;line-height:1}
+@media(min-width:721px){#o-menu .menu a.mbtn{align-self:flex-start;min-width:280px}}
+@media(max-width:430px){#o-menu .menu a.m-only:not([hidden]){display:flex!important}}
+header .nb,header .pill{white-space:nowrap}
+@media(max-width:1180px){header a[data-i=map],header button[onclick="openFeature()"],header button[onclick="openTeam()"]{display:none}}
+@media(prefers-reduced-motion:reduce){#o-menu{animation:none}}
 </style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
 <header>
 <button class="logo" onclick="scrollTo({top:0})">Korea Unlocked<sup>한국</sup></button>
-<button class="nb" onclick="ov('menu')" aria-haspopup="dialog" data-i="menu">Menu</button>
+<button class="nb" onclick="toggleMenu()" aria-expanded="false" aria-controls="o-menu" data-i="menu">Menu</button>
 <a class="nb hide-s" href="#map-s" data-i="map">Map</a>
 <button class="nb hide-s hl-ai" onclick="ov('chat')"><i class="hl-dot"></i>AI assistant</button>
 <button class="nb hide-s" onclick="openFeature()">Feature request</button>
@@ -478,9 +487,18 @@ html,body{overflow-x:clip}
 <button onclick="info('privacy')">Privacy notice</button><button onclick="info('terms')">Terms of use</button><button onclick="info('faq')">FAQ</button><button onclick="info('contact')">Contact and support</button>
 <p>Emergency now? Call <b>112</b> (police) or <b>119</b> (fire and ambulance). This site is a prototype and does not replace legal advice or official services.</p></footer>
 
-<div class="ov" id="o-menu" role="dialog" aria-modal="true" aria-label="Menu"><div class="grid-bg"></div><button class="x" onclick="ov()" aria-label="Close">×</button>
-<div class="mhead"><span class="mk">KU</span><b>Korea Unlocked</b></div>
-<nav class="menu" onclick="ov()"><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();scrollTo({top:0})">Home</a><a href="#" style="--c:var(--rep)" onclick="event.preventDefault();setTimeout(()=>ov('report'),50)">Report an experience</a><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(()=>ov('chat'),50)">AI assistant</a><a href="#map-s" style="--c:var(--sup)">Map</a><a href="#" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(openFeature,50)">Feature request</a><a href="#" style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openTeam,50)">Meet the team</a><a id="mod-nav" href="#mod-s" style="--c:var(--rep)" hidden>Moderation</a><a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a><a href="#" id="mauth" data-i="login" style="--c:var(--rep)">Log in</a><a href="#" class="m-only" data-i="signup" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(()=>ov('signup'),50)">Create account</a></nav></div>
+<div class="ov" id="o-menu" aria-label="Menu">
+<nav class="menu" onclick="ov()">
+<a href="#" style="--c:var(--rep)" onclick="event.preventDefault();setTimeout(()=>ov('report'),50)">Report an experience</a>
+<a href="#" style="--c:var(--ink)" onclick="event.preventDefault();setTimeout(()=>ov('chat'),50)">AI assistant</a>
+<a href="#map-s" style="--c:var(--sup)">Map</a>
+<a href="#" style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openTeam,50)">Meet the team</a>
+<a id="mod-nav" href="#mod-s" style="--c:var(--rep)" hidden>Moderation</a>
+<a href="#" id="mdash" hidden style="--c:var(--sup)" onclick="event.preventDefault();setTimeout(openDash,50)">My reports</a>
+<a href="#" class="mbtn" onclick="event.preventDefault();setTimeout(openFeature,50)">Feature request</a>
+<a href="#" id="mauth" class="mbtn" data-i="login">Log in</a>
+<a href="#" class="mbtn mfill m-only" data-i="signup" onclick="event.preventDefault();setTimeout(()=>ov('signup'),50)">Create account</a>
+</nav></div>
 
 <div class="ov" id="o-login" role="dialog" aria-modal="true" aria-label="Log in"><div class="grid-bg"></div><div class="scan"></div>
 <div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">Access</h2>
@@ -537,7 +555,9 @@ ko:{menu:"메뉴",map:"지도",report:"신고",pat:"주제",login:"로그인",lo
 let L="en";const tr=()=>{document.documentElement.lang=L;document.querySelectorAll("[data-i]").forEach(e=>e.textContent=D[L][e.dataset.i]);$("#lang").textContent=L=="en"?"한국어":"English"};
 $("#lang").onclick=()=>{L=L=="en"?"ko":"en";tr();if(typeof refresh=="function")refresh()};
 /* overlays */
-function ov(n){document.querySelectorAll(".ov").forEach(o=>{o.classList.remove("on");const s=o.querySelector(".scan");if(s){s.style.animation="none";s.offsetWidth;s.style.animation=""}});if(!n)SD={};if(n){$("#o-"+n).classList.add("on");if(n=="signup")su(0);if(n=="report")rp(0)}}
+function toggleMenu(){const o=$("#o-menu");if(o.classList.contains("on")){ov();return}ov();document.documentElement.style.setProperty("--hh",Math.round(document.querySelector("header").getBoundingClientRect().bottom)+"px");ov("menu")}
+addEventListener("scroll",()=>{const o=$("#o-menu");if(o&&o.classList.contains("on"))ov()},{passive:true});
+function ov(n){document.querySelectorAll(".ov").forEach(o=>{o.classList.remove("on");const s=o.querySelector(".scan");if(s){s.style.animation="none";s.offsetWidth;s.style.animation=""}});if(!n)SD={};if(n){$("#o-"+n).classList.add("on");if(n=="signup")su(0);if(n=="report")rp(0)}try{document.querySelector("header .nb[data-i=menu]").setAttribute("aria-expanded",n=="menu"?"true":"false")}catch(e){}}
 const INFO={
 privacy:`<h2 style="font-size:2rem">Privacy notice</h2><p><b>Status: draft for a student prototype.</b> It has not had legal review and is not a statement of compliance with Korea's PIPA or any other law.</p>
 <h3>What we collect</h3><ul><li><b>Report content</b> you type: category, description, area, dates and the options you choose. Do not include names, phone numbers, addresses or ID numbers.</li><li><b>Evidence files</b> (optional photos and audio you attach), stored privately so that only moderators can open them. Photos are re-saved on your device before upload, which removes hidden data such as location. Audio files may contain hidden data that we do not remove.</li><li><b>Account data</b> if you sign up: email address, password (handled by the sign-in service, never visible to us), preferred language and optional student status, university and district.</li><li><b>Technical data</b>: to stop abuse we keep a salted one-way hash of your network address for rate limiting. The address itself is not stored.</li></ul>
