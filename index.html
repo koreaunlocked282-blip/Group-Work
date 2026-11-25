@@ -419,6 +419,25 @@ html.rp-on header{position:fixed;top:0;left:0;right:0;z-index:60}
 html.rp-on #o-report{padding-top:calc(var(--hh2,64px) + 12px)}
 html.rp-on #o-menu{z-index:61}
 </style>
+<style>
+/* ===== log in / create account: branded split screen ===== */
+#o-login .grid-bg,#o-login .scan,#o-signup .grid-bg,#o-signup .scan{display:none}
+#o-login.on,#o-signup.on{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;padding:0;background:var(--bg);overflow:auto}
+.aubrand{background:#ffda00;border-right:2px solid #0b0b0a;padding:calc(var(--hh2,64px) + 40px) clamp(24px,5vw,72px) 48px;display:flex;flex-direction:column;justify-content:center;gap:18px;color:#0b0b0a}
+.aubrand .mk{width:58px;height:58px;display:grid;place-items:center;background:#0b0b0a;color:#ffda00;font:700 1.25rem var(--mono)}
+.aubrand h2{font-size:clamp(2.2rem,4.4vw,3.8rem);line-height:1;letter-spacing:-.04em;margin:0;font-weight:800}
+.aubrand p{margin:0;font-size:1.1rem;line-height:1.5;max-width:30em}
+.aubrand ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:10px}
+.aubrand li{font:600 .95rem var(--mono);display:flex;gap:10px;align-items:center}
+.aubrand li:before{content:"";width:12px;height:12px;background:#0b0b0a;flex:none}
+#o-login .card,#o-signup .card{align-self:center;justify-self:center;margin:calc(var(--hh2,64px) + 32px) 20px 48px;width:min(440px,calc(100% - 40px));box-sizing:border-box;border:2px solid #0b0b0a;box-shadow:8px 8px 0 #0b0b0a;background:#fff}
+#o-signup .steps{margin-right:48px}
+.aukick{margin:0 0 6px;font:600 .8rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+@media(max-width:860px){#o-login.on,#o-signup.on{grid-template-columns:1fr;align-content:start}
+ .aubrand{border-right:0;border-bottom:2px solid #0b0b0a;padding:calc(var(--hh2,64px) + 20px) 20px 22px;gap:10px;flex-direction:row;flex-wrap:wrap;align-items:center}
+ .aubrand .mk{width:42px;height:42px;font-size:1rem}.aubrand h2{font-size:1.5rem;flex:1}.aubrand p,.aubrand ul{display:none}
+ #o-login .card,#o-signup .card{margin:28px auto 40px}}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
@@ -517,7 +536,8 @@ html.rp-on #o-menu{z-index:61}
 </nav></div>
 
 <div class="ov" id="o-login" role="dialog" aria-modal="true" aria-label="Log in"><div class="grid-bg"></div><div class="scan"></div>
-<div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><h2 style="font-size:2rem">Access</h2>
+<aside class="aubrand"><span class="mk">KU</span><h2>Your story is <em>the pattern.</em></h2><p>Korea Unlocked is a free student project for international students in South Korea.</p><ul><li>Anonymous by design</li><li>Track every case with a code</li><li>Withdraw your story any time</li></ul></aside>
+<div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><p class="aukick">Log in</p><h2 style="font-size:2.2rem;margin-top:0">Welcome back.</h2>
 <label for="le">Email</label><input id="le" type="email" autocomplete="email"><label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password">
 <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="width:auto">Remember me</label>
 <button class="btn" onclick="doLogin(this)">Log in</button><p id="a1" class="note" hidden></p>
@@ -525,6 +545,7 @@ html.rp-on #o-menu{z-index:61}
 <p><a href="#" onclick="event.preventDefault();soon('a1','Password reset by email is not available yet.')">Forgot password</a></p></div></div>
 
 <div class="ov" id="o-signup" role="dialog" aria-modal="true" aria-label="Create account"><div class="grid-bg"></div><div class="scan"></div>
+<aside class="aubrand"><span class="mk">KU</span><h2>Your story is <em>the pattern.</em></h2><p>Korea Unlocked is a free student project for international students in South Korea.</p><ul><li>Anonymous by design</li><li>Track every case with a code</li><li>Withdraw your story any time</li></ul></aside>
 <div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><div class="steps" id="sg"></div><div id="sp"></div></div></div>
 
 <div class="ov" id="o-report" role="dialog" aria-modal="true" aria-label="Report"><div class="grid-bg"></div>
@@ -573,7 +594,7 @@ $("#lang").onclick=()=>{L=L=="en"?"ko":"en";tr();if(typeof refresh=="function")r
 /* overlays */
 function toggleMenu(){const o=$("#o-menu");if(o.classList.contains("on")){ov();return}ov();document.documentElement.style.setProperty("--hh",Math.round(document.querySelector("header").getBoundingClientRect().bottom)+"px");ov("menu")}
 addEventListener("scroll",()=>{const o=$("#o-menu");if(o&&o.classList.contains("on"))ov()},{passive:true});
-function ov(n){document.querySelectorAll(".ov").forEach(o=>{o.classList.remove("on");const s=o.querySelector(".scan");if(s){s.style.animation="none";s.offsetWidth;s.style.animation=""}});if(!n)SD={};if(n){$("#o-"+n).classList.add("on");if(n=="signup")su(0);if(n=="report")rp(0)}try{document.querySelector("header .dots").setAttribute("aria-expanded",n=="menu"?"true":"false")}catch(e){}const H=document.documentElement;H.classList.toggle("rp-on",n=="report");if(n=="report")H.style.setProperty("--hh2",document.querySelector("header").offsetHeight+"px")}
+function ov(n){document.querySelectorAll(".ov").forEach(o=>{o.classList.remove("on");const s=o.querySelector(".scan");if(s){s.style.animation="none";s.offsetWidth;s.style.animation=""}});if(!n)SD={};if(n){$("#o-"+n).classList.add("on");if(n=="signup")su(0);if(n=="report")rp(0)}try{document.querySelector("header .dots").setAttribute("aria-expanded",n=="menu"?"true":"false")}catch(e){}const H=document.documentElement;const au=["report","login","signup"].includes(n);H.classList.toggle("rp-on",au);if(au)H.style.setProperty("--hh2",document.querySelector("header").offsetHeight+"px")}
 const INFO={
 privacy:`<h2 style="font-size:2rem">Privacy notice</h2><p><b>Status: draft for a student prototype.</b> It has not had legal review and is not a statement of compliance with Korea's PIPA or any other law.</p>
 <h3>What we collect</h3><ul><li><b>Report content</b> you type: category, description, area, dates and the options you choose. Do not include names, phone numbers, addresses or ID numbers.</li><li><b>Evidence files</b> (optional photos and audio you attach), stored privately so that only moderators can open them. Photos are re-saved on your device before upload, which removes hidden data such as location. Audio files may contain hidden data that we do not remove.</li><li><b>Account data</b> if you sign up: email address, password (handled by the sign-in service, never visible to us), preferred language and optional student status, university and district.</li><li><b>Technical data</b>: to stop abuse we keep a salted one-way hash of your network address for rate limiting. The address itself is not stored.</li></ul>

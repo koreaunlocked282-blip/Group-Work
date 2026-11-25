@@ -345,6 +345,7 @@ const X = {
   "24-hour help for violence and other emergencies":"폭력 등 긴급 상황 24시간 지원",
   'Anonymous reports. Real patterns.':'익명 신고. 실제 패턴.',
   'Leave out':'제외할 정보','Names':'이름','Phone numbers':'전화번호','Exact addresses':'정확한 주소','ID numbers':'신분증 번호','Report an experience.':'경험을 신고하세요.',
+  'Your story is ':'당신의 이야기는 ','the pattern.':'패턴입니다.','Korea Unlocked is a free student project for international students in South Korea.':'Korea Unlocked는 한국의 유학생을 위한 무료 학생 프로젝트입니다.','Anonymous by design':'설계부터 익명','Track every case with a code':'코드로 모든 사례 추적','Withdraw your story any time':'언제든 이야기 철회','Welcome back.':'다시 오신 것을 환영합니다.',
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",
