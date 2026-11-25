@@ -105,17 +105,45 @@ Deno.serve(async (req) => {
       context = '\n\nDATABASE_CONTEXT\n' + lines.join('\n') + '\nEND_DATABASE_CONTEXT'
     } catch { /* answer without database context */ }
 
+    const messages = [...hist, { role: 'user', content: q }]
+
+    // 1) Claude first.
+    let answer = ''
     const key = Deno.env.get('ANTHROPIC_API_KEY')
-    if (!key) throw new Error('config')
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-      body: JSON.stringify({ model: MODEL, max_tokens: 500, system: SYSTEM + context, messages: [...hist, { role: 'user', content: q }] }),
-      signal: AbortSignal.timeout(20000),
-    })
-    if (!r.ok) { console.error('anthropic_status', r.status); return fail(502, 'server_error', h) }
-    const j = await r.json()
-    const answer = Array.isArray(j.content) ? j.content.filter((b: { type: string }) => b.type === 'text').map((b: { text: string }) => b.text).join('\n').trim() : ''
+    if (key) {
+      try {
+        const r = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+          body: JSON.stringify({ model: MODEL, max_tokens: 500, system: SYSTEM + context, messages }),
+          signal: AbortSignal.timeout(20000),
+        })
+        if (r.ok) {
+          const j = await r.json()
+          answer = Array.isArray(j.content) ? j.content.filter((b: { type: string }) => b.type === 'text').map((b: { text: string }) => b.text).join('\n').trim() : ''
+        } else console.error('anthropic_status', r.status) // e.g. credits used up or expired
+      } catch { console.error('anthropic_unreachable') }
+    }
+
+    // 2) Free fallback (Groq) when Claude is unavailable for any reason, e.g. credits expired.
+    //    Needs the optional secret GROQ_API_KEY. Without it, the assistant simply reports an error.
+    if (!answer) {
+      const gkey = Deno.env.get('GROQ_API_KEY')
+      if (!gkey) return fail(502, 'server_error', h)
+      // Free plans have small daily limits, so keep our own cap below them.
+      if (!(await allow(sb, 'ai_free_global', await limitKey('global', 'free'), 600, '1 day'))) return fail(429, 'rate_limited', h, { 'Retry-After': '3600' })
+      try {
+        const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: { authorization: `Bearer ${gkey}`, 'content-type': 'application/json' },
+          body: JSON.stringify({ model: Deno.env.get('GROQ_MODEL') || 'openai/gpt-oss-120b', max_tokens: 700, temperature: 0.3, messages: [{ role: 'system', content: SYSTEM + context }, ...messages] }),
+          signal: AbortSignal.timeout(25000),
+        })
+        if (!r.ok) { console.error('groq_status', r.status); return fail(r.status === 429 ? 429 : 502, r.status === 429 ? 'rate_limited' : 'server_error', h, r.status === 429 ? { 'Retry-After': '3600' } : undefined) }
+        const j = await r.json()
+        answer = String(j?.choices?.[0]?.message?.content ?? '').trim()
+      } catch { console.error('groq_unreachable'); return fail(502, 'server_error', h) }
+    }
     if (!answer) return fail(502, 'server_error', h)
     return respond(200, { answer }, h) // the question and answer are never stored or logged
   } catch (e) {
