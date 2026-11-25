@@ -555,6 +555,25 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 @media(min-width:1100px){.hero>.h3d{margin:0!important;align-self:end!important;justify-self:end!important;grid-row:1/5!important;height:400px!important}}
 @media(min-width:1100px) and (max-width:1279px){.hero>.h3d{zoom:.62!important}}
 </style>
+<style id="polish">
+.foot{max-width:none!important;width:100%;box-sizing:border-box}
+@media(min-width:900px){#res-s .grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.res small.pr1{display:block;margin-top:8px;padding-top:8px;border-top:1px solid var(--soft);color:#000}
+#sos{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:45;font-family:inherit}
+#sos>button{display:flex;align-items:center;gap:8px;background:#0b0b0a;color:#fff;border:1px solid #0b0b0a;padding:11px 16px;font-weight:700;font-size:.9rem;cursor:pointer;box-shadow:0 4px 0 var(--yellow,#ffda00)}
+#sos>button i{width:9px;height:9px;border-radius:50%;background:var(--yellow,#ffda00);display:inline-block}
+#sos>button:hover,#sos>button:focus-visible{background:var(--yellow,#ffda00);color:#000}
+#sos>button:hover i{background:#000}
+#sos .sos-p{position:absolute;left:0;bottom:56px;width:min(340px,calc(100vw - 28px));background:#fff;color:#0b0b0a;border:1px solid #0b0b0a;box-shadow:6px 6px 0 #0b0b0a;padding:16px;display:none}
+#sos.on .sos-p{display:block}
+#sos .sos-p b{display:block;font-size:1.05rem}#sos .sos-p p{margin:4px 0 12px;color:var(--mut);font-size:.85rem}
+#sos .sos-l{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#sos .sos-l a{display:flex;flex-direction:column;border:1px solid #0b0b0a;padding:8px 10px;text-decoration:none;color:#0b0b0a;font-size:.75rem;line-height:1.25}
+#sos .sos-l a span{font-family:var(--serif);font-size:1.45rem;font-weight:800;line-height:1.1}
+#sos .sos-l a:hover,#sos .sos-l a:focus-visible{background:var(--yellow,#ffda00)}
+html.ov-lock #sos,html.rp-on #sos{display:none}
+@media(max-width:520px){#sos>button{padding:10px 13px;font-size:.82rem}}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
@@ -620,11 +639,12 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 <div class="grid">
 <div class="res"><big>112</big>Police emergency<br><small>Interpretation available</small></div>
 <div class="res"><big>119</big>Fire and medical emergency<br><small>Interpretation available</small></div>
-<div class="res"><big>1345</big>Immigration Contact Center<br><small>Visas, daily life and interpreting in 20 languages. Weekdays 09:00 to 22:00; after 18:00 Korean, English and Chinese only</small></div>
+<div class="res"><big>1345</big>Immigration Contact Center<br><small>Visas, daily life and interpreting in 20 languages. Weekdays 09:00 to 22:00; after 18:00 Korean, English and Chinese only</small><br><small class="pr1">Press 1 to report abuse such as unpaid wages or assault. Set up for foreign workers in May 2026, so ask if it covers you</small></div>
 <div class="res"><big>1331</big>National Human Rights Commission<br><small>Complaints about discrimination and human rights violations</small></div>
 <div class="res"><big>1350</big>Ministry of Employment and Labor<br><small>Unpaid wages, part-time job and workplace problems</small></div>
 <div class="res"><big>132</big>Korea Legal Aid Corporation<br><small>Free legal counselling</small></div>
 <div class="res"><big>1577-1366</big>Support line for migrant women<br><small>24-hour help for violence and other emergencies</small></div>
+<div class="res"><big>109</big>Mental health and suicide prevention<br><small>24-hour counselling. Ask for an interpreter</small></div>
 </div></section>
 
 <section id="guide-s" aria-labelledby="gbh">
@@ -745,6 +765,18 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 <div class="gb-call" role="group" aria-label="Useful numbers">
 <span><big>112</big>Police</span>
 <span><big>1345</big>Immigration</span>
+</div>
+</div></details>
+<details class="gb-d"><summary><span class="gb-n">09</span><span class="gb-q">Seen it happen to someone else?<small>Five safe ways to help, called the 5 Ds</small></span><span class="gb-i" aria-hidden="true"></span></summary><div class="gb-b"><ol>
+<li><b>Distract.</b> Interrupt in a friendly way, for example by asking the person for directions or the time, so the situation changes.</li>
+<li><b>Delegate.</b> Ask someone nearby, a staff member or a driver for help, or call 112.</li>
+<li><b>Document.</b> If it is safe, note the time and place or record what happens. Give it to the person affected and never post it without their consent.</li>
+<li><b>Delay.</b> Check in afterwards. Ask if they are okay and what they need.</li>
+<li><b>Direct.</b> Only if you feel safe, calmly tell the person to stop. Do not argue or put yourself in danger.</li>
+</ol>
+<div class="gb-call" role="group" aria-label="Useful numbers">
+<span><big>112</big>Police</span>
+<span><big>1331</big>Human rights</span>
 </div>
 </div></details>
 </div>
@@ -1248,4 +1280,6 @@ tr();addEventListener("DOMContentLoaded",openHash);
 </script><script type="module" src="/src/main.js"></script>
 <script>if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))
 </script>
+<div id="sos"><div class="sos-p" id="sos-p" role="dialog" aria-label="Need help now?"><b>Need help now?</b><p>Tap a number to call. Most lines have interpreters.</p><div class="sos-l"><a href="tel:112"><span>112</span>Police</a><a href="tel:119"><span>119</span>Ambulance and fire</a><a href="tel:1345"><span>1345</span>Immigration</a><a href="tel:1350"><span>1350</span>Wages and work</a><a href="tel:1331"><span>1331</span>Human rights</a><a href="tel:109"><span>109</span>Counselling, 24 hours</a></div></div><button type="button" id="sos-b" aria-expanded="false" aria-controls="sos-p"><i></i>Need help now?</button></div>
+<script>(function(){var s=document.getElementById("sos"),b=document.getElementById("sos-b");if(!s||!b)return;function set(o){s.classList.toggle("on",o);b.setAttribute("aria-expanded",o?"true":"false")}b.addEventListener("click",function(e){e.stopPropagation();set(!s.classList.contains("on"))});document.addEventListener("click",function(e){if(!s.contains(e.target))set(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false)})})()</script>
 </body></html>
