@@ -347,6 +347,12 @@ const X = {
   'Leave out':'제외할 정보','Names':'이름','Phone numbers':'전화번호','Exact addresses':'정확한 주소','ID numbers':'신분증 번호','Report an experience.':'경험을 신고하세요.',
   'Your story is ':'당신의 이야기는 ','the pattern.':'패턴입니다.','Korea Unlocked is a free student project for international students in South Korea.':'Korea Unlocked는 한국의 유학생을 위한 무료 학생 프로젝트입니다.','Anonymous by design':'설계부터 익명','Track every case with a code':'코드로 모든 사례 추적','Withdraw your story any time':'언제든 이야기 철회','Welcome back.':'다시 오신 것을 환영합니다.',
   'General information only, not legal advice. Free for everyone, no account needed. The assistant can use live totals from the database and stories that their authors chose to share publicly. It cannot read private reports. Answers may be wrong, so check anything important with an official service.':'일반 정보일 뿐 법률 자문이 아닙니다. 누구나 무료로 사용할 수 있으며 계정이 필요 없습니다. 도우미는 데이터베이스의 실시간 합계와 작성자가 공개하기로 선택한 이야기를 사용할 수 있습니다. 비공개 신고는 읽을 수 없습니다. 답이 틀릴 수 있으므로 중요한 내용은 공식 서비스에서 확인하세요.',
+  'You can attach up to 4 photos or audio recordings (10 MB each) to a report. This is optional. Files are stored privately and only moderators can open them.':'신고에 사진 또는 음성 녹음을 최대 4개(각 10MB)까지 첨부할 수 있습니다. 선택 사항입니다. 파일은 비공개로 저장되며 관리자만 열 수 있습니다.',
+  'Your device':'내 기기','photo re-saved, hidden data removed':'사진을 다시 저장하여 숨은 정보 제거',
+  'Private storage':'비공개 저장','only moderators can open':'관리자만 열람 가능',
+  'Moderator review':'관리자 검토','public only if you allow it':'허용한 경우에만 공개',
+  'Available':'이용 가능',
+  'Add files in the Evidence part of the report form. Files are not blurred automatically, so avoid faces, ID cards and phone numbers.':'신고 양식의 증거 항목에서 파일을 추가하세요. 파일은 자동으로 흐림 처리되지 않으므로 얼굴, 신분증, 전화번호가 나오지 않게 하세요.',
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",
