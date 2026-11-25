@@ -370,6 +370,8 @@ const X = {
   "every detail.":"기억하고 있습니다.",
   "Now put it":"이제",
   "on the record.":"기록으로 남기세요.",
+  "on the record":"기록으로 남겨",
+  "so everybody knows.":"모두가 알 수 있게 하세요.",
   "Report an experience →":"경험 신고하기 →",
   "Public stories":"공개 이야기",
   "Anonymous":"익명",
