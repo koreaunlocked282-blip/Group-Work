@@ -8,7 +8,7 @@
 <meta property="og:url" content="https://koreaunlocked.vercel.app/">
 <meta property="og:image" content="https://koreaunlocked.vercel.app/og.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Korea Unlocked: someone treated you differently, now put it on the record.">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Korea Unlocked"><meta name="twitter:description" content="Anonymous reporting and safety information for international students in South Korea."><meta name="twitter:image" content="https://koreaunlocked.vercel.app/og.png">
-<link rel="manifest" href="/manifest.webmanifest"><link rel="icon" type="image/png" href="/icons/icon-192.png"><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" href="/icons/icon-192.png"><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f4f3ef;--bg2:#fff;--bg3:#fff;--ink:#0b0b0a;--mut:#696965;--line:#171715;--soft:#cbc9c1;--yellow:#ffda00;--rep:#b3261e;--pro:#5b3fd0;--ver:#1f5fc4;--ana:#9a5a00;--sup:#1c7a4f;--warn:#c8161d;--serif:"Source Serif 4","Noto Serif KR",Georgia,serif;--mono:"IBM Plex Mono","Noto Sans KR",monospace;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -452,11 +452,19 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 .lg li:nth-child(odd){border-right:1px solid var(--soft)}
 .lg li:nth-last-child(-n+2){border-bottom:0}
 </style>
+<style>
+.logo{display:inline-flex;align-items:center;gap:10px}
+.lg-m{height:30px;width:auto;flex:none;display:block}
+.logo sup{vertical-align:super}
+.mk-svg{width:84px;height:auto;display:block;flex:none}
+@media(max-width:860px){.mk-svg{width:56px}}
+@media(max-width:720px){.lg-m{height:24px}.logo{gap:7px}}
+</style>
 </head><body>
 <div id="cur" aria-hidden="true"></div>
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
 <header>
-<button class="logo" onclick="scrollTo({top:0})">Korea Unlocked<sup>한국</sup></button>
+<button class="logo" onclick="scrollTo({top:0})" aria-label="Korea Unlocked"><svg class="lg-m" viewBox="0 0 120 88" aria-hidden="true"><path d="M4 4 H116 V66 H44 L26 84 V66 H4 Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"/><circle cx="34" cy="25" r="8.5" fill="currentColor"/><path d="M18 57 V50 a16 13 0 0 1 32 0 V57 Z" fill="currentColor" stroke-linejoin="round"/><g transform="translate(60,41)"><rect x="-9" y="-9" width="18" height="5" fill="currentColor"/><rect x="-9" y="4" width="18" height="5" fill="currentColor"/><rect x="-2.6" y="-15" width="5.2" height="30" fill="currentColor" transform="rotate(24)"/></g><circle cx="86" cy="25" r="8.5" fill="#ffda00" stroke="currentColor" stroke-width="2.6"/><path d="M70 57 V50 a16 13 0 0 1 32 0 V57 Z" fill="#ffda00" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span>Korea Unlocked<sup>한국</sup></span></button>
 <button class="nb hide-s hl-rp" onclick="ov('report')" data-i="report">Report</button>
 <button class="nb hide-s hl-ai" onclick="ov('chat')"><i class="hl-dot"></i>AI assistant</button>
 <button class="nb" id="lang" aria-label="Switch language">한국어</button>
@@ -550,7 +558,7 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 </nav></div>
 
 <div class="ov" id="o-login" role="dialog" aria-modal="true" aria-label="Log in"><div class="grid-bg"></div><div class="scan"></div>
-<aside class="aubrand"><span class="mk">KU</span><h2>Your story is <em>the pattern.</em></h2><p>Korea Unlocked is a free student project for international students in South Korea.</p><ul><li>Anonymous by design</li><li>Track every case with a code</li><li>Withdraw your story any time</li></ul></aside>
+<aside class="aubrand"><svg class="mk-svg" viewBox="0 0 120 88" aria-hidden="true"><path d="M4 4 H116 V66 H44 L26 84 V66 H4 Z" fill="none" stroke="#0b0b0a" stroke-width="5" stroke-linejoin="miter"/><circle cx="34" cy="25" r="8.5" fill="#0b0b0a"/><path d="M18 57 V50 a16 13 0 0 1 32 0 V57 Z" fill="#0b0b0a" stroke-linejoin="round"/><g transform="translate(60,41)"><rect x="-9" y="-9" width="18" height="5" fill="#0b0b0a"/><rect x="-9" y="4" width="18" height="5" fill="#0b0b0a"/><rect x="-2.6" y="-15" width="5.2" height="30" fill="#0b0b0a" transform="rotate(24)"/></g><circle cx="86" cy="25" r="8.5" fill="#f4f3ef" stroke="#0b0b0a" stroke-width="2.6"/><path d="M70 57 V50 a16 13 0 0 1 32 0 V57 Z" fill="#f4f3ef" stroke="#0b0b0a" stroke-width="2.6" stroke-linejoin="round"/></svg><h2>Your story is <em>the pattern.</em></h2><p>Korea Unlocked is a free student project for international students in South Korea.</p><ul><li>Anonymous by design</li><li>Track every case with a code</li><li>Withdraw your story any time</li></ul></aside>
 <div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><p class="aukick">Log in</p><h2 style="font-size:2.2rem;margin-top:0">Welcome back.</h2>
 <label for="le">Email</label><input id="le" type="email" autocomplete="email"><label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password">
 <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="width:auto">Remember me</label>
@@ -559,7 +567,7 @@ main>section:not(.hero){padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(28
 <p><a href="#" onclick="event.preventDefault();soon('a1','Password reset by email is not available yet.')">Forgot password</a></p></div></div>
 
 <div class="ov" id="o-signup" role="dialog" aria-modal="true" aria-label="Create account"><div class="grid-bg"></div><div class="scan"></div>
-<aside class="aubrand"><span class="mk">KU</span><h2>Your story is <em>the pattern.</em></h2><p>Korea Unlocked is a free student project for international students in South Korea.</p><ul><li>Anonymous by design</li><li>Track every case with a code</li><li>Withdraw your story any time</li></ul></aside>
+<aside class="aubrand"><svg class="mk-svg" viewBox="0 0 120 88" aria-hidden="true"><path d="M4 4 H116 V66 H44 L26 84 V66 H4 Z" fill="none" stroke="#0b0b0a" stroke-width="5" stroke-linejoin="miter"/><circle cx="34" cy="25" r="8.5" fill="#0b0b0a"/><path d="M18 57 V50 a16 13 0 0 1 32 0 V57 Z" fill="#0b0b0a" stroke-linejoin="round"/><g transform="translate(60,41)"><rect x="-9" y="-9" width="18" height="5" fill="#0b0b0a"/><rect x="-9" y="4" width="18" height="5" fill="#0b0b0a"/><rect x="-2.6" y="-15" width="5.2" height="30" fill="#0b0b0a" transform="rotate(24)"/></g><circle cx="86" cy="25" r="8.5" fill="#f4f3ef" stroke="#0b0b0a" stroke-width="2.6"/><path d="M70 57 V50 a16 13 0 0 1 32 0 V57 Z" fill="#f4f3ef" stroke="#0b0b0a" stroke-width="2.6" stroke-linejoin="round"/></svg><h2>Your story is <em>the pattern.</em></h2><p>Korea Unlocked is a free student project for international students in South Korea.</p><ul><li>Anonymous by design</li><li>Track every case with a code</li><li>Withdraw your story any time</li></ul></aside>
 <div class="card"><button class="x" onclick="ov()" aria-label="Close">×</button><div class="steps" id="sg"></div><div id="sp"></div></div></div>
 
 <div class="ov" id="o-report" role="dialog" aria-modal="true" aria-label="Report"><div class="grid-bg"></div>
