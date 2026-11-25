@@ -523,6 +523,18 @@ const X = {
   "Mental health and suicide prevention":"정신건강·자살예방 상담",
   "24-hour counselling. Ask for an interpreter":"24시간 상담. 통역을 요청하세요",
   "Press 1 to report abuse such as unpaid wages or assault. Set up for foreign workers in May 2026, so ask if it covers you":"1번을 누르면 임금체불, 폭행 같은 피해를 신고할 수 있습니다. 2026년 5월 외국인 근로자를 위해 마련되었으니 본인도 해당되는지 문의하세요",
+  // after-report
+  "After you report.":"신고한 뒤에는.",
+  "You stay in control.":"주도권은 당신에게 있습니다.",
+  "Private first":"우선 비공개",
+  "Your choice":"당신의 선택",
+  "Next step":"다음 단계",
+  "Your report is kept private":"제보는 비공개로 보관됩니다",
+  "Evidence files are stored privately and only moderators can open them. Nothing becomes public unless you allow it.":"증거 파일은 비공개로 저장되며 운영자만 열 수 있습니다. 허락하지 않으면 아무것도 공개되지 않습니다.",
+  "You decide what is shared":"공개할 내용은 직접 정합니다",
+  "Only a checked, cleaned version can be published, and only if you choose to share it. You can ask for your story to be taken down.":"검토를 거쳐 정리된 버전만 공개할 수 있으며, 공개를 선택한 경우에만 가능합니다. 언제든 내 이야기를 내려 달라고 요청할 수 있습니다.",
+  "This is not an official complaint":"공식 진정이 아닙니다",
+  "Korea Unlocked records experiences and patterns. To seek action, contact the Human Rights Commission (1331), the Employment and Labor Ministry (1350) or Legal Aid (132).":"Korea Unlocked는 경험과 패턴을 기록합니다. 조치를 원하시면 국가인권위원회(1331), 고용노동부(1350), 법률구조공단(132)에 문의하세요.",
   // ghush-style redesign
   "▲ Confirm this report":"▲ 이 신고 확인하기",
   "✓ Confirmed":"✓ 확인함",
