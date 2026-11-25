@@ -369,7 +369,7 @@ header .hl-rp:hover{box-shadow:5px 5px 0 #0b0b0a}header .hl-ai:hover{box-shadow:
 html,body{overflow-x:clip}
 @media(max-width:720px){
  header{flex-wrap:wrap;row-gap:8px;padding:8px 12px}
- .logo{order:1;margin-right:auto}.nb[data-i=menu]{order:2}#lang{order:3}.pill.fill{order:4}
+ .logo{order:1;margin-right:auto}#lang{order:2}.pill.fill{order:3}.dots{order:4}
  .brk{display:block;flex:0 0 100%;height:0;order:5}
  header .hl-ai.hide-s,header .hl-rp.hide-s{display:inline-flex;order:6;flex:1 1 0;justify-content:center;align-items:center;padding:10px 8px;font-size:.95rem;box-shadow:3px 3px 0 #0b0b0a}
  header .hl-ai.hide-s{box-shadow:3px 3px 0 #ffda00}
@@ -392,8 +392,10 @@ html,body{overflow-x:clip}
 #o-menu .menu a.mbtn{border:1px solid var(--ink)!important;font-weight:700;padding:13px 14px!important;margin-top:10px;background:var(--bg)}
 #o-menu .menu a.mfill{background:#ffda00}
 #o-menu .menu a.m-only{display:none!important}
-header .nb[data-i=menu][aria-expanded=true]{font-size:0}
-header .nb[data-i=menu][aria-expanded=true]:after{content:"\00d7";font-size:1.7rem;line-height:1}
+header .dots{display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid var(--ink);background:var(--bg);margin-left:6px;flex:none}
+header .dots:hover{background:var(--yellow)}
+header .dots[aria-expanded=true] svg{display:none}
+header .dots[aria-expanded=true]:after{content:"\00d7";font-size:1.7rem;line-height:1}
 @media(min-width:721px){#o-menu .menu a.mbtn{align-self:flex-start;min-width:280px}}
 @media(max-width:430px){#o-menu .menu a.m-only:not([hidden]){display:flex!important}}
 header .nb,header .pill{white-space:nowrap}
@@ -405,7 +407,6 @@ header .nb,header .pill{white-space:nowrap}
 <div class="strip"><span>Anonymous reporting</span><span>No account needed</span><span>Private unless you choose to share</span></div>
 <header>
 <button class="logo" onclick="scrollTo({top:0})">Korea Unlocked<sup>한국</sup></button>
-<button class="nb" onclick="toggleMenu()" aria-expanded="false" aria-controls="o-menu" data-i="menu">Menu</button>
 <a class="nb hide-s" href="#map-s" data-i="map">Map</a>
 <button class="nb hide-s hl-ai" onclick="ov('chat')"><i class="hl-dot"></i>AI assistant</button>
 <button class="nb hide-s" onclick="openFeature()">Feature request</button>
@@ -414,6 +415,7 @@ header .nb,header .pill{white-space:nowrap}
 <button class="nb" id="lang" aria-label="Switch language">한국어</button>
 <button class="pill hide-s" onclick="ov('login')" data-i="login" style="border-color:transparent">Log in</button>
 <button class="pill fill" onclick="ov('signup')" data-i="signup">Create account</button>
+<button class="nb dots" onclick="toggleMenu()" aria-expanded="false" aria-controls="o-menu" aria-label="Menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="currentColor"><circle cx="12" cy="4.5" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="19.5" r="2.2"/></svg></button>
 <i class="brk" aria-hidden="true"></i>
 </header>
 
@@ -557,7 +559,7 @@ $("#lang").onclick=()=>{L=L=="en"?"ko":"en";tr();if(typeof refresh=="function")r
 /* overlays */
 function toggleMenu(){const o=$("#o-menu");if(o.classList.contains("on")){ov();return}ov();document.documentElement.style.setProperty("--hh",Math.round(document.querySelector("header").getBoundingClientRect().bottom)+"px");ov("menu")}
 addEventListener("scroll",()=>{const o=$("#o-menu");if(o&&o.classList.contains("on"))ov()},{passive:true});
-function ov(n){document.querySelectorAll(".ov").forEach(o=>{o.classList.remove("on");const s=o.querySelector(".scan");if(s){s.style.animation="none";s.offsetWidth;s.style.animation=""}});if(!n)SD={};if(n){$("#o-"+n).classList.add("on");if(n=="signup")su(0);if(n=="report")rp(0)}try{document.querySelector("header .nb[data-i=menu]").setAttribute("aria-expanded",n=="menu"?"true":"false")}catch(e){}}
+function ov(n){document.querySelectorAll(".ov").forEach(o=>{o.classList.remove("on");const s=o.querySelector(".scan");if(s){s.style.animation="none";s.offsetWidth;s.style.animation=""}});if(!n)SD={};if(n){$("#o-"+n).classList.add("on");if(n=="signup")su(0);if(n=="report")rp(0)}try{document.querySelector("header .dots").setAttribute("aria-expanded",n=="menu"?"true":"false")}catch(e){}}
 const INFO={
 privacy:`<h2 style="font-size:2rem">Privacy notice</h2><p><b>Status: draft for a student prototype.</b> It has not had legal review and is not a statement of compliance with Korea's PIPA or any other law.</p>
 <h3>What we collect</h3><ul><li><b>Report content</b> you type: category, description, area, dates and the options you choose. Do not include names, phone numbers, addresses or ID numbers.</li><li><b>Evidence files</b> (optional photos and audio you attach), stored privately so that only moderators can open them. Photos are re-saved on your device before upload, which removes hidden data such as location. Audio files may contain hidden data that we do not remove.</li><li><b>Account data</b> if you sign up: email address, password (handled by the sign-in service, never visible to us), preferred language and optional student status, university and district.</li><li><b>Technical data</b>: to stop abuse we keep a salted one-way hash of your network address for rate limiting. The address itself is not stored.</li></ul>
